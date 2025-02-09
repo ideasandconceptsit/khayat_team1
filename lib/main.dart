@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'core/app_themes.dart';
@@ -25,6 +26,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    //  please use the sizes of this package.(screen utils)
+    // for example in all the app level:
+    // to adjust the  font size : 20.sp
+    // to adjust the width size : 20.w
+    // to adjust the height size : 20.h
+    ScreenUtil.init(context,
+        designSize: Size(375, 812), // your design size
+     );
     return GetMaterialApp(
       title: 'Khayat',
       translations: AppTranslations(),

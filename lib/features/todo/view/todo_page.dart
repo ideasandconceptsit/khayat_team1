@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_colors.dart';
-
 import '../../../state_managment/app_state_controller.dart';
 import '../../../state_managment/app_status.dart';
 import '../todo_controller/todo_controller.dart';
@@ -17,7 +16,7 @@ class TodoPage extends StatefulWidget {
 class _TodoPageState extends State<TodoPage> {
 
   final TodoController todoController = Get.find();
-  AppStateController appStateController=Get.find();
+  AppStateController appStateController=Get.find() ;
 @override
   void initState() {
   todoController.getTodoList();
@@ -29,7 +28,8 @@ class _TodoPageState extends State<TodoPage> {
       appBar: AppBar(
         title: const Text('todo page'),
       ),
-      body:Obx(() {
+      body:Obx(()
+      {
         if(appStateController.state.value==AppState.loading)
         {
           return Center(

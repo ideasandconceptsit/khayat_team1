@@ -5,7 +5,8 @@ import 'package:team1_khayat/core/network/dio_utils.dart';
 import '../todo_model/to_do.dart';
 
 
-class TodoRepositry {
+class TodoRepositry
+{
   Future<List<Todo>> getToDoList() async
   {
     final myDio = DioUtils.getInstance();
