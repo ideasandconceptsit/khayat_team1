@@ -1,3 +1,5 @@
+import 'package:team1_khayat/core/app_strings.dart';
+
 const Map<String, String> ar = {
 
   // home page      please write the place that you used for translation worlds
@@ -11,4 +13,18 @@ const Map<String, String> ar = {
 
 
 
+
+
+  //My Cart View
+  AppStrings.myCart: "سلة التسوق",
+  AppStrings.color: "اللون",
+  AppStrings.size: "الحجم",
+  AppStrings.enterYourPromoCode: "أدخل رمز الخصم",
+  AppStrings.totalAmount: "المبلغ الإجمالي:",
+  AppStrings.checkOut: "إتمام الشراء",
+  AppStrings.yourPromoCodes: "رموز الخصم الخاصة بك",
+  AppStrings.daysRemaining: "متبقي 6 أيام",
+  AppStrings.apply: "تطبيق",
+  AppStrings.addToFavorites: "أضف إلى المفضلة",
+  AppStrings.deleteFromList: "حذف من القائمة",
 };
