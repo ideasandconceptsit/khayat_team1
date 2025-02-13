@@ -121,6 +121,6 @@ class OrderCard extends StatelessWidget {
           ),
         ),
       ),
-    );;
+    );
   }
 }
