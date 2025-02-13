@@ -5,10 +5,10 @@ const Map<String, String> en = {
   'change_language': 'Change Language',
 
   // login page
-  'login':'Login',
+  'login': 'Login',
   // signup page
-  'signup': 'SignUp' ,
-     // profile page
+  'signup': 'SignUp',
+  // profile page
   'My profile': 'My Profile',
   'My orders': 'My Orders',
   'Already have  orders': 'Already have  orders',
@@ -23,4 +23,16 @@ const Map<String, String> en = {
   'Settings': 'Settings',
   'Notifications': 'Notifications',
   'password': 'password',
+  // my orders view
+  'Processing': 'Processing',
+  'Cancelled': 'Cancelled ',
+  'Delivered': 'Delivered Orders',
+  'Details': ' Details',
+  'Order': 'Order ',
+  'Order Date': 'Order Date',
+  'Total Amount:': 'Total Amount',
+  'Quantity': 'Quantity ',
+  'Tracking number': 'Tracking number:',
+  'unpaid': 'Unpaid',
+  'items_in_order': 'Items in Order',
 };

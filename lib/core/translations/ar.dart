@@ -1,11 +1,10 @@
 const Map<String, String> ar = {
-
   // home page      please write the place that you used for translation worlds
   'hello': 'مرحبا',
   'welcome': 'مرحبًا بك في تطبيقنا!',
   'change_language': 'تغيير اللغة',
   // login page
-  'login':'تسجيل الدخول',
+  'login': 'تسجيل الدخول',
   // signup page
   'signup': 'إنشاء حساب',
 // profile page
@@ -23,6 +22,16 @@ const Map<String, String> ar = {
   'Settings': 'الإعدادات',
   'Notifications': 'الإشعارات  ',
   'password': 'كلمة المرور',
-
-
+  // my orders view
+  'Processing': 'قيد المعالجة',
+  'Cancelled': 'ملغي',
+  'Delivered': 'الطلبات المُسلمة',
+  'Details': 'التفاصيل',
+  'Order': 'الطلب',
+  'Order Date': 'تاريخ الطلب',
+  'Total Amount:': 'إجمالي المبلغ',
+  'Quantity': 'الكمية',
+  'Tracking number': 'رقم التتبع:',
+  'unpaid': 'غير مدفوع',
+  'items_in_order': 'العناصر في الطلب',
 };
