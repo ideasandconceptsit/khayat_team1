@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:team1_khayat/core/widget/navigation_service.dart';
 import 'package:team1_khayat/features/profile/view/widget/profile_option.dart';
+import 'package:team1_khayat/state_managment/app_routers.dart';
 
 class SliverListProfileOption extends StatelessWidget {
   const SliverListProfileOption({super.key});
@@ -13,6 +15,8 @@ class SliverListProfileOption extends StatelessWidget {
       ProfileOption(
         title: 'My orders', subtitle: 'Already have 12 orders',
          onTap: () {
+          NavigationService.to( Routes.myOrderView , arguments: null);
+
         }),
       ProfileOption(title: 'Shipping addresses', subtitle: '3 addresses'),
       ProfileOption(title: 'Payment methods', subtitle: 'Visa **34'),
