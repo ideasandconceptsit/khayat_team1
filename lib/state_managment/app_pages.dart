@@ -25,6 +25,8 @@ class AppPages {
       name: Routes.todoPage,
       page: () => const TodoPage(),
     ),
+
+    //just to test
     GetPage(
       name: Routes.cartPage,
       page: () =>  CartView(),

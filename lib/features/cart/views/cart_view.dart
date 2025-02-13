@@ -16,7 +16,6 @@ class CartView extends StatelessWidget {
 
   ///Todo: move CartController and CartRepository to the right place.
   final CartController cartController = Get.put(CartController());
-  final CartRepository cartRepository=Get.put(CartRepository());
 
   @override
   Widget build(BuildContext context) {

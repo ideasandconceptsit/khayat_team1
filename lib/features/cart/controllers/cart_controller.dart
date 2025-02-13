@@ -7,7 +7,8 @@ import 'package:team1_khayat/state_managment/app_state_controller.dart';
 
 class CartController extends AppStateController {
 
-  CartRepository cartRepository=Get.find<CartRepository>();
+  // just to test
+  CartRepository cartRepository=CartRepository();
 
   late TextEditingController  promoCodeController;
   var promoCodeText="".obs;
