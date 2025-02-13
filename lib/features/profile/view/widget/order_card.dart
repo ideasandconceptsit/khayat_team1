@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:team1_khayat/core/utils/app_colors.dart';
 import 'package:team1_khayat/core/utils/app_text_style.dart';
+import 'package:team1_khayat/core/widget/navigation_service.dart';
+import 'package:team1_khayat/state_managment/app_routers.dart';
 
 class OrderCard extends StatelessWidget {
   const OrderCard({super.key, required this.status});
@@ -95,6 +97,8 @@ class OrderCard extends StatelessWidget {
                 children: [
                   OutlinedButton(
                     onPressed: () {
+                      NavigationService.to( Routes.detailsView , arguments: null);
+
                     },
                     child:  Text('Details' ,style:AppStyles.tajawaltextStyle14.copyWith(
                       color: AppColors.black
