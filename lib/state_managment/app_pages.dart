@@ -1,6 +1,7 @@
 
 import 'package:get/get.dart';
 import 'package:team1_khayat/features/layout/view/buttom_nav_bar.dart';
+import 'package:team1_khayat/features/profile/view/my_order_view.dart';
 import 'package:team1_khayat/features/profile/view/profile_view.dart';
 import 'package:team1_khayat/state_managment/app_routers.dart';
 
@@ -15,10 +16,10 @@ class AppPages {
       name: Routes.profileView,
       page: () => const ProfileView(),
     ),
-    // GetPage(
-    //   name: Routes.homePage,
-    //   page: () =>  Homepage(),
-    // ),
+      GetPage(
+    name: Routes.myOrderView,
+    page: () => const MyOrderView(),
+    ),
     // GetPage(
     //   name: Routes.todoPage,
     //   page: () => const TodoPage(),
