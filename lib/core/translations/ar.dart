@@ -17,13 +17,13 @@ const Map<String, String> ar = {
 
   //My Cart View
   AppStrings.myCart: "سلة التسوق",
-  AppStrings.color: "اللون",
-  AppStrings.size: "الحجم",
+  AppStrings.color: ":اللون: ",
+  AppStrings.size: "الحجم: ",
   AppStrings.enterYourPromoCode: "أدخل رمز الخصم",
   AppStrings.totalAmount: "المبلغ الإجمالي:",
   AppStrings.checkOut: "إتمام الشراء",
   AppStrings.yourPromoCodes: "رموز الخصم الخاصة بك",
-  AppStrings.daysRemaining: "متبقي 6 أيام",
+  AppStrings.daysRemaining: "أيم متبقية",
   AppStrings.apply: "تطبيق",
   AppStrings.addToFavorites: "أضف إلى المفضلة",
   AppStrings.deleteFromList: "حذف من القائمة",

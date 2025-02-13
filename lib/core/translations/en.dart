@@ -14,13 +14,13 @@ const Map<String, String> en = {
 
   //My Cart View
   AppStrings.myCart: "My Cart",
-  AppStrings.color: "Color",
-  AppStrings.size: "Size",
+  AppStrings.color: "Color: ",
+  AppStrings.size: "Size: ",
   AppStrings.enterYourPromoCode: "Enter your promo code",
   AppStrings.totalAmount: "Total amount:",
   AppStrings.checkOut: "CHECK OUT",
   AppStrings.yourPromoCodes: "Your Promo Codes",
-  AppStrings.daysRemaining: "6 days remaining",
+  AppStrings.daysRemaining: "days remaining",
   AppStrings.apply: "Apply",
   AppStrings.addToFavorites: "Add to favorites",
   AppStrings.deleteFromList: "Delete from the list",

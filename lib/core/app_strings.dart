@@ -11,4 +11,5 @@ class AppStrings {
   static const String apply = "apply";
   static const String addToFavorites = "add_to_favorites";
   static const String deleteFromList = "delete_from_list";
+
 }

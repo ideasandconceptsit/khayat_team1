@@ -1,31 +1,34 @@
+import 'package:get/get.dart';
+
 class CartProductModel {
   final String id;
   final String title;
+  final String color;
   final String imageUrl;
-  final int quantity;
-  final double price;
+  final RxInt quantity;
+  final RxDouble price;
   final String size;
 
-  CartProductModel(
-     {
+  CartProductModel({
     required this.id,
     required this.title,
+    required this.color,
     required this.imageUrl,
-    required this.quantity,
-    required this.price,
+    required int quantity,
+    required double price,
     required this.size,
-
-  });
+  })  : quantity = quantity.obs,
+        price = price.obs;
 
   factory CartProductModel.fromJson(Map<String, dynamic> json) {
     return CartProductModel(
       id: json['id'],
       title: json['title'],
+      color: json['color'],
       imageUrl: json['imageUrl'],
       quantity: json['quantity'],
       price: json['price'],
       size: json['size'],
-
     );
   }
 
@@ -33,9 +36,10 @@ class CartProductModel {
     return {
       'id': id,
       'title': title,
+      'color': color,
       'imageUrl': imageUrl,
-      'quantity': quantity,
-      'price': price,
+      'quantity': quantity.value,
+      'price': price.value,
       'size': size,
     };
   }
@@ -43,6 +47,7 @@ class CartProductModel {
   CartProductModel copyWith({
     String? id,
     String? title,
+    String? color,
     String? imageUrl,
     int? quantity,
     double? price,
@@ -51,11 +56,11 @@ class CartProductModel {
     return CartProductModel(
       id: id ?? this.id,
       title: title ?? this.title,
+      color: color ?? this.color,
       imageUrl: imageUrl ?? this.imageUrl,
-      quantity: quantity ?? this.quantity,
-      price: price ?? this.price,
+      quantity: quantity ?? this.quantity.value,
+      price: price ?? this.price.value,
       size: size ?? this.size,
     );
   }
 }
-
