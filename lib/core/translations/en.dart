@@ -16,4 +16,11 @@ const Map<String, String> en = {
   'shirts': 'Shirts',
   'filters': 'Filters',
   'price_low_to_high': 'Price: lowest to high',
+  //filter sort bar
+  'sort by': 'Sort by',
+  'popular': 'Popular',
+  'newest': 'Newest',
+  'customer review': 'Customer review',
+  'price lowest to high': 'Price: lowest to high',
+  'price highest to low': 'Price: highest to low',
 };

@@ -14,5 +14,11 @@ const Map<String, String> ar = {
   'blouses': 'بلوزات',
   'shirts': 'قمصان',
   'filters': 'التصفية',
-  'price_low_to_high': 'السعر: من الأقل إلى الأعلى',
+  //filter sort bar
+  'sort by': 'ترتيب حسب',
+  'popular': 'الأكثر شعبية',
+  'newest': 'الأحدث',
+  'customer review': 'تقييم العملاء',
+  'price lowest to high': 'السعر: من الأقل إلى الأعلى',
+  'price highest to low': 'السعر: من الأعلى إلى الأقل',
 };

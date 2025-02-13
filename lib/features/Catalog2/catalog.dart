@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'widgets/category_pills.dart';
 import 'widgets/filter_sort_bar.dart';
@@ -14,23 +15,23 @@ class CatalogPage extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.arrow_back_ios, size: 20),
+                    icon: Icon(Icons.arrow_back_ios, size: 20.sp),
                     onPressed: () {},
                   ),
-                  const Text(
+                  Text(
                     "Women's tops",
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.search, size: 24),
+                    icon: Icon(Icons.search, size: 24.sp),
                     onPressed: () {},
                   ),
                 ],
@@ -40,7 +41,7 @@ class CatalogPage extends StatelessWidget {
               child: Column(
                 children: [
                   const CategoryPills(),
-                  const FilterSortBar(),
+                  FilterSortBar(),
                   Expanded(
                     child: ProductGrid(),
                   ),

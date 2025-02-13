@@ -43,7 +43,7 @@ class ProductController extends GetxController {
         discount: 60,
       ),
       const Product(
-        id: 2,
+        id: 5,
         image: "https://m.media-amazon.com/images/I/51HTJqSUlEL._AC_SX679_.jpg",
         brand: "Dorothy Perkins",
         name: "Blouse",
