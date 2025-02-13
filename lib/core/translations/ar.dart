@@ -34,4 +34,11 @@ const Map<String, String> ar = {
   'Tracking number': 'رقم التتبع:',
   'unpaid': 'غير مدفوع',
   'items_in_order': 'العناصر في الطلب',
+  // order details
+  'items': 'العناصر',
+  "Order information": "معلومات الطلب",
+  'Discount': ' الخصم',
+  'reorder': 'إعادة الطلب',
+   'Home': 'الرئيسية',
+  
 };

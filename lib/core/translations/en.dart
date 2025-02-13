@@ -35,4 +35,11 @@ const Map<String, String> en = {
   'Tracking number': 'Tracking number:',
   'unpaid': 'Unpaid',
   'items_in_order': 'Items in Order',
+  // order details
+  'items': 'items',
+"Order information": "Order information",
+'Discount': 'Discount',
+'reorder': 'reorder',
+'Home': 'Home',
+
 };
