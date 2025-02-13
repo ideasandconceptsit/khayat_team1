@@ -1,6 +1,6 @@
 class Routes {
-  static const  loginPage= '/LoginPage'; // we assign the name of the class to the variable
-  static const  signupPage= '/SignupPage';
+  static const bottomNavBar='/BottomNavBar';
+  static const  profileView= '/ProfileView'; // we assign the name of the class to the variable
   static const homePage='/';
   static const todoPage='/TodoPage';
 
