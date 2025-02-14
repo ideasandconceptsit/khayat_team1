@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import '../../../../../core/app_style.dart';
 import '../../widgets/social_buttons.dart';
 
@@ -11,11 +13,11 @@ class LoginFooter extends StatelessWidget {
       children: [
          Center(
           child: Text(
-            "Or login With social account",
+            "social_login".tr,
             style: AppStyle.textInLogin.copyWith(color: Colors.black),
           ),
         ),
-        const SizedBox(height: 10),
+         SizedBox(height: 12.h),
         SocialButtons(),
         const SizedBox(height: 50),
       ],

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_common/get_reset.dart';
 import '../../../auth_controllers/signup_controller.dart';
 import '../../widgets/custom_text_field.dart';
 
@@ -11,18 +14,18 @@ class SignupForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomTextField(label: "Name", controller: controller.nameController),
-        const SizedBox(height: 20),
-        CustomTextField(label: "Email", controller: controller.emailController),
-        const SizedBox(height: 20),
+        CustomTextField(label: "name".tr, controller: controller.nameController),
+         SizedBox(height: 23.h),
+        CustomTextField(label: "email".tr, controller: controller.emailController),
+         SizedBox(height: 23.h),
         CustomTextField(
-          label: "Password",
+          label: "password".tr,
           controller: controller.passwordController,
           isPassword: true,
         ),
-        const SizedBox(height: 20),
+         SizedBox(height: 23.h),
         CustomTextField(
-          label: "Phone",
+          label: "phone".tr,
           controller: controller.phoneController,
           isNumber: true,
         ),

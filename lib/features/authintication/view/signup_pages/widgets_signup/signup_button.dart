@@ -9,7 +9,7 @@ class SignupButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomButton(
-      text: "SIGN UP",
+      text: "sign_up".tr,
       onPressed: () => Get.toNamed(Routes.verificationPage),
     );
   }

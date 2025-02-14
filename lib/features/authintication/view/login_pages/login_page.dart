@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:team1_khayat/features/authintication/auth_controllers/login_controller.dart';
 import 'package:team1_khayat/features/authintication/view/login_pages/widgets_login/login_appbar.dart';
@@ -7,7 +8,6 @@ import 'package:team1_khayat/features/authintication/view/login_pages/widgets_lo
 import 'package:team1_khayat/features/authintication/view/login_pages/widgets_login/login_form.dart';
 import '../../../../core/app_colors.dart';
 import '../../../../core/app_style.dart';
-import '../widgets/ndicator_widget.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -25,16 +25,16 @@ class LoginPage extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Login'.tr, style: AppStyle.navBar),
-                const SizedBox(height: 90),
-                LoginForm(controller: controller), // استدعاء الفورم
-                const SizedBox(height: 20),
-                LoginButtons(controller: controller), // استدعاء الأزرار
+                Text('login'.tr, style: AppStyle.navBar),
+                 SizedBox(height: 97.h),
+                LoginForm(controller: controller),
+                 SizedBox(height: 11.h),
+                LoginButtons(controller: controller),
+                 SizedBox(height: 125.h),
+                const LoginFooter(),
+               // Center(child: buildHomeIndicator()),
               ],
             ),
-            const SizedBox(height: 130),
-           const LoginFooter(),
-            Center(child: buildHomeIndicator()),
           ],
         ),
       ),

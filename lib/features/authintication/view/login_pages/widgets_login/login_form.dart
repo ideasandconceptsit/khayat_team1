@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../core/app_style.dart';
 import '../../../../../state_managment/app_routers.dart';
@@ -14,14 +15,14 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomTextField(label: "Email", controller: controller.emailController),
-        const SizedBox(height: 10),
+        CustomTextField(label: "email".tr, controller: controller.emailController),
+         SizedBox(height: 8.h),
         CustomTextField(
-          label: "Password",
+          label: "password".tr,
           controller: controller.passwordController,
           isPassword: true,
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 16.h),
         Align(
           alignment: Alignment.center,
           child: GestureDetector(
@@ -29,14 +30,14 @@ class LoginForm extends StatelessWidget {
                 // go to forget password
               },
               child:
-                 const Text("Forgot your password?", style: AppStyle.textInLogin)),
+                  Text("forgot_password".tr, style: AppStyle.textInLogin)),
         ),
-        const SizedBox(height: 10),
+         SizedBox(height: 5.h),
         GestureDetector(
           onTap: () => Get.toNamed(Routes.signupPage),
           child: Center(
             child: Text(
-              "Don't have an account?",
+              "dont_have_account".tr,
               style: AppStyle.textInLogin
                   .copyWith(fontSize: 16, color: Colors.black),
             ),

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:team1_khayat/features/authintication/view/widgets/custom_text_field.dart';
-
 import '../../../../core/app_colors.dart';
 import '../../../../core/app_style.dart';
 import '../widgets/custom_button.dart';
-import '../widgets/ndicator_widget.dart';
 
 class VerificationPage extends StatefulWidget {
   const VerificationPage({super.key});
@@ -27,25 +26,22 @@ class _VerificationPageState extends State<VerificationPage> {
         padding: const EdgeInsets.only(left: 14, right: 14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Verification'.tr,
+              'verification'.tr,
               style: AppStyle.navBar,),
-            const SizedBox(height: 150,),
+             SizedBox(height: 175.h,),
             CustomTextField(
-                label: "OTP", controller: phoneController, isNumber: true),
-            const SizedBox(
-              height: 40,
-            ),
+                label: "otp".tr, controller: phoneController, isNumber: true),
+             SizedBox(height: 44.h,),
              CustomButton(
               onPressed: (){
                 //go to home screen check from api
               },
-              text: "LOGIN",
+              text: "login".tr,
             ),
-            const Spacer(),
-            Center(child: buildHomeIndicator()),
+           // const Spacer(),
+            //Center(child: buildHomeIndicator()),
           ],
         ),
       ),

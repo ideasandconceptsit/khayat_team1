@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_common/get_reset.dart';
+import 'package:team1_khayat/features/authintication/view/login_pages/login_page.dart';
 import '../../../../../core/app_style.dart';
 import '../../../auth_controllers/login_controller.dart';
 import '../../widgets/custom_button.dart';
@@ -13,15 +17,13 @@ class LoginButtons extends StatelessWidget {
     return Column(
       children: [
         CustomButton(
-          text: "LOGIN",
-          onPressed: () {
-            // تنفيذ تسجيل الدخول
-          },
+          text: "login_button".tr,
+          onPressed: () {},
         ),
-        const SizedBox(height: 20),
+         SizedBox(height: 21.h),
          Center(
           child: Text(
-            "Continue as a Guest!",
+            "continue_as_guest".tr,
             style: AppStyle.textInLogin.copyWith(color: Colors.black),
           ),
         ),

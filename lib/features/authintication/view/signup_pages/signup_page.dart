@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:team1_khayat/features/authintication/view/signup_pages/widgets_signup/signup_appbar.dart';
 import 'package:team1_khayat/features/authintication/view/signup_pages/widgets_signup/signup_button.dart';
 import 'package:team1_khayat/features/authintication/view/signup_pages/widgets_signup/signup_form.dart';
-import 'package:team1_khayat/features/authintication/view/signup_pages/widgets_signup/social_login.dart';
+import 'package:team1_khayat/features/authintication/view/signup_pages/widgets_signup/social_signup.dart';
 import '../../auth_controllers/signup_controller.dart';
 import '../../../../core/app_colors.dart';
 import '../../../../core/app_style.dart';
-import '../widgets/ndicator_widget.dart';
 
 class SignupPage extends StatelessWidget {
    SignupPage({super.key});
@@ -19,19 +19,17 @@ class SignupPage extends StatelessWidget {
       backgroundColor: AppColors.background,
       appBar: buildSignupAppBar(),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 14),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Sign up'.tr, style: AppStyle.navBar),
-            const SizedBox(height: 20),
+            Text('sign_up'.tr, style: AppStyle.navBar),
+             SizedBox(height: 23.h),
             SignupForm(controller: controller),
-            const SizedBox(height: 50),
+             SizedBox(height: 55.h),
             const SignupButton(),
-            const SizedBox(height: 100),
-            const SocialLogin(),
-            const SizedBox(height: 50),
-            Center(child: buildHomeIndicator()),
+             SizedBox(height: 68.h),
+            const SocialSignup(),
           ],
         ),
       ),

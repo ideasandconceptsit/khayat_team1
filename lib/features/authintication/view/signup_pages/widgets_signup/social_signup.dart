@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_common/get_reset.dart';
 import '../../../../../core/app_style.dart';
 import '../../widgets/social_buttons.dart';
 
-class SocialLogin extends StatelessWidget {
-  const SocialLogin({super.key});
+class SocialSignup extends StatelessWidget {
+  const SocialSignup({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,11 +14,11 @@ class SocialLogin extends StatelessWidget {
       children: [
         Center(
           child: Text(
-            "Or sign up With social account",
+            "social_sign_up".tr,
             style: AppStyle.textInLogin.copyWith(color: Colors.black),
           ),
         ),
-        const SizedBox(height: 15),
+         SizedBox(height: 12.h),
         SocialButtons(),
       ],
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SocialButtons extends StatelessWidget {
   @override
@@ -8,7 +9,7 @@ class SocialButtons extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _buildSocialButton("assets/google-icon-2048x2048-pks9lbdv.png"),
-          const  SizedBox(width: 20),
+            SizedBox(width: 16.w),
             _buildSocialButton("assets/124010.png"),
           ],
         );
@@ -18,17 +19,17 @@ class SocialButtons extends StatelessWidget {
     return Container(
       height: 64,
       width: 92,
-      padding:const EdgeInsets.all(10),
+      padding:const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(24.r),
         border: Border.all(color: Colors.white),
       ),
       child: Center(
         child: Image.asset(
           imagePath,
-          width: 24,
-          height: 24,
+          width: 24.w,
+          height: 24.h,
           fit: BoxFit.contain,
         ),
       ),
