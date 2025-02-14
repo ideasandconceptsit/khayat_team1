@@ -40,7 +40,10 @@ class FilterSortBar extends StatelessWidget {
           TextButton.icon(
             onPressed: () => Get.to(() => FiltersPage()),
             icon: Icon(Icons.tune, size: 20.sp),
-            label: Text('filters'.tr),
+            label: Text(
+              'filters'.tr,
+              style: TextStyle(fontSize: 11.sp, fontWeight: FontWeight.w400),
+            ),
             style: TextButton.styleFrom(
               foregroundColor: Theme.of(context).colorScheme.secondary,
             ),
@@ -48,7 +51,9 @@ class FilterSortBar extends StatelessWidget {
           Obx(() => TextButton.icon(
                 onPressed: showSortOptions,
                 icon: Icon(Icons.import_export, size: 20.sp),
-                label: Text(sortController.sortText),
+                label: Text(sortController.sortText,
+                    style: TextStyle(
+                        fontSize: 11.sp, fontWeight: FontWeight.w400)),
                 style: TextButton.styleFrom(
                   foregroundColor: Theme.of(context).colorScheme.secondary,
                 ),

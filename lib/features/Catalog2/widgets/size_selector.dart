@@ -30,7 +30,7 @@ class SizeSelector extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Obx(() => Row(
                 children: controller.sizes.map((size) {
-                  final isSelected = controller.selectedSize.value == size;
+                  final isSelected = controller.selectedSizes.contains(size);
                   return Padding(
                     padding: EdgeInsets.only(right: 8.w),
                     child: InkWell(

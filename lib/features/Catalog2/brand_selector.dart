@@ -12,6 +12,7 @@ class BrandSelectorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios, size: 20.sp),
           onPressed: () => Get.back(),

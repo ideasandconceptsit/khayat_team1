@@ -86,16 +86,6 @@ class FiltersPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 8.h),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
-                    child: Text(
-                      'adidas Originals, Jack & Jones & Others...',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 14.sp,
-                      ),
-                    ),
-                  ),
                   SizedBox(height: 24.h),
                 ],
               ),

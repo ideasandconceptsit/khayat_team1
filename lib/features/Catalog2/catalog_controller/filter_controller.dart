@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 class FilterController extends GetxController {
   final RxDouble minPrice = 78.0.obs;
   final RxDouble maxPrice = 143.0.obs;
-  final RxString selectedSize = ''.obs;
+  final RxList<String> selectedSizes = <String>[].obs;
   final RxList<String> selectedCategories = <String>[].obs;
   final RxList<String> selectedColors = <String>[].obs;
   final RxList<String> selectedBrands = <String>[].obs;
 
-  // Make brands list observable
   final RxList<String> brands = <String>[
     'adidas',
     'adidas Originals',
@@ -47,10 +46,10 @@ class FilterController extends GetxController {
   }
 
   void toggleSize(String size) {
-    if (selectedSize.value == size) {
-      selectedSize.value = '';
+    if (selectedSizes.contains(size)) {
+      selectedSizes.remove(size);
     } else {
-      selectedSize.value = size;
+      selectedSizes.add(size);
     }
   }
 
@@ -83,12 +82,11 @@ class FilterController extends GetxController {
   }
 
   void applyFilters() {
-    // Implement filter logic
     Get.back();
   }
 
   void resetFilters() {
-    selectedSize.value = '';
+    selectedSizes.clear();
     selectedCategories.clear();
     selectedColors.clear();
     minPrice.value = 78.0;

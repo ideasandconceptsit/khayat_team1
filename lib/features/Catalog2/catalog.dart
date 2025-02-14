@@ -27,7 +27,7 @@ class CatalogPage extends StatelessWidget {
                     "Women's tops",
                     style: TextStyle(
                       fontSize: 18.sp,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w900,
                     ),
                   ),
                   IconButton(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -18,85 +17,74 @@ class ProductCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(
-          child: Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.r),
-                child: Image.network(
-                  product.image,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                ),
+        Stack(
+          clipBehavior: Clip.none, // مهم جدًا عشان يظهر جزء اللايك تحت الصورة
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: Image.network(
+                product.image,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: 150.h, // تعديل الارتفاع لو لزم الأمر
               ),
-              if (product.discount != null)
-                Positioned(
-                  left: 8.w,
-                  top: 8.h,
-                  child: Container(
-                    width: 40.w,
-                    height: 24.h,
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          left: 0,
-                          top: 0,
-                          child: Container(
-                            width: 40.w,
-                            height: 24.h,
-                            decoration: ShapeDecoration(
-                              color: Color(0xFFDB3022),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(29.r),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 5.w,
-                          top: 3.h,
-                          child: SizedBox(
-                            width: 29.w,
-                            child: Text(
-                              '-${product.discount}%',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 11.sp,
-                                fontWeight: FontWeight.w900,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+            ),
+            if (product.discount != null)
+              Positioned(
+                left: 8.w,
+                top: 8.h,
+                child: Container(
+                  width: 40.w,
+                  height: 24.h,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFDB3022),
+                    borderRadius: BorderRadius.circular(29.r),
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    '-${product.discount}%',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 11.sp,
+                      fontWeight: FontWeight.w900,
                     ),
                   ),
                 ),
-              Positioned(
-                right: 8.w,
-                top: 8.h,
-                child: Obx(() => GestureDetector(
-                      onTap: () => productController.toggleLike(product.id),
-                      child: Container(
-                        padding: EdgeInsets.all(8.w),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                        ),
+              ),
+            Positioned(
+              right: 8.w,
+              top: 110.h,
+              child: Obx(() => Transform.translate(
+                    offset: Offset(0, 10.h),
+                    child: Container(
+                      padding: EdgeInsets.all(8.w),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 4,
+                            offset: Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: GestureDetector(
+                        onTap: () => productController.toggleLike(product.id),
                         child: Icon(
                           productController.isLiked(product.id)
                               ? Icons.favorite
                               : Icons.favorite_border,
-                          size: 20.sp,
+                          size: 24.sp,
                           color: productController.isLiked(product.id)
                               ? Colors.red
                               : Theme.of(context).colorScheme.secondary,
                         ),
                       ),
-                    )),
-              ),
-            ],
-          ),
+                    ),
+                  )),
+            ),
+          ],
         ),
         SizedBox(height: 8.h),
         Row(
