@@ -34,9 +34,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Khayat',
           translations: AppTranslations(),
-          // locale: local ?? const Locale('en'),
-          // fallbackLocale: const Locale('en'),
-          
+          locale: local ?? const Locale('en'),
+          fallbackLocale: const Locale('en'),
           theme: AppThemes.lightTheme,
           initialRoute: Routes.bottomNavBar,
           getPages: AppPages.pages,

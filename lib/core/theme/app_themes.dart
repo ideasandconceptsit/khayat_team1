@@ -3,6 +3,7 @@ import 'package:team1_khayat/core/utils/app_colors.dart';
 
 class AppThemes{
  static ThemeData lightTheme= ThemeData(
+  fontFamily: 'Tajawal',
     colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
     useMaterial3: true,
      primarySwatch: Colors.teal,
@@ -14,6 +15,7 @@ class AppThemes{
   );
 
  static ThemeData darkTheme= ThemeData(
+  fontFamily: 'Tajawal',
    colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
    useMaterial3: true,
  );
