@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
         designSize: Size(375, 812), // your design size
      );
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Khayat',
       translations: AppTranslations(),
       locale: local ?? const Locale('ar'),
