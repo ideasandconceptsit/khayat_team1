@@ -1,9 +1,9 @@
 class Routes {
-  static const loginPage = '/LoginPage'; // نحدد اسم الصفحة كمتغير ثابت
-  static const signupPage = '/SignupPage';
-  static const verificationPage = '/VerificationPage';
-  static const homePage = '/';
-  static const todoPage = '/TodoPage';
-  static const cartPage = '/CartPage'; 
-  static const catalog_2Page = '/Catalog_2Page'; 
+  static const loginPage = '/LoginPage'; // صفحة تسجيل الدخول
+  static const signupPage = '/SignupPage'; // صفحة التسجيل
+  static const verificationPage = '/VerificationPage'; // صفحة التحقق
+  static const homePage = '/'; // الصفحة الرئيسية
+  static const todoPage = '/TodoPage'; // صفحة المهام
+  static const cartPage = '/CartPage'; // صفحة سلة التسوق
+  static const catalog_2Page = '/Catalog_2Page'; // صفحة الكتالوج
 }

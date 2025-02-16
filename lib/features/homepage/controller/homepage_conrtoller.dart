@@ -1,3 +1,10 @@
-import 'package:get/get.dart';
 
-class HomepageController extends GetxController {}
+
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+
+class HomepageController extends GetxController
+{
+
+
+
+}

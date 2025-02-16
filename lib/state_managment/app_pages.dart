@@ -1,38 +1,45 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:team1_khayat/features/Catalog2/catalog.dart';
-import 'package:team1_khayat/features/authintication/view/signup_pages/signup_page.dart';
-import 'package:team1_khayat/features/authintication/view/verification_pages/verification_page.dart';
-import 'package:team1_khayat/features/cart/views/cart_view.dart';
-import 'package:team1_khayat/state_managment/app_routers.dart';
-import '../features/authintication/view/login_pages/login_page.dart';
-import '../features/homepage/view/homepage.dart';
-import '../features/todo/view/todo_page.dart';
+import 'package:get_storage/get_storage.dart';
+import 'core/app_themes.dart';
+import 'core/translations/app_translations.dart';
+import 'state_managment/app_binding.dart';
+import 'state_managment/app_pages.dart';
+import 'state_managment/app_routers.dart';
 
-class AppPages {
-  static final pages = [
-    GetPage(
-      name: Routes.signupPage,
-      page: () => SignupPage(),
-    ),
-    GetPage(
-      name: Routes.loginPage,
-      page: () => const LoginPage(),
-    ),
-    GetPage(
-      name: Routes.verificationPage,
-      page: () => const VerificationPage(),
-    ),
-    GetPage(
-      name: Routes.homePage,
-      page: () => Homepage(),
-    ),
-    GetPage(
-      name: Routes.catalog_2Page,
-      page: () => const CatalogPage(),
-    ),
-    GetPage(
-      name: Routes.cartPage,
-      page: () => CartView(),
-    ),
-  ];
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
+
+  final box = GetStorage();
+  String savedLanguage = box.read('language') ?? 'ar';
+  runApp(MyApp(local: Locale(savedLanguage)));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key, this.local});
+
+  final Locale? local;
+
+  @override
+  Widget build(BuildContext context) {
+    // استخدم ScreenUtil لتحديد القياسات عبر التطبيق
+    ScreenUtil.init(
+      context,
+      designSize: const Size(375, 812), // حجم التصميم الأساسي
+    );
+
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Khayat',
+      translations: AppTranslations(),
+      locale: local ?? const Locale('ar'),
+      fallbackLocale: const Locale('ar'),
+      theme: AppThemes.lightTheme,
+      initialRoute: Routes.homePage, // ضبط الصفحة الافتراضية
+      getPages: AppPages.pages,
+      initialBinding: AppBinding(),
+    );
+  }
 }
