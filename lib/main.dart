@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+
 import 'core/app_themes.dart';
 import 'core/translations/app_translations.dart';
 import 'state_managment/app_binding.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       context,
       designSize: const Size(375, 812), // حجم التصميم الأساسي
     );
-
+    
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Khayat',
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
       locale: local ?? const Locale('ar'),
       fallbackLocale: const Locale('ar'),
       theme: AppThemes.lightTheme,
-      initialRoute: Routes.homePage, // ضبط الصفحة الافتراضية
+      initialRoute: Routes.catalog_2Page, // تغيير هنا حسب الحاجة
       getPages: AppPages.pages,
       initialBinding: AppBinding(),
     );

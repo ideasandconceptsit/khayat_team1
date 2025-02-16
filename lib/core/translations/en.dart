@@ -6,7 +6,7 @@ const Map<String, String> en = {
   'welcome': 'Welcome to our app!',
   'change_language': 'Change Language',
 
-  // Authentication
+  // Auth
   'login': 'Login',
   'email': 'Email',
   'password': 'Password',
