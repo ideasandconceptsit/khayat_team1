@@ -1,5 +1,5 @@
-
 import 'package:get/get.dart';
+import 'package:team1_khayat/features/Catalog2/catalog.dart';
 import 'package:team1_khayat/features/authintication/view/signup_pages/signup_page.dart';
 import 'package:team1_khayat/features/authintication/view/verification_pages/verification_page.dart';
 import 'package:team1_khayat/features/cart/views/cart_view.dart';
@@ -16,7 +16,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.loginPage,
-      page: () => LoginPage(),
+      page: () => const LoginPage(),
     ),
     GetPage(
       name: Routes.verificationPage,
@@ -27,8 +27,8 @@ class AppPages {
       page: () => Homepage(),
     ),
     GetPage(
-      name: Routes.todoPage,
-      page: () => const TodoPage(),
+      name: Routes.catalog_2Page,
+      page: () => const CatalogPage(),
     ),
     GetPage(
       name: Routes.cartPage,
