@@ -16,6 +16,7 @@ const Map<String, String> ar = {
   'continue_as_guest': 'المتابعة كزائر!',
   'social_login': 'أو قم بتسجيل الدخول عبر حساب اجتماعي',
   'sign_up': 'إنشاء حساب',
+  'signup': 'إنشاء حساب',
   'name': 'الاسم',
   'phone': 'رقم الهاتف',
   'social_sign_up': 'أو قم بالتسجيل عبر حساب اجتماعي',
@@ -51,3 +52,4 @@ const Map<String, String> ar = {
   'price lowest to high': 'السعر: من الأقل إلى الأعلى',
   'price highest to low': 'السعر: من الأعلى إلى الأقل',
 };
+
