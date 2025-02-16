@@ -1,28 +1,45 @@
-
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:team1_khayat/features/authintication/view/signup_pages/signup_page.dart';
-import 'package:team1_khayat/state_managment/app_routers.dart';
-import '../features/authintication/view/login_pages/login_page.dart';
-import '../features/homepage/view/homepage.dart';
-import '../features/todo/view/todo_page.dart';
-class AppPages {
+import 'package:get_storage/get_storage.dart';
+import 'core/app_themes.dart';
+import 'core/translations/app_translations.dart';
+import 'state_managment/app_binding.dart';
+import 'state_managment/app_pages.dart';
+import 'state_managment/app_routers.dart';
 
-  static final pages = [
-    GetPage(
-      name: Routes.signupPage,
-      page: () => const SignupPage(),
-    ),
-    GetPage(
-    name: Routes.loginPage,
-    page: () => const LoginPage(),
-    ),
-    GetPage(
-      name: Routes.homePage,
-      page: () =>  Homepage(),
-    ),
-    GetPage(
-      name: Routes.todoPage,
-      page: () => const TodoPage(),
-    ),
-];
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
+
+  final box = GetStorage();
+  String savedLanguage = box.read('language') ?? 'ar';
+  runApp(MyApp(local: Locale(savedLanguage)));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key, this.local});
+
+  final Locale? local;
+
+  @override
+  Widget build(BuildContext context) {
+    // استخدم ScreenUtil لتحديد القياسات عبر التطبيق
+    ScreenUtil.init(
+      context,
+      designSize: const Size(375, 812), // حجم التصميم الأساسي
+    );
+
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Khayat',
+      translations: AppTranslations(),
+      locale: local ?? const Locale('ar'),
+      fallbackLocale: const Locale('ar'),
+      theme: AppThemes.lightTheme,
+      initialRoute: Routes.homePage, // ضبط الصفحة الافتراضية
+      getPages: AppPages.pages,
+      initialBinding: AppBinding(),
+    );
+  }
 }
