@@ -21,7 +21,6 @@ class AppTextStyles {
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
   );
-
   static TextStyle textStyleRegular14 = TextStyle(
     color: AppColors.whiteColor,
     fontSize: 14.sp,

@@ -16,11 +16,15 @@ const Map<String, String> en = {
   'continue_as_guest': 'Continue as a Guest!',
   'social_login': 'Or login with social account',
   'sign_up': 'Sign up',
+  'signup': 'Sign Up',
   'name': 'Name',
   'phone': 'Phone',
   'social_sign_up': 'Or sign up with social account',
   'otp': 'OTP',
-  'verification':'Verification',
+  'verification': 'Verification',
+  'please enter your phone number': 'Please enter your phone number',
+  'please enter otp code': 'Please enter OTP code',
+  'send':'SEND',
 
   // My Cart View
   AppStrings.myCart: "My Cart",
@@ -34,5 +38,20 @@ const Map<String, String> en = {
   AppStrings.apply: "Apply",
   AppStrings.addToFavorites: "Add to favorites",
   AppStrings.deleteFromList: "Delete from the list",
-};
 
+  // Catalog Page
+  'womens_tops': "Women's tops",
+  't_shirts': 'T-shirts',
+  'crop_tops': 'Crop tops',
+  'blouses': 'Blouses',
+  'shirts': 'Shirts',
+  'filters': 'Filters',
+
+  // Filter & Sort Bar
+  'sort by': 'Sort by',
+  'popular': 'Popular',
+  'newest': 'Newest',
+  'customer review': 'Customer review',
+  'price_low_to_high': 'Price: lowest to high',
+  'price_high_to_low': 'Price: highest to low',
+};

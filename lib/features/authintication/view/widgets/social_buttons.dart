@@ -8,9 +8,9 @@ class SocialButtons extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _buildSocialButton("assets/google-icon-2048x2048-pks9lbdv.png"),
+            _buildSocialButton("assets/images/google-icon-2048x2048-pks9lbdv.png"),
             SizedBox(width: 16.w),
-            _buildSocialButton("assets/124010.png"),
+            _buildSocialButton("assets/images/124010.png"),
           ],
         );
   }

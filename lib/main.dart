@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:team1_khayat/state_managment/app_binding.dart';
-import 'package:team1_khayat/state_managment/app_pages.dart';
-import 'package:team1_khayat/state_managment/app_routers.dart';
 
 import 'core/app_themes.dart';
 import 'core/translations/app_translations.dart';
+import 'state_managment/app_binding.dart';
+import 'state_managment/app_pages.dart';
+import 'state_managment/app_routers.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,26 +23,22 @@ class MyApp extends StatelessWidget {
 
   final Locale? local;
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    //  please use the sizes of this package.(screen utils)
-    // for example in all the app level:
-    // to adjust the  font size : 20.sp
-    // to adjust the width size : 20.w
-    // to adjust the height size : 20.h
+    // استخدم ScreenUtil لتحديد القياسات عبر التطبيق
     ScreenUtil.init(
       context,
-      designSize: const Size(375, 812), // your design size
+      designSize: const Size(375, 812), // حجم التصميم الأساسي
     );
+    
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Khayat',
       translations: AppTranslations(),
       locale: local ?? const Locale('ar'),
       fallbackLocale: const Locale('ar'),
-      theme:AppThemes.lightTheme,
-      initialRoute: Routes.cartPage,
+      theme: AppThemes.lightTheme,
+      initialRoute: Routes.loginPage, // تغيير هنا حسب الحاجة
       getPages: AppPages.pages,
       initialBinding: AppBinding(),
     );

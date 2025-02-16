@@ -26,9 +26,7 @@ class LoginForm extends StatelessWidget {
         Align(
           alignment: Alignment.center,
           child: GestureDetector(
-              onTap: () {
-                // go to forget password
-              },
+              onTap: () => Get.toNamed(Routes.forgotPassword),
               child:
                   Text("forgot_password".tr, style: AppStyle.textInLogin)),
         ),

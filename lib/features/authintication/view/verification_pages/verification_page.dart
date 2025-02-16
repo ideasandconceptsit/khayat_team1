@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:team1_khayat/features/authintication/view/widgets/custom_text_field.dart';
 import '../../../../core/app_colors.dart';
 import '../../../../core/app_style.dart';
+import '../../../../state_managment/app_routers.dart';
 import '../widgets/custom_button.dart';
 
 class VerificationPage extends StatefulWidget {
@@ -36,7 +37,7 @@ class _VerificationPageState extends State<VerificationPage> {
              SizedBox(height: 44.h,),
              CustomButton(
               onPressed: (){
-                //go to home screen check from api
+                Get.toNamed(Routes.mani2);
               },
               text: "login".tr,
             ),
