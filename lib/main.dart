@@ -20,27 +20,25 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key, this.local});
+
   final Locale? local;
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    //  please use the sizes of this package.(screen utils)
-    // for example in all the app level:
-    // to adjust the  font size : 20.sp
-    // to adjust the width size : 20.w
-    // to adjust the height size : 20.h
+    // استخدم ScreenUtil لتحديد القياسات عبر التطبيق
     ScreenUtil.init(
       context,
-      designSize: Size(375, 812), // your design size
+      designSize: const Size(375, 812), // حجم التصميم الأساسي
     );
+    
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Khayat',
       translations: AppTranslations(),
       locale: local ?? const Locale('ar'),
       fallbackLocale: const Locale('ar'),
       theme: AppThemes.lightTheme,
-      initialRoute: Routes.catalog_2Page,
+      initialRoute: Routes.catalog_2Page, // تغيير هنا حسب الحاجة
       getPages: AppPages.pages,
       initialBinding: AppBinding(),
     );
