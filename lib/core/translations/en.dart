@@ -1,9 +1,10 @@
+import 'package:team1_khayat/core/app_strings.dart';
+
 const Map<String, String> en = {
-  // home page      please write the place that you used for translation worlds
+  // Home Page
   'hello': 'Hello',
   'welcome': 'Welcome to our app!',
   'change_language': 'Change Language',
-
 
   // Auth
   'login': 'Login',
@@ -20,5 +21,18 @@ const Map<String, String> en = {
   'social_sign_up': 'Or sign up with social account',
   'otp': 'OTP',
   'verification':'Verification',
+
+  // My Cart View
+  AppStrings.myCart: "My Cart",
+  AppStrings.color: "Color: ",
+  AppStrings.size: "Size: ",
+  AppStrings.enterYourPromoCode: "Enter your promo code",
+  AppStrings.totalAmount: "Total amount:",
+  AppStrings.checkOut: "CHECK OUT",
+  AppStrings.yourPromoCodes: "Your Promo Codes",
+  AppStrings.daysRemaining: "days remaining",
+  AppStrings.apply: "Apply",
+  AppStrings.addToFavorites: "Add to favorites",
+  AppStrings.deleteFromList: "Delete from the list",
 };
 
