@@ -6,7 +6,7 @@ import 'package:team1_khayat/core/app_styles.dart';
 
 class CustomFormField extends StatefulWidget {
   final String? labelText;
-  final String hintText;
+  final String? hintText;
   final bool obscureText;
   final TextInputType keyboardType;
   final FormFieldValidator<String>? validator;
@@ -16,7 +16,7 @@ class CustomFormField extends StatefulWidget {
    CustomFormField({
     Key? key,
     this.labelText,
-    required this.hintText,
+     this.hintText,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
     this.validator,

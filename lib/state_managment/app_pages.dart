@@ -56,7 +56,7 @@ class AppPages {
     ),
      GetPage(
       name: Routes.settingView,
-      page: () =>  const SettingView(),
+      page: () =>   SettingView(),
     ),
   ];
 }
