@@ -68,4 +68,9 @@ class AppTextStyles {
     fontWeight: FontWeight.w900,
     color: Colors.black,
   );
+   static final textStyle13 = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeight.bold,
+    color: AppColors.black,
+  );
 }
