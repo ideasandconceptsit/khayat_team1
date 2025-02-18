@@ -10,4 +10,6 @@ class Routes {
   static const  profileView= '/ProfileView'; 
   static const  myOrderView= '/MyOrderView';
   static const detailsView='/DetailsView';
+    static const settingView='/SettingView';
+
 }

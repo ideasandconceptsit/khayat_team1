@@ -22,7 +22,12 @@ class SliverListProfileOption extends StatelessWidget {
       ProfileOption(title: 'Payment methods', subtitle: 'Visa **34'),
       ProfileOption(title: 'Promocodes', subtitle: 'You have special promocodes'),
       ProfileOption(title: 'My reviews', subtitle: 'Reviews for 4 items'),
-      ProfileOption(title: 'Settings', subtitle: 'Notifications, password'),
+      ProfileOption(title: 'Settings', subtitle: 'Notifications, password',
+       onTap: () {
+          NavigationService.to( Routes.settingView , arguments: null);
+
+        }
+      ),
     ],
   );
   }
