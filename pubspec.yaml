@@ -43,6 +43,7 @@ dependencies:
   flutter_svg: ^2.0.17
   cached_network_image: ^3.4.1
   skeletonizer: ^1.4.3
+  device_preview: ^1.2.0
 
 dev_dependencies:
   flutter_test:

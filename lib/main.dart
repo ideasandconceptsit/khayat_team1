@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:device_preview/device_preview.dart';
 
 import 'core/app_themes.dart';
 import 'core/translations/app_translations.dart';
@@ -15,7 +16,13 @@ void main() async {
 
   final box = GetStorage();
   String savedLanguage = box.read('language') ?? 'ar';
-  runApp(MyApp(local: Locale(savedLanguage)));
+
+  runApp(
+    DevicePreview(
+      enabled: true, // خليها false في الإنتاج
+      builder: (context) => MyApp(local: Locale(savedLanguage)),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -25,12 +32,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // استخدم ScreenUtil لتحديد القياسات عبر التطبيق
     ScreenUtil.init(
       context,
-      designSize: const Size(375, 812), // حجم التصميم الأساسي
+      designSize: const Size(375, 812),
     );
-    
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Khayat',
@@ -38,9 +44,11 @@ class MyApp extends StatelessWidget {
       locale: local ?? const Locale('ar'),
       fallbackLocale: const Locale('ar'),
       theme: AppThemes.lightTheme,
-      initialRoute: Routes.catalog_2Page, // تغيير هنا حسب الحاجة
+      initialRoute: Routes.catalog_2Page,
       getPages: AppPages.pages,
       initialBinding: AppBinding(),
+      builder: DevicePreview
+          .appBuilder, // ⬅️ هذا يجعل التطبيق يعمل مع Device Preview
     );
   }
 }
