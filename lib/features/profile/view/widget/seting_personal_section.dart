@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:team1_khayat/shared/custom_form_field/csutom_form_field.dart';
+import 'package:team1_khayat/shared/custom_switch_tile/custom_switch_tile.dart';
 
 class SettingsPersonalInformationSection extends StatelessWidget {
 
@@ -21,6 +22,10 @@ class SettingsPersonalInformationSection extends StatelessWidget {
         _buildSectionTitle('Password', actionText: 'Change'),
         CustomFormField(labelText: 'Password' ,obscureText: true , hintText: '*********',),
         SizedBox(height: 54.h),
+        _buildSectionTitle('Notifications'),
+      const CustomSwitchTile(title: 'Sales', initialValue: true),
+        const CustomSwitchTile(title: 'New arrivals', initialValue: false),
+        const CustomSwitchTile(title: 'Delivery status changes', initialValue: false),
       ],
     );
   }
@@ -31,9 +36,9 @@ class SettingsPersonalInformationSection extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title, style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold)),
+          Text(title, style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold)),
           if (actionText != null)
-            Text(actionText, style: TextStyle(color: Colors.blue, fontSize: 14, fontWeight: FontWeight.bold)),
+            Text(actionText, style: const TextStyle(color: Colors.blue, fontSize: 14, fontWeight: FontWeight.bold)),
         ],
       ),
     );
