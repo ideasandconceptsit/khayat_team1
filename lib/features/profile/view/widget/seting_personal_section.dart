@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/shared/app_bottom_sheet/app_bottom_sheet.dart';
+import 'package:team1_khayat/shared/custom_date_picker_field/custom_date_picker_field.dart';
 import 'package:team1_khayat/shared/custom_form_field/csutom_form_field.dart';
 import 'package:team1_khayat/shared/custom_switch_tile/custom_switch_tile.dart';
 
@@ -20,14 +21,16 @@ class SettingsPersonalInformationSection extends StatelessWidget {
        _buildSectionTitle('Personal Information'),
        CustomFormField( labelText: 'Full name',),
        SizedBox(height:24.h ,),
-       CustomFormField(
-        labelText: 'Date of Birth' , hintText: '12/12/1989',),
+       CustomDatePickerField(label:  'Date of Birth',
+       
+        ),
+       
         SizedBox(height: 54.h),
         _buildSectionTitle('Password', actionText: 'Change',
          onActionTap: () {
           showCustomAppBottomSheet(context ,
-          child: PasswordChangeBottomSheet(),
-          );
+          height: MediaQuery.of(context).size.height *0.7,
+          child: const PasswordChangeBottomSheet(),);
         }, 
         ),
         CustomFormField(labelText: 'Password' ,obscureText: true , hintText: '*********',),
