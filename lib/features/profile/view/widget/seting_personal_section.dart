@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/shared/custom_form_field/csutom_form_field.dart';
 import 'package:team1_khayat/shared/custom_switch_tile/custom_switch_tile.dart';
 
@@ -36,9 +37,9 @@ class SettingsPersonalInformationSection extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title, style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold)),
+          Text(title, style: AppTextStyles.tajawaltextStyle16),
           if (actionText != null)
-            Text(actionText, style: const TextStyle(color: Colors.blue, fontSize: 14, fontWeight: FontWeight.bold)),
+            Text(actionText, style:AppTextStyles.tajawaltextStyle14),
         ],
       ),
     );

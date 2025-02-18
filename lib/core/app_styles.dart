@@ -50,7 +50,7 @@ class AppTextStyles {
   );
   static final tajawaltextStyle16 = TextStyle(
     fontSize: 16.sp,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w900,
     color: AppColors.black1,
   );
   static final tajawaltextStyle14 = TextStyle(
