@@ -1,9 +1,14 @@
-iimport 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class AppColors {
   static var primary = Colors.teal;
   static var background = const Color(0xffF9F9F9);
-
+  static var green =Colors.green;
+  static var black=Colors.black;
+  static var grey=Colors.grey;
+  static var black1=Color(0xff222222);
+  static var grey1=Color(0xff9B9B9B);
+  static var white=Colors.white;
   static const scaffoldBackgroundColor = Color(0xFFF9F9F9);
   static const primaryColor = Color(0xFF219653);
   static const blackColor = Color(0xFF222222);

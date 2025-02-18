@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'package:team1_khayat/core/app_colors.dart';
+import 'package:team1_khayat/core/utils/app_colors.dart';
 
 // Created this widget with reusability in mind to be used across the app,
 // and make circularBorderRadius flexible

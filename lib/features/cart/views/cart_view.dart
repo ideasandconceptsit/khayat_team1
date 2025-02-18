@@ -49,7 +49,7 @@ class CartView extends StatelessWidget {
         ),
       ),
       // bottomNavigationBar
-     // The implementation of bottomNavigationBar will be in the layout, so there's no need to implement it in all features.
+     // The implementation of bottomNavigationBar will be in the bottom_navigation_bar, so there's no need to implement it in all features.
     );
   }
 }

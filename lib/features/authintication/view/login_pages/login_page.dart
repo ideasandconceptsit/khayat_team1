@@ -6,8 +6,8 @@ import 'package:team1_khayat/features/authintication/view/login_pages/widgets_lo
 import 'package:team1_khayat/features/authintication/view/login_pages/widgets_login/login_buttons.dart';
 import 'package:team1_khayat/features/authintication/view/login_pages/widgets_login/login_footer.dart';
 import 'package:team1_khayat/features/authintication/view/login_pages/widgets_login/login_form.dart';
-import '../../../../core/app_colors.dart';
-import '../../../../core/app_style.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_style.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});

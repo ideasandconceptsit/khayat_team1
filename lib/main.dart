@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'core/app_themes.dart';
+import 'core/theme/app_themes.dart';
 import 'core/translations/app_translations.dart';
 import 'state_managment/app_binding.dart';
 import 'state_managment/app_pages.dart';
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       locale: local ?? const Locale('ar'),
       fallbackLocale: const Locale('ar'),
       theme: AppThemes.lightTheme,
-      initialRoute: Routes.catalog_2Page, // تغيير هنا حسب الحاجة
+      initialRoute: Routes.homePage, // تغيير هنا حسب الحاجة
       getPages: AppPages.pages,
       initialBinding: AppBinding(),
     );

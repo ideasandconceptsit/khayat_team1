@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:team1_khayat/core/app_colors.dart';
+import 'package:team1_khayat/core/utils/app_colors.dart';
 
 import '../../../core/translations/language_controller.dart';
 import '../../authintication/view/login_pages/login_page.dart';

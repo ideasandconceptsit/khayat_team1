@@ -6,7 +6,11 @@ import 'package:team1_khayat/features/cart/views/cart_view.dart';
 import 'package:team1_khayat/state_managment/app_routers.dart';
 import '../features/authintication/view/login_pages/login_page.dart';
 import '../features/homepage/view/homepage.dart';
+import '../features/profile/view/details_view.dart';
+import '../features/profile/view/my_order_view.dart';
+import '../features/profile/view/profile_view.dart';
 import '../features/todo/view/todo_page.dart';
+import '../shared/bottom_navigation_bar/view/buttom_nav_bar.dart';
 
 class AppPages {
   static final pages = [
@@ -16,7 +20,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.loginPage,
-      page: () => const LoginPage(),
+      page: () =>  LoginPage(),
     ),
     GetPage(
       name: Routes.verificationPage,
@@ -34,5 +38,25 @@ class AppPages {
       name: Routes.cartPage,
       page: () => CartView(),
     ),
+    GetPage(
+      name: Routes.bottomNavBar,
+      page: () => BottomNavBar(),
+    ),
+    GetPage(
+      name: Routes.profileView,
+      page: () => ProfileView(),
+    ),
+    GetPage(
+      name: Routes.myOrderView,
+      page: () => MyOrderView(),
+    ),
+    GetPage(
+      name: Routes.detailsView,
+      page: () => DetailsView(),
+    ),
+    // GetPage(
+    //   name: Routes.catalog_2Page,
+    //   page: () => Catalog_2Page(),
+    // ),
   ];
 }

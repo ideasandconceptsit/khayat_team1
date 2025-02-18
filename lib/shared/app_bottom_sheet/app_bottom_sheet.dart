@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:team1_khayat/core/app_colors.dart';
+import 'package:team1_khayat/core/utils/app_colors.dart';
 
 // This widget is designed to be used in all places with a BottomSheet,
 // fully prepared and customizable – just add the elements you want to display.

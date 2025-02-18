@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:team1_khayat/core/app_colors.dart';
+import 'package:team1_khayat/core/utils/app_colors.dart';
 import 'package:team1_khayat/core/app_constants.dart';
 
 class AppThemes{

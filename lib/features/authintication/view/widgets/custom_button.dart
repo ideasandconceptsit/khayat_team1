@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:team1_khayat/core/app_style.dart';
+import 'package:team1_khayat/core/utils/app_style.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({super.key, required this.text, required this.onPressed});
