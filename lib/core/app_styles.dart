@@ -43,4 +43,29 @@ class AppTextStyles {
     fontSize: 16.sp,
     fontWeight: FontWeight.w900,
   );
+  static final tajawaltextStyle34 = TextStyle(
+    fontSize: 34.sp,
+    fontWeight: FontWeight.bold,
+    color: AppColors.black1,
+  );
+  static final tajawaltextStyle16 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.bold,
+    color: AppColors.black1,
+  );
+  static final tajawaltextStyle14 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: Colors.black,
+  );
+  static final tajawaltextStyle11 = TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeight.w400,
+    color: Colors.black,
+  );
+   static final tajawaltextStyle18 = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w900,
+    color: Colors.black,
+  );
 }

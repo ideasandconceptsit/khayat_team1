@@ -1,4 +1,4 @@
-iimport 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class AppColors {
   static var primary = Colors.teal;
@@ -14,4 +14,10 @@ class AppColors {
   static const quantityButtonShadowColor = Color(0x14000000);
   static const promoCodeShadowColor = Color(0x14000000);
   static const promoCodeMenuShadowColor = Color(0x23000000);
+  static var grey=Colors.grey;
+  static var black1=const Color(0xff222222);
+    static var grey1=const Color(0xff9B9B9B);
+     static var green =Colors.green;
+         static var black=Colors.black;
+
 }
