@@ -25,7 +25,7 @@ class ProfileOption extends StatelessWidget {
             subtitle,
             style: AppTextStyles.tajawaltextStyle11,
           ),
-          trailing: Icon(Icons.arrow_forward_ios, color: Colors.white, size: 16),
+          trailing: Icon(Icons.arrow_forward_ios, color: Colors.black, size: 16),
           onTap: onTap,
         ),
         Divider(color: AppColors.black1),
