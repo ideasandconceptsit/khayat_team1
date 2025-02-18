@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       context,
       designSize: const Size(375, 812), // حجم التصميم الأساسي
     );
-    
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Khayat',

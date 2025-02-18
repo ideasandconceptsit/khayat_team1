@@ -1,4 +1,4 @@
-iimport 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class AppColors {
   static var primary = Colors.teal;
