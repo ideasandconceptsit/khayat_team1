@@ -21,9 +21,7 @@ class SettingsPersonalInformationSection extends StatelessWidget {
        _buildSectionTitle('Personal Information'),
        CustomFormField( labelText: 'Full name',),
        SizedBox(height:24.h ,),
-       CustomDatePickerField(label:  'Date of Birth',
-       
-        ),
+       const CustomDatePickerField(label:  'Date of Birth',),
        
         SizedBox(height: 54.h),
         _buildSectionTitle('Password', actionText: 'Change',
