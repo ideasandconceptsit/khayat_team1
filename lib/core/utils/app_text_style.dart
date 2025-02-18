@@ -19,13 +19,13 @@ abstract class AppStyles {
   static final tajawaltextStyle14 = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
-    color: Colors.white,
+    color: Colors.black,
     fontFamily: 'Tajawal',
   );
   static final tajawaltextStyle11 = TextStyle(
     fontSize: 11.sp,
     fontWeight: FontWeight.w400,
-    color: Colors.white,
+    color: Colors.black,
     fontFamily: 'Tajawal',
   );
    static final tajawaltextStyle18 = TextStyle(

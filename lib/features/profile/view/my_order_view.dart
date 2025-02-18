@@ -21,7 +21,6 @@ class _MyOrderViewState extends State<MyOrderView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.black,
       appBar: _buildAppBar(context),
       body: CustomScrollView(
         slivers: [

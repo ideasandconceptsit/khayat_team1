@@ -17,7 +17,7 @@ class ProfileOption extends StatelessWidget {
           title: Text(
             title,
             style: AppStyles.tajawaltextStyle16.copyWith(
-              color: AppColors.grey
+              color: AppColors.black
             ),
           ),
           subtitle: Text(

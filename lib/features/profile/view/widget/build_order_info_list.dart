@@ -24,7 +24,7 @@ class BuildOderInfoList extends StatelessWidget {
                       Expanded(
                         child: OutlinedButton(
                           onPressed: () {},
-                          child: const Text('Reorder', style: TextStyle(color: Colors.white)),
+                          child: const Text('Reorder', style: TextStyle(color: Colors.black)),
                         ),
                       ),
                       const SizedBox(width: 10),

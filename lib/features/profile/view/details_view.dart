@@ -16,7 +16,6 @@ class DetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.black,
       appBar: _buildAppBar(context),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
