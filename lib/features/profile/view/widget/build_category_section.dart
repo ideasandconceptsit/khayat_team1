@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/features/profile/view/widget/build_category_item.dart';
 
 class BuildCategorySection extends StatelessWidget {
@@ -18,13 +19,13 @@ class BuildCategorySection extends StatelessWidget {
         child: Row(
           children: [
             BuildCategoryItem(
-                text: 'Delivered', index: 0, selectedIndex: selectedIndex, onTap: onCategorySelected),
+                text:  AppStrings.delivered, index: 0, selectedIndex: selectedIndex, onTap: onCategorySelected),
             SizedBox(width: 8),
             BuildCategoryItem(
-                text: 'Processing', index: 1, selectedIndex: selectedIndex, onTap: onCategorySelected),
+                text: AppStrings.processing, index: 1, selectedIndex: selectedIndex, onTap: onCategorySelected),
             SizedBox(width: 8),
             BuildCategoryItem(
-                text: 'Cancelled', index: 2, selectedIndex: selectedIndex, onTap: onCategorySelected),
+                text:  AppStrings.cancelled, index: 2, selectedIndex: selectedIndex, onTap: onCategorySelected),
           ],
         ),
       );

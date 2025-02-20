@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:team1_khayat/core/app_colors.dart';
+import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/shared/navigation_service.dart';
 
@@ -39,7 +40,7 @@ class OrderCard extends StatelessWidget {
               const SizedBox(height: 8),
               Text.rich(
                     TextSpan(
-                      text: 'Tracking number:',
+                      text:  AppStrings.trackingNumber,
                       style: AppTextStyles.tajawaltextStyle14.copyWith(
                         color: AppColors.grey1,
                       ),
@@ -60,7 +61,7 @@ class OrderCard extends StatelessWidget {
                 children: [
                   Text.rich(
                     TextSpan(
-                      text: 'Quantity:',
+                      text:  AppStrings.quantity,
                       style: AppTextStyles.tajawaltextStyle14.copyWith(
                         color: AppColors.grey1,
                       ),
@@ -76,7 +77,7 @@ class OrderCard extends StatelessWidget {
                   ),
                   Text.rich(
                     TextSpan(
-                      text: 'Total Amount:',
+                      text:  AppStrings.totalAmount,
                       style: AppTextStyles.tajawaltextStyle14.copyWith(
                         color: AppColors.grey1,
                       ),
@@ -101,16 +102,16 @@ class OrderCard extends StatelessWidget {
                       NavigationService.to( Routes.detailsView , arguments: null);
 
                     },
-                    child:  Text('Details' ,style:AppTextStyles.tajawaltextStyle14.copyWith(
+                    child:  Text( AppStrings.details ,style:AppTextStyles.tajawaltextStyle14.copyWith(
                       color: AppColors.black
                     ),),
                   ),
                   Text(
                     status,
                     style: TextStyle(
-                      color: status == 'Delivered'
+                      color: status ==  AppStrings.delivered
                           ? Colors.green
-                          : status == 'Processing'
+                          : status ==  AppStrings.processing
                               ? Colors.orange
                               : Colors.red,
                       fontWeight: FontWeight.bold,

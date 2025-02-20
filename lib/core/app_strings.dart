@@ -33,12 +33,15 @@ class AppStrings {
   static const String cancelled = "Cancelled";
   static const String delivered = "Delivered";
   static const String details = "Details";
+   static const String orderdetails = "Order Details";
   static const String order = "Order";
   static const String orderDate = "Order Date";
   static const String quantity = "Quantity";
   static const String trackingNumber = "Tracking number";
   static const String unpaid = "Unpaid";
   static const String itemsInOrder = "Items in order";
+    static const String delivreymethod= "Deleviry Methoud";
+
 
   //! Order Details
   static const String items = "Items";
@@ -54,5 +57,7 @@ class AppStrings {
   static const String sales = "Sales";
   static const String newarrivals= "New arrivals";
   static const String deliverystatuschanges = "Delivery status Changes";
+    static const String fullname = "Full Name";
+
 
 }

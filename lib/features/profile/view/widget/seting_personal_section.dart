@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/shared/app_bottom_sheet/app_bottom_sheet.dart';
 import 'package:team1_khayat/shared/custom_date_picker_field/custom_date_picker_field.dart';
@@ -18,25 +19,25 @@ class SettingsPersonalInformationSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-       _buildSectionTitle('Personal Information'),
-       CustomFormField( labelText: 'Full name',),
+       _buildSectionTitle(AppStrings.personalinformation),
+       CustomFormField( labelText: AppStrings.fullname,),
        SizedBox(height:24.h ,),
-       const CustomDatePickerField(label:  'Date of Birth',),
+       const CustomDatePickerField(label:  AppStrings.dateofbirthday,),
        
         SizedBox(height: 54.h),
-        _buildSectionTitle('Password', actionText: 'Change',
+        _buildSectionTitle( AppStrings.password, actionText:  AppStrings.change,
          onActionTap: () {
           showCustomAppBottomSheet(context ,
           height: MediaQuery.of(context).size.height *0.7,
           child: const PasswordChangeBottomSheet(),);
         }, 
         ),
-        CustomFormField(labelText: 'Password' ,obscureText: true , hintText: '*********',),
+        CustomFormField(labelText:  AppStrings.password ,obscureText: true , hintText: '*********',),
         SizedBox(height: 54.h),
-        _buildSectionTitle('Notifications'),
-      const CustomSwitchTile(title: 'Sales', initialValue: true),
-        const CustomSwitchTile(title: 'New arrivals', initialValue: false),
-        const CustomSwitchTile(title: 'Delivery status changes', initialValue: false),
+        _buildSectionTitle( AppStrings.notifications),
+      const CustomSwitchTile(title: AppStrings.sales, initialValue: true),
+        const CustomSwitchTile(title:  AppStrings.newarrivals, initialValue: false),
+        const CustomSwitchTile(title:  AppStrings.deliverystatuschanges, initialValue: false),
       ],
     );
   }

@@ -86,6 +86,9 @@ const Map<String, String> ar = {
   AppStrings.discount: "الخصم",
   AppStrings.reorder: "إعادة الطلب",
   AppStrings.home: "الرئيسية",
+   AppStrings.orderdetails: "تفاصيل الطلبات",
+      AppStrings.delivreymethod: "طريقة التوصيل",
+
 
  //! My Settings View
   AppStrings.personalinformation: "المعلومات الشخصية",
@@ -94,6 +97,8 @@ const Map<String, String> ar = {
   AppStrings.sales: "التخفيضات",
   AppStrings.newarrivals: "الوافدون الجدد",
   AppStrings.deliverystatuschanges: "تغييرات حالة التوصيل",
+    AppStrings.fullname: "الاسم بالكامل",
+
 
 
 };

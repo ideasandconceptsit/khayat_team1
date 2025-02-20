@@ -86,6 +86,10 @@ const Map<String, String> en = {
   AppStrings.discount: "Discount",
   AppStrings.reorder: "Reorder",
   AppStrings.home: "Home",
+     AppStrings.orderdetails: "Order Details",
+          AppStrings.delivreymethod: "Deleviry Methoud",
+
+
 
   //! My Settings View
   AppStrings.personalinformation: "Personal Information",
@@ -94,4 +98,6 @@ const Map<String, String> en = {
   AppStrings.sales: "Sales",
   AppStrings.newarrivals: "New Arrivals",
   AppStrings.deliverystatuschanges: "Delivery Status Changes",
+    AppStrings.fullname: "Full Name",
+
 };

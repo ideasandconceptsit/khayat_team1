@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:team1_khayat/core/app_colors.dart';
+import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/profile/view/widget/build_item_list_order_details.dart';
 import 'package:team1_khayat/features/profile/view/widget/build_order_info_list.dart';
@@ -14,7 +15,7 @@ class DetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        title: 'Order Details',
+        title:  AppStrings.orderdetails,
         arrowBackVisibility: true,
         actionIcon: Icons.search_outlined,
       ),
@@ -31,7 +32,7 @@ class DetailsView extends StatelessWidget {
               ),
             ),
             SliverToBoxAdapter(
-              child: Text('3 items',
+              child: Text( AppStrings.items,
                   style: AppTextStyles.tajawaltextStyle14
                       .copyWith(color: AppColors.grey)),
             ),

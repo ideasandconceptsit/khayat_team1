@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team1_khayat/core/app_strings.dart';
 import 'order_list.dart';
 
 class OrderPages extends StatelessWidget {
@@ -10,9 +11,9 @@ class OrderPages extends StatelessWidget {
     return IndexedStack(
       index: selectedIndex,
       children: [
-        const OrderList(status: 'Delivered'),
-        const OrderList(status: 'Processing'),
-        const OrderList(status: 'Cancelled'),
+         OrderList(status:  AppStrings.delivered),
+         OrderList(status:  AppStrings.processing),
+         OrderList(status:  AppStrings.cancelled),
       ],
     );
   }
