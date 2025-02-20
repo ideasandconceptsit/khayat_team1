@@ -11,7 +11,8 @@ class SettingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar:  CustomAppBar(
+        actionIconOnPressed: () {},
         actionIcon: Icons.search_rounded,
         arrowBackVisibility: true,
       ),

@@ -14,7 +14,8 @@ class DetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar:  CustomAppBar(
+        actionIconOnPressed: () {},
         title:  AppStrings.orderdetails,
         arrowBackVisibility: true,
         actionIcon: Icons.search_outlined,

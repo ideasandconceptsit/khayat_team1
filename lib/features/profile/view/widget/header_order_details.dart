@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:team1_khayat/core/app_colors.dart';
+import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 
 class HeaderOrderDetails extends StatelessWidget {
@@ -33,7 +34,7 @@ class HeaderOrderDetails extends StatelessWidget {
         children: [
           Text.rich(
             TextSpan(
-              text: 'Tracking number:',
+              text: AppStrings.trackingNumber,
               style: AppTextStyles.tajawaltextStyle14.copyWith(
           color: AppColors.whiteColor,
               ),
@@ -51,7 +52,7 @@ class HeaderOrderDetails extends StatelessWidget {
         ],
             ),
             const Text(
-        'Delivered',
+        AppStrings.delivered,
         style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
             ),
           ],

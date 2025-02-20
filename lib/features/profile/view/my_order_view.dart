@@ -16,7 +16,8 @@ class _MyOrderViewState extends State<MyOrderView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar:  CustomAppBar(
+        actionIconOnPressed: () {},
         actionIcon:Icons.search_rounded ,
         arrowBackVisibility: true,
       ),
