@@ -51,4 +51,53 @@ const Map<String, String> en = {
   'customer review': 'Customer review',
   'price_low_to_high': 'Price: lowest to high',
   'price_high_to_low': 'Price: highest to low',
+
+  //! My Profile View
+  AppStrings.myProfile: "My Profile",
+  AppStrings.myOrders: "My Orders",
+  AppStrings.alreadyHaveOrders: "Already have orders",
+  AppStrings.shippingAddresses: "Shipping Addresses",
+  AppStrings.numAddresses: "3 Addresses",
+  AppStrings.paymentMethods: "Payment Methods",
+  AppStrings.visaEnding: "Visa",
+  AppStrings.promoCodes: "Promocodes",
+  AppStrings.youHaveSpecialPromoCodes: "You have special promocodes",
+  AppStrings.myReviews: "My Reviews",
+  AppStrings.reviewsForItems: "Reviews for items",
+  AppStrings.settings: "Settings",
+  AppStrings.notifications: "Notifications",
+  AppStrings.password: "Password",
+
+  //! My Orders View
+  AppStrings.processing: "Processing",
+  AppStrings.cancelled: "Cancelled",
+  AppStrings.delivered: "Delivered",
+  AppStrings.details: "Details",
+  AppStrings.order: "Order",
+  AppStrings.orderDate: "Order Date",
+  AppStrings.quantity: "Quantity",
+  AppStrings.trackingNumber: "Tracking Number",
+  AppStrings.unpaid: "Unpaid",
+  AppStrings.itemsInOrder: "Items in Order",
+
+  //! Order Details
+  AppStrings.items: "Items",
+  AppStrings.orderInformation: "Order Information",
+  AppStrings.discount: "Discount",
+  AppStrings.reorder: "Reorder",
+  AppStrings.home: "Home",
+     AppStrings.orderdetails: "Order Details",
+          AppStrings.delivreymethod: "Deleviry Methoud",
+
+
+
+  //! My Settings View
+  AppStrings.personalinformation: "Personal Information",
+  AppStrings.dateofbirthday: "Date of Birth",
+  AppStrings.change: "Change",
+  AppStrings.sales: "Sales",
+  AppStrings.newarrivals: "New Arrivals",
+  AppStrings.deliverystatuschanges: "Delivery Status Changes",
+    AppStrings.fullname: "Full Name",
+
 };

@@ -51,5 +51,55 @@ const Map<String, String> ar = {
   'customer review': 'تقييم العملاء',
   'price lowest to high': 'السعر: من الأقل إلى الأعلى',
   'price highest to low': 'السعر: من الأعلى إلى الأقل',
+   
+   //! my profile View //
+  AppStrings.myProfile: "ملفي الشخصي",
+  AppStrings.myOrders: "طلباتي",
+  AppStrings.alreadyHaveOrders: "لديك طلبات بالفعل",
+  AppStrings.shippingAddresses: "عناوين الشحن",
+  AppStrings.numAddresses: "عدد العناوين: 3",
+  AppStrings.paymentMethods: "طرق الدفع",
+  AppStrings.visaEnding: "فيزا",
+  AppStrings.promoCodes: "رموز الخصم",
+  AppStrings.youHaveSpecialPromoCodes: "لديك رموز خصم خاصة",
+  AppStrings.myReviews: "تقييماتي",
+  AppStrings.reviewsForItems: "تقييمات المنتجات",
+  AppStrings.settings: "الإعدادات",
+  AppStrings.notifications: "الإشعارات",
+  AppStrings.password: "كلمة المرور",
+
+  //! My Orders View
+  AppStrings.processing: "قيد المعالجة",
+  AppStrings.cancelled: "ملغي",
+  AppStrings.delivered: "تم التوصيل",
+  AppStrings.details: "التفاصيل",
+  AppStrings.order: "الطلب",
+  AppStrings.orderDate: "تاريخ الطلب",
+  AppStrings.quantity: "الكمية",
+  AppStrings.trackingNumber: "رقم التتبع",
+  AppStrings.unpaid: "غير مدفوع",
+  AppStrings.itemsInOrder: "العناصر في الطلب",
+
+ //! Order Details
+  AppStrings.items: "العناصر",
+  AppStrings.orderInformation: "معلومات الطلب",
+  AppStrings.discount: "الخصم",
+  AppStrings.reorder: "إعادة الطلب",
+  AppStrings.home: "الرئيسية",
+   AppStrings.orderdetails: "تفاصيل الطلبات",
+      AppStrings.delivreymethod: "طريقة التوصيل",
+
+
+ //! My Settings View
+  AppStrings.personalinformation: "المعلومات الشخصية",
+  AppStrings.dateofbirthday: "تاريخ الميلاد",
+  AppStrings.change: "تغيير",
+  AppStrings.sales: "التخفيضات",
+  AppStrings.newarrivals: "الوافدون الجدد",
+  AppStrings.deliverystatuschanges: "تغييرات حالة التوصيل",
+    AppStrings.fullname: "الاسم بالكامل",
+
+
+
 };
 
