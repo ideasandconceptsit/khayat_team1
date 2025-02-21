@@ -51,4 +51,8 @@ const Map<String, String> en = {
   'customer review': 'Customer review',
   'price_low_to_high': 'Price: lowest to high',
   'price_high_to_low': 'Price: highest to low',
+  // addresses
+  'shipping_addresses': 'Shipping Addresses',
+  'edit': 'Edit',
+  'use_as_shipping_address': 'Use as the shipping address',
 };

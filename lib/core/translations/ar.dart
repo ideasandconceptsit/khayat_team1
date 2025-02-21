@@ -51,5 +51,8 @@ const Map<String, String> ar = {
   'customer review': 'تقييم العملاء',
   'price lowest to high': 'السعر: من الأقل إلى الأعلى',
   'price highest to low': 'السعر: من الأعلى إلى الأقل',
+  // العناوين
+  'shipping_addresses': 'عناوين الشحن',
+  'edit': 'تعديل',
+  'use_as_shipping_address': 'استخدم كعنوان الشحن',
 };
-
