@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/shipping_address/models/shipping_address_model.dart';
 
 class AddressCard extends StatelessWidget {
@@ -51,6 +52,7 @@ class AddressCard extends StatelessWidget {
                 child: Text(
                   'edit'.tr,
                   style: TextStyle(
+                    fontFamily: 'Tajawal',
                     color: Colors.red,
                     fontSize: 14.sp,
                   ),
@@ -68,12 +70,8 @@ class AddressCard extends StatelessWidget {
           ),
           SizedBox(height: 4.h),
           Text(
-            '${address.city}, ${address.state} ${address.zipCode}, ${address.country}',
-            style: TextStyle(
-              fontSize: 14.sp,
-              color: Colors.black87,
-            ),
-          ),
+              '${address.city}, ${address.state} ${address.zipCode}, ${address.country}',
+              style: AppTextStyles.textStyleMedium14),
           SizedBox(height: 12.h),
           InkWell(
             onTap: () => onSelect(address.id),
