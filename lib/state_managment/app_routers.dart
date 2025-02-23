@@ -6,10 +6,6 @@ class Routes {
   static const todoPage = '/TodoPage';
   static const cartPage = '/CartPage'; 
   static const catalog_2Page = '/Catalog_2Page'; 
-   static const bottomNavBar='/BottomNavBar';
-  static const  profileView= '/ProfileView'; 
-  static const  myOrderView= '/MyOrderView';
-  static const detailsView='/DetailsView';
-    static const settingView='/SettingView';
-
+  static const favouritehome = '/favouritehome';
+  static const addFavorites = '/addFavorites';
 }
