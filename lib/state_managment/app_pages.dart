@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:team1_khayat/features/Catalog2/catalog.dart';
+import 'package:team1_khayat/features/Favourite/favourite_home.dart';
+import 'package:team1_khayat/features/Favourite/homeaddfavorites/addfavorites.dart';
 import 'package:team1_khayat/features/authintication/view/signup_pages/signup_page.dart';
 import 'package:team1_khayat/features/authintication/view/verification_pages/verification_page.dart';
 import 'package:team1_khayat/features/cart/views/cart_view.dart';
@@ -16,7 +18,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.loginPage,
-      page: () => const LoginPage(),
+      page: () => LoginPage(),
     ),
     GetPage(
       name: Routes.verificationPage,
@@ -33,6 +35,14 @@ class AppPages {
     GetPage(
       name: Routes.cartPage,
       page: () => CartView(),
+    ),
+    GetPage(
+      name: Routes.favouritehome,
+      page: () => FavouriteHome(),
+    ),
+    GetPage(
+      name: Routes.addFavorites,
+      page: () => Addfavorites(),
     ),
   ];
 }
