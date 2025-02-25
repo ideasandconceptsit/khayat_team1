@@ -11,5 +11,46 @@ class AppStrings {
   static const String apply = "apply";
   static const String addToFavorites = "add_to_favorites";
   static const String deleteFromList = "delete_from_list";
+  static const String checkout = "checkout";
+  static const String shippingAddress = "shippingAddress";
+  static const String change = "change";
+  static const String payment = "payment";
+  static const String deliveryMethod = "deliveryMethod";
+  static const String order = "order";
+  static const String delivery = "delivery";
+  static const String summary = "summary";
+  static const String submitOrder = "submitOrder";
+  static const String paymentMethods = "paymentMethods";
+  static const String yourPaymentCards = "yourPaymentCards";
+  static const String useAsDefaultPayment = "useAsDefaultPayment";
+  static const String addNewCard = "addNewCard";
+  static const String nameOnCard = "nameOnCard";
+  static const String cardNumber = "cardNumber";
+  static const String expireDate = "expireDate";
+  static const String cvv = "cvv";
+  static const String addCard = "addCard";
+  static const String shippingAddresses = "shippingAddresses";
+  static const String edit = "edit";
+  static const String useAsShippingAddress = "useAsShippingAddress";
+  static const String addingShippingAddress = "addingShippingAddress";
+  static const String fullName = "fullName";
+  static const String address = "address";
+  static const String city = "city";
+  static const String stateProvinceRegion = "stateProvinceRegion";
+  static const String zipCode = "zipCode";
+  static const String country = "country";
+  static const String saveAddress = "saveAddress";
+  static const String success = "success";
+  static const String orderWillBeDelivered = "orderWillBeDelivered";
+  static const String thankYou = "thankYou";
+  static const String continueShopping = "continueShopping";
+  static const String cardHolderName="Card Holder Name";
+  static const String expiryDate="Expiry Date";
+  static const String required="required";
+  static const String pleaseEnterACorrectCardNumber="PleaseEnterACorrectCardNumber";
+
+  static String unintendedCard="Unintended Card";
+
+  static const String pleaseEnterAValue="PleaseEnterAValue";
 
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:team1_khayat/features/cart/controllers/cart_controller.dart';
-import 'package:team1_khayat/features/cart/views/widgets/cart_product.dart';
+import 'package:team1_khayat/features/cart/views/cart/widgets/cart_product.dart';
 
 class CartProductsList extends StatelessWidget {
   const CartProductsList({super.key});

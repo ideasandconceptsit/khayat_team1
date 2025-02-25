@@ -23,13 +23,13 @@ class CartController extends AppStateController {
 
   void getCartProducts()async
   {
-    //just fro test
+    //just for test
     var products=await cartRepository.getCartProducts();
     cartProducts.assignAll(products);
   }
   void getPromoCodes()async
   {
-    //just fro test
+    //just for test
     var promoCodes=await cartRepository.getPromoCodes();
     promCodeList.assignAll(promoCodes);
   }

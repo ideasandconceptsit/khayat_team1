@@ -43,4 +43,18 @@ class AppTextStyles {
     fontSize: 16.sp,
     fontWeight: FontWeight.w900,
   );
+  static TextStyle textStyleBlack24 = TextStyle(
+    color: AppColors.whiteColor,
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w900,
+    height: 0.92,
+    letterSpacing: -0.41,
+  );
+  static TextStyle textStyleRegular24 = TextStyle(
+    color: AppColors.whiteColor,
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w400,
+    height: 0.92,
+    letterSpacing: -0.41,
+  );
 }

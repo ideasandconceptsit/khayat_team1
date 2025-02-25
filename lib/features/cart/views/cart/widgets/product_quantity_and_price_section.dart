@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/cart/controllers/cart_controller.dart';
 import 'package:team1_khayat/features/cart/models/cart_product_model.dart';
-import 'package:team1_khayat/features/cart/views/widgets/cart_increase_decrease_quantity.dart';
+import 'package:team1_khayat/features/cart/views/cart/widgets/cart_increase_decrease_quantity.dart';
 
 class ProductQuantityAndPriceSection extends StatelessWidget {
   const ProductQuantityAndPriceSection({super.key, required this.cartProductModel});

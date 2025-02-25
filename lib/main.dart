@@ -35,10 +35,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Khayat',
       translations: AppTranslations(),
-      locale: local ?? const Locale('ar'),
+      locale: const Locale('en'),
       fallbackLocale: const Locale('ar'),
       theme: AppThemes.lightTheme,
-      initialRoute: Routes.catalog_2Page, // تغيير هنا حسب الحاجة
+      initialRoute: Routes.cartPage,
       getPages: AppPages.pages,
       initialBinding: AppBinding(),
     );

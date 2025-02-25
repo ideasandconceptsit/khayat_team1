@@ -11,13 +11,15 @@ class CustomCachedNetworkImage extends StatelessWidget {
     required this.imageUrl,
     required this.height,
     required this.width,
-    this.circularBorderRadius = 0,
+    this.circularBorderRadius = 0, this.fit,
   });
 
   final String imageUrl;
   final double height;
   final double width;
   final double circularBorderRadius;
+  final BoxFit? fit;
+
 
 
   @override
@@ -30,7 +32,7 @@ class CustomCachedNetworkImage extends StatelessWidget {
           borderRadius: BorderRadius.circular(circularBorderRadius),
           image: DecorationImage(
             image: imageProvider,
-            fit: BoxFit.cover,
+            fit: fit??BoxFit.cover,
           ),
         ),
       ),

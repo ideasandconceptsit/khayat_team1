@@ -6,7 +6,7 @@ import 'package:team1_khayat/core/app_constants.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/cart/controllers/cart_controller.dart';
-import 'package:team1_khayat/features/cart/views/widgets/promo_code_suffix_icon.dart';
+import 'package:team1_khayat/features/cart/views/cart/widgets/promo_code_suffix_icon.dart';
 
 class PromoCode extends StatelessWidget {
    const PromoCode({super.key, this.isBottomSheet = false});

@@ -5,5 +5,7 @@ class Routes {
   static const homePage = '/';
   static const todoPage = '/TodoPage';
   static const cartPage = '/CartPage'; 
-  static const catalog_2Page = '/Catalog_2Page'; 
+  static const checkoutPage = '/CheckoutPage';
+  static const paymentPage = '/PaymentPage';
+  static const catalog_2Page = '/Catalog_2Page';
 }

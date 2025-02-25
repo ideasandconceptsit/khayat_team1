@@ -4,12 +4,12 @@ import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/cart/controllers/cart_controller.dart';
-import 'package:team1_khayat/features/cart/repository/cart_repository.dart';
-import 'package:team1_khayat/features/cart/views/widgets/cart_products_list.dart';
-import 'package:team1_khayat/features/cart/views/widgets/promo_code.dart';
-import 'package:team1_khayat/features/cart/views/widgets/total_amount.dart';
+import 'package:team1_khayat/features/cart/views/cart/widgets/cart_products_list.dart';
+import 'package:team1_khayat/features/cart/views/cart/widgets/promo_code.dart';
+import 'package:team1_khayat/features/cart/views/cart/widgets/total_amount.dart';
 import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
 import 'package:team1_khayat/shared/custom_app_button/custom_app_button.dart';
+import 'package:team1_khayat/state_managment/app_routers.dart';
 
 class CartView extends StatelessWidget {
   CartView({super.key});
@@ -39,7 +39,9 @@ class CartView extends StatelessWidget {
             SizedBox(height: 24.h),
             CustomAppButton(
               text: AppStrings.checkOut.tr,
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(Routes.checkoutPage,arguments: cartController.getProductsTotalPrice);
+              },
               height: 48.h,
             ),
             SizedBox(

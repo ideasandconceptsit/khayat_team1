@@ -6,9 +6,9 @@ import 'package:team1_khayat/core/app_constants.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/cart/controllers/cart_controller.dart';
+import 'package:team1_khayat/features/cart/views/cart/widgets/promo_code.dart';
+import 'package:team1_khayat/features/cart/views/cart/widgets/promo_code_item_widget.dart';
 import 'package:team1_khayat/shared/custom_card_with_shadow/custom_card_with_shadow.dart';
-import 'package:team1_khayat/features/cart/views/widgets/promo_code.dart';
-import 'package:team1_khayat/features/cart/views/widgets/promo_code_item_widget.dart';
 
 class CartBottomSheetWidget extends StatelessWidget {
   const CartBottomSheetWidget({
