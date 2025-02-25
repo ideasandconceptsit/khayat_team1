@@ -37,8 +37,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
       currentIndex: _selectedIndex,
       onTap: _onItemTapped,
       type: BottomNavigationBarType.fixed,
-      selectedItemColor: Colors.green, // اللون الأخضر عند التحديد
-      unselectedItemColor: Colors.grey, // اللون الرمادي عند عدم التحديد
+      selectedItemColor: Colors.green,
+      unselectedItemColor: Colors.grey,
       items: List.generate(_icons.length, (index) {
         return BottomNavigationBarItem(
           icon: Icon(_icons[index]),
