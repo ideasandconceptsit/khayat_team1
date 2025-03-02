@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       context,
       designSize: const Size(375, 812), // حجم التصميم الأساسي
     );
-    
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Khayat',
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       locale: local ?? const Locale('ar'),
       fallbackLocale: const Locale('ar'),
       theme: AppThemes.lightTheme,
-      initialRoute: Routes.catalog_2Page, // تغيير هنا حسب الحاجة
+      initialRoute: Routes.shippingAddressPage, // تغيير هنا حسب الحاجة
       getPages: AppPages.pages,
       initialBinding: AppBinding(),
     );
