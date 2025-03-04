@@ -3,10 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:team1_khayat/core/app_colors.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
+import 'package:team1_khayat/features/profile/model/order_model.dart';
 
 class HeaderOrderDetails extends StatelessWidget {
-  const HeaderOrderDetails({super.key});
-
+  const HeaderOrderDetails({super.key, required this.order});
+ final OrderModels order;
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -15,13 +16,16 @@ class HeaderOrderDetails extends StatelessWidget {
         children: [
           Text.rich(
             TextSpan(
-              text: 'Order №1947034',
+              text: 'Order №${order.id}',
               style: AppTextStyles.tajawaltextStyle16.copyWith(
                 color: AppColors.grey1,
               ),
             ),
           ),
-          Text('02-28-2024', style: AppTextStyles.tajawaltextStyle14),
+          Text(
+      '${order.createdAt.toLocal()}'.split(' ')[0], 
+      style:  AppTextStyles.tajawaltextStyle14,
+    ),
         ],
       ),
       SizedBox(height: 13.h),
@@ -43,7 +47,7 @@ class HeaderOrderDetails extends StatelessWidget {
           SizedBox(width: 5.w),
           Text.rich(
             TextSpan(
-              text: 'IW347543455',
+              text: order!.client.phone,
               style: AppTextStyles.tajawaltextStyle14.copyWith(
           color: AppColors.grey1,
               ),

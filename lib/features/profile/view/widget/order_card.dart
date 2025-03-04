@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_colors.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
+import 'package:team1_khayat/features/profile/model/order_model.dart';
+import 'package:team1_khayat/features/profile/view/details_view.dart';
 import 'package:team1_khayat/shared/navigation_service.dart';
 
 import 'package:team1_khayat/state_managment/app_routers.dart';
 
 class OrderCard extends StatelessWidget {
-  const OrderCard({super.key, required this.status});
+  const OrderCard({super.key, required this.status, required this.order});
   final String status;
+    final OrderModels order;
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,71 +27,60 @@ class OrderCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Order №1947034',
-                    style: AppTextStyles.tajawaltextStyle16.copyWith(color: Colors.black),
-                  ),
-                  Text(
-                    '05-12-2019',
-                    style: AppTextStyles.tajawaltextStyle14.copyWith(
-                      color: AppColors.grey1
-                    ),
-                  ),
-                ],
-              ),
+              Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: [
+    Expanded(
+      child: Text(
+        'Order №${order.id}',
+        style: AppTextStyles.tajawaltextStyle16.copyWith(color: Colors.black),
+        overflow: TextOverflow.ellipsis, 
+      ),
+    ),
+    Text(
+      '${order.createdAt.toLocal()}'.split(' ')[0], 
+      style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
+    ),
+  ],
+),
+
               const SizedBox(height: 8),
               Text.rich(
+                TextSpan(
+                  text: 'Tracking number ',
+                  style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
+                  children: [
                     TextSpan(
-                      text:  AppStrings.trackingNumber,
-                      style: AppTextStyles.tajawaltextStyle14.copyWith(
-                        color: AppColors.grey1,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: ' IW347543455',
-                          style: AppTextStyles.tajawaltextStyle14.copyWith(
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
+                      text: order.client.phone,
+                      style: AppTextStyles.tajawaltextStyle14.copyWith(color: Colors.black),
                     ),
-                  ),
-              
+                  ],
+                ),
+              ),
               const SizedBox(height: 8),
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text.rich(
                     TextSpan(
-                      text:  AppStrings.quantity,
-                      style: AppTextStyles.tajawaltextStyle14.copyWith(
-                        color: AppColors.grey1,
-                      ),
+                      text: 'Quantity ',
+                      style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
                       children: [
                         TextSpan(
-                          text: ' 4',
-                          style: AppTextStyles.tajawaltextStyle14.copyWith(
-                            color: Colors.black,
-                          ),
+                          text: '${order.quantity}',
+                          style: AppTextStyles.tajawaltextStyle14.copyWith(color: Colors.black),
                         ),
                       ],
                     ),
                   ),
                   Text.rich(
                     TextSpan(
-                      text:  AppStrings.totalAmount,
-                      style: AppTextStyles.tajawaltextStyle14.copyWith(
-                        color: AppColors.grey1,
-                      ),
+                      text: 'total_amount: ',
+                      style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
                       children: [
                         TextSpan(
-                          text: ' 112\$',
-                          style: AppTextStyles.tajawaltextStyle14.copyWith(
-                            color: Colors.black,
-                          ),
+                          text: '${order.totalPrice} \$',
+                          style: AppTextStyles.tajawaltextStyle14.copyWith(color: Colors.black),
                         ),
                       ],
                     ),
@@ -99,12 +93,12 @@ class OrderCard extends StatelessWidget {
                 children: [
                   OutlinedButton(
                     onPressed: () {
-                      NavigationService.to( Routes.detailsView , arguments: null);
-
+                      Get.to(() => DetailsView(order: order));
                     },
-                    child:  Text( AppStrings.details ,style:AppTextStyles.tajawaltextStyle14.copyWith(
-                      color: AppColors.black
-                    ),),
+                    child: Text(
+                      'Details',
+                      style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.black),
+                    ),
                   ),
                   Text(
                     status,

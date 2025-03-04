@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:team1_khayat/features/profile/controller/my_order_controller.dart';
 import 'package:team1_khayat/features/profile/view/widget/build_category_section.dart';
+import 'package:team1_khayat/features/profile/view/widget/build_loading_order_list.dart';
 import 'package:team1_khayat/features/profile/view/widget/order_pages.dart';
 import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
 
@@ -11,6 +14,8 @@ class MyOrderView extends StatefulWidget {
 }
 
 class _MyOrderViewState extends State<MyOrderView> {
+ final OrderController orderController = Get.put(OrderController(),  permanent: true);
+
       int selectedIndex = 0;
 
   @override
@@ -22,21 +27,41 @@ class _MyOrderViewState extends State<MyOrderView> {
         arrowBackVisibility: true,
       ),
       body: CustomScrollView(
-        slivers: [
-          const SliverToBoxAdapter(
-            child: SizedBox(height: 16),
-          ),
-          SliverToBoxAdapter(
-            child: BuildCategorySection(
-              selectedIndex: selectedIndex,
-              onCategorySelected: updateIndex,
+  slivers: [
+    const SliverToBoxAdapter(
+      child: SizedBox(height: 16),
+    ),
+    SliverToBoxAdapter(
+      child: BuildCategorySection(
+        selectedIndex: selectedIndex,
+        onCategorySelected: updateIndex,
+      ),
+    ),
+    Obx(() {
+      if (orderController.isLoading.value) {
+        return const SliverFillRemaining(
+          child: LoadingOrderList(),
+        );
+      } else if (orderController.orders.isEmpty) {
+        return const SliverFillRemaining(
+          child: Center(
+            child: Text(
+              "No Orders",
             ),
           ),
-          SliverFillRemaining(
-            child: OrderPages(selectedIndex: selectedIndex)
+        );
+      } else {
+        return SliverFillRemaining(
+          child: OrderPages(
+            selectedIndex: selectedIndex,
+            orders: orderController.orders,
           ),
-        ],
-      ),
+        );
+      }
+    }),
+  ],
+)
+
     );
   }
   
@@ -45,5 +70,7 @@ class _MyOrderViewState extends State<MyOrderView> {
     setState(() {
       selectedIndex = index;
     });
-  }
+  } 
+  
+  
 }

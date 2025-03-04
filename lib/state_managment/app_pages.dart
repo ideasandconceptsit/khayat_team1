@@ -24,7 +24,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.detailsView,
-      page: () =>  const DetailsView(),
+      page: () =>   DetailsView(),
     ),
      GetPage(
       name: Routes.settingView,

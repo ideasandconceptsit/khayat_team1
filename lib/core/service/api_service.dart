@@ -1,71 +1,72 @@
-
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:team1_khayat/core/service/exception.dart';
 
 class ApiService {
-  Future<dynamic> get({required String url, String? token}) async {
-    try {
-      final headers = _buildHeaders(token);
-      final response = await http.get(Uri.parse(url), headers: headers);
-      return _handleResponse(response);
-    } catch (e) {
-      throw ApiException('Error in GET request: $e');
-    }
-  } 
-  
+ Future<dynamic> getRequest(String baseUrl, String endpoint, {required Map<String, String> headers}) async {
+  try {
+    print("🔵 [ApiService] - Sending GET request to: $baseUrl$endpoint");
+    final response = await http.get(
+      Uri.parse('$baseUrl$endpoint'),
+      headers: headers,
+    );
+    print("🟡 [ApiService] - Response status: ${response.statusCode}");
+    print("📥 [ApiService] - Response body: ${response.body}");
+    
+    return _handleResponse(response);  
+  } catch (e) {
+    print("❌ [ApiService] - Error in GET request: $e");
+    return _handleError(e);   
+  }
+}
 
-  Future<dynamic> post({
-    required String url,
-    required dynamic body,
-    String? token,
-  }) async {
+
+  Future<dynamic> postRequest(String baseUrl, String endpoint, {required Map<String, String> headers, required Map<String, dynamic> body}) async {
     try {
-      final headers = _buildHeaders(token);
-      final response = await http.post(Uri.parse(url), body: body, headers: headers);
+      final response = await http.post(
+        Uri.parse('$baseUrl$endpoint'),
+        headers: headers,
+        body: jsonEncode(body),
+      );
       return _handleResponse(response);
     } catch (e) {
-      throw ApiException('Error in POST request: $e');
+      return _handleError(e);
     }
   }
 
-  Future<dynamic> put({
-    required String url,
-    required dynamic body,
-    String? token,
-  }) async {
+  Future<dynamic> putRequest(String baseUrl, String endpoint, {required Map<String, String> headers, required Map<String, dynamic> body}) async {
     try {
-      final headers = _buildHeaders(token);
-      final response = await http.put(Uri.parse(url), body: body, headers: headers);
+      final response = await http.put(
+        Uri.parse('$baseUrl$endpoint'),
+        headers: headers,
+        body: jsonEncode(body),
+      );
       return _handleResponse(response);
     } catch (e) {
-      throw ApiException('Error in PUT request: $e');
+      return _handleError(e);
     }
   }
 
-  Map<String, String> _buildHeaders(String? token) {
-    final headers = {'Content-Type': 'application/json'};
-    if (token != null) {
-      headers['Authorization'] = 'Bearer $token';
+  Future<dynamic> deleteRequest(String baseUrl, String endpoint, {required Map<String, String> headers}) async {
+    try {
+      final response = await http.delete(
+        Uri.parse('$baseUrl$endpoint'),
+        headers: headers,
+      );
+      return _handleResponse(response);
+    } catch (e) {
+      return _handleError(e);
     }
-    return headers;
   }
 
-  dynamic _handleResponse(http.Response response) {
-    switch (response.statusCode) {
-      case 200:
-      case 201:
-        return jsonDecode(response.body);
-      case 400:
-        throw BadRequestException(jsonDecode(response.body)['message'] ?? 'Bad Request');
-      case 401:
-        throw UnauthorizedException('Unauthorized access');
-      case 402:
-        throw PaymentRequiredException('Payment required');
-      case 500:
-        throw ServerException('Internal Server Error');
-      default:
-        throw ApiException('Unexpected error: ${response.statusCode}');
-    }
+ dynamic _handleResponse(http.Response response) {
+  if (response.statusCode == 200) {
+    return jsonDecode(response.body); // ✅ يعيد Map<String, dynamic>
+  } else {
+    throw Exception("فشل الطلب، رمز الحالة: ${response.statusCode}");
+  }
+}
+
+  dynamic _handleError(dynamic error) {
+    return {'error': 'Failed to connect to server: $error'};
   }
 }
