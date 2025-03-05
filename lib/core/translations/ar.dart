@@ -43,7 +43,10 @@ const Map<String, String> ar = {
   'blouses': 'بلوزات',
   'shirts': 'قمصان',
   'filters': 'التصفية',
-
+  'all': 'الكل',
+  'category': 'الفئة',
+  'no_fabrics_available': 'لا توجد أقمشة متاحة لهذه الفئة',
+  'loading': '...جار التحميل',
   // شريط التصفية والترتيب
   'sort by': 'ترتيب حسب',
   'popular': 'الأكثر شعبية',
@@ -51,26 +54,55 @@ const Map<String, String> ar = {
   'customer review': 'تقييم العملاء',
   'price lowest to high': 'السعر: من الأقل إلى الأعلى',
   'price highest to low': 'السعر: من الأعلى إلى الأقل',
-  // العناوين
-  'shipping_addresses': 'عناوين الشحن',
-  'edit': 'تعديل',
-  'use_as_shipping_address': 'استخدم كعنوان الشحن',
-  'adding_shipping_address': 'إضافة عنوان الشحن',
-  'edit_address': 'تعديل العنوان',
-  'full_name': 'الاسم الكامل',
-  'address': 'العنوان',
-  'city': 'المدينة',
-  'state_province_region': 'الولاية/المقاطعة/المنطقة',
-  'zip_code': 'الرمز البريدي',
-  'country': 'الدولة',
-  'save_address': 'حفظ العنوان',
-  'please_enter_full_name': 'الرجاء إدخال الاسم الكامل',
-  'please_enter_address': 'الرجاء إدخال العنوان',
-  'please_enter_city': 'الرجاء إدخال المدينة',
-  'please_enter_state': 'الرجاء إدخال الولاية/المقاطعة/المنطقة',
-  'please_enter_zip_code': 'الرجاء إدخال الرمز البريدي',
-  'success': 'تم بنجاح',
-  'address_saved_successfully': 'تم حفظ عنوانك بنجاح.',
-  'thank_you': 'شكراً لاستخدامك تطبيقنا!',
-  'continue': 'متابعة التسوق',
+   
+   //! my profile View //
+  AppStrings.myProfile: "ملفي الشخصي",
+  AppStrings.myOrders: "طلباتي",
+  AppStrings.alreadyHaveOrders: "لديك طلبات بالفعل",
+  AppStrings.shippingAddresses: "عناوين الشحن",
+  AppStrings.numAddresses: "عدد العناوين: 3",
+  AppStrings.paymentMethods: "طرق الدفع",
+  AppStrings.visaEnding: "فيزا",
+  AppStrings.promoCodes: "رموز الخصم",
+  AppStrings.youHaveSpecialPromoCodes: "لديك رموز خصم خاصة",
+  AppStrings.myReviews: "تقييماتي",
+  AppStrings.reviewsForItems: "تقييمات المنتجات",
+  AppStrings.settings: "الإعدادات",
+  AppStrings.notifications: "الإشعارات",
+  AppStrings.password: "كلمة المرور",
+
+  //! My Orders View
+  AppStrings.processing: "قيد المعالجة",
+  AppStrings.cancelled: "ملغي",
+  AppStrings.delivered: "تم التوصيل",
+  AppStrings.details: "التفاصيل",
+  AppStrings.order: "الطلب",
+  AppStrings.orderDate: "تاريخ الطلب",
+  AppStrings.quantity: "الكمية",
+  AppStrings.trackingNumber: "رقم التتبع",
+  AppStrings.unpaid: "غير مدفوع",
+  AppStrings.itemsInOrder: "العناصر في الطلب",
+
+ //! Order Details
+  AppStrings.items: "العناصر",
+  AppStrings.orderInformation: "معلومات الطلب",
+  AppStrings.discount: "الخصم",
+  AppStrings.reorder: "إعادة الطلب",
+  AppStrings.home: "الرئيسية",
+   AppStrings.orderdetails: "تفاصيل الطلبات",
+      AppStrings.delivreymethod: "طريقة التوصيل",
+
+
+ //! My Settings View
+  AppStrings.personalinformation: "المعلومات الشخصية",
+  AppStrings.dateofbirthday: "تاريخ الميلاد",
+  AppStrings.change: "تغيير",
+  AppStrings.sales: "التخفيضات",
+  AppStrings.newarrivals: "الوافدون الجدد",
+  AppStrings.deliverystatuschanges: "تغييرات حالة التوصيل",
+    AppStrings.fullname: "الاسم بالكامل",
+
+
+
 };
+
