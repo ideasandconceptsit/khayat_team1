@@ -33,7 +33,6 @@ class OrderController extends GetxController {
       }
     } catch (e) {
       print("❌ [OrderController] - خطأ أثناء جلب الطلبات: $e");
-      showErrorSnackbar(getErrorMessage(e));
     } finally {
       isLoading(false);
     }
@@ -50,20 +49,5 @@ class OrderController extends GetxController {
     );
   }
 
-  String getErrorMessage(dynamic error) {
-    if (error is Exception) {
-      String errorMessage = error.toString();
-      if (errorMessage.contains("Unauthorized")) {
-        return "يجب تسجيل الدخول أولًا للوصول إلى الطلبات.";
-      } else if (errorMessage.contains("Not found")) {
-        return "لم يتم العثور على الطلبات، حاول مرة أخرى لاحقًا.";
-      } else if (errorMessage.contains("Forbidden")) {
-        return "ليس لديك صلاحية للوصول إلى الطلبات.";
-      } else if (errorMessage.contains("Failed to connect")) {
-        return "تعذر الاتصال بالخادم، تحقق من اتصال الإنترنت.";
-      }
-      return "حدث خطأ غير متوقع، يرجى المحاولة لاحقًا.";
-    }
-    return "تعذر جلب الطلبات، حاول مرة أخرى لاحقًا.";
-  }
+ 
 }

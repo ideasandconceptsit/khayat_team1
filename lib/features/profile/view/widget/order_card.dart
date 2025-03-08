@@ -65,7 +65,7 @@ class OrderCard extends StatelessWidget {
                       style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
                       children: [
                         TextSpan(
-                          text: order.totalPrice.toString(),
+                          text: order.totalQuantity.toString(),
                           style: AppTextStyles.tajawaltextStyle14.copyWith(color: Colors.black),
                         ),
                       ],

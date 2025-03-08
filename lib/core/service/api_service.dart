@@ -60,7 +60,7 @@ class ApiService {
 
  dynamic _handleResponse(http.Response response) {
   if (response.statusCode == 200) {
-    return jsonDecode(response.body); // ✅ يعيد Map<String, dynamic>
+    return jsonDecode(response.body); 
   } else {
     throw Exception("فشل الطلب، رمز الحالة: ${response.statusCode}");
   }

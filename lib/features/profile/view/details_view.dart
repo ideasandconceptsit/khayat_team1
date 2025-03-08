@@ -45,9 +45,20 @@ class DetailsView extends StatelessWidget {
               ),
             ),
             SliverToBoxAdapter(
-              child: Text( AppStrings.items,
-                  style: AppTextStyles.tajawaltextStyle14
-                      .copyWith(color: AppColors.grey)),
+              child: 
+               Text.rich(
+                TextSpan(
+                  text: AppStrings.items,
+                  style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
+                  children: [
+                    TextSpan(
+                      text: ' ${order?.items.length}',
+                      style: AppTextStyles.tajawaltextStyle14.copyWith(color: Colors.black),
+                    ),
+                  ],
+                ),
+              ), 
+             
             ),
             SliverToBoxAdapter(
               child: SizedBox(
@@ -55,19 +66,15 @@ class DetailsView extends StatelessWidget {
               ),
             ),
             SliverList.builder(
-              itemCount: 2,
+              itemCount: order?.items.length ?? 0,
               itemBuilder: (context, index) {
                 return  BuildItemListOrderDetails(order: order);
               },
             ),
-            SliverPadding(
-              padding: const EdgeInsets.all(16.0),
-              sliver: SliverList(
-                delegate: SliverChildListDelegate(
-                  [const BuildOderInfoList()],
-                ),
-              ),
-            ),
+           SliverList(delegate: SliverChildListDelegate([
+               BuildOderInfoList( order: order),
+            ])),
+           
           ],
         ),
       );
