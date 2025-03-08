@@ -23,7 +23,7 @@ class OrderController extends GetxController {
       isLoading(true);
       print("🟡 [OrderController] - جاري تحميل الطلبات...");
 
-      final fetchedOrders = await _orderRepository.getAllOrder();
+      final fetchedOrders = await _orderRepository.getAllOrder('67c972350ba950124063fa7f');
 
       if (fetchedOrders != null) {
         orders.assignAll(fetchedOrders);

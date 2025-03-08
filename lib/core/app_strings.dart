@@ -37,7 +37,7 @@ class AppStrings {
   static const String order = "Order";
   static const String orderDate = "Order Date";
   static const String quantity = "Quantity";
-  static const String trackingNumber = "Tracking number";
+  static const String trackingNumber = "Tracking number  ";
   static const String unpaid = "Unpaid";
   static const String itemsInOrder = "Items in order";
     static const String delivreymethod= "Deleviry Methoud";

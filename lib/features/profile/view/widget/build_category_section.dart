@@ -20,12 +20,13 @@ class BuildCategorySection extends StatelessWidget {
           children: [
             BuildCategoryItem(
                 text:  AppStrings.delivered, index: 0, selectedIndex: selectedIndex, onTap: onCategorySelected),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             BuildCategoryItem(
                 text: AppStrings.processing, index: 1, selectedIndex: selectedIndex, onTap: onCategorySelected),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             BuildCategoryItem(
                 text:  AppStrings.cancelled, index: 2, selectedIndex: selectedIndex, onTap: onCategorySelected),
+          
           ],
         ),
       );

@@ -16,7 +16,7 @@ class HeaderOrderDetails extends StatelessWidget {
         children: [
           Text.rich(
             TextSpan(
-              text: 'Order №${order.id}',
+              text: 'Order №${order.orderNumber}',
               style: AppTextStyles.tajawaltextStyle16.copyWith(
                 color: AppColors.grey1,
               ),
@@ -37,22 +37,20 @@ class HeaderOrderDetails extends StatelessWidget {
             Row(
         children: [
           Text.rich(
-            TextSpan(
+                TextSpan(
               text: AppStrings.trackingNumber,
-              style: AppTextStyles.tajawaltextStyle14.copyWith(
-          color: AppColors.whiteColor,
+                  style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
+                  children: [
+                    TextSpan(
+                      text:   order.client.phone,
+                      style: AppTextStyles.tajawaltextStyle14.copyWith(color: Colors.black),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ),
+          
           SizedBox(width: 5.w),
-          Text.rich(
-            TextSpan(
-              text: order!.client.phone,
-              style: AppTextStyles.tajawaltextStyle14.copyWith(
-          color: AppColors.grey1,
-              ),
-            ),
-          ),
+         
         ],
             ),
             const Text(

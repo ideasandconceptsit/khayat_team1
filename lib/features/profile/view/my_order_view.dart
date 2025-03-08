@@ -14,63 +14,62 @@ class MyOrderView extends StatefulWidget {
 }
 
 class _MyOrderViewState extends State<MyOrderView> {
- final OrderController orderController = Get.put(OrderController(),  permanent: true);
+  final OrderController orderController =
+      Get.put(OrderController(), permanent: true);
 
-      int selectedIndex = 0;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  CustomAppBar(
-        actionIconOnPressed: () {},
-        actionIcon:Icons.search_rounded ,
-        arrowBackVisibility: true,
-      ),
-      body: CustomScrollView(
-  slivers: [
-    const SliverToBoxAdapter(
-      child: SizedBox(height: 16),
-    ),
-    SliverToBoxAdapter(
-      child: BuildCategorySection(
-        selectedIndex: selectedIndex,
-        onCategorySelected: updateIndex,
-      ),
-    ),
-    Obx(() {
-      if (orderController.isLoading.value) {
-        return const SliverFillRemaining(
-          child: LoadingOrderList(),
-        );
-      } else if (orderController.orders.isEmpty) {
-        return const SliverFillRemaining(
-          child: Center(
-            child: Text(
-              "No Orders",
+        appBar: CustomAppBar(
+          actionIconOnPressed: () {},
+          actionIcon: Icons.search_rounded,
+          arrowBackVisibility: true,
+        ),
+        body: CustomScrollView(
+          slivers: [
+            const SliverToBoxAdapter(
+              child: SizedBox(height: 16),
             ),
-          ),
-        );
-      } else {
-        return SliverFillRemaining(
-          child: OrderPages(
-            selectedIndex: selectedIndex,
-            orders: orderController.orders,
-          ),
-        );
-      }
-    }),
-  ],
-)
-
-    );
+            SliverPadding(
+              padding: const EdgeInsets.all(16.0),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate(
+                  [BuildCategorySection(selectedIndex: selectedIndex, onCategorySelected: updateIndex)],
+                ),
+              ),
+            ),
+           
+            Obx(() {
+              if (orderController.isLoading.value) {
+                return const SliverFillRemaining(
+                  child: LoadingOrderList(),
+                );
+              } else if (orderController.orders.isEmpty) {
+                return const SliverFillRemaining(
+                  child: Center(
+                    child: Text(
+                      "No Orders",
+                    ),
+                  ),
+                );
+              } else {
+                return SliverFillRemaining(
+                  child: OrderPages(
+                    selectedIndex: selectedIndex,
+                    orders: orderController.orders,
+                  ),
+                );
+              }
+            }),
+          ],
+        ));
   }
-  
-  
-   void updateIndex(int index) {
+
+  void updateIndex(int index) {
     setState(() {
       selectedIndex = index;
     });
-  } 
-  
-  
+  }
 }

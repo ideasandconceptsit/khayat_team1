@@ -5,9 +5,7 @@ import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/profile/model/order_model.dart';
 import 'package:team1_khayat/features/profile/view/details_view.dart';
-import 'package:team1_khayat/shared/navigation_service.dart';
 
-import 'package:team1_khayat/state_managment/app_routers.dart';
 
 class OrderCard extends StatelessWidget {
   const OrderCard({super.key, required this.status, required this.order});
@@ -32,7 +30,7 @@ class OrderCard extends StatelessWidget {
   children: [
     Expanded(
       child: Text(
-        'Order №${order.id}',
+        'Order №${order.orderNumber}',
         style: AppTextStyles.tajawaltextStyle16.copyWith(color: Colors.black),
         overflow: TextOverflow.ellipsis, 
       ),
@@ -67,7 +65,7 @@ class OrderCard extends StatelessWidget {
                       style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
                       children: [
                         TextSpan(
-                          text: '${order.quantity}',
+                          text: order.totalPrice.toString(),
                           style: AppTextStyles.tajawaltextStyle14.copyWith(color: Colors.black),
                         ),
                       ],
@@ -75,11 +73,11 @@ class OrderCard extends StatelessWidget {
                   ),
                   Text.rich(
                     TextSpan(
-                      text: 'total_amount: ',
+                      text: 'Total Amount: ',
                       style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
                       children: [
                         TextSpan(
-                          text: '${order.totalPrice} \$',
+                          text:  order.totalPrice.toString() +'\$',
                           style: AppTextStyles.tajawaltextStyle14.copyWith(color: Colors.black),
                         ),
                       ],

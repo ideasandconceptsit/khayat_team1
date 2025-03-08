@@ -8,27 +8,36 @@ class OrderRepository {
 
   OrderRepository(this._apiService);
 
-  Future<List<OrderModels>?> getAllOrder() async {
+  Future<List<OrderModels>?> getAllOrder(String userId) async {
   try {
     final response = await _apiService.getRequest(
       EndPoint.baseUrl,
       EndPoint.getAllOrder,
       headers: {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzk2Nzg5MDg3MmJmZTMyNWE0ZGY0NzYiLCJpYXQiOjE3MzgwODM5ODUsImV4cCI6MTc0NTg1OTk4NX0.rDyLTL4G9Kjd2xxUiTFW0ZyzJLdpt61GNnCskpYa09M "
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzk2Nzg5MDg3MmJmZTMyNWE0ZGY0NzYiLCJpYXQiOjE3MzgwODM5ODUsImV4cCI6MTc0NTg1OTk4NX0.rDyLTL4G9Kjd2xxUiTFW0ZyzJLdpt61GNnCskpYa09M"
       },
     );
 
     print("🔵 [OrderRepository] - البيانات المسترجعة من الـ API: $response");
 
-    if (response is Map<String, dynamic> && response.containsKey("data")) {
+    if (response == null) {
+      throw Exception("⚠️ [OrderRepository] - لم يتم استرجاع أي بيانات من السيرفر.");
+    }
+
+    if (response is Map<String, dynamic> && response["data"] != null && response["data"] is List) {
       List<dynamic> rawOrders = response["data"];
-      
+
       print("📋 [OrderRepository] - عدد الطلبات المسترجعة: ${rawOrders.length}");
-      
-      List<OrderModels> orders = rawOrders.map((order) {
-        print("📝 [OrderRepository] - الطلب المسترجع: $order");
-        return OrderModels.fromJson(order);
-      }).toList();
+
+      List<OrderModels> orders = [];
+      for (var order in rawOrders) {
+        try {
+          print("📝 [OrderRepository] - الطلب المسترجع: $order");
+          orders.add(OrderModels.fromJson(order));
+        } catch (e) {
+          print("⚠️ [OrderRepository] - خطأ أثناء تحويل الطلب: $e");
+        }
+      }
 
       return orders;
     } else {
@@ -39,5 +48,6 @@ class OrderRepository {
     return null;
   }
 }
+
 
 }

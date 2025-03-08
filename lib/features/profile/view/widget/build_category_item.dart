@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team1_khayat/core/app_colors.dart';
 
 class BuildCategoryItem extends StatelessWidget {
   final String text;
@@ -13,15 +14,15 @@ class BuildCategoryItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => onTap(index),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         decoration: BoxDecoration(
           color: selectedIndex == index ? Colors.grey.shade900 : Colors.transparent,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(5),
         ),
         child: Text(
           text,
           style: TextStyle(
-            color: selectedIndex == index ? Colors.white : Colors.grey,
+            color: selectedIndex == index ? AppColors.whiteColor : AppColors.black
           ),
         ),
       ),

@@ -57,7 +57,7 @@ class DetailsView extends StatelessWidget {
             SliverList.builder(
               itemCount: 2,
               itemBuilder: (context, index) {
-                return const BuildItemListOrderDetails();
+                return  BuildItemListOrderDetails(order: order);
               },
             ),
             SliverPadding(
