@@ -5,8 +5,9 @@ import 'package:team1_khayat/shared/app_buttons/app_buttons.dart';
 import 'package:team1_khayat/shared/custom_form_field/csutom_form_field.dart';
 
 class PasswordChangeBottomSheet extends StatelessWidget {
-  const PasswordChangeBottomSheet({super.key});
+   PasswordChangeBottomSheet({super.key, this.onTap});
 
+ void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -16,9 +17,12 @@ class PasswordChangeBottomSheet extends StatelessWidget {
           SizedBox(height: 18.h), 
           CustomFormField( hintText: "Old Password",),
           SizedBox(height: 14.h), 
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text('Forgot Password', style:  AppTextStyles.tajawaltextStyle14)),
+          GestureDetector(
+            onTap:  onTap,
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Forgot Password', style:  AppTextStyles.tajawaltextStyle14)),
+          ),
         SizedBox(height: 17.h), 
         CustomFormField( hintText: " New Password",),
         SizedBox(height: 24.h), 

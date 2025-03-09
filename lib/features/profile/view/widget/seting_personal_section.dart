@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
+import 'package:team1_khayat/features/profile/view/forget_password_view.dart';
 import 'package:team1_khayat/shared/app_bottom_sheet/app_bottom_sheet.dart';
 import 'package:team1_khayat/shared/custom_date_picker_field/custom_date_picker_field.dart';
 import 'package:team1_khayat/shared/custom_form_field/csutom_form_field.dart';
 import 'package:team1_khayat/shared/custom_switch_tile/custom_switch_tile.dart';
+import 'package:team1_khayat/shared/navigation_service.dart';
 
 import 'password_change_bottom_sheet.dart';
 
@@ -29,7 +32,12 @@ class SettingsPersonalInformationSection extends StatelessWidget {
          onActionTap: () {
           showCustomAppBottomSheet(context ,
           height: MediaQuery.of(context).size.height *0.7,
-          child: const PasswordChangeBottomSheet(),);
+          child:  PasswordChangeBottomSheet(
+            onTap: () {
+            
+              NavigationService.navigateTo(const ForgotPasswordView());
+            },
+          ),);
         }, 
         ),
         CustomFormField(labelText:  AppStrings.password ,obscureText: true , hintText: '*********',),

@@ -57,7 +57,16 @@ class AppStrings {
   static const String sales = "Sales";
   static const String newarrivals= "New arrivals";
   static const String deliverystatuschanges = "Delivery status Changes";
-    static const String fullname = "Full Name";
+  static const String fullname = "Full Name";
+
+  //! Forget Password
+  static const String forgotpassword= "Forgot Password";
+  static const String pleaseenterYourEmail= "Please enter your Email";
+  static const String send = "send";
+    static const String email = "Email";
+
+
+
 
 
 }
