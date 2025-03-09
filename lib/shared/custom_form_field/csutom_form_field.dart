@@ -68,6 +68,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
             enabledBorder: InputBorder.none,
             focusedBorder: InputBorder.none, 
             suffixIcon: widget.obscureText
+            
                 ? IconButton(
                     icon: Icon(
                       _isObscure ? Icons.visibility : Icons.visibility_off,

@@ -63,21 +63,16 @@ class VerificationView extends StatelessWidget {
                                   _verificationController.otpController.text,
                             );
 
-                            print(
-                                "Error Message: ${_verificationController.errorMessage.value}");
-
                             if (_verificationController
                                 .errorMessage.value.isEmpty) {
                               showCustomAppBottomSheet(
+                                
                                 context,
                                 height:
                                     MediaQuery.of(context).size.height * 0.7,
                                 child: PasswordChangeWidget(),
                               );
-                            } else {
-                              print(
-                                  "في خطأ: ${_verificationController.errorMessage.value}");
-                            }
+                            } else {}
                           }
                         }),
                     SizedBox(height: 10.h),
