@@ -28,7 +28,7 @@ class AppPages {
     ),
      GetPage(
       name: Routes.settingView,
-      page: () =>   SettingView(),
+      page: () =>   const SettingView(),
     ),
   ];
 }
