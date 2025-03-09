@@ -77,7 +77,7 @@ class ForgotPasswordView extends StatelessWidget {
                              await forgetPasswordController.forgetPassword(email: forgetPasswordController.emailController.text);
 
                               if (forgetPasswordController.errorMessage.value.isEmpty) {
-                                Get.to(() => const VerificationView());
+                                Get.to(() =>  VerificationView());
                               }
                             }
                           },

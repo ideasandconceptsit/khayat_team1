@@ -3,5 +3,7 @@ class EndPoint {
   static const String getSpecificUser = '/api/users/';
   static const String getAllOrder = '/api/order';
     static const String forgetPassword= '/api/auth/forgotPassword';
+        static const String verifyResetCode= '/api/auth/verifyResetCode';
+
 
 }
