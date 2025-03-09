@@ -25,10 +25,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // استخدم ScreenUtil لتحديد القياسات عبر التطبيق
     ScreenUtil.init(
       context,
-      designSize: const Size(375, 812), // حجم التصميم الأساسي
+      designSize: const Size(375, 812),
     );
     
     return GetMaterialApp(
@@ -38,7 +37,7 @@ class MyApp extends StatelessWidget {
       locale: local ?? const Locale('ar'),
       fallbackLocale: const Locale('ar'),
       theme: AppThemes.lightTheme,
-      initialRoute: Routes.bottomNavBar, // تغيير هنا حسب الحاجة
+      initialRoute: Routes.bottomNavBar, 
       getPages: AppPages.pages,
       initialBinding: AppBinding(),
     );
