@@ -35,7 +35,7 @@ class SettingsPersonalInformationSection extends StatelessWidget {
           child:  PasswordChangeBottomSheet(
             onTap: () {
             
-              NavigationService.navigateTo(const ForgotPasswordView());
+              NavigationService.navigateTo( ForgotPasswordView());
             },
           ),);
         }, 
