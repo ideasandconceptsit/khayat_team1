@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
+import 'package:team1_khayat/features/profile/view/verification_view.dart';
 import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
 import 'package:team1_khayat/shared/custom_app_button/custom_app_button.dart';
 import 'package:team1_khayat/shared/custom_form_field/email_form_field.dart';
+import 'package:team1_khayat/shared/navigation_service.dart';
 import '../../../../core/app_style.dart';
 
 class ForgotPasswordView extends StatelessWidget {
@@ -46,7 +48,7 @@ class ForgotPasswordView extends StatelessWidget {
                     text: AppStrings.send.tr,
                     height: 48.h,
                     onTap: () {
-                      
+                      NavigationService.navigateTo(const VerificationView());
                     },
                   ),
                 ],

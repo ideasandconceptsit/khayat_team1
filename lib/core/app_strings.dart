@@ -63,7 +63,11 @@ class AppStrings {
   static const String forgotpassword= "Forgot Password";
   static const String pleaseenterYourEmail= "Please enter your Email";
   static const String send = "send";
-    static const String email = "Email";
+  static const String email = "Email";
+  static const String next = "Next";
+  static const String verification = "Verification";
+
+
 
 
 
