@@ -29,7 +29,7 @@ class OrderInfo extends StatelessWidget {
             flex: 2, 
             child: Text(
               title,
-              style: TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Colors.grey),
             ),
           ),
           Expanded(
