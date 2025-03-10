@@ -70,8 +70,7 @@ class PasswordChangeWidget extends StatelessWidget {
                 press: () async {
                   if (_resetPassController.formKeyResetPassword.currentState!.validate()) {
                     await _resetPassController.resetPassword(
-                      email: _resetPassController.emailController.text.trim(),
-                      newPassword: _resetPassController.newPasswordController.text.trim(),
+                    
                     );
 
                     if (_resetPassController.errorMessage.value.isEmpty) {

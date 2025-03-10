@@ -12,7 +12,6 @@ import 'state_managment/app_routers.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
-
   final box = GetStorage();
   String savedLanguage = box.read('language') ?? 'ar';
   runApp(MyApp(local: Locale(savedLanguage)));

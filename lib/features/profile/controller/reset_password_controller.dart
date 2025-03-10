@@ -7,39 +7,55 @@ class ResetPasswordController extends GetxController {
   final RestPasswordRepository resetPasswordRepository;
   ResetPasswordController(this.resetPasswordRepository);
    
-   final GlobalKey<FormState> formKeyResetPassword = GlobalKey<FormState>();
-   final TextEditingController emailController = TextEditingController();
+  final GlobalKey<FormState> formKeyResetPassword = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController newPasswordController = TextEditingController();
-    final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
 
   var isLoading = false.obs;
   var errorMessage = ''.obs;
 
-  Future<void> resetPassword({required String email, required String newPassword}) async {
-    print("طلب استعادة كلمة المرور للبريد: $email");
+  Future<void> resetPassword() async {
+    if (!formKeyResetPassword.currentState!.validate()) {
+      return;
+    }
 
-    if (email.isEmpty || !email.contains('@')) {
-      print("البريد الإلكتروني غير صالح");
-      Get.snackbar('خطأ', 'يرجى إدخال بريد إلكتروني صالح');
+    String email = emailController.text.trim();
+    String newPassword = newPasswordController.text.trim();
+    String confirmPassword = confirmPasswordController.text.trim();
+
+    if (newPassword != confirmPassword) {
+      SnackbarHelper.showErrorSnackbar('كلمات المرور غير متطابقة!');
       return;
     }
 
     isLoading.value = true;
     errorMessage.value = '';
-    print("يتم إرسال الطلب إلى RestPasswordRepository...");
 
-    String? result =
-        await resetPasswordRepository.restPassword(email: email, newPassword: newPassword);
+    try {
+      String? result = await resetPasswordRepository.restPassword(
+        email: email,
+        newPassword: newPassword,
+      );
 
-    if (result == null) {
-      print("تم تغيير كلمة المرور بنجاح");
-      SnackbarHelper.showSuccessSnackbar('تم تغيير كلمة المرور بنجاح');
-    } else {
-      errorMessage.value = result;
-      print("خطأ في الإرسال: $result");
-      SnackbarHelper.showErrorSnackbar(result);
+      if (result == null) {
+        SnackbarHelper.showSuccessSnackbar('تم تغيير كلمة المرور بنجاح');
+        clearFields();
+      } else {
+        errorMessage.value = result;
+        SnackbarHelper.showErrorSnackbar(result);
+      }
+    } catch (e) {
+      SnackbarHelper.showErrorSnackbar('حدث خطأ أثناء تغيير كلمة المرور.');
+      print("❗ خطأ غير متوقع: $e");
     }
 
     isLoading.value = false;
+  }
+
+  void clearFields() {
+    emailController.clear();
+    newPasswordController.clear();
+    confirmPasswordController.clear();
   }
 }

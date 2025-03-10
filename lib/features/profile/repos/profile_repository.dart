@@ -18,7 +18,9 @@ class ProfileRepository {
 
     if (response != null && response is Map<String, dynamic>) {
       final data = response["data"]; 
+      
       if (data != null) {
+        
         return UserModel.fromJson(data);
       } else {
         log("❌ [ProfileRepository] - User data is null");

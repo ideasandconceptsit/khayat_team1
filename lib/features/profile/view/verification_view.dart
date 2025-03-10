@@ -66,7 +66,6 @@ class VerificationView extends StatelessWidget {
                             if (_verificationController
                                 .errorMessage.value.isEmpty) {
                               showCustomAppBottomSheet(
-                                
                                 context,
                                 height:
                                     MediaQuery.of(context).size.height * 0.7,
