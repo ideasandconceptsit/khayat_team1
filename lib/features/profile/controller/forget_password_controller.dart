@@ -18,7 +18,7 @@ class ForgetPasswordController extends GetxController {
 
     if (email.isEmpty || !email.contains('@')) {
       print("البريد الإلكتروني غير صالح");
-      Get.snackbar('خطأ', 'يرجى إدخال بريد إلكتروني صالح');
+      SnackbarHelper.showErrorSnackbar('يرجى إدخال بريد إلكتروني صالح');
       return;
     }
 

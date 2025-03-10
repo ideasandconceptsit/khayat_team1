@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:team1_khayat/core/service/api_service.dart';
 import 'package:team1_khayat/features/profile/model/order_model.dart';
 import 'package:team1_khayat/features/profile/repos/my_order_repository.dart';
+import 'package:team1_khayat/shared/app_snakbar/app_snackbar.dart';
 
 
 class OrderController extends GetxController {
@@ -29,7 +30,7 @@ class OrderController extends GetxController {
         orders.assignAll(fetchedOrders);
         print("✅ [OrderController] - تم تحميل ${orders.length} طلب.");
       } else {
-        showErrorSnackbar("لم يتم العثور على طلبات، حاول مرة أخرى لاحقًا.");
+        SnackbarHelper.showErrorSnackbar("لم يتم العثور على طلبات، حاول مرة أخرى لاحقًا.");
       }
     } catch (e) {
       print("❌ [OrderController] - خطأ أثناء جلب الطلبات: $e");
@@ -38,16 +39,7 @@ class OrderController extends GetxController {
     }
   }
 
-  void showErrorSnackbar(String message) {
-    Get.snackbar(
-      "خطأ",
-      message,
-      snackPosition: SnackPosition.TOP,
-      backgroundColor: Get.theme.colorScheme.error,
-      colorText: Get.theme.colorScheme.onError,
-      duration: const Duration(seconds: 3),
-    );
-  }
+  
 
  
 }
