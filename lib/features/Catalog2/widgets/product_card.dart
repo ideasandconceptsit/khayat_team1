@@ -95,27 +95,30 @@ class ProductCard extends StatelessWidget {
           ],
         ),
         SizedBox(height: 8.h),
-        // Commenting out rating and reviews as they're not in the current model
-        // Row(
-        //   children: [
-        //     ...List.generate(5, (index) {
-        //       return Icon(
-        //         index < (fabric.rating ?? 0) ? Icons.star : Icons.star_border,
-        //         size: 16.sp,
-        //         color: index < (fabric.rating ?? 0) ? Colors.amber : Colors.grey[300],
-        //       );
-        //     }),
-        //     SizedBox(width: 4.w),
-        //     Text(
-        //       '(${fabric.reviews ?? 0})',
-        //       style: TextStyle(
-        //         fontSize: 12.sp,
-        //         color: Theme.of(context).colorScheme.secondary,
-        //       ),
-        //     ),
-        //   ],
-        // ),
-        // SizedBox(height: 4.h),
+        Row(
+          children: [
+            ...List.generate(5, (index) {
+              return Icon(
+                index < (fabric.ratingsAverage ?? 0)
+                    ? Icons.star
+                    : Icons.star_border,
+                size: 16.sp,
+                color: index < (fabric.ratingsAverage ?? 0)
+                    ? Colors.amber
+                    : Colors.grey[300],
+              );
+            }),
+            SizedBox(width: 4.w),
+            Text(
+              '(${fabric.ratingsQuantity ?? 0})',
+              style: TextStyle(
+                fontSize: 12.sp,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 4.h),
         Text(
           fabric.category.name,
           style: TextStyle(
@@ -158,13 +161,13 @@ class ProductCard extends StatelessWidget {
         ),
         // Add quantity information
         SizedBox(height: 4.h),
-        Text(
-          'Quantity: ${fabric.quantity}',
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.secondary,
-            fontSize: 12.sp,
-          ),
-        ),
+        //  Text(
+        //       'Quantity: ${fabric.quantity}',
+        //       style: TextStyle(
+        //         color: Theme.of(context).colorScheme.secondary,
+        //      fontSize: 12.sp,
+        //       ),
+        //     ),
       ],
     );
   }
