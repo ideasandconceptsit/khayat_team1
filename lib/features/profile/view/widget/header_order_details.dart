@@ -22,10 +22,11 @@ class HeaderOrderDetails extends StatelessWidget {
               ),
             ),
           ),
-          Text(
-      '${order.createdAt.toLocal()}'.split(' ')[0], 
-      style:  AppTextStyles.tajawaltextStyle14,
-    ),
+    Text(
+  order.createdAt.split('T')[0],
+  style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
+),
+
         ],
       ),
       SizedBox(height: 13.h),

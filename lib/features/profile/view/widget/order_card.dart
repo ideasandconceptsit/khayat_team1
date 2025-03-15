@@ -30,15 +30,17 @@ class OrderCard extends StatelessWidget {
   children: [
     Expanded(
       child: Text(
+        
         'Order №${order.orderNumber}',
         style: AppTextStyles.tajawaltextStyle16.copyWith(color: Colors.black),
         overflow: TextOverflow.ellipsis, 
       ),
     ),
-    Text(
-      '${order.createdAt.toLocal()}'.split(' ')[0], 
-      style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
-    ),
+   Text(
+  order.createdAt.split('T')[0], 
+  style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
+),
+
   ],
 ),
 

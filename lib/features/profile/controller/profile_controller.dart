@@ -28,7 +28,7 @@ class ProfileController extends GetxController {
       userModel.value = await _profileRepository.fetchUserData("67c3b6e5e2e27877cd10d42b");
 
       if (userModel.value != null) {
-        // box.write("cachedPassword", userModel.value!.password ?? ""); 
+        box.write("cachedPassword", userModel.value!.password ?? ""); 
         log("✅ [ProfileController] - كلمة المرور القديمة تم تخزينها");
       } else {
         SnackbarHelper.showErrorSnackbar("تعذر جلب بيانات المستخدم، حاول مرة أخرى.");
@@ -40,10 +40,10 @@ class ProfileController extends GetxController {
     }
   }
 
-  // bool checkOldPassword() {
-  //   String cachedPassword = box.read("cachedPassword") ?? "";
-  //   return oldPasswordController.text == cachedPassword;
-  // }
+  bool checkOldPassword() {
+    String cachedPassword = box.read("cachedPassword") ?? "";
+    return oldPasswordController.text == cachedPassword;
+  }
 
   
 }

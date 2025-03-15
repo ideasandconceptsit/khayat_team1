@@ -99,10 +99,10 @@ class PasswordChangeBottomSheet extends StatelessWidget {
                   return;
                 }
 
-                // if (!_profileController.checkOldPassword()) {
-                //   SnackbarHelper.showErrorSnackbar("كلمة المرور القديمة غير صحيحة!");
-                //   return;
-                // }
+                if (!_profileController.checkOldPassword()) {
+                  SnackbarHelper.showErrorSnackbar("كلمة المرور القديمة غير صحيحة!");
+                  return;
+                }
 
                 await _resetPasswordController.resetPassword(
                 

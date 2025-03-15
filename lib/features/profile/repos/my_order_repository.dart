@@ -1,53 +1,45 @@
-
 import 'package:team1_khayat/core/service/api_service.dart';
 import 'package:team1_khayat/core/service/end_point.dart';
 import 'package:team1_khayat/features/profile/model/order_model.dart';
 
 class OrderRepository {
-    final ApiService _apiService;
+  final ApiService _apiService;
 
   OrderRepository(this._apiService);
 
-  Future<List<OrderModels>?> getAllOrder(String userId) async {
-  try {
-    final response = await _apiService.getRequest(
-      EndPoint.baseUrl,
-      EndPoint.getAllOrder,
-      headers: {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzk2Nzg5MDg3MmJmZTMyNWE0ZGY0NzYiLCJpYXQiOjE3MzgwODM5ODUsImV4cCI6MTc0NTg1OTk4NX0.rDyLTL4G9Kjd2xxUiTFW0ZyzJLdpt61GNnCskpYa09M"
-      },
-    );
+  Future<List<OrderModels>?> getSpecificOrder({required String userId}) async {
+    try {
+      print("🔵 [OrderRepository] - بدء جلب الطلبات للمستخدم: $userId");
 
-    print("🔵 [OrderRepository] - البيانات المسترجعة من الـ API: $response");
+      final response = await _apiService.getRequest(
+        EndPoint.baseUrl,
+        EndPoint.getSpacificOrder + userId,
+        headers: {
+          "Authorization":
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzk2Nzg5MDg3MmJmZTMyNWE0ZGY0NzYiLCJpYXQiOjE3Mzc5MTQ1MjEsImV4cCI6MTc0NTY5MDUyMX0.YGmHvF8022J-Y4YVS02gpNZgP6T_kw78DgL4v6--xpU"
+        },
+      );
 
-    if (response == null) {
-      throw Exception("⚠️ [OrderRepository] - لم يتم استرجاع أي بيانات من السيرفر.");
-    }
+      print("📥 [OrderRepository] - البيانات المسترجعة: $response");
 
-    if (response is Map<String, dynamic> && response["data"] != null && response["data"] is List) {
-      List<dynamic> rawOrders = response["data"];
-
-      print("📋 [OrderRepository] - عدد الطلبات المسترجعة: ${rawOrders.length}");
-
-      List<OrderModels> orders = [];
-      for (var order in rawOrders) {
-        try {
-          print("📝 [OrderRepository] - الطلب المسترجع: $order");
-          orders.add(OrderModels.fromJson(order));
-        } catch (e) {
-          print("⚠️ [OrderRepository] - خطأ أثناء تحويل الطلب: $e");
-        }
+      if (response == null) {
+        throw Exception("⚠️ [OrderRepository] - لم يتم استرجاع أي بيانات.");
       }
 
-      return orders;
-    } else {
-      throw Exception("⚠️ [OrderRepository] - البيانات غير صحيحة: $response");
+      if (response["data"] != null) {
+        try {
+          print("✅ [OrderRepository] - تم استرجاع البيانات بنجاح.");
+          return [OrderModels.fromJson(response["data"])];
+        } catch (e) {
+          print("❌ [OrderRepository] - خطأ أثناء تحويل البيانات: $e");
+        }
+      } else {
+        throw Exception("⚠️ [OrderRepository] - البيانات غير صحيحة.");
+      }
+    } catch (e) {
+      print("❌ [OrderRepository] - خطأ أثناء جلب الطلبات: $e");
+      return null;
     }
-  } catch (e) {
-    print("❌ [OrderRepository] - خطأ أثناء جلب الطلبات: $e");
     return null;
   }
-}
-
-
 }

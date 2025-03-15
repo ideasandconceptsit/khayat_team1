@@ -15,7 +15,7 @@ class MyOrderView extends StatefulWidget {
 
 class _MyOrderViewState extends State<MyOrderView> {
   final OrderController orderController =
-      Get.put(OrderController(), permanent: true);
+      Get.put(OrderController());
 
   int selectedIndex = 0;
 

@@ -70,7 +70,7 @@ class BuildItemListOrderDetails extends StatelessWidget {
             children: [
               const SizedBox(height: 60), // To push the text to the bottom
               Text(
-                order!.items[0].totalPrice.toString() +'\$',
+                '${order!.items[0].totalPrice}\$',
                
                 style: AppTextStyles.tajawaltextStyle14.copyWith(
                   color: AppColors.black,

@@ -16,7 +16,7 @@ class DetailsView extends StatelessWidget {
  
  final OrderModels? order; 
 
- final OrderController orderController = Get.put(OrderController());
+ final OrderController orderController = Get.put(OrderController() ,permanent: true);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
