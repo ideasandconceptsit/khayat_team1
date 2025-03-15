@@ -73,4 +73,9 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
     color: AppColors.black,
   );
+  static final tajawaltextStyle24 = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w900,
+    color: AppColors.black,
+  );
 }

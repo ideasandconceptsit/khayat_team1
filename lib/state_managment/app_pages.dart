@@ -3,6 +3,7 @@ import 'package:team1_khayat/features/layout/view/buttom_nav_bar.dart';
 import 'package:team1_khayat/features/profile/view/details_view.dart';
 import 'package:team1_khayat/features/profile/view/my_order_view.dart';
 import 'package:team1_khayat/features/profile/view/profile_view.dart';
+import 'package:team1_khayat/features/profile/view/rating_view.dart';
 import 'package:team1_khayat/features/profile/view/setting_view.dart';
 import 'package:team1_khayat/state_managment/app_routers.dart';
 
@@ -29,6 +30,10 @@ class AppPages {
      GetPage(
       name: Routes.settingView,
       page: () =>   const SettingView(),
+    ),
+    GetPage(
+      name: Routes.reviewAndRatingScreen,
+      page: () =>   const ReviewAndRatingScreen(),
     ),
   ];
 }
