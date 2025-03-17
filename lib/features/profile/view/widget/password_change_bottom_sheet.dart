@@ -33,6 +33,7 @@ class PasswordChangeBottomSheet extends StatelessWidget {
               hintText: "Old Password",
               controller: _profileController.oldPasswordController,
               obscureText: true,
+               maxLines: 1,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return "يرجى إدخال كلمة المرور القديمة";
@@ -51,25 +52,27 @@ class PasswordChangeBottomSheet extends StatelessWidget {
           ),
             SizedBox(height: 14.h),
 
-            CustomFormField(
-              hintText: "Email",
-              controller: _resetPasswordController.emailController,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return "يرجى إدخال البريد الإلكتروني";
-                }
-                if (!value.contains('@')) {
-                  return "البريد الإلكتروني غير صالح";
-                }
-                return null;
-              },
-            ),
-            SizedBox(height: 14.h),
+            // CustomFormField(
+            //   hintText: "Email",
+            //   controller: _resetPasswordController.emailController,
+            //    maxLines: 1,
+            //   validator: (value) {
+            //     if (value == null || value.isEmpty) {
+            //       return "يرجى إدخال البريد الإلكتروني";
+            //     }
+            //     if (!value.contains('@')) {
+            //       return "البريد الإلكتروني غير صالح";
+            //     }
+            //     return null;
+            //   },
+            // ),
+            // SizedBox(height: 14.h),
 
             CustomFormField(
               hintText: " New Password",
               controller: _resetPasswordController.newPasswordController,
               obscureText: true,
+               maxLines: 1,
               validator: (value) {
                 if (value == null || value.length < 6) {
                   return "يجب أن تكون كلمة المرور الجديدة 6 أحرف على الأقل";
@@ -83,6 +86,7 @@ class PasswordChangeBottomSheet extends StatelessWidget {
               hintText: "Reapeat New Password",
               controller: _resetPasswordController.confirmPasswordController,
               obscureText: true,
+               maxLines: 1,
               validator: (value) {
                 if (value != _resetPasswordController.newPasswordController.text) {
                   return "كلمات المرور غير متطابقة!";

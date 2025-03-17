@@ -13,6 +13,7 @@ class ProfileRepository {
     final response = await _apiService.getRequest(
       EndPoint.baseUrl,
       "${EndPoint.getSpecificUser}$userId",
+      
       headers: {"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzk2Nzg5MDg3MmJmZTMyNWE0ZGY0NzYiLCJpYXQiOjE3Mzc5MTQ1MjEsImV4cCI6MTc0NTY5MDUyMX0.YGmHvF8022J-Y4YVS02gpNZgP6T_kw78DgL4v6--xpU"},
     );
 

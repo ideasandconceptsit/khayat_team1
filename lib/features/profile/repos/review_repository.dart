@@ -16,7 +16,7 @@ class ReviewsRepository {
         EndPoint.getAllReview,
          
       );
-  
+
       if (response != null && response is Map<String, dynamic>) {
         final List<dynamic> data = response["data"] ?? [];
         return data.map((review) => ReviewModel.fromJson(review)).toList();
@@ -30,6 +30,30 @@ class ReviewsRepository {
     }
   }
 
- 
+  Future<bool> createReview(String review, int rating, String userId, String productId, String productType) async {
+  try {
+    final response = await _apiService.postRequest(
+      EndPoint.baseUrl,
+EndPoint.createNewRview,
+      body:{
+      "review": review,
+      "ratings": rating,
+      "user": userId,
+      "product": productId,
+      "productType": productType,
+    }
+    );
+
+     if (response != null ) {
+      return true;
+    } else {
+      log("❌ [ReviewsRepository] - فشل إنشاء المراجعة: ${response.toString()}");
+      return false;
+    }
+  } catch (e) {
+    log("❌ [ReviewsRepository] - فشل إنشاء المراجعة: ${e.toString()}");
+    return false;
+  }
+}
 
 }

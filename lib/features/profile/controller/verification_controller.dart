@@ -9,6 +9,7 @@ class VerificationResetCodeController extends GetxController {
 
    final GlobalKey<FormState> formKeyVerifayCode = GlobalKey<FormState>(); 
   final TextEditingController otpController = TextEditingController();
+  
   var isLoading = false.obs;
   var errorMessage = ''.obs;
 

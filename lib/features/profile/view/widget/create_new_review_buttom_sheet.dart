@@ -2,17 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_styles.dart';
+import 'package:team1_khayat/features/profile/controller/review_controller.dart';
 import 'package:team1_khayat/shared/app_buttons/app_buttons.dart';
 import 'package:team1_khayat/shared/app_snakbar/app_snackbar.dart';
 import 'package:team1_khayat/shared/custom_form_field/csutom_form_field.dart';
 
 class CreateNewReviewBottomSheet extends StatelessWidget {
-  final void Function()? onTap;
-  final TextEditingController reviewController = TextEditingController();
-  final RxInt selectedRating = 0.obs;
+  final ReviewsController reviewsController = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  CreateNewReviewBottomSheet({super.key, this.onTap});
+  final String userId;
+  final String productId;
+  final String productType;
+
+  CreateNewReviewBottomSheet({
+    super.key,
+    required this.userId,
+    required this.productId,
+    required this.productType,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +39,10 @@ class CreateNewReviewBottomSheet extends StatelessWidget {
             ),
             SizedBox(height: 18.h),
 
+            // حقل كتابة المراجعة
             CustomFormField(
               hintText: "اكتب مراجعتك هنا...",
-              controller: reviewController,
+              controller: reviewsController.reviewController,
               maxLines: 10,
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -44,6 +53,7 @@ class CreateNewReviewBottomSheet extends StatelessWidget {
             ),
             SizedBox(height: 17.h),
 
+            // مكون اختيار التقييم (نجوم)
             Text("التقييم:", style: AppTextStyles.tajawaltextStyle16),
             SizedBox(height: 8.h),
             Obx(
@@ -51,10 +61,10 @@ class CreateNewReviewBottomSheet extends StatelessWidget {
                 children: List.generate(5, (index) {
                   int star = index + 1;
                   return IconButton(
-                    onPressed: () => selectedRating.value = star,
+                    onPressed: () => reviewsController.selectedRating.value = star,
                     icon: Icon(
                       Icons.star,
-                      color: star <= selectedRating.value ? Colors.amber : Colors.grey,
+                      color: star <= reviewsController.selectedRating.value ? Colors.amber : Colors.grey,
                       size: 32.w,
                     ),
                   );
@@ -63,20 +73,33 @@ class CreateNewReviewBottomSheet extends StatelessWidget {
             ),
             SizedBox(height: 24.h),
 
+            // زر الإرسال
             DefaultButton(
               text: 'إرسال المراجعة',
-              press: () {
+              press: () async {
                 if (!_formKey.currentState!.validate()) {
                   return;
                 }
 
-                if (selectedRating.value == 0) {
+                if (reviewsController.selectedRating.value == 0) {
                   SnackbarHelper.showErrorSnackbar("يرجى اختيار التقييم!");
                   return;
                 }
 
-                Get.back(); 
-                SnackbarHelper.showSuccessSnackbar("تم إرسال المراجعة بنجاح!");
+                // إرسال المراجعة
+                bool success = await reviewsController.addReview(
+                  userId: userId,
+                  productId: productId,
+                  productType: productType,
+                  
+                );
+
+                if (success) {
+                  Get.back(); // إغلاق الـ BottomSheet بعد الإرسال
+                  SnackbarHelper.showSuccessSnackbar("تم إرسال المراجعة بنجاح!");
+                } else {
+                  SnackbarHelper.showErrorSnackbar("حدث خطأ أثناء إرسال المراجعة، حاول مرة أخرى.");
+                }
               },
             ),
             SizedBox(height: 24.h),
