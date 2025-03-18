@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:team1_khayat/core/app_colors.dart';
 
 class OrderInfo extends StatelessWidget {
   final IconData? icon;
@@ -22,13 +23,13 @@ class OrderInfo extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start, 
           children: [
-          if (icon != null) Icon(icon, color: Colors.white, size: 18),
-          if (icon != null) SizedBox(width: 8.w),
+          // if (icon != null) Icon(icon, color: Colors.black, size: 18),
+          // if (icon != null) SizedBox(width: 8.w),
           Expanded(
             flex: 2, 
             child: Text(
               title,
-              style: TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Colors.grey),
             ),
           ),
           Expanded(
@@ -38,7 +39,7 @@ class OrderInfo extends StatelessWidget {
               maxLines: null, 
               overflow: TextOverflow.visible,
               style: TextStyle(
-                color: Colors.white,
+                color: AppColors.black,
                 fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
               ),
             ),

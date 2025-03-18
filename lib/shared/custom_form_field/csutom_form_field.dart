@@ -11,6 +11,8 @@ class CustomFormField extends StatefulWidget {
   final TextInputType keyboardType;
   final FormFieldValidator<String>? validator;
   final String? text;
+  int? maxLines ;
+  final void Function(String)? onChanged;
   TextEditingController? controller;
 
    CustomFormField({
@@ -22,6 +24,8 @@ class CustomFormField extends StatefulWidget {
     this.validator,
     this.text,
     this.controller,
+    this.maxLines,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -54,34 +58,36 @@ class _CustomFormFieldState extends State<CustomFormField> {
           ),
         const SizedBox(height: 8),
         TextFormField(
-          
-          controller:widget. controller,
-          obscureText: _isObscure,
-          keyboardType: widget.keyboardType,
-          validator: widget.validator,
-          decoration: InputDecoration(
-            fillColor: AppColors.whiteColor,
-            filled: true,
-            labelText: widget.labelText,
-            hintText: widget.hintText,
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            enabledBorder: InputBorder.none,
-            focusedBorder: InputBorder.none, 
-            suffixIcon: widget.obscureText
-                ? IconButton(
-                    icon: Icon(
-                      _isObscure ? Icons.visibility : Icons.visibility_off,
-                      color: Colors.grey,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _isObscure = !_isObscure;
-                      });
-                    },
-                  )
-                : null,
-          ),
-        ),
+  onChanged: widget.onChanged,
+  controller: widget.controller,
+  obscureText: _isObscure,
+  keyboardType: widget.keyboardType,
+  validator: widget.validator,
+  maxLines: widget.obscureText ? 1 : (widget.maxLines ?? 1),
+  decoration: InputDecoration(
+    fillColor: AppColors.whiteColor,
+    filled: true,
+    labelText: widget.labelText,
+    hintText: widget.hintText,
+    floatingLabelBehavior: FloatingLabelBehavior.always,
+    enabledBorder: InputBorder.none,
+    focusedBorder: InputBorder.none,
+    suffixIcon: widget.obscureText
+        ? IconButton(
+            icon: Icon(
+              _isObscure ? Icons.visibility : Icons.visibility_off,
+              color: Colors.grey,
+            ),
+            onPressed: () {
+              setState(() {
+                _isObscure = !_isObscure;
+              });
+            },
+          )
+        : null,
+  ),
+)
+
       ],
     );
   }

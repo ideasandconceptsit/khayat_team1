@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:team1_khayat/features/profile/controller/my_order_controller.dart';
 import 'package:team1_khayat/features/profile/view/widget/build_category_section.dart';
 import 'package:team1_khayat/features/profile/view/widget/order_pages.dart';
 import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
+import 'package:team1_khayat/shared/shimmer/redacted_effect.dart';
 
 class MyOrderView extends StatefulWidget {
   const MyOrderView({super.key});
@@ -11,37 +14,60 @@ class MyOrderView extends StatefulWidget {
 }
 
 class _MyOrderViewState extends State<MyOrderView> {
-      int selectedIndex = 0;
+  final OrderController orderController =
+      Get.put(OrderController());
+
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  CustomAppBar(
-        actionIconOnPressed: () {},
-        actionIcon:Icons.search_rounded ,
-        arrowBackVisibility: true,
-      ),
-      body: CustomScrollView(
-        slivers: [
-          const SliverToBoxAdapter(
-            child: SizedBox(height: 16),
-          ),
-          SliverToBoxAdapter(
-            child: BuildCategorySection(
-              selectedIndex: selectedIndex,
-              onCategorySelected: updateIndex,
+        appBar: CustomAppBar(
+          actionIconOnPressed: () {},
+          actionIcon: Icons.search_rounded,
+          arrowBackVisibility: true,
+        ),
+        body: CustomScrollView(
+          slivers: [
+            const SliverToBoxAdapter(
+              child: SizedBox(height: 16),
             ),
-          ),
-          SliverFillRemaining(
-            child: OrderPages(selectedIndex: selectedIndex)
-          ),
-        ],
-      ),
-    );
+            SliverPadding(
+              padding: const EdgeInsets.all(16.0),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate(
+                  [BuildCategorySection(selectedIndex: selectedIndex, onCategorySelected: updateIndex)],
+                ),
+              ),
+            ),
+           
+            Obx(() {
+              if (orderController.isLoading.value) {
+                return const SliverFillRemaining(
+                  child: LoadingShimmerEffect(),
+                );
+              } else if (orderController.orders.isEmpty) {
+                return const SliverFillRemaining(
+                  child: Center(
+                    child: Text(
+                      "No Orders",
+                    ),
+                  ),
+                );
+              } else {
+                return SliverFillRemaining(
+                  child: OrderPages(
+                    selectedIndex: selectedIndex,
+                    orders: orderController.orders,
+                  ),
+                );
+              }
+            }),
+          ],
+        ));
   }
-  
-  
-   void updateIndex(int index) {
+
+  void updateIndex(int index) {
     setState(() {
       selectedIndex = index;
     });

@@ -37,7 +37,7 @@ class AppStrings {
   static const String order = "Order";
   static const String orderDate = "Order Date";
   static const String quantity = "Quantity";
-  static const String trackingNumber = "Tracking number";
+  static const String trackingNumber = "Tracking number  ";
   static const String unpaid = "Unpaid";
   static const String itemsInOrder = "Items in order";
     static const String delivreymethod= "Deleviry Methoud";
@@ -57,7 +57,21 @@ class AppStrings {
   static const String sales = "Sales";
   static const String newarrivals= "New arrivals";
   static const String deliverystatuschanges = "Delivery status Changes";
-    static const String fullname = "Full Name";
+  static const String fullname = "Full Name";
+  
+
+  //! Forget Password
+  static const String forgotpassword= "Forgot Password";
+  static const String pleaseenterYourEmail= "Please enter your Email";
+  static const String send = "send";
+  static const String email = "Email";
+  static const String next = "Next";
+  static const String verification = "Verification";
+
+
+
+
+
 
 
 }

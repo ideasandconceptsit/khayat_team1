@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_colors.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
+import 'package:team1_khayat/features/profile/controller/my_order_controller.dart';
+import 'package:team1_khayat/features/profile/model/order_model.dart';
 import 'package:team1_khayat/features/profile/view/widget/build_item_list_order_details.dart';
 import 'package:team1_khayat/features/profile/view/widget/build_order_info_list.dart';
 import 'package:team1_khayat/features/profile/view/widget/header_order_details.dart';
 import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
 
 class DetailsView extends StatelessWidget {
-  const DetailsView({super.key});
+   DetailsView({super.key,  this.order});
+ 
+ final OrderModels? order; 
 
+ final OrderController orderController = Get.put(OrderController() ,permanent: true);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,12 +26,18 @@ class DetailsView extends StatelessWidget {
         arrowBackVisibility: true,
         actionIcon: Icons.search_outlined,
       ),
-      body: Padding(
+      body:Obx(() {
+        if (orderController.isLoading.value) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else {
+          return  Padding(
         padding: const EdgeInsets.all(15.0),
         child: CustomScrollView(
           slivers: [
-            const SliverToBoxAdapter(
-              child: HeaderOrderDetails(),
+            SliverToBoxAdapter(
+              child: HeaderOrderDetails(order: order!),
             ),
             SliverToBoxAdapter(
               child: SizedBox(
@@ -33,9 +45,20 @@ class DetailsView extends StatelessWidget {
               ),
             ),
             SliverToBoxAdapter(
-              child: Text( AppStrings.items,
-                  style: AppTextStyles.tajawaltextStyle14
-                      .copyWith(color: AppColors.grey)),
+              child: 
+               Text.rich(
+                TextSpan(
+                  text: AppStrings.items,
+                  style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
+                  children: [
+                    TextSpan(
+                      text: ' ${order?.items.length}',
+                      style: AppTextStyles.tajawaltextStyle14.copyWith(color: Colors.black),
+                    ),
+                  ],
+                ),
+              ), 
+             
             ),
             SliverToBoxAdapter(
               child: SizedBox(
@@ -43,22 +66,20 @@ class DetailsView extends StatelessWidget {
               ),
             ),
             SliverList.builder(
-              itemCount: 2,
+              itemCount: order?.items.length ?? 0,
               itemBuilder: (context, index) {
-                return const BuildItemListOrderDetails();
+                return  BuildItemListOrderDetails(order: order);
               },
             ),
-            SliverPadding(
-              padding: const EdgeInsets.all(16.0),
-              sliver: SliverList(
-                delegate: SliverChildListDelegate(
-                  [const BuildOderInfoList()],
-                ),
-              ),
-            ),
+           SliverList(delegate: SliverChildListDelegate([
+               BuildOderInfoList( order: order),
+            ])),
+           
           ],
         ),
-      ),
+      );
+        }
+      }),
     );
   }
   

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:team1_khayat/core/app_colors.dart';
 import 'package:team1_khayat/core/app_styles.dart';
+import 'package:team1_khayat/features/profile/model/order_model.dart';
 
 
 class BuildItemListOrderDetails extends StatelessWidget {
-  const BuildItemListOrderDetails({super.key});
+  const BuildItemListOrderDetails({super.key, this.order});
+ final OrderModels? order; 
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +37,12 @@ class BuildItemListOrderDetails extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Pullover',
+                  order!.items[0].item.name,
                   style: AppTextStyles.tajawaltextStyle16,
                 ),
                 const SizedBox(height: 1),
                 Text(
-                  'Mango',
+                  order!.items[0].item.category.name,
                   style: AppTextStyles.tajawaltextStyle11.copyWith(
                     color: AppColors.grey,
                   ),
@@ -54,7 +56,7 @@ class BuildItemListOrderDetails extends StatelessWidget {
                 ),
                 const SizedBox(height: 11),
                 Text(
-                  'Units: 1',
+                  'Units: ${ order!.items[0].quantity}',
                   style: AppTextStyles.tajawaltextStyle11.copyWith(
                     color: AppColors.grey,
                   ),
@@ -68,7 +70,8 @@ class BuildItemListOrderDetails extends StatelessWidget {
             children: [
               const SizedBox(height: 60), // To push the text to the bottom
               Text(
-                '51\$',
+                '${order!.items[0].totalPrice}\$',
+               
                 style: AppTextStyles.tajawaltextStyle14.copyWith(
                   color: AppColors.black,
                 ),
