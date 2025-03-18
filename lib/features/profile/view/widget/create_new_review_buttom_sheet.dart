@@ -29,34 +29,15 @@ class CreateNewReviewBottomSheet extends StatelessWidget {
       child: SingleChildScrollView(
         padding: EdgeInsets.all(16.w),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(
-              child: Text(
-                'أضف مراجعتك',
-                style: AppTextStyles.tajawaltextStyle18,
-              ),
-            ),
-            SizedBox(height: 18.h),
+            Text(
+              'What is you rate ?',
+              style: AppTextStyles.tajawaltextStyle18,
+            ), 
+                SizedBox(height: 18.h),
 
-            // حقل كتابة المراجعة
-            CustomFormField(
-              hintText: "اكتب مراجعتك هنا...",
-              controller: reviewsController.reviewController,
-              maxLines: 10,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return "يرجى إدخال المراجعة";
-                }
-                return null;
-              },
-            ),
-            SizedBox(height: 17.h),
-
-            // مكون اختيار التقييم (نجوم)
-            Text("التقييم:", style: AppTextStyles.tajawaltextStyle16),
-            SizedBox(height: 8.h),
-            Obx(
+             Obx(
               () => Row(
                 children: List.generate(5, (index) {
                   int star = index + 1;
@@ -71,11 +52,34 @@ class CreateNewReviewBottomSheet extends StatelessWidget {
                 }),
               ),
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height: 34.h),
+             Align(
+              alignment: Alignment.center,
+               child: Text(
+                 'Please share your opinionabout the product',
+                 textAlign: TextAlign.center,
+                 style: AppTextStyles.tajawaltextStyle18,
+               ),
+             ), 
+                SizedBox(height: 18.h),
+  
+            CustomFormField(
+              hintText: "Your review",
+              controller: reviewsController.reviewController,
+              maxLines: 10,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "يرجى إدخال المراجعة";
+                }
+                return null;
+              },
+            ),
+            SizedBox(height: 17.h),
 
-            // زر الإرسال
+       
+
             DefaultButton(
-              text: 'إرسال المراجعة',
+              text: 'SEND REVIEW',
               press: () async {
                 if (!_formKey.currentState!.validate()) {
                   return;
@@ -86,7 +90,6 @@ class CreateNewReviewBottomSheet extends StatelessWidget {
                   return;
                 }
 
-                // إرسال المراجعة
                 bool success = await reviewsController.addReview(
                   userId: userId,
                   productId: productId,
@@ -95,7 +98,7 @@ class CreateNewReviewBottomSheet extends StatelessWidget {
                 );
 
                 if (success) {
-                  Get.back(); // إغلاق الـ BottomSheet بعد الإرسال
+                  Get.back();
                   SnackbarHelper.showSuccessSnackbar("تم إرسال المراجعة بنجاح!");
                 } else {
                   SnackbarHelper.showErrorSnackbar("حدث خطأ أثناء إرسال المراجعة، حاول مرة أخرى.");

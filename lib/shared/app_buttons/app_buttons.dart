@@ -31,7 +31,7 @@ class _DefaultButtonState extends State<DefaultButton> {
           height: 48.h,
           decoration: BoxDecoration(
             color: AppColors.primaryColor,
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(5),
           ),
           alignment: Alignment.center,
           child: Text(

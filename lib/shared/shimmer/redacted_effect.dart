@@ -77,10 +77,7 @@ class LoadingTextEffect extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text("").redacted(context: context, redact: true),
-        const SizedBox(height: 8),
-        const Text("").redacted(context: context, redact: true),
-        const SizedBox(height: 8),
-        const Text("").redacted(context: context, redact: true),
+      
       ],
     );
   }
