@@ -19,7 +19,7 @@ class ReviewSummary extends StatelessWidget {
           children: [
             Expanded(child: RatingBarWidget()),
             SizedBox(width: 16.h),
-            Text("Ratings ${getTotalRatings()}", style: AppTextStyles.tajawaltextStyle14),
+            Text("ratings ${getTotalRatings()}", style: AppTextStyles.tajawaltextStyle14),
           ],
         ));
   }

@@ -44,6 +44,21 @@ class ReviewAndRatingScreen extends StatelessWidget {
                 }),
               ),
             ),
+             SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Obx(() {
+                  return reviewController.isLoading.value 
+                      ? const LoadingTextEffect()
+                      : Text('review ${reviewController.reviews.length.toString()}',
+                      style: AppTextStyles.tajawaltextStyle24,
+                      );
+                }),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(height:20.h ,),
+            ),
             Obx(() {
               return reviewController.isLoading.value
                   ? const SliverToBoxAdapter(child: LoadingShimmerEffect())
@@ -53,7 +68,10 @@ class ReviewAndRatingScreen extends StatelessWidget {
                         delegate: SliverChildBuilderDelegate(
                           (context, index) {
                             final review = reviewController.reviews[index];
-                            return ReviewItem(review: review);
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ReviewItem(review: review),
+                            );
                           },
                           childCount: reviewController.reviews.length,
                         ),
@@ -98,6 +116,4 @@ class ReviewAndRatingScreen extends StatelessWidget {
       ),
     );
   }
-
- 
 }

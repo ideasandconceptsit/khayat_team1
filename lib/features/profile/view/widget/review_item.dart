@@ -14,41 +14,56 @@ class ReviewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Card(
-        elevation: 2,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                
-                children: [
-                  CustomCircleAvatar(path:AppAssets.imagetest ,size: 40,),
-                  SizedBox(width: 8.h),
-                  Text(review.user.name, style: const TextStyle(fontWeight: FontWeight.bold)),
+      child: Stack(
+         clipBehavior: Clip.none,
+        children: [
+           Card(
+             clipBehavior: Clip.none,
+          elevation: 0,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(review.user.name,
+                    style: const TextStyle(fontWeight: FontWeight.bold)),
+                SizedBox(width: 10.h),
+                Row(
+                  children: [
+                    Row(
+                      children: List.generate(
+                        review.ratings,
+                        (index) =>
+                            const Icon(Icons.star, color: Colors.amber, size: 20),
+                      )..addAll(
+                          List.generate(
+                              5 - review.ratings,
+                              (index) => const Icon(Icons.star,
+                                  color: Colors.grey, size: 20)),
+                        ),
+                    ),
                     const Spacer(),
-                    Text(review.createdAt.toString().split(' ')[0], style: const TextStyle(color: Colors.grey, fontSize: 12)),
-                ],
-              ),
-              SizedBox(height: 8.h),
-              Text(review.review , style: AppTextStyles.tajawaltextStyle14),
-              Row(
-                children: List.generate(
-                  review.ratings,
-                  (index) => const Icon(Icons.star, color: Colors.amber, size: 20),
-                )..addAll(
-                    List.generate(5 - review.ratings, (index) => const Icon(Icons.star, color: Colors.grey, size: 20)),
-                  ),
-              ),
-              SizedBox(height: 8.h),
-              Text(review.productType, style: const TextStyle(fontSize: 14, color: Colors.black87)),
-            ],
+                    Text(review.createdAt.toString().split(' ')[0],
+                        style: const TextStyle(color: Colors.grey, fontSize: 12)),
+                  ],
+                ),
+                SizedBox(height: 11.h),
+                Text(review.review, style: AppTextStyles.tajawaltextStyle14),
+                SizedBox(width: 12.h),
+                
+
+              ],
+            ),
           ),
         ),
+        Positioned(
+           top:-27 ,
+          child:CustomCircleAvatar(path:AppAssets.imagetest ,size: 40,),
+),
+SizedBox(width: 8.h),
+        ],
       ),
-    
     );
   }
 }

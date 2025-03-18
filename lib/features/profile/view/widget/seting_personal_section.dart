@@ -22,10 +22,10 @@ class SettingsPersonalInformationSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-       _buildSectionTitle(AppStrings.personalinformation),
-       CustomFormField( labelText: AppStrings.fullname,),
+       _buildSectionTitle(AppStrings.personalinformation.tr),
+       CustomFormField( labelText: AppStrings.fullname.tr,),
        SizedBox(height:24.h ,),
-       const CustomDatePickerField(label:  AppStrings.dateofbirthday,),
+        CustomDatePickerField(label:  AppStrings.dateofbirthday.tr,),
        
         SizedBox(height: 54.h),
         _buildSectionTitle( AppStrings.password, actionText:  AppStrings.change,
@@ -42,10 +42,10 @@ class SettingsPersonalInformationSection extends StatelessWidget {
         ),
         CustomFormField(labelText:  AppStrings.password ,obscureText: true , hintText: '*********',),
         SizedBox(height: 54.h),
-        _buildSectionTitle( AppStrings.notifications),
-      const CustomSwitchTile(title: AppStrings.sales, initialValue: true),
-        const CustomSwitchTile(title:  AppStrings.newarrivals, initialValue: false),
-        const CustomSwitchTile(title:  AppStrings.deliverystatuschanges, initialValue: false),
+        _buildSectionTitle( AppStrings.notifications.tr),
+       CustomSwitchTile(title: AppStrings.sales.tr, initialValue: true),
+         CustomSwitchTile(title:  AppStrings.newarrivals.tr, initialValue: false),
+         CustomSwitchTile(title:  AppStrings.deliverystatuschanges.tr, initialValue: false),
       ],
     );
   }
