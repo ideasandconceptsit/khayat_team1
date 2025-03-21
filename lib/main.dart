@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       locale: local ?? const Locale('ar'),
       fallbackLocale: const Locale('ar'),
       theme: AppThemes.lightTheme,
-      initialRoute: Routes.bottomNavBar, // تغيير هنا حسب الحاجة
+      initialRoute: Routes.addFavorites, // تغيير هنا حسب الحاجة
       getPages: AppPages.pages,
       initialBinding: AppBinding(),
     );
