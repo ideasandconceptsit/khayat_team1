@@ -27,6 +27,12 @@ class AppStrings {
   static const String settings = "Settings";
   static const String notifications = "Notifications";
   static const String password = "Password";
+    static const String language = "Language";
+        static const String changeInformation = "Change Information";
+                static const String changePassword = "Change Password";
+
+
+
 
   //! My Orders View
   static const String processing = "Processing";

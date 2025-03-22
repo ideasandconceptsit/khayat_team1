@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/features/profile/view/widget/header_view_widget.dart';
 import 'package:team1_khayat/features/profile/view/widget/seting_personal_section.dart';
@@ -20,13 +21,13 @@ class SettingView extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(child: HeaderSection(text: AppStrings.settings)),
+            SliverToBoxAdapter(child: HeaderSection(text: AppStrings.settings.tr)),
             SliverToBoxAdapter(
               child: SizedBox(height: 15.h),
             ),
             SliverList(
               delegate: SliverChildListDelegate(
-                [const SettingsPersonalInformationSection(),
+                [ SettingsPersonalInformationSection(),
                 
 
                 ],

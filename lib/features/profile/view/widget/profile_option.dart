@@ -25,10 +25,10 @@ class ProfileOption extends StatelessWidget {
             subtitle,
             style: AppTextStyles.tajawaltextStyle11,
           ),
-          trailing: Icon(Icons.arrow_forward_ios, color: Colors.black, size: 16),
+          trailing: const Icon(Icons.arrow_forward_ios, color: Colors.black, size: 16),
           onTap: onTap,
         ),
-        Divider(color: AppColors.black1),
+        Divider(color: const Color(0xffF4F4F4)),
       ],
     );
   }

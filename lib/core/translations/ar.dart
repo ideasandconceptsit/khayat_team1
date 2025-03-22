@@ -67,6 +67,12 @@ const Map<String, String> ar = {
   AppStrings.settings: "الإعدادات",
   AppStrings.notifications: "الإشعارات",
   AppStrings.password: "كلمة المرور",
+    AppStrings.language: " اللغة",
+        AppStrings.changeInformation: " تغيير المعلومات",
+            AppStrings.changePassword: " تغيير كلمة المرور",
+
+
+
 
   //! My Orders View
   AppStrings.processing: "قيد المعالجة",

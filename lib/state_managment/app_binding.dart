@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
+import 'package:team1_khayat/features/profile/controller/language_controller.dart';
 
-import '../core/translations/language_controller.dart';
 import 'app_state_controller.dart';
 
 

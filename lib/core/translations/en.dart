@@ -67,6 +67,12 @@ const Map<String, String> en = {
   AppStrings.settings: "Settings",
   AppStrings.notifications: "Notifications",
   AppStrings.password: "Password",
+    AppStrings.language: " Language",
+        AppStrings.changeInformation: " Change Information",
+            AppStrings.changePassword: " Change Password",
+
+
+
 
   //! My Orders View
   AppStrings.processing: "Processing",

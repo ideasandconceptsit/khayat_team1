@@ -32,7 +32,7 @@ class ProfileController extends GetxController {
         userId.value = userModel.value!.id ;
 
         box.write("userId", userId.value);
-        box.write("cachedPassword", userModel.value!.password ?? ""); 
+        box.write("cachedPassword", userModel.value!.password ); 
        log("✅ [ProfileController] -   يوزر المستخدم تم تخزينه");
 
         log("✅ [ProfileController] - كلمة المرور القديمة تم تخزينها");
