@@ -9,26 +9,28 @@ class ReviewsRepository {
   ReviewsRepository(this._apiService);
 
   Future<List<ReviewModel>?> fetchReviews() async {
-    try {
-      log("🔵 [ReviewsRepository] - Fetching reviews...");
-      final response = await _apiService.getRequest(
-        EndPoint.baseUrl,
-        EndPoint.getAllReview,
-         
-      );
+  try {
+    log("🔵 [ReviewsRepository] - Fetching all reviews...");
+    
+     final response = await _apiService.getRequest(
+      EndPoint.baseUrl,
+      EndPoint.getAllReview,
+    );
 
-      if (response != null && response is Map<String, dynamic>) {
-        final List<dynamic> data = response["data"] ?? [];
-        return data.map((review) => ReviewModel.fromJson(review)).toList();
-      } else {
-        log("❌ [ReviewsRepository] - Invalid response format");
-        return null;
-      }
-    } catch (e) {
-      log("❌ [ReviewsRepository] - Error fetching reviews: $e");
+    if (response != null && response is Map<String, dynamic>) {
+      final List<dynamic> data = response["data"] ?? [];
+      return data.map((review) => ReviewModel.fromJson(review)).toList();
+    } else {
+      log("❌ [ReviewsRepository] - Invalid response format");
       return null;
     }
+  } catch (e) {
+    log("❌ [ReviewsRepository] - Error fetching reviews: $e");
+    return null;
   }
+}
+
+
 
   Future<bool> createReview(String review, int rating, String userId, String productId, String productType) async {
   try {

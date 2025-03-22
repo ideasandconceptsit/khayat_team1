@@ -1,12 +1,14 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:team1_khayat/features/profile/model/review_model.dart';
 import 'package:team1_khayat/features/profile/repos/review_repository.dart';
 import 'package:team1_khayat/shared/app_snakbar/app_snackbar.dart';
 
 class ReviewsController extends GetxController {
   final ReviewsRepository _reviewsRepository;
+  final box = GetStorage(); 
 
   ReviewsController(this._reviewsRepository);
 
@@ -22,29 +24,47 @@ class ReviewsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchReviews();
+    fetchUserReviews();
   }
 
-  Future<void> fetchReviews() async {
-    try {
-      isLoading.value = true;
-      final fetchedReviews = await _reviewsRepository.fetchReviews();
+ Future<void> fetchUserReviews() async {
+  try {
+    isLoading.value = true;
 
-      if (fetchedReviews != null && fetchedReviews.isNotEmpty) {
-        reviews.assignAll(fetchedReviews);
-        log("✅ [ReviewsController] - Loaded ${reviews.length} reviews");
+    // ✅ استرجاع userId من GetStorage
+    final String? userId = box.read('userId');
 
-        SnackbarHelper.showSuccessSnackbar("تم تحميل المراجعات بنجاح");
+    if (userId == null || userId.isEmpty) {
+      log("❌ [ReviewsController] - User ID not found");
+      SnackbarHelper.showErrorSnackbar("تعذر العثور على بيانات المستخدم.");
+      return;
+    }
+
+    // ✅ جلب جميع المراجعات
+    final allReviews = await _reviewsRepository.fetchReviews();
+
+    if (allReviews != null && allReviews.isNotEmpty) {
+      // ✅ تصفية المراجعات الخاصة بالمستخدم
+      final userReviews = allReviews.where((review) => review.user.id == userId).toList();
+
+      if (userReviews.isNotEmpty) {
+        reviews.assignAll(userReviews);
+        log("✅ [ReviewsController] - Loaded ${reviews.length} reviews for user $userId");
       } else {
-        log("❌ [ReviewsController] - فشل تحميل المراجعات");
+        log("❌ [ReviewsController] - No reviews found for user $userId");
         SnackbarHelper.showErrorSnackbar("لم يتم العثور على مراجعات.");
       }
-    } catch (e) {
-      SnackbarHelper.showErrorSnackbar("حدث خطأ أثناء تحميل المراجعات: ${e.toString()}");
-    } finally {
-      isLoading.value = false;
+    } else {
+      log("❌ [ReviewsController] - Failed to load reviews");
+      SnackbarHelper.showErrorSnackbar("تعذر تحميل المراجعات.");
     }
+  } catch (e) {
+    log("❌ [ReviewsController] - Error fetching user reviews: $e");
+    SnackbarHelper.showErrorSnackbar("حدث خطأ أثناء تحميل المراجعات.");
+  } finally {
+    isLoading.value = false;
   }
+}
 
 
     Future<bool> addReview({
@@ -76,7 +96,6 @@ class ReviewsController extends GetxController {
     }
   }
 
-  // دالة لتفريغ الحقول بعد الإرسال
   void clearFields() {
     reviewController.clear();
     selectedRating.value = 0;

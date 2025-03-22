@@ -14,6 +14,7 @@ class ProfileController extends GetxController {
 
   Rx<UserModel?> userModel = Rx<UserModel?>(null);
   RxBool isLoading = false.obs;
+  RxString userId = "".obs;
   TextEditingController oldPasswordController = TextEditingController();
 
   @override
@@ -28,7 +29,12 @@ class ProfileController extends GetxController {
       userModel.value = await _profileRepository.fetchUserData("67c3b6e5e2e27877cd10d42b");
 
       if (userModel.value != null) {
+        userId.value = userModel.value!.id ;
+
+        box.write("userId", userId.value);
         box.write("cachedPassword", userModel.value!.password ?? ""); 
+       log("✅ [ProfileController] -   يوزر المستخدم تم تخزينه");
+
         log("✅ [ProfileController] - كلمة المرور القديمة تم تخزينها");
       } else {
         SnackbarHelper.showErrorSnackbar("تعذر جلب بيانات المستخدم، حاول مرة أخرى.");

@@ -22,12 +22,14 @@ class OrderController extends GetxController {
       isLoading(true);
       print("🟡 [OrderController] - جاري تحميل الطلبات...");
 
-      const userId = "67d24594d7b54e9304f7194e";
+      const userId = "67db5197ff81f66ffd2341ee";
       final fetchedOrders = await _orderRepository.getSpecificOrder(userId: userId);
 
       if (fetchedOrders != null && fetchedOrders.isNotEmpty) {
         orders.assignAll(fetchedOrders);
         print("✅ [OrderController] - تم تحميل ${orders.length} طلب.");
+                print("✅ [OrderController] - عدد ليست الاوردر  ${orders[0].items.length} طلب.");
+
       } else {
         print("⚠️ [OrderController] - لم يتم العثور على أي طلبات.");
         SnackbarHelper.showErrorSnackbar("لم يتم العثور على أي طلبات.");
