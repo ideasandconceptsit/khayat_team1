@@ -118,4 +118,12 @@ const Map<String, String> en = {
   AppStrings.ratings: "Ratings",
   AppStrings.review: "Review",
   AppStrings.writeAreview: "Write a review",
+
+  //!  CouponView
+  AppStrings.promoCodeTitle: "Discount Coupons",
+  AppStrings.noCouponsAvailable: "No coupons available",
+  AppStrings.expiryDate: "Expiry Date",
+  AppStrings.useCoupon: "Use Coupon",
+  AppStrings.noCode: "No Code",
+  AppStrings.notAvailable: "Not Available",
 };

@@ -113,12 +113,19 @@ const Map<String, String> ar = {
   AppStrings.verification: " تحقق",
   AppStrings.next: " التالي",
 
-    //! my Rating View
+  //! my Rating View
 
-      AppStrings.ratingAndReview: " التقييم و التقييمات",
+  AppStrings.ratingAndReview: " التقييم و التقييمات",
   AppStrings.ratings: " التقييمات",
   AppStrings.review: " التقييم",
   AppStrings.writeAreview: " كتابة التقييم",
 
+  //! CouponView
 
+  AppStrings.promoCodeTitle: "كوبونات الخصم",
+  AppStrings.noCouponsAvailable: "لا توجد كوبونات متاحة",
+  AppStrings.expiryDate: "تاريخ الانتهاء",
+  AppStrings.useCoupon: "استخدام الكوبون",
+  AppStrings.noCode: "بدون كود",
+  AppStrings.notAvailable: "غير متاح",
 };

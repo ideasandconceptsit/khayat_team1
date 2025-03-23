@@ -27,7 +27,7 @@ class BuildOderInfoList extends StatelessWidget {
             title: AppStrings.shippingAddresses.tr,
             value: '3 Newbridge Court, Chino Hills, CA 91709, United States'),
         OrderInfo(
-            title: AppStrings.paymentMethods,
+            title: AppStrings.paymentMethods.tr,
             value: '${order!.paymentMethod} ',
             icon: Icons.credit_card),
          OrderInfo(

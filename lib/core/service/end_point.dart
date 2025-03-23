@@ -8,6 +8,8 @@ class EndPoint {
   static const String forgetPassword= '/api/auth/forgotPassword';
   static const String verifyResetCode= '/api/auth/verifyResetCode';
   static const String resetPassword= '/api/auth/resetPassword';
+    static const String coupons= '/api/coupons/';
+
 
 
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_strings.dart';
+import 'package:team1_khayat/features/profile/view/promo_code_view.dart';
 import 'package:team1_khayat/features/profile/view/widget/profile_option.dart';
 import 'package:team1_khayat/shared/navigation_service.dart';
 import 'package:team1_khayat/state_managment/app_routers.dart';
@@ -22,7 +23,11 @@ class SliverListProfileOption extends StatelessWidget {
         }),
       ProfileOption(title: AppStrings.shippingAddresses.tr, subtitle: AppStrings.numAddresses.tr),
       ProfileOption(title: AppStrings.paymentMethods.tr, subtitle: 'Visa **34'),
-      ProfileOption(title: AppStrings.promoCodes.tr, subtitle: AppStrings.youHaveSpecialPromoCodes.tr),
+      ProfileOption(title: AppStrings.promoCodes.tr, subtitle: AppStrings.youHaveSpecialPromoCodes.tr,
+      onTap: () {
+       Get.to(() =>  PromoCodeView());
+
+      },),
       ProfileOption(title: AppStrings.myReviews.tr, subtitle:AppStrings.reviewsForItems.tr,
       onTap: () {
        NavigationService.navigateToNamed( Routes.reviewAndRatingScreen);

@@ -81,4 +81,12 @@ class AppStrings {
   static const String ratings = "ratings";
   static const String review = "Review";
   static const String writeAreview = "Write a review";
+
+    //! Coupon View 
+  static const String promoCodeTitle = "Discount Coupons";
+  static const String noCouponsAvailable = "No coupons available";
+  static const String expiryDate = "Expiry Date";
+  static const String useCoupon = "Use Coupon";
+  static const String noCode = "No Code";
+  static const String notAvailable = "Not Available";
 }
