@@ -93,7 +93,9 @@ class OrderCard extends StatelessWidget {
                 children: [
                   OutlinedButton(
                     onPressed: () {
-                      Get.to(() => DetailsView(order: order));
+                      Get.to(() => DetailsView(order: order ,
+                     
+                      ));
                     },
                     child: Text(
                       AppStrings.details.tr,

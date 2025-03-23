@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_colors.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
@@ -18,25 +19,25 @@ class BuildOderInfoList extends StatelessWidget {
         Divider(color: AppColors.grey),
         const SizedBox(height: 10),
         Text(
-          AppStrings.orderInformation,
+          AppStrings.orderInformation.tr,
           style: AppTextStyles.tajawaltextStyle14,
         ),
         const SizedBox(height: 10),
-        const OrderInfo(
-            title: AppStrings.shippingAddresses,
+         OrderInfo(
+            title: AppStrings.shippingAddresses.tr,
             value: '3 Newbridge Court, Chino Hills, CA 91709, United States'),
         OrderInfo(
             title: AppStrings.paymentMethods,
             value: '${order!.paymentMethod} ',
             icon: Icons.credit_card),
-        const OrderInfo(
-            title: AppStrings.delivreymethod, value: 'FedEx, 3 days, 15\$'),
+         OrderInfo(
+            title: AppStrings.delivreymethod.tr, value: 'FedEx, 3 days, 15\$'),
         OrderInfo(
-          title: AppStrings.discount,
+          title: AppStrings.discount.tr,
           value: '${order!.discount}% : Personal promo code',
         ),
         OrderInfo(
-            title: AppStrings.totalAmount,
+            title: AppStrings.totalAmount.tr,
             value: '${order!.totalPrice}\$',
             isBold: true),
         const SizedBox(height: 20),
@@ -52,8 +53,8 @@ class BuildOderInfoList extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {},
-                child: const Text(AppStrings.reorder,
-                    style: TextStyle(color: AppColors.blackColor)),
+                child:  Text(AppStrings.reorder.tr,
+                    style: const TextStyle(color: AppColors.blackColor)),
               ),
             ),
             const SizedBox(width: 10),
@@ -69,8 +70,8 @@ class BuildOderInfoList extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: const Text(AppStrings.home,
-                    style: TextStyle(color: Colors.white)),
+                child:  Text(AppStrings.home.tr,
+                    style: const TextStyle(color: Colors.white)),
               ),
             ),
           ],

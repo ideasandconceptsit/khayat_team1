@@ -16,7 +16,7 @@ class DetailsView extends StatelessWidget {
  
  final OrderModels? order; 
 
- final OrderController orderController = Get.put(OrderController() ,permanent: true);
+ final OrderController orderController = Get.put(OrderController() );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,12 +65,12 @@ class DetailsView extends StatelessWidget {
                 height: 13.h,
               ),
             ),
-            SliverList.builder(
-              itemCount: order?.items.length ?? 0,
-              itemBuilder: (context, index) {
-                return  BuildItemListOrderDetails(order: order);
-              },
-            ),
+           SliverList.builder(
+  itemCount: order?.items.length ?? 0,
+  itemBuilder: (context, index) {
+    return BuildItemListOrderDetails(orderItem: order!.items[index]);
+  },
+),
            SliverList(delegate: SliverChildListDelegate([
                BuildOderInfoList( order: order),
             ])),
