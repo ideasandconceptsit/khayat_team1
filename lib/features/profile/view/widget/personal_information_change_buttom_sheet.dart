@@ -31,7 +31,7 @@ class PersonalInformationChangeBottomSheet extends StatelessWidget {
             SizedBox(height: 18.h),
 
             CustomFormField(
-              hintText: "New Name",
+              hintText: AppStrings.newName.tr,
               controller: _profileController.oldPasswordController,
               obscureText: true,
                
@@ -45,7 +45,7 @@ class PersonalInformationChangeBottomSheet extends StatelessWidget {
              SizedBox(height: 17.h), 
 
             CustomFormField(
-              hintText: " New Email",
+              hintText:  AppStrings.newEmail.tr,
               controller: _resetPasswordController.newPasswordController,
               obscureText: true,
               validator: (value) {
@@ -59,7 +59,7 @@ class PersonalInformationChangeBottomSheet extends StatelessWidget {
             SizedBox(height: 32.h),
 
             DefaultButton(
-              text: 'Save Changes',
+              text:  AppStrings.saveChanges.tr,
               press: () async {
                 if (!_formKey.currentState!.validate()) {
                   return;

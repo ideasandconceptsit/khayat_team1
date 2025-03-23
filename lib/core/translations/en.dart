@@ -67,12 +67,12 @@ const Map<String, String> en = {
   AppStrings.settings: "Settings",
   AppStrings.notifications: "Notifications",
   AppStrings.password: "Password",
-    AppStrings.language: " Language",
-        AppStrings.changeInformation: " Change Information",
-            AppStrings.changePassword: " Change Password",
-
-
-
+  AppStrings.language: " Language",
+  AppStrings.changeInformation: " Change Information",
+  AppStrings.changePassword: " Change Password",
+  AppStrings.newEmail: "New Email",
+  AppStrings.newName: "New Name",
+  AppStrings.saveChanges: "Save Changes",
 
   //! My Orders View
   AppStrings.processing: "Processing",
@@ -103,4 +103,19 @@ const Map<String, String> en = {
   AppStrings.newarrivals: "New Arrivals",
   AppStrings.deliverystatuschanges: "Delivery Status Changes",
   AppStrings.fullname: "Full Name",
+  AppStrings.savePassword: " Save Password",
+  AppStrings.oldPassword: "Old Password",
+  AppStrings.newPassword: " New Password",
+  AppStrings.reapeatNewPassword: "Reapeat New Password",
+  AppStrings.forgotpassword: "Forgot Password",
+  AppStrings.pleaseenterYourEmail: "Please enter your email",
+  AppStrings.send: "Send",
+  AppStrings.verification: "Verification",
+  AppStrings.next: "Next",
+
+  //! my Rating View
+  AppStrings.ratingAndReview: "Rating & Reviews ",
+  AppStrings.ratings: "Ratings",
+  AppStrings.review: "Review",
+  AppStrings.writeAreview: "Write a review",
 };

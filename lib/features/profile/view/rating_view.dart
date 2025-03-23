@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/core/service/api_service.dart';
 import 'package:team1_khayat/features/profile/controller/review_controller.dart';
@@ -31,7 +32,7 @@ class ReviewAndRatingScreen extends StatelessWidget {
             SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.all(16.w),
-                child: Text("Rating & Reviews", style: AppTextStyles.tajawaltextStyle34),
+                child: Text(AppStrings.ratingAndReview.tr, style: AppTextStyles.tajawaltextStyle34),
               ),
             ), 
             SliverToBoxAdapter(
@@ -50,7 +51,7 @@ class ReviewAndRatingScreen extends StatelessWidget {
                 child: Obx(() {
                   return reviewController.isLoading.value 
                       ? const LoadingTextEffect()
-                      : Text('review ${reviewController.reviews.length.toString()}',
+                      : Text('${AppStrings.review.tr } ${reviewController.reviews.length.toString()}',
                       style: AppTextStyles.tajawaltextStyle24,
                       );
                 }),
@@ -99,12 +100,12 @@ class ReviewAndRatingScreen extends StatelessWidget {
                         ),
                       );
                     },
-                    child: const Row(
+                    child:  Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.edit, color: Colors.white),
-                        SizedBox(width: 8),
-                        Text("Write a review", style: TextStyle(color: Colors.white)),
+                        const Icon(Icons.edit, color: Colors.white),
+                        SizedBox(width: 8.w),
+                        Text(AppStrings.writeAreview.tr, style: const TextStyle(color: Colors.white)),
                       ],
                     ),
                   ),

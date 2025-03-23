@@ -11,7 +11,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        final ProfileController profileController = Get.put(ProfileController(ProfileRepository(ApiService())));
+        Get.put(ProfileController(ProfileRepository(ApiService())));
 
     return  Scaffold(
           appBar:  CustomAppBar( 

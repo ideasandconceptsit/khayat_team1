@@ -96,7 +96,7 @@ class OrderCard extends StatelessWidget {
                       Get.to(() => DetailsView(order: order));
                     },
                     child: Text(
-                      'Details',
+                      AppStrings.details.tr,
                       style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.black),
                     ),
                   ),

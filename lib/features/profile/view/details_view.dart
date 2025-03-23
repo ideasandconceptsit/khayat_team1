@@ -22,7 +22,7 @@ class DetailsView extends StatelessWidget {
     return Scaffold(
       appBar:  CustomAppBar(
         actionIconOnPressed: () {},
-        title:  AppStrings.orderdetails,
+        title:  AppStrings.orderdetails.tr,
         arrowBackVisibility: true,
         actionIcon: Icons.search_outlined,
       ),

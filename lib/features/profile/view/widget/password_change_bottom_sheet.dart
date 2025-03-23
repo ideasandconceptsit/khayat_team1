@@ -31,7 +31,7 @@ class PasswordChangeBottomSheet extends StatelessWidget {
             SizedBox(height: 18.h),
 
             CustomFormField(
-              hintText: "Old Password",
+              hintText:  AppStrings.oldPassword.tr,
               controller: _profileController.oldPasswordController,
               obscureText: true,
                
@@ -48,29 +48,14 @@ class PasswordChangeBottomSheet extends StatelessWidget {
             onTap: onTap,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text('Forgot Password', style: AppTextStyles.tajawaltextStyle14),
+              child: Text(AppStrings.forgotpassword.tr, style: AppTextStyles.tajawaltextStyle14),
             ),
           ),
             SizedBox(height: 14.h),
 
-            // CustomFormField(
-            //   hintText: "Email",
-            //   controller: _resetPasswordController.emailController,
-            //    maxLines: 1,
-            //   validator: (value) {
-            //     if (value == null || value.isEmpty) {
-            //       return "يرجى إدخال البريد الإلكتروني";
-            //     }
-            //     if (!value.contains('@')) {
-            //       return "البريد الإلكتروني غير صالح";
-            //     }
-            //     return null;
-            //   },
-            // ),
-            // SizedBox(height: 14.h),
 
             CustomFormField(
-              hintText: " New Password",
+              hintText: AppStrings.newPassword.tr,
               controller: _resetPasswordController.newPasswordController,
               obscureText: true,
               validator: (value) {
@@ -83,7 +68,7 @@ class PasswordChangeBottomSheet extends StatelessWidget {
             SizedBox(height: 14.h),
 
             CustomFormField(
-              hintText: "Reapeat New Password",
+              hintText: AppStrings.reapeatNewPassword.tr,
               controller: _resetPasswordController.confirmPasswordController,
               obscureText: true,
               validator: (value) {
@@ -96,7 +81,7 @@ class PasswordChangeBottomSheet extends StatelessWidget {
             SizedBox(height: 32.h),
 
             DefaultButton(
-              text: 'Save Password',
+              text: AppStrings.savePassword.tr,
               press: () async {
                 if (!_formKey.currentState!.validate()) {
                   return;

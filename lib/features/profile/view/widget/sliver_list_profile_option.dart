@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/features/profile/view/widget/profile_option.dart';
 import 'package:team1_khayat/shared/navigation_service.dart';
@@ -14,21 +15,21 @@ class SliverListProfileOption extends StatelessWidget {
     physics: const NeverScrollableScrollPhysics(), 
     children: [
       ProfileOption(
-        title: AppStrings.myOrders, subtitle: AppStrings.alreadyHaveOrders,
+        title: AppStrings.myOrders.tr, subtitle: AppStrings.alreadyHaveOrders.tr,
          onTap: () {
           NavigationService.navigateToNamed( Routes.myOrderView , arguments: null);
 
         }),
-      ProfileOption(title: AppStrings.shippingAddresses, subtitle: AppStrings.numAddresses),
-      ProfileOption(title: AppStrings.paymentMethods, subtitle: 'Visa **34'),
-      ProfileOption(title: AppStrings.promoCodes, subtitle: AppStrings.youHaveSpecialPromoCodes),
-      ProfileOption(title: AppStrings.myReviews, subtitle:AppStrings.reviewsForItems,
+      ProfileOption(title: AppStrings.shippingAddresses.tr, subtitle: AppStrings.numAddresses.tr),
+      ProfileOption(title: AppStrings.paymentMethods.tr, subtitle: 'Visa **34'),
+      ProfileOption(title: AppStrings.promoCodes.tr, subtitle: AppStrings.youHaveSpecialPromoCodes.tr),
+      ProfileOption(title: AppStrings.myReviews.tr, subtitle:AppStrings.reviewsForItems.tr,
       onTap: () {
        NavigationService.navigateToNamed( Routes.reviewAndRatingScreen);
 
       },
       ),
-      ProfileOption(title: AppStrings.settings, subtitle:'${AppStrings.notifications}, ${AppStrings.password}' ,
+      ProfileOption(title: AppStrings.settings.tr, subtitle:'${AppStrings.notifications.tr} _ ${AppStrings.password.tr}' ,
        onTap: () {
           NavigationService.navigateToNamed( Routes.settingView , arguments: null);
 

@@ -51,8 +51,8 @@ const Map<String, String> ar = {
   'customer review': 'تقييم العملاء',
   'price lowest to high': 'السعر: من الأقل إلى الأعلى',
   'price highest to low': 'السعر: من الأعلى إلى الأقل',
-   
-   //! my profile View //
+
+  //! my profile View //
   AppStrings.myProfile: "ملفي الشخصي",
   AppStrings.myOrders: "طلباتي",
   AppStrings.alreadyHaveOrders: "لديك طلبات بالفعل",
@@ -67,12 +67,18 @@ const Map<String, String> ar = {
   AppStrings.settings: "الإعدادات",
   AppStrings.notifications: "الإشعارات",
   AppStrings.password: "كلمة المرور",
-    AppStrings.language: " اللغة",
-        AppStrings.changeInformation: " تغيير المعلومات",
-            AppStrings.changePassword: " تغيير كلمة المرور",
-
-
-
+  AppStrings.language: " اللغة",
+  AppStrings.changeInformation: " تغيير المعلومات",
+  AppStrings.changePassword: " تغيير كلمة المرور",
+  AppStrings.newEmail: "البريد الإلكتروني الجديد",
+  AppStrings.newName: " الاسم الجديد",
+  AppStrings.saveChanges: " حفظ التغييرات",
+  AppStrings.savePassword: " حفظ كلمة المرور",
+  AppStrings.oldPassword: " كلمة المرور القديمة",
+  AppStrings.newPassword: "  كلمة المرور الجديدة",
+  AppStrings.reapeatNewPassword: " تأكيد كلمة المرور الجديدة",
+  AppStrings.forgotpassword: " نسيت كلمة المرور؟",
+  AppStrings.pleaseenterYourEmail: "  الرجاء ادخال البريد الالكتروني",
 
   //! My Orders View
   AppStrings.processing: "قيد المعالجة",
@@ -86,26 +92,33 @@ const Map<String, String> ar = {
   AppStrings.unpaid: "غير مدفوع",
   AppStrings.itemsInOrder: "العناصر في الطلب",
 
- //! Order Details
+  //! Order Details
   AppStrings.items: "العناصر",
   AppStrings.orderInformation: "معلومات الطلب",
   AppStrings.discount: "الخصم",
   AppStrings.reorder: "إعادة الطلب",
   AppStrings.home: "الرئيسية",
-   AppStrings.orderdetails: "تفاصيل الطلبات",
-      AppStrings.delivreymethod: "طريقة التوصيل",
+  AppStrings.orderdetails: "تفاصيل الطلبات",
+  AppStrings.delivreymethod: "طريقة التوصيل",
 
-
- //! My Settings View
+  //! My Settings View
   AppStrings.personalinformation: "المعلومات الشخصية",
   AppStrings.dateofbirthday: "تاريخ الميلاد",
   AppStrings.change: "تغيير",
   AppStrings.sales: "التخفيضات",
   AppStrings.newarrivals: "الوافدون الجدد",
   AppStrings.deliverystatuschanges: "تغييرات حالة التوصيل",
-    AppStrings.fullname: "الاسم بالكامل",
+  AppStrings.fullname: "الاسم بالكامل",
+  AppStrings.send: " ارسال",
+  AppStrings.verification: " تحقق",
+  AppStrings.next: " التالي",
 
+    //! my Rating View
+
+      AppStrings.ratingAndReview: " التقييم و التقييمات",
+  AppStrings.ratings: " التقييمات",
+  AppStrings.review: " التقييم",
+  AppStrings.writeAreview: " كتابة التقييم",
 
 
 };
-
