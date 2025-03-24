@@ -50,7 +50,12 @@ class ReviewItem extends StatelessWidget {
                 ),
                 SizedBox(height: 11.h),
                 Text(review.review, style: AppTextStyles.tajawaltextStyle14),
-                SizedBox(width: 12.h),
+                SizedBox(height: 20.h),
+                Text(
+                  "Product Name : ${review.productType}",
+                  style: AppTextStyles.tajawaltextStyle16
+                ),
+
                 
 
               ],

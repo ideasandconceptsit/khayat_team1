@@ -33,7 +33,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.reviewAndRatingScreen,
-      page: () =>    ReviewAndRatingScreen(),
+      page: () =>    ReviewAndRatingView(),
     ),
   ];
 }

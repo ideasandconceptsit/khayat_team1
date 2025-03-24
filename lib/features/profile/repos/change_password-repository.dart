@@ -21,7 +21,7 @@ class ChangePasswordRepository {
           }),
           headers: {
             "Content-Type": "application/json",
-       'Authorization':"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2MzYjZlNWUyZTI3ODc3Y2QxMGQ0MmIiLCJpYXQiOjE3NDI3OTQwMjYsImV4cCI6MTc1MDU3MDAyNn0.-NVTsrS9s0wMBJ67T3HYXtPAjsWzTPU51-BALTaeR0M",
+       'Authorization':"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2MzYjZlNWUyZTI3ODc3Y2QxMGQ0MmIiLCJpYXQiOjE3NDI3OTQyNTMsImV4cCI6MTc1MDU3MDI1M30.dkhjhuXbkRU97zE-jwYFGMLXk5j1OYhmvPeTb8YbBaA",
 
           });
 

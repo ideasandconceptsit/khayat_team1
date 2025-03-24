@@ -14,8 +14,8 @@ import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
 import 'package:team1_khayat/shared/navigation_service.dart';
 import 'package:team1_khayat/shared/shimmer/redacted_effect.dart';
 
-class ReviewAndRatingScreen extends StatelessWidget {
-  const ReviewAndRatingScreen({super.key});
+class ReviewAndRatingView extends StatelessWidget {
+  const ReviewAndRatingView({super.key});
 
   @override
   Widget build(BuildContext context) {
