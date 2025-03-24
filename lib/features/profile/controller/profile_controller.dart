@@ -33,8 +33,6 @@ class ProfileController extends GetxController {
 
         box.write("userId", userId.value);
        log("✅ [ProfileController] -   يوزر المستخدم تم تخزينه");
-
-        log("✅ [ProfileController] - كلمة المرور القديمة تم تخزينها");
       } else {
         SnackbarHelper.showErrorSnackbar("تعذر جلب بيانات المستخدم، حاول مرة أخرى.");
       }
@@ -45,10 +43,7 @@ class ProfileController extends GetxController {
     }
   }
 
-  bool checkOldPassword() {
-    String cachedPassword = box.read("cachedPassword") ?? "";
-    return oldPasswordController.text == cachedPassword;
-  }
+  
 
   
 }

@@ -83,7 +83,7 @@ class PasswordChangeBottomSheet extends StatelessWidget {
                     height: 48.h,
                     onTap: () async {
                       bool success =
-                          await _changePasswordController.changePassword();
+                          await _changePasswordController.changeUserData();
 
                       if (success) {
                         SnackbarHelper.showSuccessSnackbar(

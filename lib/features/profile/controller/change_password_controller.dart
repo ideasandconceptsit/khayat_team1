@@ -15,7 +15,7 @@ class ChangePasswordController extends GetxController {
   var isLoading = false.obs;
   var errorMessage = "".obs;
 
-  Future<bool> changePassword() async {
+  Future<bool> changeUserData() async {
     if (!formKeyChangePassword.currentState!.validate()) {
       print("⚠️ [Controller] فشل التحقق من الفورم.");
       return false;

@@ -10,4 +10,6 @@ class EndPoint {
   static const String resetPassword = '/api/auth/resetPassword';
   static const String coupons = '/api/coupons/';
   static const String changePassword = '/api/auth/changePassword';
+    static const String changeUserData = '/api/users/';
+
 }
