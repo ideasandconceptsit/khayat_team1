@@ -57,7 +57,7 @@ const Map<String, String> ar = {
   AppStrings.myOrders: "طلباتي",
   AppStrings.alreadyHaveOrders: "لديك طلبات بالفعل",
   AppStrings.shippingAddresses: "عناوين الشحن",
-  AppStrings.numAddresses: "عدد العناوين: 3",
+  AppStrings.numAddresses: "عدد العناوين",
   AppStrings.paymentMethods: "طرق الدفع",
   AppStrings.visaEnding: "فيزا",
   AppStrings.promoCodes: "رموز الخصم",

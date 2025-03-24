@@ -37,7 +37,7 @@ class AppStrings {
   static const String newPassword = " New Password";
   static const String reapeatNewPassword = "Reapeat New Password";
   static const String savePassword = "Save Password";
-  static const String forgotpassword = "Forgot Password?";
+  static const String forgotpassword = "Forgot Password ?";
 
   //! My Orders View
   static const String processing = "Processing";
