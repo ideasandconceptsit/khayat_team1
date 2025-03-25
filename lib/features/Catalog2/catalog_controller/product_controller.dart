@@ -1,70 +1,96 @@
 import 'package:get/get.dart';
-
-import '../../../models/product.dart';
+import '../models/fabric_model.dart';
+import '../repositories/fabric_repoistory.dart';
 
 class ProductController extends GetxController {
-  final RxList<Product> products = <Product>[].obs;
-  final RxSet<int> likedProducts = <int>{}.obs;
+  final FabricRepository _fabricRepository = Get.find<FabricRepository>();
+
+  final RxList<FabricModel> allFabrics = <FabricModel>[].obs;
+  final RxList<FabricModel> filteredFabrics = <FabricModel>[].obs;
+  final RxSet<String> likedFabrics = <String>{}.obs;
+  final RxBool isLoading = false.obs;
+
+  // Add these new properties
+  final RxDouble minPrice = 0.0.obs;
+  final RxDouble maxPrice = 200.0.obs;
+  final Rx<String?> selectedCategory = Rx<String?>(null);
+  final RxString currentSort = 'popular'.obs;
 
   @override
   void onInit() {
     super.onInit();
-    // Initialize with some products
-    products.addAll([
-      const Product(
-        id: 1,
-        image: "https://m.media-amazon.com/images/I/612OCczgZHL._AC_SX679_.jpg",
-        brand: "Mango",
-        name: "T-Shirt SPANISH",
-        price: 9,
-        rating: 4,
-        reviews: 3,
-      ),
-      const Product(
-        id: 2,
-        image: "https://m.media-amazon.com/images/I/51HTJqSUlEL._AC_SX679_.jpg",
-        brand: "Dorothy Perkins",
-        name: "Blouse",
-        price: 14,
-        originalPrice: 21,
-        rating: 5,
-        reviews: 10,
-        discount: 20,
-      ),
-      const Product(
-        id: 3,
-        image: "https://m.media-amazon.com/images/I/51HTJqSUlEL._AC_SX679_.jpg",
-        brand: "LA la",
-        name: "Blouse",
-        price: 22,
-        originalPrice: 10,
-        rating: 1,
-        reviews: 10,
-        discount: 60,
-      ),
-      const Product(
-        id: 5,
-        image: "https://m.media-amazon.com/images/I/51HTJqSUlEL._AC_SX679_.jpg",
-        brand: "Dorothy Perkins",
-        name: "Blouse",
-        price: 14,
-        originalPrice: 21,
-        rating: 0,
-        reviews: 10,
-        discount: 20,
-      ),
-    ]);
+    fetchFabrics();
   }
 
-  void toggleLike(int productId) {
-    if (likedProducts.contains(productId)) {
-      likedProducts.remove(productId);
-    } else {
-      likedProducts.add(productId);
+  Future<void> fetchFabrics() async {
+    isLoading.value = true;
+    try {
+      final fetchedFabrics = await _fabricRepository.getAllFabrics();
+      allFabrics.assignAll(fetchedFabrics);
+      applyFiltersAndSort();
+      print('Fetched ${fetchedFabrics.length} fabrics');
+    } catch (e) {
+      print('Error fetching fabrics: $e');
+    } finally {
+      isLoading.value = false;
     }
   }
 
-  bool isLiked(int productId) {
-    return likedProducts.contains(productId);
+  void toggleLike(String fabricId) {
+    if (likedFabrics.contains(fabricId)) {
+      likedFabrics.remove(fabricId);
+    } else {
+      likedFabrics.add(fabricId);
+    }
+    update();
+  }
+
+  bool isLiked(String fabricId) {
+    return likedFabrics.contains(fabricId);
+  }
+
+  void applyFiltersAndSort() {
+    filteredFabrics.value = allFabrics.where((fabric) {
+      bool categoryMatch = selectedCategory.value == null ||
+          fabric.category.id == selectedCategory.value;
+      bool priceMatch = fabric.pricePerMeter >= minPrice.value &&
+          fabric.pricePerMeter <= maxPrice.value;
+      return categoryMatch && priceMatch;
+    }).toList();
+
+    switch (currentSort.value) {
+      case 'price_low':
+        filteredFabrics
+            .sort((a, b) => a.pricePerMeter.compareTo(b.pricePerMeter));
+        break;
+      case 'price_high':
+        filteredFabrics
+            .sort((a, b) => b.pricePerMeter.compareTo(a.pricePerMeter));
+        break;
+      case 'newest':
+        filteredFabrics.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+        break;
+      case 'popular':
+      default:
+        break;
+    }
+
+    update();
+  }
+
+  void setCategory(String? categoryId) {
+    selectedCategory.value = categoryId;
+    applyFiltersAndSort();
+  }
+
+  void setPriceRange(double min, double max) {
+    minPrice.value = min;
+    maxPrice.value = max;
+    applyFiltersAndSort();
+  }
+
+  void changeSort(String sortOption) {
+    currentSort.value = sortOption;
+    applyFiltersAndSort();
   }
 }

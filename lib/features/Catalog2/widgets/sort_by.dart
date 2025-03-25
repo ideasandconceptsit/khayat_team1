@@ -2,17 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../catalog_controller/sort_controller.dart';
 import 'sort_options.dart';
 
-class SortBottomSheet extends StatelessWidget {
-  final Function(String) onSort;
-  final String currentSort;
-
-  const SortBottomSheet({
-    Key? key,
-    required this.onSort,
-    required this.currentSort,
-  }) : super(key: key);
+class SortBottomSheet extends GetView<SortController> {
+  const SortBottomSheet({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,36 +47,40 @@ class SortBottomSheet extends StatelessWidget {
             ),
           ),
           // Sort options
-          SortOption(
-            title: 'popular'.tr,
-            value: 'popular',
-            isSelected: currentSort == 'popular',
-            onTap: onSort,
-          ),
-          SortOption(
-            title: 'newest'.tr,
-            value: 'newest',
-            isSelected: currentSort == 'newest',
-            onTap: onSort,
-          ),
-          SortOption(
-            title: 'customer review'.tr,
-            value: 'customer_review',
-            isSelected: currentSort == 'customer_review',
-            onTap: onSort,
-          ),
-          SortOption(
-            title: 'price lowest to high'.tr,
-            value: 'price_low',
-            isSelected: currentSort == 'price_low',
-            onTap: onSort,
-          ),
-          SortOption(
-            title: 'price highest to low'.tr,
-            value: 'price_high',
-            isSelected: currentSort == 'price_high',
-            onTap: onSort,
-          ),
+          Obx(() => Column(
+                children: [
+                  SortOption(
+                    title: 'popular'.tr,
+                    value: 'popular',
+                    isSelected: controller.currentSort == 'popular',
+                    onTap: controller.changeSort,
+                  ),
+                  SortOption(
+                    title: 'newest'.tr,
+                    value: 'newest',
+                    isSelected: controller.currentSort == 'newest',
+                    onTap: controller.changeSort,
+                  ),
+                  SortOption(
+                    title: 'customer review'.tr,
+                    value: 'customer_review',
+                    isSelected: controller.currentSort == 'customer_review',
+                    onTap: controller.changeSort,
+                  ),
+                  SortOption(
+                    title: 'price lowest to high'.tr,
+                    value: 'price_low',
+                    isSelected: controller.currentSort == 'price_low',
+                    onTap: controller.changeSort,
+                  ),
+                  SortOption(
+                    title: 'price highest to low'.tr,
+                    value: 'price_high',
+                    isSelected: controller.currentSort == 'price_high',
+                    onTap: controller.changeSort,
+                  ),
+                ],
+              )),
           SizedBox(height: MediaQuery.of(context).padding.bottom + 16.h),
         ],
       ),

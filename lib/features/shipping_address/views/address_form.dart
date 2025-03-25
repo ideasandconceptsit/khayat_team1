@@ -49,8 +49,9 @@ class AddressFormPage extends StatelessWidget {
               SizedBox(height: 16.h),
               CustomInputField(
                 label: 'address'.tr,
-                initialValue: addressToEdit?.street,
-                onSaved: (value) => controller.tempAddress['street'] = value!,
+                initialValue: addressToEdit?.addressLine1,
+                onSaved: (value) =>
+                    controller.tempAddress['addressLine1'] = value!,
                 validator: (value) {
                   if (value?.isEmpty ?? true) {
                     return 'please_enter_address'.tr;
@@ -85,8 +86,9 @@ class AddressFormPage extends StatelessWidget {
               SizedBox(height: 16.h),
               CustomInputField(
                 label: 'zip_code'.tr,
-                initialValue: addressToEdit?.zipCode,
-                onSaved: (value) => controller.tempAddress['zipCode'] = value!,
+                initialValue: addressToEdit?.postalCode,
+                onSaved: (value) =>
+                    controller.tempAddress['postalCode'] = value!,
                 keyboardType: TextInputType.number,
                 validator: (value) {
                   if (value?.isEmpty ?? true) {
@@ -96,9 +98,23 @@ class AddressFormPage extends StatelessWidget {
                 },
               ),
               SizedBox(height: 16.h),
+              CustomInputField(
+                label: 'phone_number'.tr,
+                initialValue: addressToEdit?.phone,
+                onSaved: (value) => controller.tempAddress['phone'] = value!,
+                keyboardType: TextInputType.phone,
+                validator: (value) {
+                  if (value?.isEmpty ?? true) {
+                    return 'please_enter_phone_number'.tr;
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 16.h),
               CustomCountryField(
                 label: 'country'.tr,
-                initialValue: addressToEdit?.country ?? 'United States',
+                initialValue: addressToEdit?.country ??
+                    'Saudi Arabia'.tr, // Changed to Saudi Arabia
                 onTap: () {},
               ),
               SizedBox(height: 32.h),

@@ -9,6 +9,7 @@ class AddressCard extends StatelessWidget {
   final bool isSelected;
   final Function(String) onSelect;
   final Function(String) onEdit;
+  final Function(String) onDelete;
 
   const AddressCard({
     Key? key,
@@ -16,6 +17,7 @@ class AddressCard extends StatelessWidget {
     required this.isSelected,
     required this.onSelect,
     required this.onEdit,
+    required this.onDelete,
   }) : super(key: key);
 
   @override
@@ -47,22 +49,37 @@ class AddressCard extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              TextButton(
-                onPressed: () => onEdit(address.id),
-                child: Text(
-                  'edit'.tr,
-                  style: TextStyle(
-                    fontFamily: 'Tajawal',
-                    color: Colors.red,
-                    fontSize: 14.sp,
+              Row(
+                children: [
+                  TextButton(
+                    onPressed: () => onEdit(address.id),
+                    child: Text(
+                      'edit'.tr,
+                      style: TextStyle(
+                        fontFamily: 'Tajawal',
+                        color: Colors.red,
+                        fontSize: 14.sp,
+                      ),
+                    ),
                   ),
-                ),
+                  TextButton(
+                    onPressed: () => _showDeleteDialog(context, address.id),
+                    child: Text(
+                      'delete'.tr,
+                      style: TextStyle(
+                        fontFamily: 'Tajawal',
+                        color: Colors.red,
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
           SizedBox(height: 4.h),
           Text(
-            address.street,
+            address.addressLine1,
             style: TextStyle(
               fontSize: 14.sp,
               color: Colors.black87,
@@ -70,7 +87,7 @@ class AddressCard extends StatelessWidget {
           ),
           SizedBox(height: 4.h),
           Text(
-              '${address.city}, ${address.state} ${address.zipCode}, ${address.country}',
+              '${address.city}, ${address.state} ${address.postalCode}, ${address.country}',
               style: AppTextStyles.textStyleMedium14),
           SizedBox(height: 12.h),
           InkWell(
@@ -101,6 +118,32 @@ class AddressCard extends StatelessWidget {
                   ],
                 ),
               ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showDeleteDialog(BuildContext context, String addressId) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('delete_address'.tr),
+        content: Text('delete_address_confirmation'.tr),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text('cancel'.tr),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              onDelete(addressId);
+            },
+            child: Text(
+              'delete'.tr,
+              style: const TextStyle(color: Colors.red),
             ),
           ),
         ],
