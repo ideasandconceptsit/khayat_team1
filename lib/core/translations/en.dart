@@ -106,6 +106,7 @@ const Map<String, String> en = {
   // addresses
   'shipping_addresses': 'Shipping Addresses',
   'edit': 'Edit',
+  'delete': 'Delete',
   'use_as_shipping_address': 'Use as the shipping address',
   'adding_shipping_address': 'Adding Shipping Address',
   'edit_address': 'Edit Address',
@@ -121,8 +122,20 @@ const Map<String, String> en = {
   'please_enter_city': 'Please enter city',
   'please_enter_state': 'Please enter state/province/region',
   'please_enter_zip_code': 'Please enter zip code',
+  'please_enter_phone_number': 'Please enter phone number',
   'success': 'Success',
   'address_saved_successfully': 'Your address has been saved successfully.',
   'thank_you': 'Thank you for using our app!',
   'continue': 'CONTINUE SHOPPING',
+  'delete_address': 'Delete Address',
+  'delete_address_confirmation':
+      'Are you sure you want to delete this address?',
+  'cancel': 'Cancel',
+  'no_addresses_found': 'No addresses found',
+  'phone_number': 'Phone Number',
+  'address_deleted_successfully': 'Address deleted successfully',
+  'failed_to_delete_address': 'Failed to delete address',
+  'unexpected_error_occurred': 'An unexpected error occurred',
+  'retry': 'Retry',
+  'Saudi Arabia': 'Saudi Arabia',
 };

@@ -54,8 +54,8 @@ const Map<String, String> ar = {
   'customer review': 'تقييم العملاء',
   'price lowest to high': 'السعر: من الأقل إلى الأعلى',
   'price highest to low': 'السعر: من الأعلى إلى الأقل',
-   
-   //! my profile View //
+
+  //! my profile View //
   AppStrings.myProfile: "ملفي الشخصي",
   AppStrings.myOrders: "طلباتي",
   AppStrings.alreadyHaveOrders: "لديك طلبات بالفعل",
@@ -83,26 +83,55 @@ const Map<String, String> ar = {
   AppStrings.unpaid: "غير مدفوع",
   AppStrings.itemsInOrder: "العناصر في الطلب",
 
- //! Order Details
+  //! Order Details
   AppStrings.items: "العناصر",
   AppStrings.orderInformation: "معلومات الطلب",
   AppStrings.discount: "الخصم",
   AppStrings.reorder: "إعادة الطلب",
   AppStrings.home: "الرئيسية",
-   AppStrings.orderdetails: "تفاصيل الطلبات",
-      AppStrings.delivreymethod: "طريقة التوصيل",
+  AppStrings.orderdetails: "تفاصيل الطلبات",
+  AppStrings.delivreymethod: "طريقة التوصيل",
 
-
- //! My Settings View
+  //! My Settings View
   AppStrings.personalinformation: "المعلومات الشخصية",
   AppStrings.dateofbirthday: "تاريخ الميلاد",
   AppStrings.change: "تغيير",
   AppStrings.sales: "التخفيضات",
   AppStrings.newarrivals: "الوافدون الجدد",
   AppStrings.deliverystatuschanges: "تغييرات حالة التوصيل",
-    AppStrings.fullname: "الاسم بالكامل",
-
-
-
+  AppStrings.fullname: "الاسم بالكامل",
+  // addresses
+  'shipping_addresses': 'عناوين الشحن',
+  'edit': 'تعديل',
+  'delete': 'حذف',
+  'use_as_shipping_address': 'استخدم كعنوان شحن',
+  'adding_shipping_address': 'إضافة عنوان شحن جديد',
+  'edit_address': 'تعديل العنوان',
+  'full_name': 'الاسم الكامل',
+  'address': 'العنوان',
+  'city': 'المدينة',
+  'state_province_region': 'المحافظة/المنطقة',
+  'zip_code': 'الرمز البريدي',
+  'country': 'البلد',
+  'save_address': 'حفظ العنوان',
+  'please_enter_full_name': 'الرجاء إدخال الاسم الكامل',
+  'please_enter_address': 'الرجاء إدخال العنوان',
+  'please_enter_city': 'الرجاء إدخال المدينة',
+  'please_enter_state': 'الرجاء إدخال المحافظة/المنطقة',
+  'please_enter_zip_code': 'الرجاء إدخال الرمز البريدي',
+  'please_enter_phone_number': 'الرجاء إدخال رقم الهاتف',
+  'success': 'تم بنجاح',
+  'address_saved_successfully': 'تم حفظ العنوان بنجاح',
+  'thank_you': 'شكراً لاستخدامك تطبيقنا!',
+  'continue': 'مواصلة التسوق',
+  'delete_address': 'حذف العنوان',
+  'delete_address_confirmation': 'هل أنت متأكد من رغبتك في حذف هذا العنوان؟',
+  'cancel': 'إلغاء',
+  'no_addresses_found': 'لا توجد عناوين مسجلة',
+  'phone_number': 'رقم الهاتف',
+  'address_deleted_successfully': 'تم حذف العنوان بنجاح',
+  'failed_to_delete_address': 'فشل حذف العنوان',
+  'unexpected_error_occurred': 'حدث خطأ غير متوقع',
+  'retry': 'إعادة المحاولة',
+  'Saudi Arabia': 'المملكة العربية السعودية',
 };
-

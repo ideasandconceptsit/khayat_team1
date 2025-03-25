@@ -83,9 +83,21 @@ class ApiService {
   }
 
   // Handle API response
+// Handle API response
   dynamic _handleResponse(http.Response response) {
     if (response.statusCode >= 200 && response.statusCode < 300) {
-      return json.decode(response.body);
+      // Check if response body is empty or whitespace only
+      if (response.body.isEmpty || response.body.trim().isEmpty) {
+        return {}; // Return empty map for empty responses
+      }
+
+      try {
+        return json.decode(response.body);
+      } catch (e) {
+        print('JSON parsing error: $e');
+        // If JSON parsing fails, return empty map instead of throwing an error
+        return {};
+      }
     } else if (response.statusCode == 401) {
       // Unauthorized - token expired or invalid
       _storage.remove('token');
