@@ -22,17 +22,20 @@ class ChangeUserDtaRepository {
         headers: {
           "Content-Type": "application/json",
           "Authorization":
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2MzYjZlNWUyZTI3ODc3Y2QxMGQ0MmIiLCJpYXQiOjE3NDI3OTQyNTMsImV4cCI6MTc1MDU3MDI1M30.dkhjhuXbkRU97zE-jwYFGMLXk5j1OYhmvPeTb8YbBaA"
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzk2Nzg2Nzg3MmJmZTMyNWE0ZGY0NmYiLCJpYXQiOjE3Mzk5MjQ5MTUsImV4cCI6MTc0NzcwMDkxNX0.scHyX3-nbGhi2ebaOekxXvztGs_8qbVMlzWsOS5Qs8E"
         },
       );
 
       print("🟢 [Repository] استجابة السيرفر: ${response.statusCode}");
 
       if (response.statusCode == 200) {
+
         print("✅ [Repository] تم تغيير البيانات بنجاح");
         return null;
       } else if (response.statusCode == 400) {
-        return "بيانات غير صحيحة، يرجى التأكد من المعلومات المدخلة.";
+       final responseData = jsonDecode(response.body);
+        String? errorMsg = (responseData["errors"] as List<dynamic>?)?.firstOrNull?["msg"];
+        return errorMsg ?? "بيانات غير صحيحة، يرجى التأكد من المعلومات المدخلة.";
       } else if (response.statusCode == 401) {
         return "انتهت صلاحية الجلسة، يرجى تسجيل الدخول مجددًا.";
       } else {

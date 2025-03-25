@@ -5,6 +5,7 @@ import 'package:team1_khayat/features/profile/view/my_order_view.dart';
 import 'package:team1_khayat/features/profile/view/profile_view.dart';
 import 'package:team1_khayat/features/profile/view/rating_view.dart';
 import 'package:team1_khayat/features/profile/view/setting_view.dart';
+import 'package:team1_khayat/features/profile/view/shipping_address_view.dart';
 import 'package:team1_khayat/state_managment/app_routers.dart';
 
 
@@ -34,6 +35,10 @@ class AppPages {
     GetPage(
       name: Routes.reviewAndRatingScreen,
       page: () =>    ReviewAndRatingView(),
+    ),
+    GetPage(
+      name: Routes.shippingAddressView,
+      page: () =>    ShippingAddressView(),
     ),
   ];
 }

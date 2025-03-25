@@ -1,3 +1,4 @@
+
 class Routes {
 
   static const bottomNavBar='/BottomNavBar';
@@ -6,6 +7,8 @@ class Routes {
   static const detailsView='/DetailsView';
   static const settingView='/SettingView';
   static const reviewAndRatingScreen='/ReviewAndRatingScreen';
+    static const shippingAddressView='/ShippingAddressView';
+
 
 
 }

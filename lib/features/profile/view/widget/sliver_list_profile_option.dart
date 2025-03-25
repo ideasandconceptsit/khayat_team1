@@ -21,7 +21,11 @@ class SliverListProfileOption extends StatelessWidget {
           NavigationService.navigateToNamed( Routes.myOrderView , arguments: null);
 
         }),
-      ProfileOption(title: AppStrings.shippingAddresses.tr, subtitle: AppStrings.numAddresses.tr),
+      ProfileOption(title: AppStrings.shippingAddresses.tr, subtitle: AppStrings.numAddresses.tr,
+      onTap: () {
+        NavigationService.navigateToNamed( Routes.shippingAddressView , arguments: null);
+
+      },),
       ProfileOption(title: AppStrings.paymentMethods.tr, subtitle: 'Visa **34'),
       ProfileOption(title: AppStrings.promoCodes.tr, subtitle: AppStrings.youHaveSpecialPromoCodes.tr,
       onTap: () {
