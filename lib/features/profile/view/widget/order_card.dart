@@ -104,7 +104,8 @@ class OrderCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    status,
+                    order.status,
+                    // status,
                     style: TextStyle(
                       color: status ==  AppStrings.delivered.tr
                           ? Colors.green

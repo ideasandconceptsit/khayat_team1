@@ -58,7 +58,7 @@ class HeaderOrderDetails extends StatelessWidget {
         ],
             ),
         Text(
-                status,
+                order.status,
                 style: TextStyle(
                   color: status == AppStrings.delivered.tr
                       ? Colors.green
