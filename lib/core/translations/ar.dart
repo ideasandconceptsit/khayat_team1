@@ -133,6 +133,7 @@ const Map<String, String> ar = {
   AppStrings.pleaseShareYourOpinionaboutTheProduct: " الرجاء مشاركة رأيك حول المنتج",
   AppStrings.yourReview: " رأيك",
     AppStrings.sendReview: " ارسال التقييم",
+    AppStrings.noOrder: " لا يوجد طلبات",
 
 
 };

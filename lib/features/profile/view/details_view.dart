@@ -12,8 +12,9 @@ import 'package:team1_khayat/features/profile/view/widget/header_order_details.d
 import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
 
 class DetailsView extends StatelessWidget {
-   DetailsView({super.key,  this.order});
- 
+   DetailsView({super.key,  this.order,  this.status});
+    final String? status;
+
  final OrderModels? order; 
 
  final OrderController orderController = Get.put(OrderController() );
@@ -37,7 +38,9 @@ class DetailsView extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: HeaderOrderDetails(order: order!),
+              child: HeaderOrderDetails(order: order!,
+              status:status!,
+              ),
             ),
             SliverToBoxAdapter(
               child: SizedBox(

@@ -7,8 +7,10 @@ import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/profile/model/order_model.dart';
 
 class HeaderOrderDetails extends StatelessWidget {
-  const HeaderOrderDetails({super.key, required this.order});
+  const HeaderOrderDetails({super.key, required this.order, required this.status});
  final OrderModels order;
+   final String status;
+
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -55,10 +57,17 @@ class HeaderOrderDetails extends StatelessWidget {
          
         ],
             ),
-            const Text(
-        AppStrings.delivered,
-        style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
-            ),
+        Text(
+                status,
+                style: TextStyle(
+                  color: status == AppStrings.delivered.tr
+                      ? Colors.green
+                      : status == AppStrings.processing.tr
+                          ? Colors.orange
+                          : Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
           ],
         ),
       )

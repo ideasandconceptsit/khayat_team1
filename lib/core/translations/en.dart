@@ -131,5 +131,7 @@ const Map<String, String> en = {
   AppStrings.pleaseShareYourOpinionaboutTheProduct: " Please share your opinion about the product",
   AppStrings.yourReview: "Your Review",
     AppStrings.sendReview: "Send Review",
+        AppStrings.noOrder: "No Order",
+
 
 };

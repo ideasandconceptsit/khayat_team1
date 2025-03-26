@@ -46,6 +46,7 @@ class AppStrings {
   static const String details = "Details";
   static const String orderdetails = "Order Details";
   static const String order = "Order";
+  static const String noOrder = "No Orders";
   static const String orderDate = "Order Date";
   static const String quantity = "Quantity";
   static const String trackingNumber = "Tracking number  ";

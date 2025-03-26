@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/features/profile/controller/my_order_controller.dart';
 import 'package:team1_khayat/features/profile/view/widget/build_category_section.dart';
 import 'package:team1_khayat/features/profile/view/widget/order_pages.dart';
@@ -47,10 +48,10 @@ class _MyOrderViewState extends State<MyOrderView> {
                   child: LoadingShimmerEffect(),
                 );
               } else if (orderController.orders.isEmpty) {
-                return const SliverFillRemaining(
+                return  SliverFillRemaining(
                   child: Center(
                     child: Text(
-                      "No Orders",
+                      AppStrings.noOrder.tr,
                     ),
                   ),
                 );

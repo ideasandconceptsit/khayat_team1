@@ -94,6 +94,7 @@ class OrderCard extends StatelessWidget {
                   OutlinedButton(
                     onPressed: () {
                       Get.to(() => DetailsView(order: order ,
+                      status: status,
                      
                       ));
                     },
@@ -105,9 +106,9 @@ class OrderCard extends StatelessWidget {
                   Text(
                     status,
                     style: TextStyle(
-                      color: status ==  AppStrings.delivered
+                      color: status ==  AppStrings.delivered.tr
                           ? Colors.green
-                          : status ==  AppStrings.processing
+                          : status ==  AppStrings.processing.tr
                               ? Colors.orange
                               : Colors.red,
                       fontWeight: FontWeight.bold,
