@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_assets.dart';
+import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/profile/model/review_model.dart';
 import 'package:team1_khayat/features/profile/view/widget/custom_circle_avatar.dart';
@@ -52,7 +54,7 @@ class ReviewItem extends StatelessWidget {
                 Text(review.review, style: AppTextStyles.tajawaltextStyle14),
                 SizedBox(height: 20.h),
                 Text(
-                  "Product Name : ${review.productType}",
+                  "${AppStrings.productName.tr}: ${review.productType}",
                   style: AppTextStyles.tajawaltextStyle16
                 ),
 

@@ -126,4 +126,10 @@ const Map<String, String> en = {
   AppStrings.useCoupon: "Use Coupon",
   AppStrings.noCode: "No Code",
   AppStrings.notAvailable: "Not Available",
+    AppStrings.productName: "Product Name",
+  AppStrings.whatIsYourRate: "What is your rate?",
+  AppStrings.pleaseShareYourOpinionaboutTheProduct: " Please share your opinion about the product",
+  AppStrings.yourReview: "Your Review",
+    AppStrings.sendReview: "Send Review",
+
 };

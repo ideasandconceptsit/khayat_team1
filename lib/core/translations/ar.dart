@@ -128,4 +128,11 @@ const Map<String, String> ar = {
   AppStrings.useCoupon: "استخدام الكوبون",
   AppStrings.noCode: "بدون كود",
   AppStrings.notAvailable: "غير متاح",
+   AppStrings.productName: " اسم المنتج",
+  AppStrings.whatIsYourRate: " ما هو تقييمك",
+  AppStrings.pleaseShareYourOpinionaboutTheProduct: " الرجاء مشاركة رأيك حول المنتج",
+  AppStrings.yourReview: " رأيك",
+    AppStrings.sendReview: " ارسال التقييم",
+
+
 };

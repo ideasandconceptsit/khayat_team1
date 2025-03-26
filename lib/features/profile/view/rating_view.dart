@@ -94,7 +94,7 @@ class ReviewAndRatingView extends StatelessWidget {
                         context,
                         height: MediaQuery.of(context).size.height * 0.7,
                         child: CreateNewReviewBottomSheet(
-                          productId: "",
+                          productId: "67bf94613024aff9082e7529",
                           productType: "Fabric",
                           userId: "67c3b6e5e2e27877cd10d42b",
                         ),

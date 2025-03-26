@@ -31,7 +31,7 @@ class OrderCard extends StatelessWidget {
     Expanded(
       child: Text(
         
-        'Order №${order.orderNumber}',
+        '${AppStrings.order.tr} №${order.orderNumber}',
         style: AppTextStyles.tajawaltextStyle16.copyWith(color: Colors.black),
         overflow: TextOverflow.ellipsis, 
       ),
@@ -47,7 +47,7 @@ class OrderCard extends StatelessWidget {
               const SizedBox(height: 8),
               Text.rich(
                 TextSpan(
-                  text: 'Tracking number ',
+                  text: AppStrings.trackingNumber.tr,
                   style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
                   children: [
                     TextSpan(
@@ -63,7 +63,7 @@ class OrderCard extends StatelessWidget {
                 children: [
                   Text.rich(
                     TextSpan(
-                      text: 'Quantity ',
+                      text:  AppStrings.quantity.tr,
                       style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
                       children: [
                         TextSpan(
@@ -75,7 +75,7 @@ class OrderCard extends StatelessWidget {
                   ),
                   Text.rich(
                     TextSpan(
-                      text: 'Total Amount: ',
+                      text:  AppStrings.totalAmount.tr,
                       style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
                       children: [
                         TextSpan(

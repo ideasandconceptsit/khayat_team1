@@ -48,7 +48,7 @@ class DetailsView extends StatelessWidget {
               child: 
                Text.rich(
                 TextSpan(
-                  text: AppStrings.items,
+                  text: AppStrings.items.tr,
                   style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
                   children: [
                     TextSpan(

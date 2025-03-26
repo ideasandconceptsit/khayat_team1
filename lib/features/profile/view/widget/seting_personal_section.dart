@@ -37,6 +37,7 @@ class SettingsPersonalInformationSection extends StatelessWidget {
         CustomFormField(
           labelText: AppStrings.fullname.tr,
           hintText: profileController.userModel.value?.name,
+          readOnly: true,
         ),
         SizedBox(
           height: 24.h,
@@ -60,7 +61,8 @@ class SettingsPersonalInformationSection extends StatelessWidget {
             );
           },
         ),
-        CustomFormField(
+        CustomFormField( 
+          readOnly: true,
           labelText: AppStrings.password.tr,
           obscureText: true,
           hintText: '*********',

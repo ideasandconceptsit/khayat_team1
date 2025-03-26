@@ -31,7 +31,6 @@ class ReviewsController extends GetxController {
   try {
     isLoading.value = true;
 
-    // ✅ استرجاع userId من GetStorage
     final String? userId = box.read('userId');
 
     if (userId == null || userId.isEmpty) {
@@ -40,11 +39,9 @@ class ReviewsController extends GetxController {
       return;
     }
 
-    // ✅ جلب جميع المراجعات
     final allReviews = await _reviewsRepository.fetchReviews();
 
     if (allReviews != null && allReviews.isNotEmpty) {
-      // ✅ تصفية المراجعات الخاصة بالمستخدم
       final userReviews = allReviews.where((review) => review.user.id == userId).toList();
 
       if (userReviews.isNotEmpty) {
@@ -67,34 +64,35 @@ class ReviewsController extends GetxController {
 }
 
 
-    Future<bool> addReview({
-    required String userId,
-    required String productId,
-    required String productType,
-  }) async {
-    try {
-      isLoading.value = true;
+   Future<bool> addReview({
+  required String userId,
+  required String productId,
+  required String productType,
+}) async {
+  try {
+    isLoading.value = true;
 
-      bool success = await _reviewsRepository.createReview(
-        reviewController.text,
-        selectedRating.value,
-        userId,
-        productId,
-        productType,
-      );
+    bool success = await _reviewsRepository.createReview(
+      review: reviewController.text,
+      rating: selectedRating.value,
+      userId: userId,
+      productId: productId,
+      productType: productType,
+    );
 
-      isLoading.value = false;
+    isLoading.value = false;
 
-      if (success) {
-        clearFields(); // تفريغ الحقول بعد الإرسال الناجح
-      }
-      return success;
-    } catch (e) {
-      isLoading.value = false;
-      log("❌ [ReviewsController] - خطأ أثناء إضافة المراجعة: ${e.toString()}");
-      return false;
+    if (success) {
+      clearFields(); 
     }
+    return success;
+  } catch (e) {
+    isLoading.value = false;
+    log("❌ [ReviewsController] - خطأ أثناء إضافة المراجعة: ${e.toString()}");
+    return false;
   }
+}
+
 
   void clearFields() {
     reviewController.clear();

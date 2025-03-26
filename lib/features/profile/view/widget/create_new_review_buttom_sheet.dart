@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/profile/controller/review_controller.dart';
 import 'package:team1_khayat/shared/app_buttons/app_buttons.dart';
@@ -32,18 +33,18 @@ class CreateNewReviewBottomSheet extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'What is you rate ?',
+              AppStrings.whatIsYourRate.tr,
               style: AppTextStyles.tajawaltextStyle18,
-            ), 
-                SizedBox(height: 18.h),
-
-             Obx(
-              () => Row(
+            ),
+            SizedBox(height: 18.h),
+            Obx(
+              () => Wrap(
+                spacing: 8.w,
                 children: List.generate(5, (index) {
                   int star = index + 1;
-                  return IconButton(
-                    onPressed: () => reviewsController.selectedRating.value = star,
-                    icon: Icon(
+                  return GestureDetector(
+                    onTap: () => reviewsController.selectedRating.value = star,
+                    child: Icon(
                       Icons.star,
                       color: star <= reviewsController.selectedRating.value ? Colors.amber : Colors.grey,
                       size: 32.w,
@@ -53,57 +54,54 @@ class CreateNewReviewBottomSheet extends StatelessWidget {
               ),
             ),
             SizedBox(height: 34.h),
-             Align(
+            Align(
               alignment: Alignment.center,
-               child: Text(
-                 'Please share your opinionabout the product',
-                 textAlign: TextAlign.center,
-                 style: AppTextStyles.tajawaltextStyle18,
-               ),
-             ), 
-                SizedBox(height: 18.h),
-  
+              child: Text(
+                AppStrings.pleaseShareYourOpinionaboutTheProduct.tr,
+                textAlign: TextAlign.center,
+                style: AppTextStyles.tajawaltextStyle18,
+              ),
+            ),
+            SizedBox(height: 18.h),
             CustomFormField(
-              hintText: "Your review",
+              hintText: AppStrings.yourReview.tr,
               controller: reviewsController.reviewController,
               maxLines: 10,
               validator: (value) {
-                if (value == null || value.isEmpty) {
+                if (value == null || value.trim().isEmpty) {
                   return "يرجى إدخال المراجعة";
                 }
                 return null;
               },
             ),
             SizedBox(height: 17.h),
+            Obx(
+              () => DefaultButton(
+                text: reviewsController.isLoading.value ? "جاري الإرسال..." : AppStrings.sendReview.tr,
+                press: () async {
+                  if (!_formKey.currentState!.validate()) return;
 
-       
+                  if (reviewsController.selectedRating.value == 0) {
+                    SnackbarHelper.showErrorSnackbar("يرجى اختيار التقييم!");
+                    return;
+                  }
 
-            DefaultButton(
-              text: 'SEND REVIEW',
-              press: () async {
-                if (!_formKey.currentState!.validate()) {
-                  return;
-                }
+                  reviewsController.isLoading.value = true;
+                  bool success = await reviewsController.addReview(
+                    userId: userId,
+                    productId: productId,
+                    productType: productType,
+                  );
+                  reviewsController.isLoading.value = false;
 
-                if (reviewsController.selectedRating.value == 0) {
-                  SnackbarHelper.showErrorSnackbar("يرجى اختيار التقييم!");
-                  return;
-                }
-
-                bool success = await reviewsController.addReview(
-                  userId: userId,
-                  productId: productId,
-                  productType: productType,
-                  
-                );
-
-                if (success) {
-                  Get.back();
-                  SnackbarHelper.showSuccessSnackbar("تم إرسال المراجعة بنجاح!");
-                } else {
-                  SnackbarHelper.showErrorSnackbar("حدث خطأ أثناء إرسال المراجعة، حاول مرة أخرى.");
-                }
-              },
+                  if (success) {
+                    Get.back();
+                    SnackbarHelper.showSuccessSnackbar("تم إرسال المراجعة بنجاح!");
+                  } else {
+                    SnackbarHelper.showErrorSnackbar("حدث خطأ أثناء إرسال المراجعة، حاول مرة أخرى.");
+                  }
+                },
+              ),
             ),
             SizedBox(height: 24.h),
           ],

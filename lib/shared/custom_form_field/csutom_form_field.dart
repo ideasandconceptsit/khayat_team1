@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:team1_khayat/core/app_colors.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 
-
 class CustomFormField extends StatefulWidget {
   final String? labelText;
   final String? hintText;
@@ -11,14 +10,15 @@ class CustomFormField extends StatefulWidget {
   final TextInputType keyboardType;
   final FormFieldValidator<String>? validator;
   final String? text;
-  int? maxLines ;
+  final int? maxLines;
+  final bool readOnly; // المتغير الجديد
   final void Function(String)? onChanged;
-  TextEditingController? controller;
+  final TextEditingController? controller;
 
-   CustomFormField({
+  CustomFormField({
     Key? key,
     this.labelText,
-     this.hintText,
+    this.hintText,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
     this.validator,
@@ -26,6 +26,7 @@ class CustomFormField extends StatefulWidget {
     this.controller,
     this.maxLines,
     this.onChanged,
+    this.readOnly = false, 
   }) : super(key: key);
 
   @override
@@ -58,36 +59,36 @@ class _CustomFormFieldState extends State<CustomFormField> {
           ),
         const SizedBox(height: 8),
         TextFormField(
-  onChanged: widget.onChanged,
-  controller: widget.controller,
-  obscureText: _isObscure,
-  keyboardType: widget.keyboardType,
-  validator: widget.validator,
-  maxLines: widget.obscureText ? 1 : (widget.maxLines ?? 1),
-  decoration: InputDecoration(
-    fillColor: AppColors.whiteColor,
-    filled: true,
-    labelText: widget.labelText,
-    hintText: widget.hintText,
-    floatingLabelBehavior: FloatingLabelBehavior.always,
-    enabledBorder: InputBorder.none,
-    focusedBorder: InputBorder.none,
-    suffixIcon: widget.obscureText
-        ? IconButton(
-            icon: Icon(
-              _isObscure ? Icons.visibility : Icons.visibility_off,
-              color: Colors.grey,
-            ),
-            onPressed: () {
-              setState(() {
-                _isObscure = !_isObscure;
-              });
-            },
-          )
-        : null,
-  ),
-)
-
+          onChanged: widget.onChanged,
+          controller: widget.controller,
+          obscureText: _isObscure,
+          keyboardType: widget.keyboardType,
+          validator: widget.validator,
+          maxLines: widget.obscureText ? 1 : (widget.maxLines ?? 1),
+          readOnly: widget.readOnly,
+          decoration: InputDecoration(
+            fillColor: AppColors.whiteColor,
+            filled: true,
+            labelText: widget.labelText,
+            hintText: widget.hintText,
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            enabledBorder: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            suffixIcon: widget.obscureText
+                ? IconButton(
+                    icon: Icon(
+                      _isObscure ? Icons.visibility : Icons.visibility_off,
+                      color: Colors.grey,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _isObscure = !_isObscure;
+                      });
+                    },
+                  )
+                : null,
+          ),
+        ),
       ],
     );
   }
