@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       locale: const Locale('en'),
       fallbackLocale: const Locale('ar'),
       theme: AppThemes.lightTheme,
-      initialRoute: Routes.cartPage,
+      initialRoute: Routes.appointmentPage,
       getPages: AppPages.pages,
       initialBinding: AppBinding(),
     );

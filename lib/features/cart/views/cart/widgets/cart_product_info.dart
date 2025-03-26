@@ -6,8 +6,8 @@ import 'package:team1_khayat/features/cart/views/cart/widgets/product_name_and_m
 import 'package:team1_khayat/features/cart/views/cart/widgets/product_quantity_and_price_section.dart';
 
 class CartProductInfo extends StatelessWidget {
-  const CartProductInfo({super.key, required this.cartProductModel});
-  final CartProductModel cartProductModel;
+  const CartProductInfo({super.key, required this.cartItemModel});
+  final CartItemModel cartItemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +19,10 @@ class CartProductInfo extends StatelessWidget {
         ),
         child:   Column(
           children: [
-            ProductNameAndMoreOptions(cartProductModel: cartProductModel),
-            ColorAndSizeRow(color: cartProductModel.color,size: cartProductModel.size,),
+            ProductNameAndMoreOptions(cartItemModel: cartItemModel),
+            ColorAndSizeRow(color: cartItemModel.color,size:cartItemModel.size,),
             const Spacer(),
-            ProductQuantityAndPriceSection(cartProductModel: cartProductModel,),
+            ProductQuantityAndPriceSection(cartItemModel: cartItemModel,),
           ],
 
         ),

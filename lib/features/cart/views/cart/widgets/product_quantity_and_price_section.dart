@@ -7,9 +7,9 @@ import 'package:team1_khayat/features/cart/models/cart_product_model.dart';
 import 'package:team1_khayat/features/cart/views/cart/widgets/cart_increase_decrease_quantity.dart';
 
 class ProductQuantityAndPriceSection extends StatelessWidget {
-  const ProductQuantityAndPriceSection({super.key, required this.cartProductModel});
+  const ProductQuantityAndPriceSection({super.key, required this.cartItemModel});
 
- final CartProductModel cartProductModel;
+  final CartItemModel cartItemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -17,22 +17,22 @@ class ProductQuantityAndPriceSection extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        IncreaseDecreaseQuantityButton(cartProductModel: cartProductModel,isIncrease: false,),
+        IncreaseDecreaseQuantityButton(cartItemModel: cartItemModel,isIncrease: false,),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 15.w),
           child: Obx(
             () {
 
               return  Text(
-              cartProductModel.quantity.toString(),
+                  cartItemModel.quantity.value.toString(),
               style: AppTextStyles.textStyleMedium14
             );
             },
           ),
         ),
-        IncreaseDecreaseQuantityButton(cartProductModel: cartProductModel),
+        IncreaseDecreaseQuantityButton(cartItemModel: cartItemModel),
         const Spacer(),
-        Text('${cartProductModel.price}\$', style: AppTextStyles.textStyleMedium14
+        Text('${cartItemModel.price}\$', style: AppTextStyles.textStyleMedium14
         )
       ],
     );

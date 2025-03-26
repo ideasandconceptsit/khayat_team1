@@ -12,13 +12,13 @@ class ShippingAddressModel {
 
   factory ShippingAddressModel.fromJson(Map<String, dynamic> json) {
     return ShippingAddressModel(
-      id: json['id'],
-      fullName: json['fullName'],
-      address: json['address'],
+      id: json['_id'],
+      fullName: json['name'],
+      address: json['addressLine1'],
       city: json['city'],
       state: json['state'],
       country: json['country'],
-      zipCode: json['zipCode'],
+      zipCode: json['postalCode'],
     );
   }
 

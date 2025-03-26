@@ -6,9 +6,9 @@ import 'package:team1_khayat/shared/custom_cached_network_image/custom_cached_ne
 import 'package:team1_khayat/shared/custom_card_with_shadow/custom_card_with_shadow.dart';
 
 class CartProduct extends StatelessWidget {
-  const CartProduct({super.key, required this.cartProductModel});
+  const CartProduct({super.key, required this.cartItemModel});
 
-  final CartProductModel cartProductModel;
+  final CartItemModel cartItemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,9 @@ class CartProduct extends StatelessWidget {
       child: Row(
         children: [
           CustomCachedNetworkImage(
-              imageUrl: cartProductModel.imageUrl, height: 104.w, width: 104.w),
+              imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQLagg9G3tN5Kwx6GlKtUNtJRc-ej6U8-x-9LJ9z0RD1S125-w906FmP5PTf_ZwlLu6xQ&usqp=CAU", height: 104.w, width: 104.w),
           CartProductInfo(
-                      cartProductModel: cartProductModel,
+            cartItemModel: cartItemModel,
                     ),
         ],
       ),

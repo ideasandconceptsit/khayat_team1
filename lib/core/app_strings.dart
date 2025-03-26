@@ -5,10 +5,12 @@ class AppStrings {
   static const String size = "size";
   static const String enterYourPromoCode = "enter_your_promo_code";
   static const String totalAmount = "total_amount";
+  static const String totalAmountAfterDiscount = "totalAmountAfterDiscount";
   static const String checkOut = "check_out";
   static const String yourPromoCodes = "your_promo_codes";
   static const String daysRemaining = "days_remaining";
   static const String apply = "apply";
+  static const String applied = "applied";
   static const String addToFavorites = "add_to_favorites";
   static const String deleteFromList = "delete_from_list";
   static const String checkout = "checkout";
@@ -48,9 +50,27 @@ class AppStrings {
   static const String expiryDate="Expiry Date";
   static const String required="required";
   static const String pleaseEnterACorrectCardNumber="PleaseEnterACorrectCardNumber";
+  static const String pleaseAddSomeProductsFirst="PleaseAddSomeProducts";
+  static const String pleaseAddAnAddress="pleaseAddAnAddress";
+  static const String couponAppliedSuccessfully="couponAppliedSuccessfully";
+  static const String productAddedToFavoritesSuccessfully="productAddedToFavoritesSuccessfully";
+  static const String productRemovedFromCartSuccessfully="productRemovedFromCartSuccessfully";
+  static const String noPromoCodesAvailable="noPromoCodes";
+  static const String noShippingAddresses="noShippingAddresses";
+  static const String tryAgain="tryAgain";
 
   static String unintendedCard="Unintended Card";
 
   static const String pleaseEnterAValue="PleaseEnterAValue";
+
+  //appointment
+  static const String selectTime="selectTime";
+  static const String from="from";
+  static const String to="to";
+  static const String confirm="confirm";
+  static const String appointmentCreatedSuccessfully="appointmentCreatedSuccessfully";
+  static const String note="note";
+  static const String someThingWentWrong="someThingWentWrong";
+  static const String appointmentAlreadyExists="appointmentAlreadyExists";
 
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
 import '../../../../../core/app_style.dart';
 import '../../../../../state_managment/app_routers.dart';
 import '../../../auth_controllers/login_controller.dart';

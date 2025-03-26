@@ -29,10 +29,12 @@ const Map<String, String> ar = {
   AppStrings.size: "الحجم: ",
   AppStrings.enterYourPromoCode: "أدخل رمز الخصم",
   AppStrings.totalAmount: "المبلغ الإجمالي:",
+  AppStrings.totalAmountAfterDiscount: "المبلغ الإجمالي بعد الخصم:",
   AppStrings.checkOut: "إتمام الشراء",
   AppStrings.yourPromoCodes: "رموز الخصم الخاصة بك",
   AppStrings.daysRemaining: "أيام متبقية",
   AppStrings.apply: "تطبيق",
+  AppStrings.applied: "تم التطبيق",
   AppStrings.addToFavorites: "أضف إلى المفضلة",
   AppStrings.deleteFromList: "حذف من القائمة",
   AppStrings.checkout: "إتمام الشراء",
@@ -70,9 +72,28 @@ const Map<String, String> ar = {
   AppStrings.continueShopping: "متابعة التسوق",
   AppStrings.required: "مطلوب",
   AppStrings.pleaseEnterACorrectCardNumber: "أدخل رقم بطاقة صحيح",
+  AppStrings.pleaseAddSomeProductsFirst: "يرجى اضافة منتجات اولا",
+  AppStrings.pleaseAddAnAddress: "يرجى اضافة عنوان",
   AppStrings.pleaseEnterAValue: "أدخل رقم صحيح",
+  AppStrings.couponAppliedSuccessfully: "تم تطبيق الكوبون بنجاح",
+  AppStrings.productAddedToFavoritesSuccessfully: "تمت اضافة المنتج الى المفضلة",
+  AppStrings.productRemovedFromCartSuccessfully: "تمت ازالة المنتج من السلة",
+  AppStrings.noPromoCodesAvailable: "لا يوجد رموز خصم متاحة",
+  AppStrings.noShippingAddresses: "لا يوجد عناوين شحن متاحة",
+  AppStrings.tryAgain: "إعادة المحاولة",
 
 
+
+
+  //appointment
+  AppStrings.selectTime: "حدد الوقت",
+  AppStrings.from: "من",
+  AppStrings.to: "إلى",
+  AppStrings.confirm: "تأكيد",
+  AppStrings.appointmentCreatedSuccessfully: "تم إنشاء الموعد بنجاح",
+  AppStrings.note: "تذكير",
+AppStrings.someThingWentWrong: "حدث خطأ ما",
+  AppStrings.appointmentAlreadyExists: " الموعد موجود بالفعل الرجاء اختيار وقت اخر",
   // صفحة الكتالوج
   'womens_tops': 'ملابس نسائية علوية',
   't_shirts': 'تي شيرت',

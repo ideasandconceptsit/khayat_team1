@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_colors.dart';
-import 'package:team1_khayat/core/app_constants.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/cart/controllers/cart_controller.dart';
@@ -10,9 +9,9 @@ import 'package:team1_khayat/features/cart/models/cart_product_model.dart';
 
 class CartMoreOptionsWidget extends StatelessWidget {
   const CartMoreOptionsWidget({
-    super.key, required this. cartProductModel,
+    super.key, required this. cartItemModel,
   });
-  final CartProductModel cartProductModel;
+  final CartItemModel cartItemModel;
 
 
   @override
@@ -30,8 +29,8 @@ class CartMoreOptionsWidget extends StatelessWidget {
       padding: EdgeInsets.zero,
       constraints: BoxConstraints.tight(Size(170.w,96.h)),
       itemBuilder: (context) => [
-        _buildPopupMenuItem(text: AppStrings.addToFavorites.tr,onTap: ()=>cartController.addToFavorites(cartProductModel)),
-        _buildPopupMenuItem(text: AppStrings.deleteFromList.tr,onTap: ()=>cartController.deleteProductFromCart(cartProductModel)),
+        _buildPopupMenuItem(text: AppStrings.addToFavorites.tr,onTap: ()=>cartController.addToFavorites(cartItemModel.product.id, cartItemModel.productType)),
+        _buildPopupMenuItem(text: AppStrings.deleteFromList.tr,onTap: ()=>cartController.deleteProductFromCart(cartItemModel.product.id)),
       ],
       child: const Icon(
         Icons.more_vert,

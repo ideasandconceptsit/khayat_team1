@@ -16,26 +16,33 @@ class CustomAppButton extends StatelessWidget {
       this.onTap,
 
         //the text has 2 styles across the app
-      this.isTextBold = true});
+      this.isTextBold = true,
+      this.isLoading = false,
+      });
 
   final Color color;
   final double width;
   final double? height;
   final String text;
   final bool isTextBold;
+  final bool isLoading;
   final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: isLoading?null:onTap,
       child: Container(
         width: width,
         //default height 40
         height: height??40.h,
         decoration: _buildAppButtonDecoration(),
         child: Center(
-          child: Text(
+          child: isLoading? Padding(
+            padding:  EdgeInsets.all(6.h),
+            child: const AspectRatio(aspectRatio: 1,child
+                : CircularProgressIndicator(color: AppColors.whiteColor,)),
+          ):Text(
             text,
             textAlign: TextAlign.center,
             style:isTextBold?AppTextStyles.textStyleBold20:AppTextStyles.textStyleRegular14

@@ -17,7 +17,7 @@ class DioUtils
   static Dio _createDioInstance()
   {
     var dio = Dio(BaseOptions(
-      baseUrl: "https://jsonplaceholder.typicode.com",
+      baseUrl: "https://khayat-backend.onrender.com",
     ));
     dio.interceptors.clear();
     if (kDebugMode) // in debug mode will appear the print statment

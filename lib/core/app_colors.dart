@@ -15,4 +15,6 @@ class AppColors {
   static const quantityButtonShadowColor = Color(0x14000000);
   static const promoCodeShadowColor = Color(0x14000000);
   static const promoCodeMenuShadowColor = Color(0x23000000);
+  static const purpleColor = Color(0xFF735BF2);
+  static const lightGrey =  Color(0XFFEEEEEE);
 }

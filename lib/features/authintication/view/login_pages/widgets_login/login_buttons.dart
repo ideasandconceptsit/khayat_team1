@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_common/get_reset.dart';
-import 'package:team1_khayat/features/authintication/view/login_pages/login_page.dart';
+
 import '../../../../../core/app_style.dart';
 import '../../../auth_controllers/login_controller.dart';
 import '../../widgets/custom_button.dart';

@@ -5,9 +5,10 @@ import 'package:team1_khayat/features/authintication/view/signup_pages/widgets_s
 import 'package:team1_khayat/features/authintication/view/signup_pages/widgets_signup/signup_button.dart';
 import 'package:team1_khayat/features/authintication/view/signup_pages/widgets_signup/signup_form.dart';
 import 'package:team1_khayat/features/authintication/view/signup_pages/widgets_signup/social_signup.dart';
-import '../../auth_controllers/signup_controller.dart';
+
 import '../../../../core/app_colors.dart';
 import '../../../../core/app_style.dart';
+import '../../auth_controllers/signup_controller.dart';
 
 class SignupPage extends StatelessWidget {
    SignupPage({super.key});

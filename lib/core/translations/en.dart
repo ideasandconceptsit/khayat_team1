@@ -29,10 +29,12 @@ const Map<String, String> en = {
   AppStrings.size: "Size: ",
   AppStrings.enterYourPromoCode: "Enter your promo code",
   AppStrings.totalAmount: "Total amount:",
+  AppStrings.totalAmountAfterDiscount: "Total amount after discount:",
   AppStrings.checkOut: "CHECK OUT",
   AppStrings.yourPromoCodes: "Your Promo Codes",
   AppStrings.daysRemaining: "days remaining",
   AppStrings.apply: "Apply",
+  AppStrings.applied: "Applied",
   AppStrings.addToFavorites: "Add to favorites",
   AppStrings.deleteFromList: "Delete from the list",
   AppStrings.checkout: "Checkout",
@@ -70,7 +72,27 @@ const Map<String, String> en = {
   AppStrings.continueShopping: "Continue shopping",
   AppStrings.required: "Required",
   AppStrings.pleaseEnterACorrectCardNumber: "Enter a correct card number",
+  AppStrings.pleaseAddSomeProductsFirst: "Please add some products first",
+  AppStrings.pleaseAddAnAddress: "Please add an address",
+  AppStrings.couponAppliedSuccessfully: "Coupon applied successfully",
+  AppStrings.productAddedToFavoritesSuccessfully: "Product added to favorites",
+  AppStrings.productRemovedFromCartSuccessfully: "Product removed from cart",
   AppStrings.pleaseEnterAValue: "Please enter a correct value",
+  AppStrings.noPromoCodesAvailable: "No promo codes available",
+  AppStrings.noShippingAddresses: "No shipping addresses",
+  AppStrings.tryAgain: "Try Again",
+
+
+  //appointment
+  AppStrings.selectTime: "Select time",
+  AppStrings.from: "From",
+  AppStrings.to: "To",
+  AppStrings.confirm: "CONFIRM",
+  AppStrings.appointmentCreatedSuccessfully: "Appointment created successfully",
+  AppStrings.note: "Note",
+  AppStrings.someThingWentWrong: "Something went wrong",
+  AppStrings.appointmentAlreadyExists: "Appointment already exists for this time",
+
 
   // Catalog Page
   'womens_tops': "Women's tops",

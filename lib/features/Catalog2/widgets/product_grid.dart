@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../catalog_controller/product_controller.dart';
+import 'package:get/get.dart';
 
+import '../catalog_controller/product_controller.dart';
 import 'product_card.dart';
 
 class ProductGrid extends StatelessWidget {

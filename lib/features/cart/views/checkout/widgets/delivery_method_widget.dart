@@ -7,8 +7,8 @@ import 'package:team1_khayat/shared/custom_cached_network_image/custom_cached_ne
 import 'package:team1_khayat/shared/custom_card_with_shadow/custom_card_with_shadow.dart';
 
 class DeliveryMethodWidget extends StatelessWidget {
-  const DeliveryMethodWidget({super.key, required this.delivryMethodModel, required this.isSelected});
-  final DelivryMethodModel delivryMethodModel;
+  const DeliveryMethodWidget({super.key, required this.deliveryMethodModel, required this.isSelected});
+  final DeliveryMethodModel deliveryMethodModel;
   final bool isSelected;
 
   @override
@@ -20,12 +20,13 @@ class DeliveryMethodWidget extends StatelessWidget {
         CustomCardWithShadow(height: 69.h, width: 99.w, child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomCachedNetworkImage(imageUrl: delivryMethodModel.imageUrl, height: 17.h, width: 61.w),
+            CustomCachedNetworkImage(imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQACepP6q4rvLK966nBCun2zXWrCV6w1u_Vw&s", height: 17.h, width: 61.w),
             SizedBox(height: 10.h,),
-            Text(delivryMethodModel.daysText,style: AppTextStyles.textStyleRegular11.copyWith(color: AppColors.greyColor),)
+            Text( getDaysText(deliveryMethodModel),style: AppTextStyles.textStyleRegular11.copyWith(color: AppColors.greyColor),)
           ],
         )),
       ],
     );
   }
 }
+String getDaysText(DeliveryMethodModel deliveryMethodModel)=>'${deliveryMethodModel.estimatedDeliveryTime.min} - ${deliveryMethodModel.estimatedDeliveryTime.max} ${deliveryMethodModel.estimatedDeliveryTime.unit}';
