@@ -33,20 +33,20 @@ class AddressModel {
 
   factory AddressModel.fromJson(Map<String, dynamic> json) {
     return AddressModel(
-      id: json["_id"],
-      userId: json["user"],
-      name: json["name"],
-      addressLine1: json["addressLine1"],
-      addressLine2: json["addressLine2"],
-      city: json["city"],
-      state: json["state"],
-      postalCode: json["postalCode"],
-      country: json["country"],
-      phone: json["phone"],
-      isDefault: json["isDefault"],
-      addressType: json["addressType"],
-      createdAt: DateTime.parse(json["createdAt"]),
-      updatedAt: DateTime.parse(json["updatedAt"]),
+      id: json["_id"] ?? '',
+      userId: json["user"] ?? '',
+      name: json["name"] ?? '',
+      addressLine1: json["addressLine1"] ?? '',
+      addressLine2: json["addressLine2"] ?? '',
+      city: json["city"] ?? '',
+      state: json["state"] ?? '',
+      postalCode: json["postalCode"] ?? '',
+      country: json["country"] ?? '',
+      phone: json["phone"] ?? '',
+      isDefault: json["isDefault"] ?? false,
+      addressType: json["addressType"] ?? '',
+      createdAt: json["createdAt"] != null ? DateTime.parse(json["createdAt"]) : DateTime.now(),
+      updatedAt: json["updatedAt"] != null ? DateTime.parse(json["updatedAt"]) : DateTime.now(),
     );
   }
 }

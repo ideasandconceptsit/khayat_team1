@@ -1,17 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:country_picker/country_picker.dart';
 
-class CustomCountryField extends StatelessWidget {
+class CustomCountryField extends StatefulWidget {
   final String label;
-  final String initialValue;
-  final VoidCallback? onTap;
+  final String? initialValue;
+  final Function(String)? onChanged;
 
   const CustomCountryField({
     Key? key,
     required this.label,
-    required this.initialValue,
-    this.onTap,
+    this.initialValue,
+    this.onChanged,
   }) : super(key: key);
+
+  @override
+  _CustomCountryFieldState createState() => _CustomCountryFieldState();
+}
+
+class _CustomCountryFieldState extends State<CustomCountryField> {
+  String? selectedCountry;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedCountry = widget.initialValue ?? ''; // تعيين قيمة مبدئية فارغة
+  }
+
+  void _pickCountry() {
+    showCountryPicker(
+      context: context,
+      showPhoneCode: false, // إخفاء كود الهاتف
+      onSelect: (Country country) {
+        setState(() {
+          selectedCountry = country.name;
+        });
+        if (widget.onChanged != null) {
+          widget.onChanged!(country.name);
+        }
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +48,7 @@ class CustomCountryField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          label,
+          widget.label,
           style: TextStyle(
             fontSize: 12.sp,
             color: Colors.grey,
@@ -27,7 +56,7 @@ class CustomCountryField extends StatelessWidget {
         ),
         SizedBox(height: 4.h),
         GestureDetector(
-          onTap: onTap,
+          onTap: _pickCountry,
           child: Container(
             padding: EdgeInsets.symmetric(
               horizontal: 16.w,
@@ -41,9 +70,10 @@ class CustomCountryField extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  initialValue,
+                  selectedCountry!.isNotEmpty ? selectedCountry! : "اختر الدولة",
                   style: TextStyle(
                     fontSize: 16.sp,
+                    color: selectedCountry!.isNotEmpty ? Colors.black : Colors.grey,
                   ),
                 ),
                 Icon(Icons.arrow_forward_ios, size: 16.sp),

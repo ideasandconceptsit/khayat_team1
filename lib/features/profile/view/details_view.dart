@@ -55,7 +55,7 @@ class DetailsView extends StatelessWidget {
                   style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
                   children: [
                     TextSpan(
-                      text: ' ${order?.items.length}',
+                      text: ' ${order?.items?.length}',
                       style: AppTextStyles.tajawaltextStyle14.copyWith(color: Colors.black),
                     ),
                   ],
@@ -69,9 +69,9 @@ class DetailsView extends StatelessWidget {
               ),
             ),
            SliverList.builder(
-  itemCount: order?.items.length ?? 0,
+  itemCount: order?.items?.length ?? 0,
   itemBuilder: (context, index) {
-    return BuildItemListOrderDetails(orderItem: order!.items[index]);
+    return BuildItemListOrderDetails(orderItem: order!.items![index]);
   },
 ),
            SliverList(delegate: SliverChildListDelegate([

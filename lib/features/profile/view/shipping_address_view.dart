@@ -16,7 +16,7 @@ class ShippingAddressView extends StatelessWidget {
   ShippingAddressView({super.key});
 
   final ShippingAddressController controller = Get.put(
-      ShippingAddressController(ShippingAddressRepository(ApiService())));
+      ShippingAddressController(ShippingAddressRepository(  ApiService())));
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class ShippingAddressView extends StatelessWidget {
          if (controller.isLoading.value) {
           return const LoadingShimmerEffect();
         }
-        else if (controller.addresses.isEmpty) {
+        else if (controller.addreesses.isEmpty) {
           return const Center(child: Text("لم يتم العثور على أي عناوين."));
         } 
 
@@ -42,7 +42,7 @@ class ShippingAddressView extends StatelessWidget {
               sliver: SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
-                    final address = controller.addresses[index];
+                    final address = controller.addreesses[index];
                     return AddressCard(
                       address: address,
                       isSelected:
@@ -51,7 +51,7 @@ class ShippingAddressView extends StatelessWidget {
                       // onEdit: controller.editAddress,
                     );
                   },
-                  childCount: controller.addresses.length,
+                  childCount: controller.addreesses.length,
                 ),
               ),
             ),
@@ -60,7 +60,7 @@ class ShippingAddressView extends StatelessWidget {
       }),
       floatingActionButton: CustomFloatingButton(
         onPressed: () {
-          // Get.to(() => AddAddressForm());
+          Get.to(() => AddAddressForm());
         },
         icon: Icons.add,
       ),

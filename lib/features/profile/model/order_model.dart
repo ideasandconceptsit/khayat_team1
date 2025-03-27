@@ -1,271 +1,198 @@
 class OrderModels {
-  final String id;
-  final Client client;
-  final List<OrderItem> items;
-  final ThobeDetails thobeDetails;
-  final double discount;
-  final String discountType;
-  final double tax;
-  final double taxRate;
-  final double shipping;
-  final double totalPrice;
-  final double profitAmount;
-  final double profitPercentage;
-  final String paymentStatus;
-  final String paymentMethod;
-  final double amountPaid;
-  final String status;
-  final String priority;
-  final List<String> tags;
-  final int totalQuantity;
-  final double balance;
-  final String orderDate;
-  final String createdAt;
-  final String updatedAt;
-  final String orderNumber;
-  final int v;
+  final String? id;
+  final String? orderNumber;
+  final ClientModel? client;
+  final List<ItemModel>? items;
+  final double? discount;
+  final String? discountType;
+  final double? tax;
+  final double? taxRate;
+  final double? shipping;
+  final double? totalPrice;
+  final String? paymentStatus;
+  final String? paymentMethod;
+  final double? amountPaid;
+  final String? status;
+  final String? priority;
+  final int? totalQuantity;
+  final double? balance;
+  final DateTime? orderDate;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final DateTime? deliveryDate;
+  final String? trackingNumber;
+  final String? notes;
+  final String? currency;
+  final WarehouseModel? warehouse;
+  final String? salesPerson;
+  final bool? isRefunded;
 
   OrderModels({
-    required this.id,
-    required this.client,
-    required this.items,
-    required this.thobeDetails,
-    required this.discount,
-    required this.discountType,
-    required this.tax,
-    required this.taxRate,
-    required this.shipping,
-    required this.totalPrice,
-    required this.profitAmount,
-    required this.profitPercentage,
-    required this.paymentStatus,
-    required this.paymentMethod,
-    required this.amountPaid,
-    required this.status,
-    required this.priority,
-    required this.tags,
-    required this.totalQuantity,
-    required this.balance,
-    required this.orderDate,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.orderNumber,
-    required this.v,
+    this.id,
+    this.orderNumber,
+    this.client,
+    this.items,
+    this.discount,
+    this.discountType,
+    this.tax,
+    this.taxRate,
+    this.shipping,
+    this.totalPrice,
+    this.paymentStatus,
+    this.paymentMethod,
+    this.amountPaid,
+    this.status,
+    this.priority,
+    this.totalQuantity,
+    this.balance,
+    this.orderDate,
+    this.createdAt,
+    this.updatedAt,
+    this.deliveryDate,
+    this.trackingNumber,
+    this.notes,
+    this.currency,
+    this.warehouse,
+    this.salesPerson,
+    this.isRefunded,
   });
 
   factory OrderModels.fromJson(Map<String, dynamic> json) {
     return OrderModels(
-      id: json["id"] ?? "",
-      client: Client.fromJson(json["client"]),
-      items: (json["items"] as List).map((item) => OrderItem.fromJson(item)).toList(),
-      thobeDetails: ThobeDetails.fromJson(json["thobeDetails"]),
-      discount: (json["discount"] ?? 0).toDouble(),
-      discountType: json["discountType"] ?? "",
-      tax: (json["tax"] ?? 0).toDouble(),
-      taxRate: (json["taxRate"] ?? 0).toDouble(),
-      shipping: (json["shipping"] ?? 0).toDouble(),
-      totalPrice: (json["totalPrice"] ?? 0).toDouble(),
-      profitAmount: (json["profitAmount"] ?? 0).toDouble(),
-      profitPercentage: (json["profitPercentage"] ?? 0).toDouble(),
-      paymentStatus: json["paymentStatus"] ?? "",
-      paymentMethod: json["paymentMethod"] ?? "",
-      amountPaid: (json["amountPaid"] ?? 0).toDouble(),
-      status: json["status"] ?? "",
-      priority: json["priority"] ?? "",
-      tags: List<String>.from(json["tags"] ?? []),
-      totalQuantity: json["totalQuantity"] ?? 0,
-      balance: (json["balance"] ?? 0).toDouble(),
-      orderDate: json["orderDate"] ?? "",
-      createdAt: json["createdAt"] ?? "",
-      updatedAt: json["updatedAt"] ?? "",
-      orderNumber: json["orderNumber"] ?? "",
-      v: json["__v"] ?? 0,
+      id: json["_id"],
+      orderNumber: json["orderNumber"],
+      client: json["client"] != null ? ClientModel.fromJson(json["client"]) : null,
+      items: json["items"] != null ? (json["items"] as List).map((item) => ItemModel.fromJson(item)).toList() : null,
+      discount: (json["discount"] as num?)?.toDouble(),
+      discountType: json["discountType"],
+      tax: (json["tax"] as num?)?.toDouble(),
+      taxRate: (json["taxRate"] as num?)?.toDouble(),
+      shipping: (json["shipping"] as num?)?.toDouble(),
+      totalPrice: (json["totalPrice"] as num?)?.toDouble(),
+      paymentStatus: json["paymentStatus"],
+      paymentMethod: json["paymentMethod"],
+      amountPaid: (json["amountPaid"] as num?)?.toDouble(),
+      status: json["status"],
+      priority: json["priority"],
+      totalQuantity: json["totalQuantity"],
+      balance: (json["balance"] as num?)?.toDouble(),
+      orderDate: json["orderDate"] != null ? DateTime.tryParse(json["orderDate"]) : null,
+      createdAt: json["createdAt"] != null ? DateTime.tryParse(json["createdAt"]) : null,
+      updatedAt: json["updatedAt"] != null ? DateTime.tryParse(json["updatedAt"]) : null,
+      deliveryDate: json["deliveryDate"] != null ? DateTime.tryParse(json["deliveryDate"]) : null,
+      trackingNumber: json["trackingNumber"],
+      notes: json["notes"],
+      currency: json["currency"],
+      warehouse: json["warehouse"] != null ? WarehouseModel.fromJson(json["warehouse"]) : null,
+      salesPerson: json["salesPerson"],
+      isRefunded: json["isRefunded"] ?? false,
     );
   }
 }
 
-class Client {
-  final String id;
-  final String name;
-  final String phone;
-  final String email;
-  final String address;
+class ClientModel {
+  final String? id;
+  final String? name;
+  final String? phone;
+  final String? email;
+  final String? address;
 
-  Client({
-    required this.id,
-    required this.name,
-    required this.phone,
-    required this.email,
-    required this.address,
-  });
+  ClientModel({this.id, this.name, this.phone, this.email, this.address});
 
-  factory Client.fromJson(Map<String, dynamic> json) {
-    return Client(
-      id: json["_id"] ?? "",
-      name: json["name"] ?? "",
-      phone: json["phone"] ?? "",
-      email: json["email"] ?? "",
-      address: json["address"] ?? "",
+  factory ClientModel.fromJson(Map<String, dynamic> json) {
+    return ClientModel(
+      id: json["_id"],
+      name: json["name"],
+      phone: json["phone"],
+      email: json["email"],
+      address: json["address"],
     );
   }
 }
 
-class OrderItem {
-  final String itemType;
-  final Item item;
-  final int quantity;
-  final double unitPrice;
-  final double discount;
-  final double totalPrice;
-  final String id;
+class ItemModel {
+  final String? id;
+  final String? itemType;
+  final ProductModel? product;
+  final int? quantity;
+  final double? unitPrice;
+  final double? discount;
+  final double? totalPrice;
 
-  OrderItem({
-    required this.itemType,
-    required this.item,
-    required this.quantity,
-    required this.unitPrice,
-    required this.discount,
-    required this.totalPrice,
-    required this.id,
-  });
+  ItemModel({this.id, this.itemType, this.product, this.quantity, this.unitPrice, this.discount, this.totalPrice});
 
-  factory OrderItem.fromJson(Map<String, dynamic> json) {
-    return OrderItem(
-      itemType: json["itemType"] ?? "",
-      item: Item.fromJson(json["item"]),
-      quantity: json["quantity"] ?? 0,
-      unitPrice: (json["unitPrice"] ?? 0).toDouble(),
-      discount: (json["discount"] ?? 0).toDouble(),
-      totalPrice: (json["totalPrice"] ?? 0).toDouble(),
-      id: json["_id"] ?? "",
+  factory ItemModel.fromJson(Map<String, dynamic> json) {
+    return ItemModel(
+      id: json["_id"],
+      itemType: json["itemType"],
+      product: json["item"] != null ? ProductModel.fromJson(json["item"]) : null,
+      quantity: json["quantity"],
+      unitPrice: (json["unitPrice"] as num?)?.toDouble(),
+      discount: (json["discount"] as num?)?.toDouble(),
+      totalPrice: (json["totalPrice"] as num?)?.toDouble(),
     );
   }
 }
 
-class Item {
-  final String id;
-  final String name;
-  final Category category;
-  final Supplier supplier;
-  final String sku;
-  final bool isLowStock;
-  final bool isOverStocked;
-  final double profitMargin;
-  final double? totalValue;
-  final double? totalCost;
+class ProductModel {
+  final String? id;
+  final String? name;
+  final String? sku;
+  final CategoryModel? category;
+  final SupplierModel? supplier;
 
-  Item({
-    required this.id,
-    required this.name,
-    required this.category,
-    required this.supplier,
-    required this.sku,
-    required this.isLowStock,
-    required this.isOverStocked,
-    required this.profitMargin,
-    this.totalValue,
-    this.totalCost,
-  });
+  ProductModel({this.id, this.name, this.sku, this.category, this.supplier});
 
-  factory Item.fromJson(Map<String, dynamic> json) {
-    return Item(
-      id: json["_id"] ?? "",
-      name: json["name"] ?? "",
-      category: Category.fromJson(json["category"]),
-      supplier: Supplier.fromJson(json["supplier"]),
-      sku: json["sku"] ?? "",
-      isLowStock: json["isLowStock"] ?? false,
-      isOverStocked: json["isOverStocked"] ?? false,
-      profitMargin: (json["profitMargin"] ?? 0).toDouble(),
-      totalValue: (json["totalValue"] as num?)?.toDouble(),
-      totalCost: (json["totalCost"] as num?)?.toDouble(),
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
+      id: json["_id"],
+      name: json["name"],
+      sku: json["sku"],
+      category: json["category"] != null ? CategoryModel.fromJson(json["category"]) : null,
+      supplier: json["supplier"] != null ? SupplierModel.fromJson(json["supplier"]) : null,
     );
   }
 }
 
-class Category {
-  final String id;
-  final String name;
+class CategoryModel {
+  final String? id;
+  final String? name;
 
-  Category({
-    required this.id,
-    required this.name,
-  });
+  CategoryModel({this.id, this.name});
 
-  factory Category.fromJson(Map<String, dynamic> json) {
-    return Category(
-      id: json["_id"] ?? "",
-      name: json["name"] ?? "",
+  factory CategoryModel.fromJson(Map<String, dynamic> json) {
+    return CategoryModel(id: json["_id"], name: json["name"]);
+  }
+}
+
+class SupplierModel {
+  final String? id;
+  final String? name;
+  final String? phone;
+
+  SupplierModel({this.id, this.name, this.phone});
+
+  factory SupplierModel.fromJson(Map<String, dynamic> json) {
+    return SupplierModel(
+      id: json["_id"],
+      name: json["name"],
+      phone: json["phone"],
     );
   }
 }
 
-class Supplier {
-  final String id;
-  final String name;
-  final String phone;
+class WarehouseModel {
+  final String? id;
+  final String? name;
+  final String? location;
 
-  Supplier({
-    required this.id,
-    required this.name,
-    required this.phone,
-  });
+  WarehouseModel({this.id, this.name, this.location});
 
-  factory Supplier.fromJson(Map<String, dynamic> json) {
-    return Supplier(
-      id: json["_id"] ?? "",
-      name: json["name"] ?? "",
-      phone: json["phone"] ?? "",
-    );
-  }
-}
-
-class ThobeDetails {
-  final double length;
-  final double backLength;
-  final double shoulder;
-  final double chestWidth;
-  final double sleeveLength;
-  final double neckWidth;
-  final double cuffWidth;
-  final double jabzorLength;
-  final double jabzorWidth;
-  final double takhaleesLength;
-  final double takhaleesWidth;
-  final double pocketLength;
-  final double pocketWidth;
-
-  ThobeDetails({
-    required this.length,
-    required this.backLength,
-    required this.shoulder,
-    required this.chestWidth,
-    required this.sleeveLength,
-    required this.neckWidth,
-    required this.cuffWidth,
-    required this.jabzorLength,
-    required this.jabzorWidth,
-    required this.takhaleesLength,
-    required this.takhaleesWidth,
-    required this.pocketLength,
-    required this.pocketWidth,
-  });
-
-  factory ThobeDetails.fromJson(Map<String, dynamic> json) {
-    return ThobeDetails(
-      length: (json["length"] ?? 0).toDouble(),
-      backLength: (json["backLength"] ?? 0).toDouble(),
-      shoulder: (json["shoulder"] ?? 0).toDouble(),
-      chestWidth: (json["chestWidth"] ?? 0).toDouble(),
-      sleeveLength: (json["sleeveLength"] ?? 0).toDouble(),
-      neckWidth: (json["neckWidth"] ?? 0).toDouble(),
-      cuffWidth: (json["cuffWidth"] ?? 0).toDouble(),
-      jabzorLength: (json["jabzorLength"] ?? 0).toDouble(),
-      jabzorWidth: (json["jabzorWidth"] ?? 0).toDouble(),
-      takhaleesLength: (json["takhaleesLength"] ?? 0).toDouble(),
-      takhaleesWidth: (json["takhaleesWidth"] ?? 0).toDouble(),
-      pocketLength: (json["pocketLength"] ?? 0).toDouble(),
-      pocketWidth: (json["pocketWidth"] ?? 0).toDouble(),
+  factory WarehouseModel.fromJson(Map<String, dynamic> json) {
+    return WarehouseModel(
+      id: json["_id"],
+      name: json["name"],
+      location: json["location"],
     );
   }
 }

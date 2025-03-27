@@ -50,7 +50,7 @@ class AddressCard extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {
-                  // Get.to(() => EditAddressForm(addressToEdit: address));
+                  Get.to(() => EditAddressForm(addressToEdit: address));
                 },
                 // => onEdit(address.id),
                 child: Text(
@@ -66,7 +66,6 @@ class AddressCard extends StatelessWidget {
           ),
           SizedBox(height: 6.h),
 
-          /// 🔹 تفاصيل العنوان
           Text(
             address.addressLine1,
             style: TextStyle(
@@ -81,7 +80,6 @@ class AddressCard extends StatelessWidget {
           ),
           SizedBox(height: 12.h),
 
-          /// 🔹 اختيار العنوان كعنوان أساسي
           InkWell(
             onTap: () => onSelect(address.id),
             child: Row(
@@ -92,7 +90,7 @@ class AddressCard extends StatelessWidget {
                   activeColor: Colors.black,
                 ),
                 SizedBox(width: 8.w),
-                Text(
+                Text( 
                   'use_as_shipping_address'.tr,
                   style: TextStyle(
                     fontSize: 14.sp,

@@ -7,7 +7,7 @@ import 'package:team1_khayat/features/profile/model/order_model.dart';
 class BuildItemListOrderDetails extends StatelessWidget {
   const BuildItemListOrderDetails({super.key, required this.orderItem});
 
-  final OrderItem orderItem;
+  final ItemModel orderItem;
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +38,12 @@ class BuildItemListOrderDetails extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  orderItem.item.name,
+                  orderItem.product!.name!.toString(),
                   style: AppTextStyles.tajawaltextStyle16,
                 ),
                 const SizedBox(height: 1),
                 Text(
-                  orderItem.item.category.name,
+                  orderItem.product!.category!.name.toString(),
                   style: AppTextStyles.tajawaltextStyle11.copyWith(
                     color: AppColors.grey,
                   ),

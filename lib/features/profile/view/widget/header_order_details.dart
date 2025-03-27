@@ -26,7 +26,7 @@ class HeaderOrderDetails extends StatelessWidget {
             ),
           ),
     Text(
-  order.createdAt.split('T')[0],
+  order.createdAt!.toIso8601String().split('T')[0],
   style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
 ),
 
@@ -46,7 +46,7 @@ class HeaderOrderDetails extends StatelessWidget {
                   style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
                   children: [
                     TextSpan(
-                      text:   order.client.phone,
+                      text:   order.trackingNumber,
                       style: AppTextStyles.tajawaltextStyle14.copyWith(color: Colors.black),
                     ),
                   ],
@@ -58,7 +58,7 @@ class HeaderOrderDetails extends StatelessWidget {
         ],
             ),
         Text(
-                order.status,
+                order.status.toString(),
                 style: TextStyle(
                   color: status == AppStrings.delivered.tr
                       ? Colors.green

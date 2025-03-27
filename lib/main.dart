@@ -14,6 +14,7 @@ void main() async {
   await GetStorage.init();
   final box = GetStorage();
   String savedLanguage = box.read('language') ?? 'ar';
+  
   runApp(MyApp(local: Locale(savedLanguage)));
 }
 

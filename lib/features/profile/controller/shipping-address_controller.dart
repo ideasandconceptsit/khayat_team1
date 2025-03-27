@@ -1,32 +1,46 @@
 import 'dart:developer';
+
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:team1_khayat/features/profile/model/add_address_model.dart';
 import 'package:team1_khayat/features/profile/model/address_model.dart';
 import 'package:team1_khayat/features/profile/repos/shipping_address_repos.dart';
 import 'package:team1_khayat/shared/app_snakbar/app_snackbar.dart';
 
+
 class ShippingAddressController extends GetxController {
   final ShippingAddressRepository _addressRepository;
-
   ShippingAddressController(this._addressRepository);
 
-  var addresses = <AddressModel>[].obs;
-  var selectedAddressId = ''.obs;
-  RxBool isLoading = false.obs;
+  var addreesses = <AddressModel>[].obs;
+  var isLoading = false.obs;
+  var selectedAddressId = "".obs;
+   final fullNameController = TextEditingController();
+  final addressController = TextEditingController();
+  final cityController = TextEditingController();
+  final stateController = TextEditingController();
+  final zipCodeController = TextEditingController();
+  final phoneController = TextEditingController();
+  final addressTypeController = TextEditingController();
+  final countryController = TextEditingController();
+  RxList<AddAddressModel> addresses = <AddAddressModel>[].obs;
+
 
   @override
   void onInit() {
-    super.onInit();
     fetchAllAddresses();
+    super.onInit();
   }
 
-  Future<void> fetchAllAddresses() async {
+  /// جلب جميع العناوين
+    Future<void> fetchAllAddresses() async {
     try {
       isLoading.value = true;
       final allAddresses = await _addressRepository.fetchAllAddresses();
       if (allAddresses != null && allAddresses.isNotEmpty) {
-        addresses.assignAll(allAddresses);
-        selectedAddressId.value = addresses.first.id; // تحديد أول عنوان افتراضيًا
-        log("✅ تم تحميل ${addresses.length} عنوان بنجاح.");
+        addreesses.assignAll(allAddresses);
+        selectedAddressId.value = addreesses.first.id; // تحديد أول عنوان افتراضيًا
+        log("✅ تم تحميل ${addreesses.length} عنوان بنجاح.");
       } else {
         log("❌ لا يوجد أي عناوين متاحة.");
         SnackbarHelper.showErrorSnackbar("لم يتم العثور على أي عناوين.");
@@ -43,46 +57,54 @@ class ShippingAddressController extends GetxController {
     selectedAddressId.value = addressId;
   }
 
-  // Future<void> editAddress(AddressModel updatedAddress) async {
-  //   try {
-  //     await _addressRepository.updateAddress(updatedAddress);
-  //     int index = addresses.indexWhere((addr) => addr.id == updatedAddress.id);
-  //     if (index != -1) {
-  //       addresses[index] = updatedAddress;
-  //       addresses.refresh();
-  //     }
-  //     SnackbarHelper.showSuccessSnackbar("تم تحديث العنوان بنجاح.");
-  //   } catch (e) {
-  //     log("❌ خطأ أثناء تعديل العنوان: $e");
-  //     SnackbarHelper.showErrorSnackbar("تعذر تحديث العنوان.");
-  //   }
-  // }
-
-  /// حذف عنوان معين
-  // Future<void> deleteAddress(String addressId) async {
-  //   try {
-  //     await _addressRepository.deleteAddress(addressId);
-  //     addresses.removeWhere((address) => address.id == addressId);
-
-  //     if (selectedAddressId.value == addressId && addresses.isNotEmpty) {
-  //       selectedAddressId.value = addresses.first.id;
-  //     }
-  //     SnackbarHelper.showSuccessSnackbar("تم حذف العنوان بنجاح.");
-  //   } catch (e) {
-  //     log("❌ خطأ أثناء حذف العنوان: $e");
-  //     SnackbarHelper.showErrorSnackbar("تعذر حذف العنوان.");
-  //   }
-  // }
-
   /// إضافة عنوان جديد
-  // Future<void> addNewAddress(AddressModel newAddress) async {
-  //   try {
-  //     final addedAddress = await _addressRepository.addAddress(newAddress);
-  //     addresses.add(addedAddress);
-  //     SnackbarHelper.showSuccessSnackbar("تمت إضافة العنوان بنجاح.");
-  //   } catch (e) {
-  //     log("❌ خطأ أثناء إضافة العنوان: $e");
-  //     SnackbarHelper.showErrorSnackbar("تعذر إضافة العنوان.");
-  //   }
-  // }
+    Future<void> addNewAddress() async {
+    try {
+      final newAddress = AddAddressModel(
+        name: fullNameController.text,
+        addressLine1: addressController.text,
+        addressLine2: "",
+        city: cityController.text,
+        state: stateController.text,
+        postalCode: zipCodeController.text,
+        country: countryController.text,
+        phone: phoneController.text,
+        addressType: addressTypeController.text,
+      );
+
+      // محاكاة الإضافة إلى قاعدة البيانات
+      await Future.delayed(Duration(seconds: 1)); // يمكنك استبدالها بـ API call
+      addresses.add(newAddress);
+
+      // إظهار رسالة النجاح
+      Get.snackbar("نجاح", "تمت إضافة العنوان بنجاح",
+          backgroundColor: Colors.green, colorText: Colors.white);
+    } catch (e) {
+      // إظهار رسالة الخطأ
+      Get.snackbar("خطأ", "حدث خطأ أثناء إضافة العنوان",
+          backgroundColor: Colors.red, colorText: Colors.white);
+    }
+  }
+
+  /// حذف عنوان
+  Future<void> deleteAddress(String addressId) async {
+    try {
+      isLoading.value = true;
+      final success = await _addressRepository.deleteAddress(addressId);
+
+      if (success) {
+        log("✅ العنوان تم حذفه بنجاح");
+        addreesses.removeWhere((address) => address.id == addressId);
+        SnackbarHelper.showSuccessSnackbar("تم حذف العنوان بنجاح.");
+      } else {
+        log("❌ فشل في حذف العنوان");
+        SnackbarHelper.showErrorSnackbar("حدث خطأ أثناء حذف العنوان.");
+      }
+    } catch (e) {
+      log("❌ خطأ أثناء حذف العنوان: $e");
+      SnackbarHelper.showErrorSnackbar("حدث خطأ أثناء حذف العنوان.");
+    } finally {
+      isLoading.value = false;
+    }
+  }
 }
