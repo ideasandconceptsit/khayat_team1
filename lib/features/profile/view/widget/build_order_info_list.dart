@@ -25,7 +25,7 @@ class BuildOderInfoList extends StatelessWidget {
         const SizedBox(height: 10),
          OrderInfo(
             title: AppStrings.shippingAddresses.tr,
-            value: '3 Newbridge Court, Chino Hills, CA 91709, United States'),
+            value: '${order!.client!.address}',),
         OrderInfo(
             title: AppStrings.paymentMethods.tr,
             value: '${order!.paymentMethod} ',
@@ -34,7 +34,7 @@ class BuildOderInfoList extends StatelessWidget {
             title: AppStrings.delivreymethod.tr, value: 'FedEx, 3 days, 15\$'),
         OrderInfo(
           title: AppStrings.discount.tr,
-          value: '${order!.discount}% : Personal promo code',
+          value: '${order!.discount}%  ',
         ),
         OrderInfo(
             title: AppStrings.totalAmount.tr,
