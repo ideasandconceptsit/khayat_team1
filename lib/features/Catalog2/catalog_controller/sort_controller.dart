@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import 'product_controller.dart';
 
 class SortController extends GetxController {
@@ -8,7 +7,7 @@ class SortController extends GetxController {
   String get currentSort => productController.currentSort.value;
 
   void changeSort(String value) {
-    productController.changeSort(value);
+    productController.setSortOption(value); // التعديل هنا
   }
 
   String get sortText {

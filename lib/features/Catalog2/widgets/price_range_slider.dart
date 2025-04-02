@@ -33,7 +33,7 @@ class PriceRangeSlider extends StatelessWidget {
                     controller.maxPrice.value,
                   ),
                   min: 0,
-                  max: 200,
+                  max: 300,
                   activeColor: const Color(0xFFDB3022),
                   inactiveColor: Colors.grey[300],
                   onChanged: (RangeValues values) {

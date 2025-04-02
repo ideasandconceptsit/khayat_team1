@@ -77,7 +77,7 @@ class FilterController extends GetxController {
     }
 
     refreshCounter.value++;
-    productController.setCategory(selectedCategory.value);
+    productController.selectedCategory(selectedCategory.value);
   }
 
   bool isCategorySelected(String? categoryId) {
@@ -98,14 +98,6 @@ class FilterController extends GetxController {
     }
   }
 
-  void toggleBrand(String brand) {
-    if (selectedBrands.contains(brand)) {
-      selectedBrands.remove(brand);
-    } else {
-      selectedBrands.add(brand);
-    }
-  }
-
   void updateSearchQuery(String query) {
     searchQuery.value = query;
   }
@@ -121,14 +113,8 @@ class FilterController extends GetxController {
     selectedCategory.value = null;
     minPrice.value = 0.0;
     maxPrice.value = 200.0;
-    resetBrands();
     productController.setPriceRange(0.0, 200.0);
-    productController.setCategory(null);
+    productController.selectedCategory(null);
     refreshCounter.value++;
-  }
-
-  void resetBrands() {
-    selectedBrands.clear();
-    searchQuery.value = '';
   }
 }

@@ -2,30 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../catalog_controller/filter_controller.dart';
-import '../catalog_controller/product_controller.dart';
+import '../favorite_controller/filter_controller.dart';
+import '../favorite_controller/favorite_controller.dart';
 import '../models/category_model.dart';
-import '../models/product_model.dart';
 
 class CategoryPills extends StatelessWidget {
   CategoryPills({super.key});
 
-  final FilterController filterController = Get.find<FilterController>();
-  final ProductController productController = Get.find<ProductController>();
+  final FavoriteFilterController filterController =
+      Get.find<FavoriteFilterController>();
+  final FavoriteController favoriteController = Get.find<FavoriteController>();
 
   @override
   Widget build(BuildContext context) {
-    final ProductType productType = Get.arguments ?? ProductType.fabric;
-
     return Obx(() {
       filterController.refreshCounter.value;
 
-      // تصفية الفئات حسب نوع المنتج
-      final filteredCategories = filterController.categories.where((category) {
-        return category.productType == productType;
-      }).toList();
-
-      if (filteredCategories.isEmpty) {
+      if (filterController.categories.isEmpty) {
         return SizedBox.shrink();
       }
 
@@ -35,7 +28,7 @@ class CategoryPills extends StatelessWidget {
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          itemCount: filteredCategories.length + 1,
+          itemCount: filterController.categories.length + 1,
           itemBuilder: (context, index) {
             if (index == 0) {
               return _buildCategoryPill(
@@ -43,18 +36,20 @@ class CategoryPills extends StatelessWidget {
                 filterController.selectedCategory.value == null,
                 () {
                   filterController.toggleCategory(null);
-                  productController.setCategoryFilter(null);
+                  //   favoriteController.setCategory(null);
+                  print('Selected All category');
                 },
               );
             }
 
-            CategoryModel category = filteredCategories[index - 1];
+            CategoryModel category = filterController.categories[index - 1];
             return _buildCategoryPill(
               category.name,
               filterController.isCategorySelected(category.id),
               () {
                 filterController.toggleCategory(category.id);
-                productController.setCategoryFilter(category.id);
+                //   favoriteController.setCategory(category.id);
+                print('Selected category: ${category.name} (${category.id})');
               },
             );
           },
@@ -68,7 +63,12 @@ class CategoryPills extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(right: 8.w),
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: () {
+          onPressed();
+          print('Category pill pressed: $text');
+          print(
+              'Selected category: ${filterController.selectedCategory.value}');
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: isSelected ? Colors.black : Colors.white,
           foregroundColor: isSelected ? Colors.white : Colors.black,

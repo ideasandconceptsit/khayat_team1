@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../brand_selector.dart';
 import '../catalog_controller/sort_controller.dart';
 import '../filter.dart';
 import 'sort_by.dart';
@@ -54,13 +53,6 @@ class FilterSortBar extends StatelessWidget {
                   foregroundColor: Theme.of(context).colorScheme.secondary,
                 ),
               )),
-          IconButton(
-            onPressed: () {
-              Get.to(() => BrandSelectorPage());
-            },
-            icon: Icon(Icons.grid_view, size: 20.sp),
-            color: Theme.of(context).colorScheme.secondary,
-          ),
         ],
       ),
     );

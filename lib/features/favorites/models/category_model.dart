@@ -1,5 +1,3 @@
-import 'product_model.dart';
-
 class CategoryModel {
   final String id;
   final String name;
@@ -7,7 +5,6 @@ class CategoryModel {
   final bool active;
   final String createdAt;
   final String updatedAt;
-  final ProductType productType; // إضافة هذا الحقل
 
   CategoryModel({
     required this.id,
@@ -16,7 +13,6 @@ class CategoryModel {
     this.active = true,
     required this.createdAt,
     required this.updatedAt,
-    required this.productType,
   });
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) {
@@ -27,8 +23,6 @@ class CategoryModel {
       active: json['active'] ?? true,
       createdAt: json['createdAt'] ?? '',
       updatedAt: json['updatedAt'] ?? '',
-      productType:
-          json['type'] == 'fabric' ? ProductType.fabric : ProductType.accessory,
     );
   }
 

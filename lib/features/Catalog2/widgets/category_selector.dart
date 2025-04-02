@@ -39,7 +39,7 @@ class CategorySelector extends StatelessWidget {
                     filterController.selectedCategory.value == null,
                     () {
                       filterController.toggleCategory(null);
-                      productController.setCategory(null);
+                      productController.selectedCategory(null);
                     },
                   ),
                   ...filterController.categories.map((CategoryModel category) {
@@ -50,7 +50,7 @@ class CategorySelector extends StatelessWidget {
                       isSelected,
                       () {
                         filterController.toggleCategory(category.id);
-                        productController.setCategory(category.id);
+                        productController.selectedCategory(category.id);
                       },
                     );
                   }).toList(),

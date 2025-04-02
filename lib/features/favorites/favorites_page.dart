@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../shared/custom_app_bar/custom_app_bar.dart';
-import 'catalog_controller/product_controller.dart';
-import 'models/product_model.dart';
-import 'widgets/category_pills.dart';
-import 'widgets/filter_sort_bar.dart';
+import 'favorite_controller/favorite_controller.dart';
 import 'widgets/product_grid.dart';
 
-class CatalogPage extends StatefulWidget {
-  const CatalogPage({super.key});
+class FavoritesPage extends StatefulWidget {
+  const FavoritesPage({super.key});
 
   @override
-  State<CatalogPage> createState() => _CatalogPageState();
+  State<FavoritesPage> createState() => _FavoritesPageState();
 }
 
-class _CatalogPageState extends State<CatalogPage> {
+class _FavoritesPageState extends State<FavoritesPage> {
+  final TextEditingController _searchController = TextEditingController();
   bool _showSearch = false;
-  final _searchController = TextEditingController();
-  final ProductController _productController = Get.find<ProductController>();
 
   @override
   void dispose() {
@@ -29,7 +24,7 @@ class _CatalogPageState extends State<CatalogPage> {
 
   @override
   Widget build(BuildContext context) {
-    final ProductType productType = Get.arguments ?? ProductType.fabric;
+    final FavoriteController controller = Get.find<FavoriteController>();
 
     return Scaffold(
       appBar: _showSearch
@@ -39,13 +34,13 @@ class _CatalogPageState extends State<CatalogPage> {
                 controller: _searchController,
                 autofocus: true,
                 decoration: InputDecoration(
-                  hintText: 'search_products'.tr,
+                  hintText: 'search_favorites'.tr,
                   border: InputBorder.none,
                   hintStyle: TextStyle(color: Colors.white70),
                 ),
                 style: TextStyle(color: Colors.white),
                 onChanged: (value) {
-                  _productController.searchProducts(value);
+                  controller.searchFavorites(value);
                 },
               ),
               backgroundColor: Colors.blue,
@@ -56,7 +51,7 @@ class _CatalogPageState extends State<CatalogPage> {
                     setState(() {
                       _showSearch = false;
                       _searchController.clear();
-                      _productController.clearSearch();
+                      controller.clearSearch();
                     });
                   },
                 ),
@@ -72,9 +67,7 @@ class _CatalogPageState extends State<CatalogPage> {
               arrowBackVisibility: true,
               arrowBackOnPressed: () => Get.back(),
               backgroundColor: Colors.white,
-              title: productType == ProductType.fabric
-                  ? 'fabrics'.tr
-                  : 'accessories'.tr,
+              title: "المفضلة".tr,
             ),
       body: SafeArea(
         child: Column(
@@ -82,10 +75,15 @@ class _CatalogPageState extends State<CatalogPage> {
             Expanded(
               child: Column(
                 children: [
-                  if (!_showSearch) CategoryPills(),
-                  if (!_showSearch) FilterSortBar(),
-                  Expanded(
-                    child: ProductGrid(productType: productType),
+                  const Expanded(
+                    child: FavoriteGrid(),
+                  ),
+                  FloatingActionButton(
+                    onPressed: () {
+                      controller.addTestFavorites();
+                    },
+                    child: Icon(Icons.add),
+                    tooltip: 'Add test favorites',
                   ),
                 ],
               ),

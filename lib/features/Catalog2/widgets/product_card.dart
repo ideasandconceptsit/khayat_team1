@@ -3,12 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../catalog_controller/product_controller.dart';
-import '../models/fabric_model.dart';
+import '../models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
-  final FabricModel fabric;
+  final ProductModel productModel;
 
-  ProductCard({super.key, required this.fabric});
+  ProductCard({super.key, required this.productModel});
 
   final ProductController productController = Get.find();
 
@@ -23,7 +23,7 @@ class ProductCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(8.r),
               child: Image.network(
-                fabric.imageUrl,
+                productModel.image,
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: 150.h,
@@ -37,7 +37,7 @@ class ProductCard extends StatelessWidget {
                 },
               ),
             ),
-            if (fabric.discount > 0)
+            if (productModel.discount > 0)
               Positioned(
                 left: 8.w,
                 top: 8.h,
@@ -50,7 +50,7 @@ class ProductCard extends StatelessWidget {
                   ),
                   alignment: Alignment.center,
                   child: Text(
-                    '-${fabric.discount}%',
+                    '-${productModel.discount}%',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 11.sp,
@@ -78,13 +78,16 @@ class ProductCard extends StatelessWidget {
                         ],
                       ),
                       child: GestureDetector(
-                        onTap: () => productController.toggleLike(fabric.id),
+                        onTap: () => productController.toggleLike(
+                          productModel.id,
+                          productModel.type,
+                        ),
                         child: Icon(
-                          productController.isLiked(fabric.id)
+                          productController.isLiked(productModel.id)
                               ? Icons.favorite
                               : Icons.favorite_border,
                           size: 24.sp,
-                          color: productController.isLiked(fabric.id)
+                          color: productController.isLiked(productModel.id)
                               ? Colors.red
                               : Theme.of(context).colorScheme.secondary,
                         ),
@@ -99,18 +102,18 @@ class ProductCard extends StatelessWidget {
           children: [
             ...List.generate(5, (index) {
               return Icon(
-                index < (fabric.ratingsAverage ?? 0)
+                index < (productModel.ratingsAverage ?? 0)
                     ? Icons.star
                     : Icons.star_border,
                 size: 16.sp,
-                color: index < (fabric.ratingsAverage ?? 0)
+                color: index < (productModel.ratingsAverage ?? 0)
                     ? Colors.amber
                     : Colors.grey[300],
               );
             }),
             SizedBox(width: 4.w),
             Text(
-              '(${fabric.ratingsQuantity ?? 0})',
+              '(${productModel.ratingsQuantity ?? 0})',
               style: TextStyle(
                 fontSize: 12.sp,
                 color: Theme.of(context).colorScheme.secondary,
@@ -120,7 +123,7 @@ class ProductCard extends StatelessWidget {
         ),
         SizedBox(height: 4.h),
         Text(
-          fabric.category.name,
+          productModel.category.name,
           style: TextStyle(
             color: Theme.of(context).colorScheme.secondary,
             fontSize: 12.sp,
@@ -128,7 +131,7 @@ class ProductCard extends StatelessWidget {
         ),
         SizedBox(height: 4.h),
         Text(
-          fabric.name,
+          productModel.name,
           style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 14.sp,
@@ -137,9 +140,9 @@ class ProductCard extends StatelessWidget {
         SizedBox(height: 4.h),
         Row(
           children: [
-            if (fabric.discount > 0) ...[
+            if (productModel.discount > 0) ...[
               Text(
-                '\$${fabric.pricePerMeter.toStringAsFixed(2)}',
+                '\$${productModel.price.toStringAsFixed(2)}${productModel.unit == 'meter' ? '/m' : ''}',
                 style: TextStyle(
                   decoration: TextDecoration.lineThrough,
                   decorationThickness: 1,
@@ -150,7 +153,7 @@ class ProductCard extends StatelessWidget {
               SizedBox(width: 4.w),
             ],
             Text(
-              '\$${fabric.finalPrice.toStringAsFixed(2)}',
+              '\$${productModel.finalPrice.toStringAsFixed(2)}',
               style: TextStyle(
                 color: Theme.of(context).colorScheme.error,
                 fontWeight: FontWeight.w600,

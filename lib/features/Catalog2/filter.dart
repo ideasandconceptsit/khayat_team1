@@ -6,7 +6,6 @@ import 'package:team1_khayat/features/Catalog2/widgets/color_selector.dart';
 import 'package:team1_khayat/features/Catalog2/widgets/price_range_slider.dart';
 import 'package:team1_khayat/features/Catalog2/widgets/size_selector.dart';
 
-import 'brand_selector.dart';
 import 'catalog_controller/filter_controller.dart';
 
 class FiltersPage extends StatelessWidget {
@@ -48,44 +47,6 @@ class FiltersPage extends StatelessWidget {
                   SizeSelector(),
                   SizedBox(height: 24.h),
                   CategorySelector(),
-                  SizedBox(height: 24.h),
-                  GestureDetector(
-                    onTap: () => Get.to(() => BrandSelectorPage()),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16.w),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'brand'.tr,
-                                style: TextStyle(
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              Icon(Icons.arrow_forward_ios, size: 16.sp),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 8.h),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16.w),
-                          child: Obx(() => Text(
-                                controller.selectedBrands.isEmpty
-                                    ? 'adidas Originals, Jack & Jones & Others...'
-                                    : controller.selectedBrands.join(', '),
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 14.sp,
-                                ),
-                              )),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 8.h),
                   SizedBox(height: 24.h),
                 ],
               ),
