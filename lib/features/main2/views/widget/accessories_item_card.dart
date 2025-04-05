@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:team1_khayat/core/app_colors.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/main2/model/accessories_model.dart';
 import 'package:team1_khayat/features/main2/model/fabric_model.dart';
@@ -40,19 +41,19 @@ class AccessoriesItemCard extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 6,
+                  top: 7,
                   left: 6,
                   height: 24,
                   width: 40,
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                     decoration: BoxDecoration(
                       color: Colors.red,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
                       child: Text(
-                        "-${  productAccessories.discount}%",
+                        "${  productAccessories.discount}%",
+                        textAlign: TextAlign.center,
                         style: AppTextStyles.tajawaltextStyle11.copyWith(
                           color: Colors.white,
                           fontSize: 12,
@@ -89,10 +90,10 @@ class AccessoriesItemCard extends StatelessWidget {
               const Icon(Icons.star, color: Colors.orange, size: 16),
               const Icon(Icons.star, color: Colors.orange, size: 16),
               const Icon(Icons.star, color: Colors.orange, size: 16),
-              // Text("(${item.reviews})", style: AppTextStyles.tajawaltextStyle11.copyWith(
-              //   fontSize: 10,
-              //   color: AppColors.grey
-              // ),),
+              Text("(${productAccessories.ratingsAverage})", style: AppTextStyles.tajawaltextStyle11.copyWith(
+                fontSize: 10,
+                color: AppColors.grey
+              ),),
             ],
           ),
           // Text(item.brand, style: AppTextStyles.tajawaltextStyle11),
@@ -101,8 +102,8 @@ class AccessoriesItemCard extends StatelessWidget {
           Text(productAccessories.name, style: AppTextStyles.tajawaltextStyle16),
           Row(
             children: [
-              Text("\$${productAccessories.pricePerUnit}", style: const TextStyle(decoration: TextDecoration.lineThrough, color: Colors.grey)),
-              const SizedBox(width: 5),
+              // Text("\$${productAccessories.pricePerUnit}", style: const TextStyle(decoration: TextDecoration.lineThrough, color: Colors.grey)),
+               SizedBox(width: 5.w),
               Text("\$${productAccessories.pricePerUnit}", style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
             ],
           ),

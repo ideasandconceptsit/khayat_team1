@@ -15,8 +15,8 @@ class ProfileView extends StatelessWidget {
 
     return  Scaffold(
           appBar:  CustomAppBar( 
-            actionIconOnPressed: () {},
-         actionIcon: Icons.search_rounded,
+        //     actionIconOnPressed: () {},
+        //  actionIcon: Icons.search_rounded,
           ),
       body: const Body(),
     );

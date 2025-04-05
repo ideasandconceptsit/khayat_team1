@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:team1_khayat/core/app_styles.dart';
+import 'package:team1_khayat/features/main2/views/widget/view_all_febric_view.dart';
+import 'package:team1_khayat/shared/navigation_service.dart';
 
 class FirstTitle extends StatelessWidget {
   const FirstTitle({super.key});
@@ -23,6 +25,7 @@ class FirstTitle extends StatelessWidget {
               const SizedBox(height: 4),
               GestureDetector(
                 onTap: () {
+                  NavigationService.navigateTo(AllFabricView());
                 },
                 child:  Text(
                     "View all",

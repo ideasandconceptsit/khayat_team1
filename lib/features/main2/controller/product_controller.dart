@@ -13,11 +13,11 @@ class ProductController extends GetxController {
   var accessoriesList = <ProductAccessories>[].obs;
 
   @override
-  void onInit() async {
+  void onInit()  {
     super.onInit();
     print("🔵 [ProductController] - بدء `onInit` وجلب الطلبات...");
-    await  fetchFabricProduct();
-    await fetchAccessoriesProducts(); 
+      fetchFabricProduct();
+     fetchAccessoriesProducts(); 
   }
 
   Future<void> fetchFabricProduct() async {
