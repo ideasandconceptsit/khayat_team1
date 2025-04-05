@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 
 
-class SectionTitlee extends StatelessWidget {
+class SecondTitle extends StatelessWidget {
 
-  const SectionTitlee({super.key,});
+  const SecondTitle({super.key,});
 
   @override
   Widget build(BuildContext context) {

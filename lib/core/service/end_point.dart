@@ -13,5 +13,7 @@ class EndPoint {
   static const String changeUserData = '/api/users/';
   static const String shippingAddress = '/api/address';
     static const String fabric = '/api/fabric';
+        static const String accessories = '/api/accessory/';
+
 
 }

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:team1_khayat/features/main2/model/accessories_model.dart';
 import 'package:team1_khayat/features/main2/model/fabric_model.dart';
+import 'package:team1_khayat/features/main2/views/widget/accessories_item_card.dart';
 import 'fabric_item_card.dart';
 
-class FebricItemList extends StatelessWidget {
-  const   FebricItemList({super.key, required this.fabricList});
-      final List<FabricModel> fabricList ;
+class AccessoriesItemList extends StatelessWidget {
+  const   AccessoriesItemList({super.key, required this.accessoriesList});
+      final List<ProductAccessories> accessoriesList ;
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +18,9 @@ class FebricItemList extends StatelessWidget {
         clipBehavior: Clip.none,
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        itemCount: fabricList.length,
+        itemCount: accessoriesList.length,
         itemBuilder: (context, index) {
-          return FabricItemCard(fabricItem: fabricList[index]);
+          return AccessoriesItemCard( productAccessories: accessoriesList[index]);
         },
       ),
     );

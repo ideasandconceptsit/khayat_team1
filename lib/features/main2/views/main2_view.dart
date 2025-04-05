@@ -5,9 +5,10 @@ import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/features/main2/controller/product_controller.dart';
 import 'package:team1_khayat/features/main2/views/widget/header_section.dart';
 import 'package:team1_khayat/features/main2/views/widget/fabric_item_list_view.dart';
+import 'package:team1_khayat/features/main2/views/widget/second_title.dart';
 import 'package:team1_khayat/shared/shimmer/redacted_effect.dart';
+import 'widget/accessories_item_list.dart';
 import 'widget/first-title.dart';
-import 'widget/section_title.dart';
 
 class Main2 extends StatelessWidget {
   Main2({super.key});
@@ -33,12 +34,22 @@ class Main2 extends StatelessWidget {
                         ? Center(
                             child: Text(AppStrings.noCouponsAvailable.tr),
                           )
-                        : ItemFebricList(fabricList: _controller.fabricList),
+                        : FebricItemList(fabricList: _controller.fabricList),
               );
             }),
 
-            const SliverToBoxAdapter(child: SectionTitlee()),
-            // const SliverToBoxAdapter(child: ItemList()),
+            const SliverToBoxAdapter(child: SecondTitle()),
+            Obx(() {
+              return SliverToBoxAdapter(
+                child: _controller.isLoading.value
+                    ? const LoadingShimmerEffecthorizontal()
+                    : _controller.accessoriesList.isEmpty
+                        ? Center(
+                            child: Text(AppStrings.noCouponsAvailable.tr),
+                          )
+                        : AccessoriesItemList(accessoriesList: _controller.accessoriesList),
+              );
+            }),
           ],
         ),
       ),
