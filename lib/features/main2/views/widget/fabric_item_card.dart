@@ -52,6 +52,7 @@ class FabricItemCard extends StatelessWidget {
                     child: Center(
                       child: Text(
                         "${  fabricItem.discount}%",
+                        textAlign: TextAlign.center,
                         style: AppTextStyles.tajawaltextStyle11.copyWith(
                           color: Colors.white,
                           fontSize: 12,
