@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/features/main2/controller/product_controller.dart';
 import 'package:team1_khayat/features/main2/views/widget/header_section.dart';
-import 'package:team1_khayat/features/main2/views/widget/item_list_view.dart';
+import 'package:team1_khayat/features/main2/views/widget/fabric_item_list_view.dart';
 import 'package:team1_khayat/shared/shimmer/redacted_effect.dart';
 import 'widget/first-title.dart';
 import 'widget/section_title.dart';

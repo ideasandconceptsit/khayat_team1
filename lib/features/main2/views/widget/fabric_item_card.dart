@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/main2/model/fabric_model.dart';
 
-class ItemCard extends StatelessWidget {
+class FabricItemCard extends StatelessWidget {
  final FabricModel fabricItem;
-  const ItemCard({super.key, required this.fabricItem});
+  const FabricItemCard({super.key, required this.fabricItem});
 
   @override
   Widget build(BuildContext context) {

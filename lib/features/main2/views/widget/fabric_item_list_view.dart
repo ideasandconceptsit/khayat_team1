@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:team1_khayat/features/main2/model/fabric_model.dart';
-import 'item_card.dart';
+import 'fabric_item_card.dart';
 
 class ItemFebricList extends StatelessWidget {
   const   ItemFebricList({super.key, required this.fabricList});
@@ -18,7 +18,7 @@ class ItemFebricList extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         itemCount: fabricList.length,
         itemBuilder: (context, index) {
-          return ItemCard(fabricItem: fabricList[index]);
+          return FabricItemCard(fabricItem: fabricList[index]);
         },
       ),
     );
