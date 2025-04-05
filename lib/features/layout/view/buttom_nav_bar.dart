@@ -3,11 +3,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_colors.dart';
 import 'package:team1_khayat/features/layout/controller/nav_bar_controller.dart';
+import 'package:team1_khayat/features/main2/views/main2_view.dart';
 import 'package:team1_khayat/features/profile/view/profile_view.dart';
 
 class BottomNavBar extends StatelessWidget {
   final List<Widget> pages = [
-    const ProfileView(),
+     Main2(),
     const ProfileView(),
     const ProfileView(),
     const ProfileView(),

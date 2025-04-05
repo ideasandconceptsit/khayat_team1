@@ -7,7 +7,9 @@ class Routes {
   static const detailsView='/DetailsView';
   static const settingView='/SettingView';
   static const reviewAndRatingScreen='/ReviewAndRatingScreen';
-    static const shippingAddressView='/ShippingAddressView';
+  static const shippingAddressView='/ShippingAddressView';
+    static const  main2= '/Main2'; 
+
 
 
 

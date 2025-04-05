@@ -41,7 +41,7 @@ class AppStrings {
 
   //! My Orders View
   static const String processing = "Processing";
-  static const String cancelled = "Cancelled";
+  static const String cancelled = "cancelled";
   static const String delivered = "Delivered";
   static const String details = "Details";
   static const String orderdetails = "Order Details";
