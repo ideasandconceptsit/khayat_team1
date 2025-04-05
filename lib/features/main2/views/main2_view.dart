@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_strings.dart';
+import 'package:team1_khayat/features/main2/controller/product_controller.dart';
 import 'package:team1_khayat/features/main2/views/widget/header_section.dart';
 import 'package:team1_khayat/features/main2/views/widget/item_list_view.dart';
+import 'package:team1_khayat/shared/shimmer/redacted_effect.dart';
 import 'widget/first-title.dart';
 import 'widget/section_title.dart';
 
 class Main2 extends StatelessWidget {
   Main2({super.key});
+  final ProductController _controller = Get.put(ProductController());
 
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
@@ -18,9 +23,22 @@ class Main2 extends StatelessWidget {
             const SliverToBoxAdapter(child: HeaderSection()),
             const SliverToBoxAdapter(child: FirstTitle()),
             SliverToBoxAdapter(child: SizedBox(height: 8.h)),
-            const SliverToBoxAdapter(child: ItemList()), 
+            SliverToBoxAdapter(child: SizedBox(height: 8.h)),
+
+            Obx(() {
+              return SliverToBoxAdapter(
+                child: _controller.isLoading.value
+                    ? const LoadingShimmerEffecthorizontal()
+                    : _controller.fabricList.isEmpty
+                        ? Center(
+                            child: Text(AppStrings.noCouponsAvailable.tr),
+                          )
+                        : ItemFebricList(fabricList: _controller.fabricList),
+              );
+            }),
+
             const SliverToBoxAdapter(child: SectionTitlee()),
-            const SliverToBoxAdapter(child: ItemList()), 
+            // const SliverToBoxAdapter(child: ItemList()),
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:redacted/redacted.dart';
 
 class LoadingShimmerEffect extends StatelessWidget {
@@ -15,6 +16,29 @@ class LoadingShimmerEffect extends StatelessWidget {
       itemBuilder: (context, index) {
         return const LoadingShimmerItem();
       },
+    );
+  }
+} 
+
+class LoadingShimmerEffecthorizontal extends StatelessWidget {
+  final int itemCount;
+
+  const LoadingShimmerEffecthorizontal({super.key, this.itemCount = 6});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 280.h,
+      width: 190.w,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: itemCount,
+        itemBuilder: (context, index) {
+          return const LoadingShimmerItem();
+        },
+      ),
     );
   }
 }

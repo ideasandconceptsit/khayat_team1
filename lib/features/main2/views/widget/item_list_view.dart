@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../model/test.dart';
+import 'package:team1_khayat/features/main2/model/fabric_model.dart';
 import 'item_card.dart';
 
-class ItemList extends StatelessWidget {
-  const ItemList({super.key});
+class ItemFebricList extends StatelessWidget {
+  const   ItemFebricList({super.key, required this.fabricList});
+      final List<FabricModel> fabricList ;
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +16,9 @@ class ItemList extends StatelessWidget {
         clipBehavior: Clip.none,
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        itemCount: demoItems.length,
+        itemCount: fabricList.length,
         itemBuilder: (context, index) {
-          return ItemCard(item: demoItems[index]);
+          return ItemCard(fabricItem: fabricList[index]);
         },
       ),
     );
