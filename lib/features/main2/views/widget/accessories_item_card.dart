@@ -1,4 +1,5 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -32,16 +33,28 @@ class AccessoriesItemCard extends StatelessWidget {
         children: [
           Expanded(
             child: Stack(
+              clipBehavior: Clip.none,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    'assets/images/pants.png',
-                    height: 252,
-                    width: 157,
-                    fit: BoxFit.cover,
-                  ),
+                 ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: CachedNetworkImage(
+                imageUrl: "",
+                // fabricItem.image,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: 150.h,
+                placeholder: (context, url) => Container(
+                  color: Colors.grey[200],
+                  child: const Center(child:  CircularProgressIndicator()),
                 ),
+                errorWidget: (context, url, error) => Image.asset(
+                  'assets/images/pants.png',
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: 150.h,
+                ),
+              ),
+            ),
                 if ((productAccessoriesItem.discount ?? 0) > 0)
                   Positioned(
                     left: 8.w,

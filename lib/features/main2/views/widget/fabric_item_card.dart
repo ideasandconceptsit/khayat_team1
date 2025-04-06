@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -31,16 +32,28 @@ class FabricItemCard extends StatelessWidget {
         children: [
           Expanded(
             child: Stack(
+              clipBehavior: Clip.none,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    'assets/images/shert.png',
-                    height: 252,
-                    width: 157,
-                    fit: BoxFit.cover,
-                  ),
+               ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: CachedNetworkImage(
+                imageUrl: "",
+                // fabricItem.image,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: 150.h,
+                placeholder: (context, url) => Container(
+                  color: Colors.grey[200],
+                  child: const Center(child: const CircularProgressIndicator()),
                 ),
+                errorWidget: (context, url, error) => Image.asset(
+                  'assets/images/fabric.jpeg',
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: 150.h,
+                ),
+              ),
+            ),
                 if ((fabricItem.discount ?? 0) > 0)
                   Positioned(
                     left: 8.w,
@@ -49,7 +62,7 @@ class FabricItemCard extends StatelessWidget {
                       width: 40.w,
                       height: 24.h,
                       decoration: BoxDecoration(
-                        color: Color(0xFFDB3022),
+                        color: const Color(0xFFDB3022),
                         borderRadius: BorderRadius.circular(29.r),
                       ),
                       alignment: Alignment.center,
@@ -122,7 +135,7 @@ class FabricItemCard extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           Row(
             children: [
               ...List.generate(
