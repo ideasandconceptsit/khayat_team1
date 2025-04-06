@@ -1,15 +1,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_colors.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/main2/model/accessories_model.dart';
-import 'package:team1_khayat/features/main2/model/fabric_model.dart';
+
+import '../../../favorite/controller/favorite_controller.dart';
 
 class AccessoriesItemCard extends StatelessWidget {
  final ProductAccessories productAccessories;
-  const AccessoriesItemCard({super.key, required this.productAccessories});
+   AccessoriesItemCard({super.key, required this.productAccessories});
 
+ final favoriteController = Get.find<FavoriteController>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -67,17 +70,24 @@ class AccessoriesItemCard extends StatelessWidget {
                   right: 2,
                   height: 36,
                   width: 36,
-                  child: Container(
+                  child:  Container(
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white,
                     ),
-                    child: IconButton(
-                      icon: const Icon(Icons.favorite_border),
-                      color: Colors.grey,
-                      onPressed: () {},
-                    ),
-                  ),
+                   child:  Obx(() {
+                    bool isFav = favoriteController.favorites.contains(productAccessories.id.toString());
+                    return GestureDetector(
+                      onTap: () {
+                        favoriteController.toggleFabricFavorite(productAccessories.id.toString());
+                      },
+                      child: Icon(
+                        isFav ? Icons.favorite : Icons.favorite_border,
+                        size: 25,
+                        color: isFav ? Colors.red : Colors.grey,
+                      ),
+                    );
+                  })),
                 ),
               ],
             ),
@@ -85,15 +95,14 @@ class AccessoriesItemCard extends StatelessWidget {
            SizedBox(height: 7.h),
           Row(
             children: [
-              const Icon(Icons.star, color: Colors.orange, size: 16),
-              const Icon(Icons.star, color: Colors.orange, size: 16),
-              const Icon(Icons.star, color: Colors.orange, size: 16),
-              const Icon(Icons.star, color: Colors.orange, size: 16),
-              const Icon(Icons.star, color: Colors.orange, size: 16),
-              Text("(${productAccessories.ratingsAverage})", style: AppTextStyles.tajawaltextStyle11.copyWith(
-                fontSize: 10,
-                color: AppColors.grey
-              ),),
+              ...List.generate(5, (index) => const Icon(Icons.star, color: Colors.orange, size: 16)),
+              Text(
+                "(${productAccessories.ratingsAverage})",
+                style: AppTextStyles.tajawaltextStyle11.copyWith(
+                  fontSize: 10,
+                  color: AppColors.grey,
+                ),
+              ),
             ],
           ),
           // Text(item.brand, style: AppTextStyles.tajawaltextStyle11),

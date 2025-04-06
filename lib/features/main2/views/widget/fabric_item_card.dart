@@ -77,7 +77,7 @@ class FabricItemCard extends StatelessWidget {
                     bool isFav = favoriteController.favorites.contains(fabricItem.id.toString());
                     return GestureDetector(
                       onTap: () {
-                        favoriteController.toggleFavorite(fabricItem.id.toString());
+                        favoriteController.toggleFabricFavorite(fabricItem.id.toString());
                       },
                       child: Icon(
                         isFav ? Icons.favorite : Icons.favorite_border,
