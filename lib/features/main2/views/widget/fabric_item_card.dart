@@ -8,13 +8,12 @@ import 'package:team1_khayat/features/main2/model/fabric_model.dart';
 
 class FabricItemCard extends StatelessWidget {
   final FabricModel fabricItem;
+  final favoriteController = Get.find<FavoriteController>();
 
   FabricItemCard({super.key, required this.fabricItem});
 
-  final favoriteController = Get.find<FavoriteController>();
-
   @override
-  Widget build(BuildContext context) {
+   Widget build(BuildContext context) {
     return Container(
       width: 160.w,
       height: 267.h,
@@ -42,58 +41,94 @@ class FabricItemCard extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                Positioned(
-                  top: 6,
-                  left: 6,
-                  height: 24,
-                  width: 40,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
+                if ((fabricItem.discount ?? 0) > 0)
+                  Positioned(
+                    left: 8.w,
+                    top: 8.h,
+                    child: Container(
+                      width: 40.w,
+                      height: 24.h,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFDB3022),
+                        borderRadius: BorderRadius.circular(29.r),
+                      ),
+                      alignment: Alignment.center,
                       child: Text(
-                        "${fabricItem.discount}%",
-                        style: AppTextStyles.tajawaltextStyle11.copyWith(
+                        '-${fabricItem.discount}%',
+                        style: TextStyle(
                           color: Colors.white,
-                          fontSize: 12,
+                          fontSize: 11.sp,
+                          fontWeight: FontWeight.w900,
                         ),
                       ),
                     ),
                   ),
-                ),
+                     Positioned(
+                  bottom: -5,
+                  right: 2,
+                  height: 36,
+                  width: 36,
+                  child: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                      child: Obx(() {
+                        bool isFav = favoriteController.favorites
+                            .contains(fabricItem.id.toString());
+                        return GestureDetector(
+                          onTap: () {
+                            favoriteController
+                                .toggleFabricFavorite(fabricItem.id.toString());
+                          },
+                          child: Icon(
+                            isFav ? Icons.favorite : Icons.favorite_border,
+                            size: 25,
+                            color: isFav ? Colors.red : Colors.grey,
+                          ),
+                        );
+                      })),
+                ), 
                 Positioned(
                   bottom: -5,
                   right: 2,
                   height: 36,
                   width: 36,
-                  child:  Container(
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                    ),
-                   child:  Obx(() {
-                    bool isFav = favoriteController.favorites.contains(fabricItem.id.toString());
-                    return GestureDetector(
-                      onTap: () {
-                        favoriteController.toggleFabricFavorite(fabricItem.id.toString());
-                      },
-                      child: Icon(
-                        isFav ? Icons.favorite : Icons.favorite_border,
-                        size: 25,
-                        color: isFav ? Colors.red : Colors.grey,
+                  child: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
                       ),
-                    );
-                  })),
+                      child: Obx(() {
+                        bool isFav = favoriteController.favorites
+                            .contains(fabricItem.id.toString());
+                        return GestureDetector(
+                          onTap: () {
+                            favoriteController
+                                .toggleFabricFavorite(fabricItem.id.toString());
+                          },
+                          child: Icon(
+                            isFav ? Icons.favorite : Icons.favorite_border,
+                            size: 25,
+                            color: isFav ? Colors.red : Colors.grey,
+                          ),
+                        );
+                      })),
                 ),
+               // SizedBox(height: 7.h),
+          
+            
+           
               ],
             ),
           ),
-          SizedBox(height: 7.h),
+          SizedBox(height: 8.0),
           Row(
             children: [
-              ...List.generate(5, (index) => const Icon(Icons.star, color: Colors.orange, size: 16)),
+              ...List.generate(
+                  5,
+                  (index) =>
+                      const Icon(Icons.star, color: Colors.orange, size: 16)),
               Text(
                 "(${fabricItem.ratingsAverage})",
                 style: AppTextStyles.tajawaltextStyle11.copyWith(
@@ -103,16 +138,57 @@ class FabricItemCard extends StatelessWidget {
               ),
             ],
           ),
-          Text(fabricItem.name, style: AppTextStyles.tajawaltextStyle16),
+          Text(
+            fabricItem.category!.name??'',
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.secondary,
+              fontSize: 12.sp,
+            ),
+          ),
+          SizedBox(height: 4.h),
+          Text(
+            fabricItem.name??'',
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 14.sp,
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          SizedBox(height: 4.h),
           Row(
             children: [
-              const SizedBox(width: 5),
+              if ((fabricItem.discount ?? 0) > 0) ...[
+                Text(
+                  '\$${fabricItem.pricePerMeter?.toStringAsFixed(2) ?? '0.00'}',
+                  style: TextStyle(
+                    decoration: TextDecoration.lineThrough,
+                    decorationThickness: 1,
+                    color: Theme.of(context).colorScheme.secondary,
+                    fontSize: 12.sp,
+                  ),
+                ),
+                SizedBox(width: 4.w),
+              ],
               Text(
-                "\$${fabricItem.pricePerMeter}",
-                style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                '\$${((fabricItem.pricePerMeter ?? 0) * (1 - (fabricItem.discount ?? 0) / 100)).toStringAsFixed(2)}',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.error,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14.sp,
+                ),
               ),
             ],
           ),
+          SizedBox(height: 4.h),
+          Text(
+            '${fabricItem.quantity} ${fabricItem.unit?.tr ?? ''}',
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.secondary,
+              fontSize: 12.sp,
+            ),
+          ),
+          
         ],
       ),
     );

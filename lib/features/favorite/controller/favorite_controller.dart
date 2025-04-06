@@ -8,8 +8,8 @@ class FavoriteController extends GetxController {
   FavoriteController(this._repository);
 
   var favorites = <String>[].obs;
- 
- //! toggle favorite status of fabric
+
+  //!  Toogle fabric favorite
   void toggleFabricFavorite(String fabricId) async {
     try {
       final success = await _repository.addFabricToFavorite(fabricId);
@@ -21,6 +21,7 @@ class FavoriteController extends GetxController {
           favorites.add(fabricId);
           SnackbarHelper.showSuccessSnackbar("تمت الإضافة إلى المفضلة.");
         }
+        update();
       } else {
         SnackbarHelper.showErrorSnackbar("فشل في تعديل المفضلة.");
       }
@@ -28,13 +29,10 @@ class FavoriteController extends GetxController {
       SnackbarHelper.showErrorSnackbar("حدث خطأ أثناء تعديل المفضلة.");
       print('❌ استثناء: $e');
     }
-  }  
+  }
 
-  
-   //! toggle favorite status of Accessories
-
-
-    void togglAccessoriesFavorite(String accessoryId) async {
+  //! Toogle accessories favorite
+  void toggleAccessoriesFavorite(String accessoryId) async {
     try {
       final success = await _repository.addAccessoriesToFavorite(accessoryId);
       if (success) {
@@ -45,6 +43,7 @@ class FavoriteController extends GetxController {
           favorites.add(accessoryId);
           SnackbarHelper.showSuccessSnackbar("تمت الإضافة إلى المفضلة.");
         }
+        update();
       } else {
         SnackbarHelper.showErrorSnackbar("فشل في تعديل المفضلة.");
       }
@@ -52,5 +51,5 @@ class FavoriteController extends GetxController {
       SnackbarHelper.showErrorSnackbar("حدث خطأ أثناء تعديل المفضلة.");
       print('❌ استثناء: $e');
     }
-  }  
+  }
 }

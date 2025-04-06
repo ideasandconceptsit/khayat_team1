@@ -1,97 +1,106 @@
 class FabricModel {
-  final String id;
-  final String name;
-  final String unit;
-  final String location;
+  final String? id;
+  final String? name;
+  final String? slug;
+  final String? unit;
+  final String? location;
+  final int? quantity;
+  final double? pricePerMeter;
+  final int? discount;
+  final int? minStock;
+  final int? maxStock;
+  final bool? active;
+  final double? ratingsAverage;
+  final int? ratingsQuantity;
+  final double? totalValue;
+  final double? profitMargin;
+  final bool? isLowStock;
+  final bool? isOverStocked;
   final String? sku;
-  final bool active;
-  final double pricePerMeter;
-  final double discount;
-  final int quantity;
-  final int minStock;
-  final int maxStock;
-  final double ratingsAverage;
-  final int ratingsQuantity;
-  final double totalValue;
-  final String createdAt;
-  final String updatedAt;
-  final String slug;
-  final Category category;
-  final Supplier? supplier;
+  final CategoryModel? category;
+  final SupplierModel? supplier;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
 
   FabricModel({
-    required this.id,
-    required this.name,
-    required this.unit,
-    required this.location,
+    this.id,
+    this.name,
+    this.slug,
+    this.unit,
+    this.location,
+    this.quantity,
+    this.pricePerMeter,
+    this.discount,
+    this.minStock,
+    this.maxStock,
+    this.active,
+    this.ratingsAverage,
+    this.ratingsQuantity,
+    this.totalValue,
+    this.profitMargin,
+    this.isLowStock,
+    this.isOverStocked,
     this.sku,
-    required this.active,
-    required this.pricePerMeter,
-    required this.discount,
-    required this.quantity,
-    required this.minStock,
-    required this.maxStock,
-    required this.ratingsAverage,
-    required this.ratingsQuantity,
-    required this.totalValue,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.slug,
-    required this.category,
+    this.category,
     this.supplier,
+    this.createdAt,
+    this.updatedAt,
   });
 
   factory FabricModel.fromJson(Map<String, dynamic> json) {
     return FabricModel(
-      id: json['id'] ?? '',
-      name: json['name'] ?? '',
-      unit: json['unit'] ?? '',
-      location: json['location'] ?? '',
-      sku: json['sku'] ?? '',
-      active: json['active'] ?? false,
-      pricePerMeter: (json['pricePerMeter'] ?? 0).toDouble(),
-      discount: (json['discount'] ?? 0).toDouble(),
-      quantity: json['quantity'] ?? 0,
-      minStock: json['minStock'] ?? 0,
-      maxStock: json['maxStock'] ?? 0,
-      ratingsAverage: (json['ratingsAverage'] ?? 0).toDouble(),
-      ratingsQuantity: json['ratingsQuantity'] ?? 0,
-      totalValue: (json['totalValue'] ?? 0).toDouble(),
-      createdAt: json['createdAt'] ?? '',
-      updatedAt: json['updatedAt'] ?? '',
-      slug: json['slug'] ?? '',
-      category: Category.fromJson(json['category'] ?? {}),
-      supplier: json['supplier'] != null ? Supplier.fromJson(json['supplier']) : null,
+      id: json['id'],
+      name: json['name'],
+      slug: json['slug'],
+      unit: json['unit'],
+      location: json['location'],
+      quantity: json['quantity'],
+      pricePerMeter: (json['pricePerMeter'] as num?)?.toDouble(),
+      discount: json['discount'],
+      minStock: json['minStock'],
+      maxStock: json['maxStock'],
+      active: json['active'],
+      ratingsAverage: (json['ratingsAverage'] as num?)?.toDouble(),
+      ratingsQuantity: json['ratingsQuantity'],
+      totalValue: (json['totalValue'] as num?)?.toDouble(),
+      profitMargin: (json['profitMargin'] as num?)?.toDouble(),
+      isLowStock: json['isLowStock'],
+      isOverStocked: json['isOverStocked'],
+      sku: json['sku'],
+      category: json['category'] != null ? CategoryModel.fromJson(json['category']) : null,
+      supplier: json['supplier'] != null ? SupplierModel.fromJson(json['supplier']) : null,
+      createdAt: json['createdAt'] != null ? DateTime.parse(json['createdAt']) : null,
+      updatedAt: json['updatedAt'] != null ? DateTime.parse(json['updatedAt']) : null,
     );
   }
 }
 
-class Category {
-  final String id;
-  final String name;
+class CategoryModel {
+  final String? id;
+  final String? name;
 
-  Category({required this.id, required this.name});
+  CategoryModel({this.id, this.name});
 
-  factory Category.fromJson(Map<String, dynamic> json) {
-    return Category(
-      id: json['_id'] ?? '',
-      name: json['name'] ?? '',
+  factory CategoryModel.fromJson(Map<String, dynamic> json) {
+    return CategoryModel(
+      id: json['_id'],
+      name: json['name'],
     );
   }
 }
 
-class Supplier {
-  final String id;
-  final String name;
-  final String phone;
+class SupplierModel {
+  final String? id;
+  final String? name;
+  final String? phone;
 
-  Supplier({required this.id, required this.name, required this.phone});
+  SupplierModel({this.id, this.name, this.phone});
 
-  factory Supplier.fromJson(Map<String, dynamic> json) {
-    return Supplier(
-      id: json['_id'] ?? '',
-      name: json['name'] ?? '',
-      phone: json['phone'] ?? '',
+  factory SupplierModel.fromJson(Map<String, dynamic> json) {
+    return SupplierModel(
+      id: json['_id'],
+      name: json['name'],
+      phone: json['phone'],
     );
   }
 }

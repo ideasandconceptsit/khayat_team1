@@ -2,44 +2,53 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:team1_khayat/core/service/end_point.dart';
 
-
 class FavoriteRepository {
-
-  
-//! toggle favorite status of fabric
+  //! Add fabric to favorite
   Future<bool> addFabricToFavorite(String fabricId) async {
     final url = Uri.parse('${EndPoint.baseUrl}${EndPoint.addFabricFavorite}');
+
     final headers = {
-      'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzk2Nzg2Nzg3MmJmZTMyNWE0ZGY0NmYiLCJpYXQiOjE3NDA1NzI4MTcsImV4cCI6MTc0ODM0ODgxN30.qBwgO1xjYWbIXkdMvMCgF9wzvRw82InP17E4eNrWlsI"
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzk2Nzg5MDg3MmJmZTMyNWE0ZGY0NzYiLCJpYXQiOjE3MzgwODM5ODUsImV4cCI6MTc0NTg1OTk4NX0.rDyLTL4G9Kjd2xxUiTFW0ZyzJLdpt61GNnCskpYa09M',
     };
-    final body = {"fabricId": fabricId};
+
+    final body = jsonEncode({
+      'fabricId': fabricId,
+    });
 
     final response = await http.post(url, headers: headers, body: body);
-    print('📥 Response Status Code: ${response.statusCode}');
-    print('📥 Response Body: ${response.body}');
+
+    print('✅ fabric favorite response: ${response.body}');
+    print('🔢 status code: ${response.statusCode}');
 
     if (response.statusCode == 200) {
-      var jsonResponse = jsonDecode(response.body);
+      final jsonResponse = jsonDecode(response.body);
       return jsonResponse['status'] == 'success';
     } else {
       return false;
     }
-  }  
+  }
 
-//! toggle favorite status of Accessories
+  //! Add accessories to favorite
   Future<bool> addAccessoriesToFavorite(String accessoryId) async {
     final url = Uri.parse('${EndPoint.baseUrl}${EndPoint.addaccessoriesFavorite}');
+
     final headers = {
-      'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzk2Nzg2Nzg3MmJmZTMyNWE0ZGY0NmYiLCJpYXQiOjE3NDA1NzI4MTcsImV4cCI6MTc0ODM0ODgxN30.qBwgO1xjYWbIXkdMvMCgF9wzvRw82InP17E4eNrWlsI"
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzk2Nzg5MDg3MmJmZTMyNWE0ZGY0NzYiLCJpYXQiOjE3MzgwODM5ODUsImV4cCI6MTc0NTg1OTk4NX0.rDyLTL4G9Kjd2xxUiTFW0ZyzJLdpt61GNnCskpYa09M',
     };
-    final body = {"accessoryId": accessoryId};
+
+    final body = jsonEncode({
+      'accessoryId': accessoryId,
+    });
 
     final response = await http.post(url, headers: headers, body: body);
-    print('📥 Response Status Code: ${response.statusCode}');
-    print('📥 Response Body: ${response.body}');
+
+    print('✅ accessory favorite response: ${response.body}');
+    print('🔢 status code: ${response.statusCode}');
 
     if (response.statusCode == 200) {
-      var jsonResponse = jsonDecode(response.body);
+      final jsonResponse = jsonDecode(response.body);
       return jsonResponse['status'] == 'success';
     } else {
       return false;
