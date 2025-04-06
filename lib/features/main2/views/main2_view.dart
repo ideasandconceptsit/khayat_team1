@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_strings.dart';
+import 'package:team1_khayat/features/favorite/controller/favorite_controller.dart';
+import 'package:team1_khayat/features/favorite/repos/favorite_repos.dart';
 import 'package:team1_khayat/features/main2/controller/product_controller.dart';
 import 'package:team1_khayat/features/main2/views/widget/header_section.dart';
 import 'package:team1_khayat/features/main2/views/widget/fabric_item_list_view.dart';
@@ -13,6 +15,7 @@ import 'widget/first-title.dart';
 class Main2 extends StatelessWidget {
   Main2({super.key});
   final ProductController _controller = Get.put(ProductController());
+  final FavoriteController _favoritecontroller = Get.put(FavoriteController(FavoriteRepository()));
 
   @override
   Widget build(BuildContext context) {

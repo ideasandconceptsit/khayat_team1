@@ -12,8 +12,9 @@ class EndPoint {
   static const String changePassword = '/api/auth/changePassword';
   static const String changeUserData = '/api/users/';
   static const String shippingAddress = '/api/address';
-    static const String fabric = '/api/fabric';
-        static const String accessories = '/api/accessory/';
-
+  static const String getAllfabric = '/api/fabric';
+  static const String getAllaccessories = '/api/accessory/';
+  static const String addFabricFavorite = '/api/favorite/fabrics';
+  static const String addaccessoriesFavorite = '/api/favorite/accessories';
 
 }

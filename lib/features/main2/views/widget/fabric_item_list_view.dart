@@ -18,7 +18,9 @@ class FebricItemList extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         itemCount: fabricList.length,
         itemBuilder: (context, index) {
-          return FabricItemCard(fabricItem: fabricList[index]);
+          return FabricItemCard(fabricItem: fabricList[index] ,
+         
+          );
         },
       ),
     );
