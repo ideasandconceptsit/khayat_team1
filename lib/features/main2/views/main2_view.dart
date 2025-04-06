@@ -25,10 +25,7 @@ class Main2 extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           slivers: [
             const SliverToBoxAdapter(child: HeaderSection()),
-            const SliverToBoxAdapter(child: FirstTitle(
-              
-            )),
-            SliverToBoxAdapter(child: SizedBox(height: 8.h)),
+            const SliverToBoxAdapter(child: FirstTitle()),
             SliverToBoxAdapter(child: SizedBox(height: 8.h)),
 
             Obx(() {

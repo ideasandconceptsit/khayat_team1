@@ -43,7 +43,7 @@ class AllAccessoriesView extends StatelessWidget {
                  onTap: () {
             //  Get.to(() => DetailsScreen(product: product));  
           },
-                child: AccessoriesItemCard(productAccessories: accessories),);
+                child: AccessoriesItemCard(productAccessoriesItem: accessories),);
             },
           );
         }),

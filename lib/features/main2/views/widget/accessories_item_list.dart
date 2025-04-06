@@ -20,7 +20,7 @@ class AccessoriesItemList extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         itemCount: accessoriesList.length,
         itemBuilder: (context, index) {
-          return AccessoriesItemCard( productAccessories: accessoriesList[index]);
+          return AccessoriesItemCard( productAccessoriesItem: accessoriesList[index]);
         },
       ),
     );

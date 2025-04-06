@@ -9,8 +9,8 @@ import 'package:team1_khayat/features/main2/model/accessories_model.dart';
 import '../../../favorite/controller/favorite_controller.dart';
 
 class AccessoriesItemCard extends StatelessWidget {
- final ProductAccessories productAccessories;
-   AccessoriesItemCard({super.key, required this.productAccessories});
+ final ProductAccessories productAccessoriesItem;
+   AccessoriesItemCard({super.key, required this.productAccessoriesItem});
 
  final favoriteController = Get.find<FavoriteController>();
   @override
@@ -55,7 +55,7 @@ class AccessoriesItemCard extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        "${  productAccessories.discount}%",
+                        "${  productAccessoriesItem.discount}%",
                         textAlign: TextAlign.center,
                         style: AppTextStyles.tajawaltextStyle11.copyWith(
                           color: Colors.white,
@@ -76,10 +76,10 @@ class AccessoriesItemCard extends StatelessWidget {
                       color: Colors.white,
                     ),
                    child:  Obx(() {
-                    bool isFav = favoriteController.favorites.contains(productAccessories.id.toString());
+                    bool isFav = favoriteController.favorites.contains(productAccessoriesItem.id.toString());
                     return GestureDetector(
                       onTap: () {
-                        favoriteController.toggleFabricFavorite(productAccessories.id.toString());
+                        favoriteController.toggleFabricFavorite(productAccessoriesItem.id.toString());
                       },
                       child: Icon(
                         isFav ? Icons.favorite : Icons.favorite_border,
@@ -97,7 +97,7 @@ class AccessoriesItemCard extends StatelessWidget {
             children: [
               ...List.generate(5, (index) => const Icon(Icons.star, color: Colors.orange, size: 16)),
               Text(
-                "(${productAccessories.ratingsAverage})",
+                "(${productAccessoriesItem.ratingsAverage})",
                 style: AppTextStyles.tajawaltextStyle11.copyWith(
                   fontSize: 10,
                   color: AppColors.grey,
@@ -108,12 +108,12 @@ class AccessoriesItemCard extends StatelessWidget {
           // Text(item.brand, style: AppTextStyles.tajawaltextStyle11),
           //            SizedBox(height: 3.h),
 
-          Text(productAccessories.name, style: AppTextStyles.tajawaltextStyle16),
+          Text(productAccessoriesItem.name, style: AppTextStyles.tajawaltextStyle16),
           Row(
             children: [
               // Text("\$${productAccessories.pricePerUnit}", style: const TextStyle(decoration: TextDecoration.lineThrough, color: Colors.grey)),
                SizedBox(width: 5.w),
-              Text("\$${productAccessories.pricePerUnit}", style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
+              Text("\$${productAccessoriesItem.pricePerUnit}", style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
             ],
           ),
         ],
