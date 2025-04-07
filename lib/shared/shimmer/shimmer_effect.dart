@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:redacted/redacted.dart';
+import 'package:shimmer/shimmer.dart';
 
 class LoadingShimmerEffect extends StatelessWidget {
   final int itemCount;
@@ -11,7 +11,7 @@ class LoadingShimmerEffect extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
+      physics:  const BouncingScrollPhysics(),
       itemCount: itemCount,
       itemBuilder: (context, index) {
         return const LoadingShimmerItem();
@@ -33,7 +33,7 @@ class LoadingShimmerEffecthorizontal extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
+          physics:  const BouncingScrollPhysics(),
         itemCount: itemCount,
         itemBuilder: (context, index) {
           return const LoadingShimmerItem();
@@ -57,23 +57,23 @@ class LoadingShimmerItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildRedactedBox(context, height: 20, width: 100),
+              _buildShimmerBox(context, height: 20, width: 100),
               const SizedBox(height: 8),
-              _buildRedactedBox(context, height: 14, width: 150),
+              _buildShimmerBox(context, height: 14, width: 150),
               const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _buildRedactedBox(context, height: 14, width: 50),
-                  _buildRedactedBox(context, height: 14, width: 80),
+                  _buildShimmerBox(context, height: 14, width: 50),
+                  _buildShimmerBox(context, height: 14, width: 80),
                 ],
               ),
               const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _buildRedactedBox(context, height: 30, width: 100),
-                  _buildRedactedBox(context, height: 14, width: 50),
+                  _buildShimmerBox(context, height: 30, width: 100),
+                  _buildShimmerBox(context, height: 14, width: 50),
                 ],
               ),
             ],
@@ -83,12 +83,16 @@ class LoadingShimmerItem extends StatelessWidget {
     );
   }
 
-  static Widget _buildRedactedBox(BuildContext context, {required double height, required double width}) {
-    return Container(
-      height: height,
-      width: width,
-      color: Colors.grey[300],
-    ).redacted(context: context, redact: true);
+  static Widget _buildShimmerBox(BuildContext context, {required double height, required double width}) {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: Container(
+        height: height,
+        width: width,
+        color: Colors.grey[300],
+      ),
+    );
   }
 }
 
@@ -100,8 +104,11 @@ class LoadingTextEffect extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("").redacted(context: context, redact: true),
-      
+        Shimmer.fromColors(
+          baseColor: Colors.grey[300]!,
+          highlightColor: Colors.grey[100]!,
+          child: const Text(''),
+        ),
       ],
     );
   }

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:redacted/redacted.dart';
 import 'package:team1_khayat/core/app_assets.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/profile/controller/profile_controller.dart';
-import 'package:team1_khayat/shared/shimmer/redacted_effect.dart';
+import 'package:team1_khayat/shared/shimmer/shimmer_effect.dart';
 import 'custom_circle_avatar.dart';
 
 class CustomCirecleImage extends StatelessWidget {

@@ -12,7 +12,7 @@ import 'package:team1_khayat/features/profile/view/widget/review_summary.dart';
 import 'package:team1_khayat/shared/app_bottom_sheet/app_bottom_sheet.dart';
 import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
 import 'package:team1_khayat/shared/navigation_service.dart';
-import 'package:team1_khayat/shared/shimmer/redacted_effect.dart';
+import 'package:team1_khayat/shared/shimmer/shimmer_effect.dart';
 
 class ReviewAndRatingView extends StatelessWidget {
   const ReviewAndRatingView({super.key});

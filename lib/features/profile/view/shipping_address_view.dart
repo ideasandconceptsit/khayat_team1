@@ -10,7 +10,7 @@ import 'package:team1_khayat/features/profile/view/widget/address_card.dart';
 import 'package:team1_khayat/features/profile/view/widget/edit_address_form.dart';
 import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
 import 'package:team1_khayat/shared/floating_buton/custom_floating_button.dart';
-import 'package:team1_khayat/shared/shimmer/redacted_effect.dart';
+import 'package:team1_khayat/shared/shimmer/shimmer_effect.dart';
 
 class ShippingAddressView extends StatelessWidget {
   ShippingAddressView({super.key});

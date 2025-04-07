@@ -6,7 +6,7 @@ import 'package:team1_khayat/features/profile/view/widget/build_category_section
 import 'package:team1_khayat/features/profile/view/widget/order_pages.dart';
 import 'package:team1_khayat/features/profile/view/widget/order_search_deleget.dart';
 import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
-import 'package:team1_khayat/shared/shimmer/redacted_effect.dart';
+import 'package:team1_khayat/shared/shimmer/shimmer_effect.dart';
 
 class MyOrderView extends StatefulWidget {
   const MyOrderView({super.key});

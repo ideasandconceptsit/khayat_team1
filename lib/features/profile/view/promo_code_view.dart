@@ -4,7 +4,7 @@ import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/features/profile/controller/copun_controller.dart';
 import 'package:team1_khayat/features/profile/view/widget/coupon_card.dart';
 import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
-import 'package:team1_khayat/shared/shimmer/redacted_effect.dart';
+import 'package:team1_khayat/shared/shimmer/shimmer_effect.dart';
 
 class PromoCodeView extends StatelessWidget {
   final CouponsController _controller = Get.put(CouponsController());

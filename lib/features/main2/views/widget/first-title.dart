@@ -27,7 +27,9 @@ class FirstTitle extends StatelessWidget {
               const SizedBox(height: 4),
               GestureDetector(
                 onTap: () {
-                  NavigationService.navigateTo(AllFabricView());
+                  NavigationService.navigateTo(AllFabricView() ,
+                  arguments: null
+                  );
                 },
                 child:  Text(
                      AppStrings.viewAll.tr,
