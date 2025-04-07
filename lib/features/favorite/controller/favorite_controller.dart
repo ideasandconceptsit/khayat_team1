@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:team1_khayat/features/profile/model/order_model.dart';
 import 'package:team1_khayat/shared/app_snakbar/app_snackbar.dart';
 import '../repos/favorite_repos.dart';
 
@@ -8,6 +9,8 @@ class FavoriteController extends GetxController {
   FavoriteController(this._repository);
 
   var favorites = <String>[].obs;
+
+
 
   //!  Toogle fabric favorite
   void toggleFabricFavorite(String fabricId) async {
@@ -52,4 +55,6 @@ class FavoriteController extends GetxController {
       print('❌ استثناء: $e');
     }
   }
+
+
 }

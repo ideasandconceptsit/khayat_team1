@@ -11,13 +11,13 @@ import 'package:team1_khayat/features/profile/view/widget/build_order_info_list.
 import 'package:team1_khayat/features/profile/view/widget/header_order_details.dart';
 import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
 
-class DetailsView extends StatelessWidget {
-   DetailsView({super.key,  this.order,  this.status});
+class OrderDetailsView extends StatelessWidget {
+   OrderDetailsView({super.key,  this.order,  this.status});
     final String? status;
 
  final OrderModels? order; 
 
- final OrderController orderController = Get.put(OrderController() );
+  final OrderController orderController = Get.find<OrderController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +25,7 @@ class DetailsView extends StatelessWidget {
         actionIconOnPressed: () {},
         title:  AppStrings.orderdetails.tr,
         arrowBackVisibility: true,
-        actionIcon: Icons.search_outlined,
+        // actionIcon: Icons.search_outlined,
       ),
       body:Obx(() {
         if (orderController.isLoading.value) {
@@ -38,9 +38,11 @@ class DetailsView extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: HeaderOrderDetails(order: order!,
-              status:status!,
-              ),
+              child: HeaderOrderDetails(
+  order: order ?? OrderModels(), 
+  status: status ?? 'غير محددة',
+),
+
             ),
             SliverToBoxAdapter(
               child: SizedBox(

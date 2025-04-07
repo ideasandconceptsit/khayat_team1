@@ -4,7 +4,7 @@ import 'package:team1_khayat/core/app_colors.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/profile/model/order_model.dart';
-import 'package:team1_khayat/features/profile/view/details_view.dart';
+import 'package:team1_khayat/features/profile/view/order_details_view.dart';
 
 
 class OrderCard extends StatelessWidget {
@@ -93,7 +93,7 @@ class OrderCard extends StatelessWidget {
                 children: [
                   OutlinedButton(
                     onPressed: () {
-                      Get.to(() => DetailsView(order: order ,
+                      Get.to(() => OrderDetailsView(order: order ,
                       status: status,
                      
                       ));
