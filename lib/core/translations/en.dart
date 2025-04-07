@@ -126,12 +126,22 @@ const Map<String, String> en = {
   AppStrings.useCoupon: "Use Coupon",
   AppStrings.noCode: "No Code",
   AppStrings.notAvailable: "Not Available",
-    AppStrings.productName: "Product Name",
+  AppStrings.productName: "Product Name",
   AppStrings.whatIsYourRate: "What is your rate?",
-  AppStrings.pleaseShareYourOpinionaboutTheProduct: " Please share your opinion about the product",
+  AppStrings.pleaseShareYourOpinionaboutTheProduct:
+      " Please share your opinion about the product",
   AppStrings.yourReview: "Your Review",
-    AppStrings.sendReview: "Send Review",
-        AppStrings.noOrder: "No Order",
+  AppStrings.sendReview: "Send Review",
+  AppStrings.noOrder: "No Order",
 
-
+  //! Main2 View
+  AppStrings.bookanAppointment: " Book an Appointment",
+  AppStrings.noFabricAvailable: "no fabric available",
+  AppStrings.noAccessoryAvailable: "no accessory available",
+  AppStrings.accessories: "accessories",
+  AppStrings.fabric: "fabric",
+  AppStrings.youveneverseenitbefore: " you've never seen it before",
+  AppStrings.allAccessories: "all accessories",
+  AppStrings.allFabrics: " all fabrics",
+  AppStrings.viewAll: "View all",
 };

@@ -128,12 +128,24 @@ const Map<String, String> ar = {
   AppStrings.useCoupon: "استخدام الكوبون",
   AppStrings.noCode: "بدون كود",
   AppStrings.notAvailable: "غير متاح",
-   AppStrings.productName: " اسم المنتج",
+  AppStrings.productName: " اسم المنتج",
   AppStrings.whatIsYourRate: " ما هو تقييمك",
-  AppStrings.pleaseShareYourOpinionaboutTheProduct: " الرجاء مشاركة رأيك حول المنتج",
+  AppStrings.pleaseShareYourOpinionaboutTheProduct:
+      " الرجاء مشاركة رأيك حول المنتج",
   AppStrings.yourReview: " رأيك",
-    AppStrings.sendReview: " ارسال التقييم",
-    AppStrings.noOrder: " لا يوجد طلبات",
+  AppStrings.sendReview: " ارسال التقييم",
+  AppStrings.noOrder: " لا يوجد طلبات",
 
+//! Main2 View  
+
+AppStrings.bookanAppointment: "حجز موعد",
+AppStrings.noFabricAvailable: "لا يوجد قماش متاح",
+AppStrings.noAccessoryAvailable: "لا يوجد اكسسوارت متاحة",
+AppStrings.accessories: "اكسسوارت",
+AppStrings.fabric: "أقمشة",
+AppStrings.youveneverseenitbefore : " لم ترى هذا من قبل",
+AppStrings.allAccessories: "جميع الاكسسوارات",
+AppStrings.allFabrics: "جميع القماشات",
+AppStrings.viewAll: "   مشاهدة الكل",
 
 };

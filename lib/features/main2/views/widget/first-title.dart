@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/features/main2/views/widget/view_all_febric_view.dart';
 import 'package:team1_khayat/shared/navigation_service.dart';
@@ -19,7 +21,7 @@ class FirstTitle extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
                 Text(
-                  "Fabric",
+                  AppStrings.fabric.tr,
                   style:AppTextStyles.tajawaltextStyle34,
               ),
               const SizedBox(height: 4),
@@ -28,7 +30,7 @@ class FirstTitle extends StatelessWidget {
                   NavigationService.navigateTo(AllFabricView());
                 },
                 child:  Text(
-                    "View all",
+                     AppStrings.viewAll.tr,
                     style:AppTextStyles.tajawaltextStyle11,
                 ),
               ),
@@ -46,7 +48,7 @@ class FirstTitle extends StatelessWidget {
               ),
             ),
             child:   Text(
-                "Book an Appointment",
+                AppStrings.bookanAppointment.tr,
                 style: AppTextStyles.tajawaltextStyle11.copyWith(
                   fontSize: 12,
                   color: Colors.white,

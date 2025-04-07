@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/features/main2/controller/product_controller.dart';
 import 'package:team1_khayat/features/main2/views/widget/accessories_item_card.dart';
 import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
@@ -16,7 +17,7 @@ class AllAccessoriesView extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'All Accessories',
+        title:AppStrings.allAccessories.tr,
         arrowBackVisibility: true,
         arrowBackOnPressed: () {
           Get.back();

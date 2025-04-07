@@ -96,4 +96,16 @@ class AppStrings {
   static const String pleaseShareYourOpinionaboutTheProduct =
       "Please share your opinion about the product";
   static const String sendReview = 'Send Review';
+
+//! Main2 view
+  static const String noFabricAvailable = "No Fabric available";
+  static const String noAccessoryAvailable = "No Accessories available";
+  static const String fabric = "Fabric";
+  static const String viewAll = "View all";
+  static const String bookanAppointment = "Book an Appointment";
+  static const String accessories = "Accessories";
+  static const String youveneverseenitbefore = "You’ve never seen it before!";
+  static const String allFabrics = "All Fabrics";
+  static const String allAccessories = "All Accessories";
+
 }

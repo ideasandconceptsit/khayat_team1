@@ -34,7 +34,7 @@ class Main2 extends StatelessWidget {
                     ? const LoadingShimmerEffecthorizontal()
                     : _controller.fabricList.isEmpty
                         ? Center(
-                            child: Text(AppStrings.noCouponsAvailable.tr),
+                            child: Text(AppStrings.noFabricAvailable.tr),
                           )
                         : FebricItemList(fabricList: _controller.fabricList),
               );
@@ -47,7 +47,7 @@ class Main2 extends StatelessWidget {
                     ? const LoadingShimmerEffecthorizontal()
                     : _controller.accessoriesList.isEmpty
                         ? Center(
-                            child: Text(AppStrings.noCouponsAvailable.tr),
+                            child: Text(AppStrings.noAccessoryAvailable.tr),
                           )
                         : AccessoriesItemList(accessoriesList: _controller.accessoriesList),
               );
