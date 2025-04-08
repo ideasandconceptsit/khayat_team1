@@ -16,5 +16,6 @@ class EndPoint {
   static const String getAllaccessories = '/api/accessory/';
   static const String addFabricFavorite = '/api/favorite/fabrics';
   static const String addaccessoriesFavorite = '/api/favorite/accessories';
+  static const String createOrder = '/api/order';
 
 }
