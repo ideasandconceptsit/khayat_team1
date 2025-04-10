@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:team1_khayat/features/product/repository/product_repository.dart';
 
 import 'core/app_themes.dart';
 import 'core/translations/app_translations.dart';
@@ -38,9 +41,11 @@ class MyApp extends StatelessWidget {
       locale: const Locale('en'),
       fallbackLocale: const Locale('ar'),
       theme: AppThemes.lightTheme,
-      initialRoute: Routes.appointmentPage,
+      initialRoute: Routes.startPage,
       getPages: AppPages.pages,
       initialBinding: AppBinding(),
     );
   }
 }
+
+

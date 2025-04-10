@@ -36,6 +36,7 @@ const Map<String, String> en = {
   AppStrings.apply: "Apply",
   AppStrings.applied: "Applied",
   AppStrings.addToFavorites: "Add to favorites",
+  AppStrings.addToCart: "ADD TO CART",
   AppStrings.deleteFromList: "Delete from the list",
   AppStrings.checkout: "Checkout",
   AppStrings.shippingAddress: "Shipping address",

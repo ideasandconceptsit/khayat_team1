@@ -12,6 +12,7 @@ class AppStrings {
   static const String apply = "apply";
   static const String applied = "applied";
   static const String addToFavorites = "add_to_favorites";
+  static const String addToCart = "add_to_cart";
   static const String deleteFromList = "delete_from_list";
   static const String checkout = "checkout";
   static const String shippingAddress = "shippingAddress";

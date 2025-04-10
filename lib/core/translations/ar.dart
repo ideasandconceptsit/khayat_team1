@@ -36,6 +36,7 @@ const Map<String, String> ar = {
   AppStrings.apply: "تطبيق",
   AppStrings.applied: "تم التطبيق",
   AppStrings.addToFavorites: "أضف إلى المفضلة",
+AppStrings.addToCart: "أضف إلى العربة",
   AppStrings.deleteFromList: "حذف من القائمة",
   AppStrings.checkout: "إتمام الشراء",
   AppStrings.shippingAddress: "عنوان الشحن",
