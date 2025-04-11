@@ -3,10 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:team1_khayat/core/app_colors.dart';
 
 class CustomMiniCircleButton extends StatelessWidget {
-  const CustomMiniCircleButton({super.key, this.onTap, required this.icon});
+  const CustomMiniCircleButton({super.key, this.onTap, required this.icon, this.isLoading=false});
 
   final void Function()? onTap;
   final IconData icon;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class CustomMiniCircleButton extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(6.w),
         decoration: buildQuantityButtonDecoration(),
-        child: Icon(
+        child: isLoading?SizedBox(height: 24.h,width: 24.h,child: const CircularProgressIndicator(color: AppColors.primaryColor,)):Icon(
           icon,
           size: 24.h,
           color: AppColors.greyColor,

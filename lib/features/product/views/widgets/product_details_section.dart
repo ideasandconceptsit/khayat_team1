@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_colors.dart';
 import 'package:team1_khayat/core/app_styles.dart';
+import 'package:team1_khayat/features/product/controllers/product_controller.dart';
+import 'package:team1_khayat/features/product/models/base_product_model.dart';
+import 'package:team1_khayat/features/product/views/widgets/rating_stars_widget.dart';
 
 class ProductDetailsSection extends StatelessWidget {
-  const ProductDetailsSection({super.key});
+   ProductDetailsSection({super.key});
+
+  final ProductCardController productCardController = Get.find();
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,24 +23,26 @@ class ProductDetailsSection extends StatelessWidget {
           Row(
             children: [
               Text(
-                'H&M',
+                productCardController.product.name,
                 style: AppTextStyles.textStyleBlack24.copyWith(color: AppColors.blackColor),
               ),
               const Spacer(),
               Text(
-                '\$19.99',
+                productCardController.product.price.toString(),
                 style: AppTextStyles.textStyleBlack24.copyWith(color: AppColors.blackColor),
               )
             ],
           ),
           Text(
-            'Short black dress',
+            productCardController.product.name,
             style: AppTextStyles.textStyleRegular11.copyWith(color: AppColors.greyColor),
           ),
-          const RatingStarsWidget(ratingAverage: 1.9,ratingCount: 10,),
+           RatingStarsAndCountWidget(ratingAverage: productCardController.product.ratingsAverage,ratingCount: productCardController.product.ratingsQuantity,),
           SizedBox(height: 20.h,),
            Text(
-            'Short dress in soft cotton jersey with decorative buttons down the front and a wide, frill-trimmed square neckline with concealed elastication. Elasticated seam under the bust and short puff sleeves with a small frill trim.',
+             ("${productCardController.product.name} ")*20,
+            maxLines: 6,
+            overflow: TextOverflow.ellipsis,
             style: AppTextStyles.textStyleRegular14.copyWith(color: AppColors.blackColor),
           ),
 
@@ -44,8 +53,8 @@ class ProductDetailsSection extends StatelessWidget {
   }
 }
 
-class RatingStarsWidget extends StatelessWidget {
-  const RatingStarsWidget({super.key, required this.ratingAverage, required this.ratingCount});
+class RatingStarsAndCountWidget extends StatelessWidget {
+  const RatingStarsAndCountWidget({super.key, required this.ratingAverage, required this.ratingCount});
   final double ratingAverage;
   final int ratingCount;
 
@@ -53,8 +62,7 @@ class RatingStarsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Row(
       children: [
-        for(int i=0;i<5;i++)
-          ratingAverage.round()>i?const Icon(Icons.star,color: AppColors.yellowColor):const Icon(Icons.star_border,color: AppColors.greyColor,),
+          RatingStarsWidget(rating: ratingAverage),
          Text(
           '($ratingCount)',
           style: AppTextStyles.textStyleRegular11.copyWith(color:AppColors.greyColor),

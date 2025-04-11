@@ -17,12 +17,13 @@ class CustomAppButton extends StatelessWidget {
 
         //the text has 2 styles across the app
       this.isTextBold = true,
-      this.isLoading = false,
+      this.isLoading = false, this.widget,
       });
 
   final Color color;
   final double width;
   final double? height;
+  final Widget? widget;
   final String text;
   final bool isTextBold;
   final bool isLoading;
@@ -42,7 +43,7 @@ class CustomAppButton extends StatelessWidget {
             padding:  EdgeInsets.all(6.h),
             child: const AspectRatio(aspectRatio: 1,child
                 : CircularProgressIndicator(color: AppColors.whiteColor,)),
-          ):Text(
+          ):widget??Text(
             text,
             textAlign: TextAlign.center,
             style:isTextBold?AppTextStyles.textStyleBold20:AppTextStyles.textStyleRegular14

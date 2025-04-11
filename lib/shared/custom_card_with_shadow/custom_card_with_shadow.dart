@@ -5,8 +5,8 @@ import 'package:team1_khayat/core/app_colors.dart';
 // Created this widget with reusability in mind to be used across multiple pages,
 // the app contains a lot of cards with the same shadow
 class CustomCardWithShadow extends StatelessWidget {
-  const CustomCardWithShadow({super.key, required this.height, required this.width, required this.child, this.padding});
-  final double height;
+  const CustomCardWithShadow({super.key, this.height, required this.width, required this.child, this.padding});
+  final double? height;
   final double width;
   final Widget child;
   final EdgeInsetsGeometry? padding;

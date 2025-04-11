@@ -3,24 +3,32 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:team1_khayat/shared/custom_cached_network_image/custom_cached_network_image.dart';
 
 class ImagesListSection extends StatelessWidget {
-  const ImagesListSection({super.key});
+  const ImagesListSection({super.key, this.images});
+
+  final List<String>? images;
 
   @override
   Widget build(BuildContext context) {
-    return  SizedBox(
-      height: 413.h,
-      width: double.infinity,
-      child: PageView(
-        scrollDirection: Axis.horizontal,
-        children: [
-          CustomCachedNetworkImage(imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSOjItEhrWG1NL643qQO8ynHOR1ioblcyUtA&s", height: 413.h, width: double.infinity),
-          CustomCachedNetworkImage(imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSOjItEhrWG1NL643qQO8ynHOR1ioblcyUtA&s", height: 413.h, width: double.infinity,),
-          CustomCachedNetworkImage(imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSOjItEhrWG1NL643qQO8ynHOR1ioblcyUtA&s", height: 413.h, width: double.infinity,),
-          CustomCachedNetworkImage(imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSOjItEhrWG1NL643qQO8ynHOR1ioblcyUtA&s", height: 413.h, width: double.infinity,),
-          CustomCachedNetworkImage(imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSOjItEhrWG1NL643qQO8ynHOR1ioblcyUtA&s", height: 413.h, width: double.infinity,),
-        ],
-
-      ),
-    );
+    return images != null
+        ? SizedBox(
+            height: 413.h,
+            width: double.infinity,
+            child: PageView(
+              scrollDirection: Axis.horizontal,
+              children: images!
+                  .map(
+                    (e) => CustomCachedNetworkImage(
+                        imageUrl: e, height: 413.h, width: double.infinity),
+                  )
+                  .toList(),
+            ),
+          )
+        : Container(
+            height: 413.h,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.r),
+            ),
+            child: const Column(mainAxisAlignment: MainAxisAlignment.center,children: [Icon(Icons.error_outline),Text("No Images")]),);
   }
 }

@@ -36,7 +36,6 @@ const Map<String, String> en = {
   AppStrings.apply: "Apply",
   AppStrings.applied: "Applied",
   AppStrings.addToFavorites: "Add to favorites",
-  AppStrings.addToCart: "ADD TO CART",
   AppStrings.deleteFromList: "Delete from the list",
   AppStrings.checkout: "Checkout",
   AppStrings.shippingAddress: "Shipping address",
@@ -93,6 +92,21 @@ const Map<String, String> en = {
   AppStrings.note: "Note",
   AppStrings.someThingWentWrong: "Something went wrong",
   AppStrings.appointmentAlreadyExists: "Appointment already exists for this time",
+
+
+
+  //product card
+  AppStrings.addToCart: "ADD TO CART",
+  AppStrings.ratingAndReview: "Rating&Reviews",
+  AppStrings.helpful: "Helpful",
+  AppStrings.writeAReview: "Write a review",
+  AppStrings.whatIsYouRate: "What is you rate?",
+  AppStrings.sendReview: "SEND REVIEW",
+  AppStrings.pleaseShareYourOpinion: "Please share your opinion\n about the product",
+  AppStrings.productAddedToCartSuccessfully: "Product added to cart successfully",
+  AppStrings.reviewAddedSuccessfully: "Review added successfully",
+  AppStrings.pleaseEnterReview: "Please enter review",
+  AppStrings.pleaseSelectRating: "Please select rating",
 
 
   // Catalog Page

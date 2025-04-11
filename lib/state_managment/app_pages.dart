@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_colors.dart';
 import 'package:team1_khayat/features/Catalog2/catalog.dart';
 import 'package:team1_khayat/features/appointment/views/appointment_view.dart';
 import 'package:team1_khayat/features/authintication/view/signup_pages/signup_page.dart';
@@ -7,13 +8,12 @@ import 'package:team1_khayat/features/authintication/view/verification_pages/ver
 import 'package:team1_khayat/features/cart/views/cart/cart_view.dart';
 import 'package:team1_khayat/features/cart/views/checkout/checkout_view.dart';
 import 'package:team1_khayat/features/cart/views/payment/payment_view.dart';
-import 'package:team1_khayat/features/product/models/fabric_product_model.dart';
-import 'package:team1_khayat/features/product/models/product_card_arguments.dart';
 import 'package:team1_khayat/features/product/views/product_view.dart';
 import 'package:team1_khayat/state_managment/app_routers.dart';
+
 import '../features/authintication/view/login_pages/login_page.dart';
 import '../features/homepage/view/homepage.dart';
-import '../features/todo/view/todo_page.dart';
+import '../features/product/models/base_product_model.dart';
 
 class AppPages {
   static final pages = [
@@ -23,7 +23,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.loginPage,
-      page: () =>  LoginPage(),
+      page: () => LoginPage(),
     ),
     GetPage(
       name: Routes.verificationPage,
@@ -43,12 +43,11 @@ class AppPages {
     ),
     GetPage(
       name: Routes.appointmentPage,
-      page: () =>  AppointmentView(),
+      page: () => AppointmentView(),
     ),
     GetPage(
       name: Routes.checkoutPage,
-      page: () =>  CheckoutView(
-      ),
+      page: () => CheckoutView(),
     ),
     GetPage(
       name: Routes.paymentPage,
@@ -77,39 +76,46 @@ class _StartPageState extends State<StartPage> {
   void initState() {
     Future.delayed(const Duration(seconds: 2)).then(
       (value) {
-        Get.toNamed(Routes.productCardPage,arguments: ProductCardArgument(isFabric: true,fabricProductModel: FabricProductModel(
-          id: "67bf94613024aff9082e7529",
-          name: "قماش قطني فاخر",
-          slug: "qmash-qtny-fakhr",
-          category: Category(
-            id: "67bf945b3024aff9082e7526",
-            name: "قماش",
-          ),
-          quantity: 150,
-          unit: "meter",
-          pricePerMeter: 120.5,
-          ratingsAverage: 2.9,
-          ratingsQuantity: 13,
-          discount: 10,
-          minStock: 15,
-          maxStock: 200,
-          active: true,
-          location: "main",
-          createdAt: DateTime.parse("2025-02-26T22:23:29.907Z"),
-          updatedAt: DateTime.parse("2025-04-03T12:22:14.716Z"),
-          isLowStock: false,
-          isOverStocked: false,
-          profitMargin: 0,
-          totalValue: 18075,
-          totalCost: null,
-        )));
+        Get.toNamed(Routes.productCardPage,
+            arguments: FabricProductModel(
+              id: "67bf94613024aff9082e7529",
+              price: 150.0,
+              name: "Cotton Fabric",
+              unit: "meter",
+              location: "Warehouse A",
+              quantity: 120,
+              discount: 10.0,
+              minStock: 20,
+              maxStock: 300,
+              active: true,
+              createdAt: DateTime.now().subtract(const Duration(days: 10)),
+              updatedAt: DateTime.now(),
+              ratingsAverage: 4.2,
+              ratingsQuantity: 32,
+              slug: "cotton-fabric",
+              isLowStock: false,
+              isOverStocked: false,
+              profitMargin: 25.0,
+              totalCost: 100.0,
+              totalValue: 18000.0,
+              category: Category(
+                id: "cat01",
+                name: "Fabrics",
+              ),
+              images: [
+                "https://www.tessutidelarte.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/_/d/_dsc7422.jpg",
+                "https://www.fabricsgalore.co.uk/cdn/shop/products/PoshCottonCalico1.jpg?v=1588602485",
+                "https://m.media-amazon.com/images/I/61rDuVsVmRL._AC_SL1001_.jpg"
+              ],
+              pricePerMeter: 15.0,
+            ));
       },
     );
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return  Container(color: AppColors.scaffoldBackgroundColor,);
   }
 }
-

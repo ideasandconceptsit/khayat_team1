@@ -36,7 +36,6 @@ const Map<String, String> ar = {
   AppStrings.apply: "تطبيق",
   AppStrings.applied: "تم التطبيق",
   AppStrings.addToFavorites: "أضف إلى المفضلة",
-AppStrings.addToCart: "أضف إلى العربة",
   AppStrings.deleteFromList: "حذف من القائمة",
   AppStrings.checkout: "إتمام الشراء",
   AppStrings.shippingAddress: "عنوان الشحن",
@@ -95,6 +94,24 @@ AppStrings.addToCart: "أضف إلى العربة",
   AppStrings.note: "تذكير",
 AppStrings.someThingWentWrong: "حدث خطأ ما",
   AppStrings.appointmentAlreadyExists: " الموعد موجود بالفعل الرجاء اختيار وقت اخر",
+
+
+
+
+  //product card
+  AppStrings.ratingAndReview: "التقيمات والمراجعات",
+  AppStrings.addToCart: "اضف إلى العربة",
+  AppStrings.helpful: "مفيد",
+  AppStrings.writeAReview: "كتابة تقييم",
+  AppStrings.whatIsYouRate: "ما هو تقييمك؟",
+  AppStrings.sendReview: "ارسال التقييم",
+  AppStrings.pleaseShareYourOpinion: "يرجى مشاركة رأيك",
+  AppStrings.productAddedToCartSuccessfully: "تمت اضافة المنتج الى السلة",
+  AppStrings.reviewAddedSuccessfully: "تمت اضافة التقييم بنجاح",
+AppStrings.pleaseEnterReview: "يرجى ادخال التقييم",
+AppStrings.pleaseSelectRating: "يرجى اختيار التقييم",
+
+
   // صفحة الكتالوج
   'womens_tops': 'ملابس نسائية علوية',
   't_shirts': 'تي شيرت',

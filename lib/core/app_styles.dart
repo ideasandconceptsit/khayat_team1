@@ -58,9 +58,29 @@ class AppTextStyles {
     fontWeight: FontWeight.w900,
       fontFamily:   AppConstants.tajawalFontName
   );
+  static TextStyle textStyleBlack12 = TextStyle(
+    color: AppColors.whiteColor,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w900,
+      fontFamily:   AppConstants.tajawalFontName
+  );
+  static TextStyle textStyleBlack14 = TextStyle(
+    color: AppColors.blackColor,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w900,
+      fontFamily:   AppConstants.tajawalFontName
+  );
   static TextStyle textStyleBlack24 = TextStyle(
     color: AppColors.whiteColor,
     fontSize: 24.sp,
+    fontWeight: FontWeight.w900,
+    fontFamily:   AppConstants.tajawalFontName,
+    height: 0.92,
+    letterSpacing: -0.41,
+  );
+  static TextStyle textStyleBlack44 = TextStyle(
+    color: AppColors.blackColor,
+    fontSize: 44.sp,
     fontWeight: FontWeight.w900,
     fontFamily:   AppConstants.tajawalFontName,
     height: 0.92,

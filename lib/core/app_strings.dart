@@ -12,7 +12,6 @@ class AppStrings {
   static const String apply = "apply";
   static const String applied = "applied";
   static const String addToFavorites = "add_to_favorites";
-  static const String addToCart = "add_to_cart";
   static const String deleteFromList = "delete_from_list";
   static const String checkout = "checkout";
   static const String shippingAddress = "shippingAddress";
@@ -73,5 +72,20 @@ class AppStrings {
   static const String note="note";
   static const String someThingWentWrong="someThingWentWrong";
   static const String appointmentAlreadyExists="appointmentAlreadyExists";
+
+  //productCard
+  static const String addToCart = "add_to_cart";
+  static const String ratingAndReview = "Rating&Reviews";
+  static const String helpful = "helpful";
+  static const String writeAReview = "writeAReview";
+  static const String whatIsYouRate = "whatIsYouRate";
+  static const String sendReview = "sendReview";
+  static const String pleaseShareYourOpinion = "pleaseShareYourOpinion";
+  static const String productAddedToCartSuccessfully="productAddedToCartSuccessfully";
+  static const String reviewAddedSuccessfully="reviewAddedSuccessfully";
+  static const String pleaseEnterReview="pleaseEnterReview";
+  static const String pleaseSelectRating="pleaseSelectRating";
+
+
 
 }
