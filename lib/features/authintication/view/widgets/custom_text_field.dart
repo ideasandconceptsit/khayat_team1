@@ -5,6 +5,7 @@ class CustomTextField extends StatefulWidget {
   final String label;
   final bool isPassword;
   final bool isNumber;
+  final bool isEmail;
   final TextEditingController controller;
 
   const CustomTextField({
@@ -13,6 +14,7 @@ class CustomTextField extends StatefulWidget {
     required this.controller,
     this.isPassword = false,
     this.isNumber = false,
+    this.isEmail=false,
   });
 
   @override
@@ -32,7 +34,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.green,
+        // color: Colors.green,
         borderRadius: BorderRadius.circular(4),
         boxShadow: const [
           BoxShadow(
@@ -51,13 +53,36 @@ class _CustomTextFieldState extends State<CustomTextField> {
         obscureText: widget.isPassword,
         controller: widget.controller,
         onChanged: validateInput,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'This field is required';
+          }
+          if (widget.isPassword && value.length < 6) {
+            return 'Password must be 6 characters or more';
+          }
+          if (widget.isNumber) {
+            // رقم مصري أو سعودي
+            bool isEgyptian = RegExp(r'^01[0125][0-9]{8}$').hasMatch(value);
+            bool isSaudi = RegExp(r'^(05[0-9]{8}|(\+966|00966)5[0-9]{8})$')
+                .hasMatch(value);
+
+            if (!isEgyptian && !isSaudi) {
+              return 'Invalid phone number (must be Saudi)';
+            }
+          } else if (widget.isEmail &&
+              !RegExp(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")
+                  .hasMatch(value)) {
+            return 'Enter a valid email';
+          }
+          return null;
+        },
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
           enabled: true,
           focusColor: Colors.white,
           labelText: widget.label,
-          labelStyle:const TextStyle(color: Colors.grey),
+          labelStyle: const TextStyle(color: Colors.grey),
           floatingLabelBehavior: FloatingLabelBehavior.auto,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4),
@@ -69,16 +94,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
             borderSide: const BorderSide(
                 color: Colors.grey), // لون الإطار عند عدم التركيز
           ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4),
-            borderSide: const BorderSide(
-                color: Colors.green, width: 2), // لون الإطار عند التركيز
-          ),
+          // focusedBorder: OutlineInputBorder(
+          //   borderRadius: BorderRadius.circular(4),
+          //   // borderSide: const BorderSide(
+          //   //     color: Colors.green, width: 2), // لون الإطار عند التركيز
+          // ),
           suffixIcon: isValid
-              ? const Icon(Icons.check,
-                  color: Colors.green) //✅ Icon check
-              : const Icon(Icons.close,
-                  color: Colors.red), // ❌Icon close
+              ? const Icon(Icons.check, color: Colors.green) //✅ Icon check
+              : const Icon(Icons.close, color: Colors.red), // ❌Icon close
         ),
       ),
     );

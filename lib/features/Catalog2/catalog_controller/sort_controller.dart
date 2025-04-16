@@ -1,14 +1,17 @@
 import 'package:get/get.dart';
+import 'product_controller.dart';
 
 class SortController extends GetxController {
-  final RxString currentSort = 'popular'.obs;
+  final ProductControllerCatalog productController = Get.find<ProductControllerCatalog>();
+
+  String get currentSort => productController.currentSort.value;
 
   void changeSort(String value) {
-    currentSort.value = value;
+    productController.setSortOption(value); // التعديل هنا
   }
 
   String get sortText {
-    switch (currentSort.value) {
+    switch (productController.currentSort.value) {
       case 'popular':
         return 'popular'.tr;
       case 'newest':

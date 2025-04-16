@@ -3,9 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../catalog_controller/filter_controller.dart';
+import '../catalog_controller/product_controller.dart';
+import '../models/category_model.dart';
 
 class CategorySelector extends StatelessWidget {
-  final FilterController controller = Get.find();
+  final FilterController filterController = Get.find();
+  final ProductControllerCatalog productController = Get.find();
 
   CategorySelector({Key? key}) : super(key: key);
 
@@ -30,39 +33,57 @@ class CategorySelector extends StatelessWidget {
           child: Obx(() => Wrap(
                 spacing: 8.w,
                 runSpacing: 8.h,
-                children: controller.categories.map((category) {
-                  final isSelected =
-                      controller.selectedCategories.contains(category);
-                  return InkWell(
-                    onTap: () => controller.toggleCategory(category),
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 16.w,
-                        vertical: 8.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color:
-                            isSelected ? const Color(0xFF2AA952) : Colors.white,
-                        borderRadius: BorderRadius.circular(24.r),
-                        border: Border.all(
-                          color: isSelected
-                              ? Colors.transparent
-                              : Colors.grey[300]!,
-                        ),
-                      ),
-                      child: Text(
-                        category.tr,
-                        style: TextStyle(
-                          color: isSelected ? Colors.white : Colors.black,
-                          fontSize: 14.sp,
-                        ),
-                      ),
-                    ),
-                  );
-                }).toList(),
+                children: [
+                  _buildCategoryChip(
+                    'all'.tr,
+                    filterController.selectedCategory.value == null,
+                    () {
+                      filterController.toggleCategory(null);
+                      productController.selectedCategory(null);
+                    },
+                  ),
+                  ...filterController.categories.map((CategoryModel category) {
+                    final isSelected =
+                        filterController.isCategorySelected(category.id);
+                    return _buildCategoryChip(
+                      category.name,
+                      isSelected,
+                      () {
+                        filterController.toggleCategory(category.id);
+                        productController.selectedCategory(category.id);
+                      },
+                    );
+                  }).toList(),
+                ],
               )),
         ),
       ],
+    );
+  }
+
+  Widget _buildCategoryChip(String label, bool isSelected, VoidCallback onTap) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: 16.w,
+          vertical: 8.h,
+        ),
+        decoration: BoxDecoration(
+          color: isSelected ? const Color(0xFF2AA952) : Colors.white,
+          borderRadius: BorderRadius.circular(24.r),
+          border: Border.all(
+            color: isSelected ? Colors.transparent : Colors.grey[300]!,
+          ),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: isSelected ? Colors.white : Colors.black,
+            fontSize: 14.sp,
+          ),
+        ),
+      ),
     );
   }
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:team1_khayat/core/utils/app_assets.dart';
-import 'package:team1_khayat/core/utils/app_colors.dart';
-import 'package:team1_khayat/core/widget/navigation_service.dart';
+import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_strings.dart';
+import 'package:team1_khayat/features/profile/controller/my_order_controller.dart';
 import 'package:team1_khayat/features/profile/view/widget/build_category_section.dart';
 import 'package:team1_khayat/features/profile/view/widget/order_pages.dart';
-import 'package:team1_khayat/shared/my_appbar/custom_app_bar.dart';
+import 'package:team1_khayat/features/profile/view/widget/order_search_deleget.dart';
+import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
+import 'package:team1_khayat/shared/shimmer/shimmer_effect.dart';
 
 class MyOrderView extends StatefulWidget {
   const MyOrderView({super.key});
@@ -16,54 +16,69 @@ class MyOrderView extends StatefulWidget {
 }
 
 class _MyOrderViewState extends State<MyOrderView> {
-      int selectedIndex = 0;
+  final OrderController orderController = Get.put(OrderController());
+  int selectedIndex = 0;
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.black,
-      appBar: _buildAppBar(context),
-      body: CustomScrollView(
-        slivers: [
-          const SliverToBoxAdapter(
-            child: SizedBox(height: 16),
-          ),
-          SliverToBoxAdapter(
-            child: BuildCategorySection(
-              selectedIndex: selectedIndex,
-              onCategorySelected: updateIndex,
+        appBar: CustomAppBar(
+          actionIconOnPressed: () {
+            showSearch(context: context, delegate: SearchOrderDelegate());
+          },
+          actionIcon: Icons.search_rounded,
+          arrowBackVisibility: true,
+        ),
+        body: CustomScrollView(
+          slivers: [
+            const SliverToBoxAdapter(
+              child: SizedBox(height: 16),
             ),
-          ),
-          SliverFillRemaining(
-            child: OrderPages(selectedIndex: selectedIndex)
-          ),
-        ],
-      ),
-    );
+            SliverPadding(
+              padding: const EdgeInsets.all(16.0),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate(
+                  [
+                    BuildCategorySection(
+                      selectedIndex: selectedIndex,
+                      onCategorySelected: updateIndex,
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Obx(() {
+              if (orderController.isLoading.value) {
+                return const SliverFillRemaining(
+                  child: LoadingShimmerEffect(),
+                );
+              } else if (orderController.orders.isEmpty) {
+                return SliverFillRemaining(
+                  child: Center(
+                    child: Text(
+                      AppStrings.noOrder.tr,
+                    ),
+                  ),
+                );
+              } else {
+                return SliverFillRemaining(
+                  child: OrderPages(
+                    selectedIndex: selectedIndex,
+                    orders: orderController.orders,
+                  ),
+                );
+              }
+            }),
+          ],
+        ));
   }
-  
-   PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
-      leadingWidth: 69.h,
-      leading: IconButton(
-        icon:SvgPicture.asset(
-          AppAssets.arrowback,
-        ),
-        onPressed: () {
-          NavigationService.back();
-        },
-      ),
-      actions: [
-        IconButton(
-          icon: SvgPicture.asset(
-            AppAssets.iconsSearch,
-          ),
-          onPressed: () {},
-        ),
-      ],
-    );
-  }
-   void updateIndex(int index) {
+
+  void updateIndex(int index) {
     setState(() {
       selectedIndex = index;
     });

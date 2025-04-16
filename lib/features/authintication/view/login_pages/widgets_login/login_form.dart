@@ -10,11 +10,13 @@ class LoginForm extends StatelessWidget {
   final LoginController controller;
 
   const LoginForm({super.key, required this.controller});
-
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return         Form(
+        key: controller.formkey,
+        child:Column(
       children: [
+
         CustomTextField(label: "email".tr, controller: controller.emailController),
          SizedBox(height: 8.h),
         CustomTextField(
@@ -27,6 +29,7 @@ class LoginForm extends StatelessWidget {
           alignment: Alignment.center,
           child: GestureDetector(
               onTap: () {
+                Get.toNamed(Routes.ForgotPasswordView);
                 // go to forget password
               },
               child:
@@ -44,6 +47,6 @@ class LoginForm extends StatelessWidget {
           ),
         ),
       ],
-    );
+    ));
   }
 }

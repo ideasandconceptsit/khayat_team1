@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:team1_khayat/core/widget/navigation_service.dart';
+import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_strings.dart';
+import 'package:team1_khayat/features/profile/view/promo_code_view.dart';
 import 'package:team1_khayat/features/profile/view/widget/profile_option.dart';
+import 'package:team1_khayat/shared/navigation_service.dart';
 import 'package:team1_khayat/state_managment/app_routers.dart';
 
 class SliverListProfileOption extends StatelessWidget {
@@ -13,16 +16,34 @@ class SliverListProfileOption extends StatelessWidget {
     physics: const NeverScrollableScrollPhysics(), 
     children: [
       ProfileOption(
-        title: 'My orders', subtitle: 'Already have 12 orders',
+        title: AppStrings.myOrders.tr, subtitle: AppStrings.alreadyHaveOrders.tr,
          onTap: () {
-          NavigationService.to( Routes.myOrderView , arguments: null);
+          NavigationService.navigateToNamed( Routes.myOrderView , arguments: null);
 
         }),
-      ProfileOption(title: 'Shipping addresses', subtitle: '3 addresses'),
-      ProfileOption(title: 'Payment methods', subtitle: 'Visa **34'),
-      ProfileOption(title: 'Promocodes', subtitle: 'You have special promocodes'),
-      ProfileOption(title: 'My reviews', subtitle: 'Reviews for 4 items'),
-      ProfileOption(title: 'Settings', subtitle: 'Notifications, password'),
+      ProfileOption(title: AppStrings.shippingAddresses.tr, subtitle: AppStrings.numAddresses.tr,
+      onTap: () {
+        NavigationService.navigateToNamed( Routes.shippingAddressPage , arguments: null);
+
+      },),
+      ProfileOption(title: AppStrings.paymentMethods.tr, subtitle: 'Visa **34'),
+      ProfileOption(title: AppStrings.promoCodes.tr, subtitle: AppStrings.youHaveSpecialPromoCodes.tr,
+      onTap: () {
+       Get.to(() =>  PromoCodeView());
+
+      },),
+      ProfileOption(title: AppStrings.myReviews.tr, subtitle:AppStrings.reviewsForItems.tr,
+      onTap: () {
+       NavigationService.navigateToNamed( Routes.reviewAndRatingScreen);
+
+      },
+      ),
+      ProfileOption(title: AppStrings.settings.tr, subtitle:'${AppStrings.notifications.tr} _ ${AppStrings.password.tr}' ,
+       onTap: () {
+          NavigationService.navigateToNamed( Routes.settingView , arguments: null);
+
+        }
+      ),
     ],
   );
   }

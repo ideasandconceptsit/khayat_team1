@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_strings.dart';
+import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/core/utils/app_colors.dart';
-import 'package:team1_khayat/core/utils/app_text_style.dart';
-import 'package:team1_khayat/core/widget/navigation_service.dart';
-import 'package:team1_khayat/state_managment/app_routers.dart';
+import 'package:team1_khayat/features/profile/model/order_model.dart';
+import 'package:team1_khayat/features/profile/view/order_details_view.dart';
+
 
 class OrderCard extends StatelessWidget {
-  const OrderCard({super.key, required this.status});
+  const OrderCard({super.key, required this.status, required this.order});
   final String status;
+    final OrderModels order;
+
 
   @override
   Widget build(BuildContext context) {
@@ -20,71 +25,62 @@ class OrderCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Order №1947034',
-                    style: AppStyles.tajawaltextStyle16.copyWith(color: Colors.black),
-                  ),
-                  Text(
-                    '05-12-2019',
-                    style: AppStyles.tajawaltextStyle14.copyWith(
-                      color: AppColors.grey1
-                    ),
-                  ),
-                ],
-              ),
+              Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: [
+    Expanded(
+      child: Text(
+        
+        '${AppStrings.order.tr} №${order.orderNumber}',
+        style: AppTextStyles.tajawaltextStyle16.copyWith(color: Colors.black),
+        overflow: TextOverflow.ellipsis, 
+      ),
+    ),
+   Text(
+  order.createdAt!.toIso8601String().split('T')[0], 
+  style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
+),
+
+  ],
+),
+
               const SizedBox(height: 8),
               Text.rich(
+                TextSpan(
+                  text: AppStrings.trackingNumber.tr+": ",
+                  style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
+                  children: [
                     TextSpan(
-                      text: 'Tracking number:',
-                      style: AppStyles.tajawaltextStyle14.copyWith(
-                        color: AppColors.grey1,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: ' IW347543455',
-                          style: AppStyles.tajawaltextStyle14.copyWith(
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
+                      text: order.trackingNumber,
+                      style: AppTextStyles.tajawaltextStyle14.copyWith(color: Colors.black),
                     ),
-                  ),
-              
+                  ],
+                ),
+              ),
               const SizedBox(height: 8),
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text.rich(
                     TextSpan(
-                      text: 'Quantity:',
-                      style: AppStyles.tajawaltextStyle14.copyWith(
-                        color: AppColors.grey1,
-                      ),
+                      text:  AppStrings.quantity.tr+": ",
+                      style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
                       children: [
                         TextSpan(
-                          text: ' 4',
-                          style: AppStyles.tajawaltextStyle14.copyWith(
-                            color: Colors.black,
-                          ),
+                          text: order.totalQuantity.toString(),
+                          style: AppTextStyles.tajawaltextStyle14.copyWith(color: Colors.black),
                         ),
                       ],
                     ),
                   ),
                   Text.rich(
                     TextSpan(
-                      text: 'Total Amount:',
-                      style: AppStyles.tajawaltextStyle14.copyWith(
-                        color: AppColors.grey1,
-                      ),
+                      text:  AppStrings.totalAmount.tr+" ",
+                      style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
                       children: [
                         TextSpan(
-                          text: ' 112\$',
-                          style: AppStyles.tajawaltextStyle14.copyWith(
-                            color: Colors.black,
-                          ),
+                          text:  order.totalPrice.toString() +'\$',
+                          style: AppTextStyles.tajawaltextStyle14.copyWith(color: Colors.black),
                         ),
                       ],
                     ),
@@ -97,19 +93,23 @@ class OrderCard extends StatelessWidget {
                 children: [
                   OutlinedButton(
                     onPressed: () {
-                      NavigationService.to( Routes.detailsView , arguments: null);
-
+                      Get.to(() => OrderDetailsView(order: order ,
+                      status: status,
+                     
+                      ));
                     },
-                    child:  Text('Details' ,style:AppStyles.tajawaltextStyle14.copyWith(
-                      color: AppColors.black
-                    ),),
+                    child: Text(
+                      AppStrings.details.tr,
+                      style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.black),
+                    ),
                   ),
                   Text(
-                    status,
+                    order.status.toString(),
+                    // status,
                     style: TextStyle(
-                      color: status == 'Delivered'
+                      color: status ==  AppStrings.delivered.tr
                           ? Colors.green
-                          : status == 'Processing'
+                          : status ==  AppStrings.processing.tr
                               ? Colors.orange
                               : Colors.red,
                       fontWeight: FontWeight.bold,

@@ -1,50 +1,55 @@
 class PromoCodeModel {
   final String id;
-  final String title;
+  final String name;
   final String code;
-  final String imageUrl;
-  final int validityDays;
+  final int discount;
+  final String description;
+  final DateTime expiresAt;
+  final double minCartPrice;
+  final int maxUsage;
+  final int usageCount;
+  final bool active;
 
-  PromoCodeModel(
-      {required this.id,
-      required this.title,
-      required this.code,
-      required this.imageUrl,
-      required this.validityDays});
+  PromoCodeModel({
+    required this.id,
+    required this.name,
+    required this.code,
+    required this.discount,
+    required this.description,
+    required this.expiresAt,
+    required this.minCartPrice,
+    required this.maxUsage,
+    required this.usageCount,
+    required this.active,
+  });
 
   factory PromoCodeModel.fromJson(Map<String, dynamic> json) {
     return PromoCodeModel(
-      id: json['id'],
-      title: json['title'],
+      id: json['_id'],
+      name: json['name'],
       code: json['code'],
-      imageUrl: json['imageUrl'],
-      validityDays: json['validityDays'],
+      discount: json['discount'],
+      description: json['description'],
+      expiresAt: DateTime.parse(json['expiresAt']),
+      minCartPrice: json['minCartPrice'].toDouble(),
+      maxUsage: json['maxUsage'],
+      usageCount: json['usageCount'],
+      active: json['active'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
-      'title': title,
+      '_id': id,
+      'name': name,
       'code': code,
-      'imageUrl': imageUrl,
-      'validityDays': validityDays,
+      'discount': discount,
+      'description': description,
+      'expiresAt': expiresAt.toIso8601String(),
+      'minCartPrice': minCartPrice,
+      'maxUsage': maxUsage,
+      'usageCount': usageCount,
+      'active': active,
     };
-  }
-
-  PromoCodeModel copyWith({
-    String? id,
-    String? title,
-    String? code,
-    String? imageUrl,
-    int? validityDays,
-  }) {
-    return PromoCodeModel(
-      id: id ?? this.id,
-      title: title ?? this.title,
-      code: code ?? this.code,
-      imageUrl: imageUrl ?? this.imageUrl,
-      validityDays: validityDays ?? this.validityDays,
-    );
   }
 }

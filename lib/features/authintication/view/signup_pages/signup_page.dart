@@ -27,7 +27,7 @@ class SignupPage extends StatelessWidget {
              SizedBox(height: 23.h),
             SignupForm(controller: controller),
              SizedBox(height: 55.h),
-            const SignupButton(),
+             SignupButton(controller: controller,),
              SizedBox(height: 68.h),
             const SocialSignup(),
           ],

@@ -1,24 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:team1_khayat/features/Catalog2/filter.dart';
-import 'package:team1_khayat/features/Catalog2/widgets/sort_by.dart';
 
 import '../catalog_controller/sort_controller.dart';
+import '../filter.dart';
+import 'sort_by.dart';
 
 class FilterSortBar extends StatelessWidget {
   FilterSortBar({super.key});
 
-  final SortController sortController = Get.put(SortController());
+  final SortController sortController = Get.find<SortController>();
 
   void showSortOptions() {
     Get.bottomSheet(
-      SortBottomSheet(
-        currentSort: sortController.currentSort.value,
-        onSort: (value) {
-          sortController.changeSort(value);
-        },
-      ),
+      const SortBottomSheet(),
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
     );
@@ -58,11 +53,6 @@ class FilterSortBar extends StatelessWidget {
                   foregroundColor: Theme.of(context).colorScheme.secondary,
                 ),
               )),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.grid_view, size: 20.sp),
-            color: Theme.of(context).colorScheme.secondary,
-          ),
         ],
       ),
     );

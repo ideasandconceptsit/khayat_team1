@@ -12,11 +12,16 @@ class SignupForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return
+      Form(
+        key: controller.formkey,
+        child:Column(
       children: [
+
         CustomTextField(label: "name".tr, controller: controller.nameController),
          SizedBox(height: 23.h),
-        CustomTextField(label: "email".tr, controller: controller.emailController),
+        CustomTextField(label: "email".tr, controller: controller.emailController,
+        isEmail: true,),
          SizedBox(height: 23.h),
         CustomTextField(
           label: "password".tr,
@@ -30,6 +35,6 @@ class SignupForm extends StatelessWidget {
           isNumber: true,
         ),
       ],
-    );
+    ));
   }
 }

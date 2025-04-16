@@ -1,29 +1,27 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import '../repositories/category_repository.dart';
+import '../models/category_model.dart';
+import 'product_controller.dart';
 
 class FilterController extends GetxController {
-  final RxDouble minPrice = 78.0.obs;
-  final RxDouble maxPrice = 143.0.obs;
+  final CategoryRepository _categoryRepository = Get.find<CategoryRepository>();
+  final ProductControllerCatalog productController = Get.find<ProductControllerCatalog>();
+
+  final RxDouble minPrice = 0.0.obs;
+  final RxDouble maxPrice = 200.0.obs;
+
   final RxList<String> selectedSizes = <String>[].obs;
-  final RxList<String> selectedCategories = <String>[].obs;
   final RxList<String> selectedColors = <String>[].obs;
   final RxList<String> selectedBrands = <String>[].obs;
 
-  final RxList<String> brands = <String>[
-    'adidas',
-    'adidas Originals',
-    'Blend',
-    'Boutique Moschino',
-    'Champion',
-    'Diesel',
-    'Jack & Jones',
-    'Naf Naf',
-    'Red Valentino',
-    's.Oliver',
-  ].obs;
+  final RxList<String> brands = <String>[].obs;
+  final RxList<CategoryModel> categories = <CategoryModel>[].obs;
+  final Rx<String?> selectedCategory = Rx<String?>(null);
+
+  final RxInt refreshCounter = 0.obs;
 
   final List<String> sizes = ['XS', 'S', 'M', 'L', 'XL'];
-  final List<String> categories = ['All', 'Women', 'Men', 'Boys', 'Girls'];
   final List<Map<String, dynamic>> colors = [
     {'name': 'Black', 'color': 0xFF000000},
     {'name': 'White', 'color': 0xFFFFFFFF},
@@ -34,6 +32,23 @@ class FilterController extends GetxController {
 
   final RxString searchQuery = ''.obs;
 
+  @override
+  void onInit() {
+    super.onInit();
+    fetchCategories();
+    // TODO: Fetch brands from API when endpoint is available
+  }
+
+  Future<void> fetchCategories() async {
+    try {
+      final fetchedCategories = await _categoryRepository.getAllCategories();
+      categories.assignAll(fetchedCategories);
+    } catch (e) {
+      print('Error fetching categories: $e');
+      // Handle error (show snackbar, etc.)
+    }
+  }
+
   RxList<String> get filteredBrands => brands
       .where((brand) =>
           brand.toLowerCase().contains(searchQuery.value.toLowerCase()))
@@ -43,6 +58,7 @@ class FilterController extends GetxController {
   void updatePriceRange(RangeValues values) {
     minPrice.value = values.start;
     maxPrice.value = values.end;
+    productController.setPriceRange(values.start, values.end);
   }
 
   void toggleSize(String size) {
@@ -53,12 +69,25 @@ class FilterController extends GetxController {
     }
   }
 
-  void toggleCategory(String category) {
-    if (selectedCategories.contains(category)) {
-      selectedCategories.remove(category);
+  void toggleCategory(String? categoryId) {
+    if (selectedCategory.value == categoryId) {
+      selectedCategory.value = null;
     } else {
-      selectedCategories.add(category);
+      selectedCategory.value = categoryId;
     }
+
+    refreshCounter.value++;
+    productController.selectedCategory(selectedCategory.value);
+  }
+
+  bool isCategorySelected(String? categoryId) {
+    return selectedCategory.value == categoryId;
+  }
+
+  void clearCategorySelection() {
+    selectedCategory.value = null;
+    refreshCounter.value++;
+    Get.find<ProductControllerCatalog>().applyFiltersAndSort();
   }
 
   void toggleColor(String color) {
@@ -69,33 +98,23 @@ class FilterController extends GetxController {
     }
   }
 
-  void toggleBrand(String brand) {
-    if (selectedBrands.contains(brand)) {
-      selectedBrands.remove(brand);
-    } else {
-      selectedBrands.add(brand);
-    }
-  }
-
   void updateSearchQuery(String query) {
     searchQuery.value = query;
   }
 
   void applyFilters() {
+    productController.applyFiltersAndSort();
     Get.back();
   }
 
   void resetFilters() {
     selectedSizes.clear();
-    selectedCategories.clear();
     selectedColors.clear();
-    minPrice.value = 78.0;
-    maxPrice.value = 143.0;
-    resetBrands();
-  }
-
-  void resetBrands() {
-    selectedBrands.clear();
-    searchQuery.value = '';
+    selectedCategory.value = null;
+    minPrice.value = 0.0;
+    maxPrice.value = 200.0;
+    productController.setPriceRange(0.0, 200.0);
+    productController.selectedCategory(null);
+    refreshCounter.value++;
   }
 }

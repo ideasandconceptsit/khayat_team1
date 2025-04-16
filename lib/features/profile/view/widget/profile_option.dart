@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/core/utils/app_colors.dart';
-import 'package:team1_khayat/core/utils/app_text_style.dart';
+
 
 class ProfileOption extends StatelessWidget {
   final String title;
@@ -16,18 +17,18 @@ class ProfileOption extends StatelessWidget {
         ListTile(
           title: Text(
             title,
-            style: AppStyles.tajawaltextStyle16.copyWith(
-              color: AppColors.grey
+            style: AppTextStyles.tajawaltextStyle16.copyWith(
+              color: AppColors.black
             ),
           ),
           subtitle: Text(
             subtitle,
-            style: AppStyles.tajawaltextStyle11,
+            style: AppTextStyles.tajawaltextStyle11,
           ),
-          trailing: Icon(Icons.arrow_forward_ios, color: Colors.white, size: 16),
+          trailing: const Icon(Icons.arrow_forward_ios, color: Colors.black, size: 16),
           onTap: onTap,
         ),
-        Divider(color: AppColors.black1),
+        Divider(color: const Color(0xffF4F4F4)),
       ],
     );
   }

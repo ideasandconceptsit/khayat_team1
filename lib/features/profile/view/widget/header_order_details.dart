@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+ import 'package:team1_khayat/core/app_strings.dart';
+import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/core/utils/app_colors.dart';
-import 'package:team1_khayat/core/utils/app_text_style.dart';
+import 'package:team1_khayat/features/profile/model/order_model.dart';
 
 class HeaderOrderDetails extends StatelessWidget {
-  const HeaderOrderDetails({super.key});
+  const HeaderOrderDetails({super.key, required this.order, required this.status});
+ final OrderModels order;
+   final String status;
 
   @override
   Widget build(BuildContext context) {
@@ -14,48 +19,54 @@ class HeaderOrderDetails extends StatelessWidget {
         children: [
           Text.rich(
             TextSpan(
-              text: 'Order №1947034',
-              style: AppStyles.tajawaltextStyle16.copyWith(
+              text: '${AppStrings.order.tr} №${order.orderNumber}',
+              style: AppTextStyles.tajawaltextStyle16.copyWith(
                 color: AppColors.grey1,
               ),
             ),
           ),
-          Text('02-28-2024', style: AppStyles.tajawaltextStyle14),
+    Text(
+  order.createdAt!.toIso8601String().split('T')[0],
+  style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
+),
+
         ],
       ),
       SizedBox(height: 13.h),
-      Padding(
-        padding: const EdgeInsets.only(right: 9, left: 29),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text.rich(
-            TextSpan(
-              text: 'Tracking number:',
-              style: AppStyles.tajawaltextStyle14.copyWith(
-          color: AppColors.white,
+          Row(
+      children: [
+        Text.rich(
+              TextSpan(
+            text: AppStrings.trackingNumber.tr+": " ,
+                style: AppTextStyles.tajawaltextStyle14.copyWith(color: AppColors.grey1),
+                children: [
+                  TextSpan(
+                    text:   order.trackingNumber,
+                    style: AppTextStyles.tajawaltextStyle14.copyWith(color: Colors.black),
+                  ),
+                ],
               ),
             ),
+
+        SizedBox(width: 5.w),
+
+      ],
           ),
-          SizedBox(width: 5.w),
-          Text.rich(
-            TextSpan(
-              text: 'IW347543455',
-              style: AppStyles.tajawaltextStyle14.copyWith(
-          color: AppColors.grey1,
+      Text(
+              order.status.toString(),
+              style: TextStyle(
+                color: status == AppStrings.delivered.tr
+                    ? Colors.green
+                    : status == AppStrings.processing.tr
+                        ? Colors.orange
+                        : Colors.red,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ),
         ],
-            ),
-            const Text(
-        'Delivered',
-        style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
       )
     ]);
   }

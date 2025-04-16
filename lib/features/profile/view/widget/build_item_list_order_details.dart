@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/core/utils/app_colors.dart';
-import 'package:team1_khayat/core/utils/app_text_style.dart';
+import 'package:team1_khayat/features/profile/model/order_model.dart';
+
 
 class BuildItemListOrderDetails extends StatelessWidget {
-  const BuildItemListOrderDetails({super.key});
+  const BuildItemListOrderDetails({super.key, required this.orderItem});
+
+  final ItemModel orderItem;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +15,7 @@ class BuildItemListOrderDetails extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 8),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: AppColors.whiteColor,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
@@ -34,27 +38,27 @@ class BuildItemListOrderDetails extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Pullover',
-                  style: AppStyles.tajawaltextStyle16,
+                  orderItem.product!.name!.toString(),
+                  style: AppTextStyles.tajawaltextStyle16,
                 ),
                 const SizedBox(height: 1),
                 Text(
-                  'Mango',
-                  style: AppStyles.tajawaltextStyle11.copyWith(
+                  orderItem.product!.category!.name.toString(),
+                  style: AppTextStyles.tajawaltextStyle11.copyWith(
                     color: AppColors.grey,
                   ),
                 ),
                 const SizedBox(height: 7),
                 Text(
                   'Color: Gray    Size: L',
-                  style: AppStyles.tajawaltextStyle11.copyWith(
+                  style: AppTextStyles.tajawaltextStyle11.copyWith(
                     color: AppColors.grey,
                   ),
                 ),
                 const SizedBox(height: 11),
                 Text(
-                  'Units: 1',
-                  style: AppStyles.tajawaltextStyle11.copyWith(
+                  'Units: ${orderItem.quantity}',
+                  style: AppTextStyles.tajawaltextStyle11.copyWith(
                     color: AppColors.grey,
                   ),
                 ),
@@ -65,10 +69,10 @@ class BuildItemListOrderDetails extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              const SizedBox(height: 60), // To push the text to the bottom
+              const SizedBox(height: 60), 
               Text(
-                '51\$',
-                style: AppStyles.tajawaltextStyle14.copyWith(
+                '${orderItem.totalPrice}\$',
+                style: AppTextStyles.tajawaltextStyle14.copyWith(
                   color: AppColors.black,
                 ),
               ),
@@ -79,3 +83,4 @@ class BuildItemListOrderDetails extends StatelessWidget {
     );
   }
 }
+

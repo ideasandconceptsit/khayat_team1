@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -14,12 +15,18 @@ void main() async {
   await GetStorage.init();
 
   final box = GetStorage();
+  final secureStorage = const FlutterSecureStorage();
+
   String savedLanguage = box.read('language') ?? 'ar';
-  runApp(MyApp(local: Locale(savedLanguage)));
+  String? token = await secureStorage.read(key: 'token');
+  String initialRoute = token != null ? Routes.bottomNavBar : Routes.splashscreen;
+
+  runApp(MyApp(local: Locale(savedLanguage), initialRoute:initialRoute,));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, this.local});
+  const MyApp({super.key, this.local ,required this.initialRoute});
+  final String initialRoute;
 
   final Locale? local;
 
@@ -38,7 +45,9 @@ class MyApp extends StatelessWidget {
       locale: local ?? const Locale('ar'),
       fallbackLocale: const Locale('ar'),
       theme: AppThemes.lightTheme,
-      initialRoute: Routes.homePage, // تغيير هنا حسب الحاجة
+      initialRoute:
+      Routes.splashscreen,
+     // initialRoute, // تغيير هنا حسب الحاجة
       getPages: AppPages.pages,
       initialBinding: AppBinding(),
     );

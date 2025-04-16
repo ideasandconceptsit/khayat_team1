@@ -29,7 +29,7 @@ class LoginPage extends StatelessWidget {
                  SizedBox(height: 97.h),
                 LoginForm(controller: controller),
                  SizedBox(height: 11.h),
-                LoginButtons(controller: controller),
+                controller.isLoading.value ? CircularProgressIndicator(color: Colors.green,) :LoginButtons(controller: controller),
                  SizedBox(height: 125.h),
                 const LoginFooter(),
                // Center(child: buildHomeIndicator()),

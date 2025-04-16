@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/features/profile/view/widget/custom_cirecle_image.dart';
 import 'package:team1_khayat/features/profile/view/widget/sliver_list_profile_option.dart';
 
-import '../../../../core/widget/header_view_widget.dart';
+import 'header_view_widget.dart';
+
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -15,7 +18,7 @@ class Body extends StatelessWidget {
             child: CustomScrollView(
               physics: const BouncingScrollPhysics(),
               slivers: [
-                SliverToBoxAdapter(child: HeaderSection(text: 'My profile')),
+                SliverToBoxAdapter(child: HeaderSection(text: AppStrings.myProfile.tr)),
                   SliverToBoxAdapter(
                   child: SizedBox(height: 17.h),
                 ),             
