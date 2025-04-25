@@ -1,5 +1,5 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/features/product/models/base_product_model.dart';
 import 'package:team1_khayat/features/product/repository/product_repository.dart';
@@ -12,46 +12,13 @@ class ProductCardController extends GetxController {
   ProductRepository productRepository=ProductRepository();
   var addToFavoritesState = AppState.idle.obs;
   var addItemToCartState = AppState.idle.obs;
+  var selectedProductColor="".obs;
+  var selectedProductSize="".obs;
+  late PageController pageController;
+
+
 
   ProductCardController({required this.product});
-  var selectedImages = <String>[].obs;
-  @override
-  void onInit() {
-    selectedImages.value = product.images!;
-    super.onInit();
-  }
-
-  void updateImagesBasedOnColor(String color) {
-    // هنا تحط اللوجيك اللي بيجيب الصور المناسبة للون
-    if (color == 'Black') {
-      selectedImages.value = [
-        'assets/images/Black.jpeg',
-       // 'https://example.com/red2.jpg',
-      ];
-    } else if (color == 'Gray') {
-      selectedImages.value = [
-        'assets/images/Gray.jpeg',
-      ];
-    }
-    else if (color == 'Light_Brown') {
-      selectedImages.value = [
-        "assets/images/Light_Brown.jpeg",
-      ];
-    }else if (color == 'Petroleum ') {
-      selectedImages.value = [
-        "assets/images/Petroleum.jpeg"
-        //'https://example.com/blue2.jpg',
-      ];
-    }
-    else if (color == 'Brown ') {
-      selectedImages.value = [
-        "assets/images/Brown.jpeg",
-      ];
-    }
-    else {
-      selectedImages.value = product.images!;
-    }
-  }
 
   void addToFavorites() async {
     try {
@@ -80,6 +47,30 @@ class ProductCardController extends GetxController {
       showErrorSnackBar(e.toString());
       addItemToCartState.value = AppState.error;
     }
+  }
+
+  void changeProductSizeOrColor({ String? size, String? color}) {
+
+    if(size!=null) {
+      selectedProductSize.value=size;
+    }
+    if(color!=null) {
+      selectedProductColor.value=color;
+    }
+  }
+
+  void changePageViewIndex(int index){
+    pageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+  }
+
+  @override
+  void onInit() {
+    selectedProductColor.value=product.colors?.first??"";
+    selectedProductSize.value=product.sizes?.first??"";
+    if(product.colors?.isNotEmpty ?? false){
+      pageController=PageController(initialPage: product.colors!.indexOf(selectedProductColor.value));
+    }
+    super.onInit();
   }
 
 }

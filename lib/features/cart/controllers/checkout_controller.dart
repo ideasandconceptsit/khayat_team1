@@ -14,29 +14,16 @@ class CheckoutController extends AppStateController {
   var getShippingAddressesState = AppState.idle.obs;
   var getDeliveryMethodsState = AppState.idle.obs;
 
-  TextEditingController nameOnCardController = TextEditingController();
-  TextEditingController cardNumberController = TextEditingController();
-  Rx<String> cardNumber = "".obs;
-  TextEditingController expireDateController = TextEditingController();
-  TextEditingController cVVDateController = TextEditingController();
+
 
   //just to display in UI
   RxList<ShippingAddressModel> shippingAddressList =
       <ShippingAddressModel>[].obs;
   Rx<int> currentShippingAddressIndex = 0.obs;
 
-  RxList<PaymentModel> paymentList = <PaymentModel>[
-    for (int i = 0; i < 5; i++)
-      PaymentModel(
-        id: i.toString(),
-        nameOnCard: "Name ${i + 1}",
-        cardNumber: i % 2 == 0 ? "411111111111111$i" : "510510510510510$i",
-        expireDate: "05/23",
-        cVV: "56$i",
-      )
-  ].obs;
 
-  Rx<int> currentPaymentMethodIndex = 0.obs;
+
+
 
   Rx<int> currentDeliveryMethodIndex = 0.obs;
 
@@ -64,35 +51,13 @@ class CheckoutController extends AppStateController {
     }
   }
 
-  void changeDefaultPaymentMethod(int index) {
-    currentPaymentMethodIndex.value = index;
-  }
+
 
   void changeCurrentDeliveryMethod(int index) {
     currentDeliveryMethodIndex.value = index;
   }
 
-  void addPaymentMethod() {
-    paymentList.add(PaymentModel(
-      nameOnCard: nameOnCardController.text,
-      cardNumber: cardNumber.value,
-      expireDate: expireDateController.text,
-      cVV: cVVDateController.text,
-      id: '',
-    ));
-    nameOnCardController.clear();
-    cardNumberController.clear();
-    expireDateController.clear();
-    cVVDateController.clear();
-    if (isAddPaymentMethodSetDefaultEnabled.value)
-      currentPaymentMethodIndex.value = paymentList.length - 1;
-  }
 
-  Rx<bool> isAddPaymentMethodSetDefaultEnabled = false.obs;
-
-  void changeIsAddPaymentMethodSetDefaultEnabled() =>
-      isAddPaymentMethodSetDefaultEnabled.value =
-          !isAddPaymentMethodSetDefaultEnabled.value;
 
   // void getShippingAddress()async
   // {
@@ -113,8 +78,6 @@ class CheckoutController extends AppStateController {
 
   @override
   void onInit() {
-    cardNumberController
-        .addListener(() => cardNumber.value = cardNumberController.text);
      getShippingAddress();
     getDeliveryMethods();
     // getPaymentMethods();

@@ -8,6 +8,7 @@ import 'package:team1_khayat/features/appointment/views/widgets/confirm_button.d
 import 'package:team1_khayat/features/appointment/views/widgets/note_section.dart';
 import 'package:team1_khayat/features/appointment/views/widgets/select_time_section.dart';
 
+
 class AppointmentView extends StatelessWidget {
    AppointmentView({super.key});
    final AppointmentController appointmentController = Get.put(AppointmentController());
@@ -16,27 +17,31 @@ class AppointmentView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.scaffoldBackgroundColor,
-      body: Column(
-        children: [
-          SizedBox(
-            height: 30.h,
-          ),
-          const CalendarWidget(),
-          SizedBox(
-            height: 24.h,
-          ),
-          const SelectTimeSection(),
-          SizedBox(
-            height: 28.h,
-          ),
-          const NoteSection(),
-          SizedBox(height: 47.h,),
-          const ConfirmButton()
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 30.h,
+            ),
+            const CalendarWidget(),
+            SizedBox(
+              height: 24.h,
+            ),
+            SelectTimeSectionBuilder(),
+            SizedBox(
+              height: 28.h,
+            ),
+             NoteSection(),
+            SizedBox(height: 47.h,),
+            const ConfirmButton()
+          ],
+        ),
       ),
     );
   }
 }
+
+
 
 
 

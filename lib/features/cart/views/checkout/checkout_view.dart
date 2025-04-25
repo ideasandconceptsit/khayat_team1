@@ -33,7 +33,7 @@ class CheckoutView extends StatelessWidget {
             SizedBox(
               height: 55.h,
             ),
-            const PaymentMethodSection(),
+            PaymentMethodSection(),
             SizedBox(
               height: 50.h,
             ),

@@ -19,8 +19,10 @@ class BaseProductModel {
   final double? totalCost;
   final double totalValue;
   final Category category;
+  final double price;
+  final List<String>? colors;
+  final List<String>? sizes;
   final List<String>? images;
-  final double price; // هنا السعر العام
 
 
   BaseProductModel({
@@ -45,7 +47,9 @@ class BaseProductModel {
     required this.totalCost,
     required this.totalValue,
     required this.category,
-     this.images,
+    this.colors,
+    this.sizes,
+    this.images,
   });
 
   factory BaseProductModel.fromJson(Map<String, dynamic> json) {
@@ -71,6 +75,8 @@ class BaseProductModel {
       totalValue: (json['totalValue'] as num).toDouble(),
       category: Category.fromJson(json['category']),
       images: List<String>.from(json['images']),
+      colors: List<String>.from(json['colors']),
+      sizes: List<String>.from(json['sizes']),
       price: (json['price'] as num).toDouble(), // نضيف السعر هنا
 
     );
@@ -99,6 +105,8 @@ class BaseProductModel {
       "totalValue": totalValue,
       "category": category.toJson(),
       "images": images,
+      "sizes": sizes,
+      "colors": colors,
     };
   }
 }
@@ -131,12 +139,14 @@ class AccessoryProductModel extends BaseProductModel {
     required super.totalCost,
     required super.totalValue,
     required super.category,
-    required super.images,
     this.image,
     required this.supplier,
     required this.pricePerUnit,
     required this.sku,
     required this.tags,
+    super.images,
+    super.colors,
+    super.sizes,
   });
 
   factory AccessoryProductModel.fromJson(Map<String, dynamic> json) {
@@ -163,11 +173,14 @@ class AccessoryProductModel extends BaseProductModel {
       totalValue: (json['totalValue'] as num).toDouble(),
       category: Category.fromJson(json['category']),
       images: List<String>.from(json['images']),
+      sizes: List<String>.from(json['sizes']),
+      colors: List<String>.from(json['colors']),
       image: json['image'],
       supplier: Supplier.fromJson(json['supplier']),
       pricePerUnit: (json['pricePerUnit'] as num).toDouble(),
       sku: json['sku'],
       tags: List<String>.from(json['tags']),
+
     );
   }
 
@@ -196,6 +209,8 @@ class AccessoryProductModel extends BaseProductModel {
       "totalValue": totalValue,
       "category": category.toJson(),
       "images": images,
+      "colors": colors,
+      "sizes": sizes,
       "image": image,
       "supplier": supplier.toJson(),
       "pricePerUnit": pricePerUnit,
@@ -230,6 +245,8 @@ class FabricProductModel extends BaseProductModel {
     required super.totalValue,
     required super.category,
      super.images,
+     super.colors,
+     super.sizes,
     required this.pricePerMeter,
   });
 
@@ -258,6 +275,8 @@ class FabricProductModel extends BaseProductModel {
       totalValue: (json['totalValue'] as num).toDouble(),
       category: Category.fromJson(json['category']),
       images: List<String>.from(json['images']),
+      colors: List<String>.from(json['colors']),
+      sizes: List<String>.from(json['sizes']),
       pricePerMeter: (json['pricePerMeter'] as num).toDouble(),
     );
   }
@@ -287,6 +306,8 @@ class FabricProductModel extends BaseProductModel {
       "totalValue": totalValue,
       "category": category.toJson(),
       "images": images,
+      "colors": colors,
+      "sizes": sizes,
       "pricePerMeter": pricePerMeter,
     };
   }

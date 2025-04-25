@@ -31,7 +31,6 @@ class ReviewsRepository {
             ratings: addReviewParam.rating,
             //todo must replace with user name
             user:User(id: addReviewParam.user, name: "My Name") );
-        print('Review added successfully');
         return reviewModel;
       } else {
         print('Error: ${response.statusCode} - ${response.statusMessage}');
@@ -56,7 +55,8 @@ class ReviewsRepository {
 
       if (response.statusCode == 200) {
         final List<dynamic> data = response.data['data'];
-        return data.map((json) => ReviewModel.fromJson(json)).toList();
+        List<ReviewModel> reviews = data.map((json) => ReviewModel.fromJson(json)).toList();
+        return reviews;
       } else {
         print('Error: ${response.statusCode} - ${response.statusMessage}');
         throw Exception();

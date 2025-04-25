@@ -6,76 +6,89 @@ import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/core/utils/app_colors.dart';
 import 'package:team1_khayat/features/cart/controllers/checkout_controller.dart';
+import 'package:team1_khayat/features/cart/controllers/payment_controller.dart';
+import 'package:team1_khayat/features/cart/models/payment_card_model.dart';
 import 'package:team1_khayat/features/cart/models/payment_model.dart';
+import 'package:team1_khayat/features/cart/views/payment/widgets/add_card_bottom_sheet_widget.dart';
+import 'package:team1_khayat/shared/app_bottom_sheet/app_bottom_sheet.dart';
 import 'package:team1_khayat/shared/custom_card_with_shadow/custom_card_with_shadow.dart';
 import 'package:team1_khayat/state_managment/app_routers.dart';
+import 'package:team1_khayat/state_managment/app_status.dart';
 
 class PaymentMethodSection extends StatelessWidget {
-  const PaymentMethodSection({
+   PaymentMethodSection({
     super.key,
   });
+  final PaymentController paymentController = Get.put(PaymentController());
 
   @override
   Widget build(BuildContext context) {
-    CheckoutController checkoutController = Get.find<CheckoutController>();
     return Obx(
-      () => Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                AppStrings.payment.tr,
-                style: AppTextStyles.textStyleBlack16,
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.only(end: 28.w),
-                child: InkWell(
-                  onTap: () {
-                    Get.toNamed(Routes.paymentPage);
-                  },
-                  child: Text(
-                    AppStrings.change.tr,
-                    style: AppTextStyles.textStyleMedium14
-                        .copyWith(color: AppColors.redColor),
+      () =>  Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  AppStrings.payment.tr,
+                  style: AppTextStyles.textStyleBlack16,
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.only(end: 28.w),
+                  child: Obx(
+                    () => InkWell(
+                      onTap: () {
+                        if(paymentController.paymentCardsList.isEmpty){
+                          showCustomAppBottomSheet(context,
+                              height: 572.h, child:  AddCardBottomSheetWidget());
+                        }
+                        Get.toNamed(Routes.paymentPage);
+                      },
+                      child: Text(
+                        paymentController.paymentCardsList.isEmpty?AppStrings.add.tr:AppStrings.change.tr,
+                        style: AppTextStyles.textStyleMedium14
+                            .copyWith(color: AppColors.redColor),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 15.h,
-          ),
-          Row(
-            children: [
-              CustomCardWithShadow(
-                  height: 38.h,
-                  width: 64.w,
-                  child: Image.asset(getImagePath(checkoutController))),
-              SizedBox(
-                width: 17.w,
-              ),
-              Text(
-                _getCardNumber(checkoutController.paymentList[
-                    checkoutController.currentPaymentMethodIndex.value]),
-                style: AppTextStyles.textStyleRegular14
-                    .copyWith(color: AppColors.blackColor),
-              )
-            ],
-          )
-        ],
+              ],
+            ),
+            SizedBox(
+              height: 15.h,
+            ),
+            if(paymentController.getPaymentCardsState.value==AppState.success&&paymentController.paymentCardsList.isNotEmpty)Row(
+              children: [
+                CustomCardWithShadow(
+                    height: 38.h,
+                    width: 64.w,
+                    child: Image.asset(AppAssets.visaLogo)),
+                SizedBox(
+                  width: 17.w,
+                ),
+                Text(
+                  paymentController.paymentCardsList.isEmpty?AppStrings.noPaymentMethodAdded.tr:
+                  _getCardNumber(paymentController.paymentCardsList[
+                  paymentController.currentPaymentMethodIndex.value]),
+                  style: AppTextStyles.textStyleRegular14
+                      .copyWith(color: AppColors.blackColor),
+                )
+              ],
+            )
+          ],
+
       ),
     );
   }
 
   String getImagePath(CheckoutController checkoutController) {
-    return checkoutController
-                    .paymentList[
-                checkoutController.currentPaymentMethodIndex.value]
+    return paymentController
+                    .paymentCardsList[
+    paymentController.currentPaymentMethodIndex.value]
                     .paymentCardType! ==PaymentCardType.Visa?AppAssets.visaLogo:AppAssets.masterCardLogo;
   }
 
-  String _getCardNumber(PaymentModel currentPaymentModel) {
-    return "**** **** **** ${currentPaymentModel.cardNumber?.substring(12, currentPaymentModel.cardNumber?.length)}";
+  String _getCardNumber(PaymentCardModel currentPaymentModel) {
+    return "**** **** **** ${currentPaymentModel.cardNumber.substring(12, currentPaymentModel.cardNumber.length)}";
   }
 }

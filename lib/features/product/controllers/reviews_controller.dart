@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_strings.dart';
@@ -14,8 +16,8 @@ class ReviewsController extends GetxController {
   var getReviewsState = AppState.idle.obs;
   late TextEditingController reviewTextController;
   RxList<ReviewModel> reviews = <ReviewModel>[].obs;
-
-  Rx<int> rating = 0.obs;
+  Rx<int> addReviewRating = 0.obs;
+  RxList<int> productRatings = <int>[0,0,0,0,0].obs;
 
 
 
@@ -29,22 +31,21 @@ class ReviewsController extends GetxController {
       showErrorSnackBar(AppStrings.pleaseEnterReview.tr);
       return;
     }
-    else if(rating.value == 0) {
+    else if(addReviewRating.value == 0) {
       showErrorSnackBar(AppStrings.pleaseSelectRating.tr);
       return;
     }
     try {
       addReviewState.value = AppState.loading;
       //todo: must change with user id
-      AddReviewParamter addReviewParam = AddReviewParamter(review: reviewTextController.text, rating: rating.value, productId: product.id, user: "67cc35c7fe2ede9311971842", productType: product is FabricProductModel ? "Fabric" : "Accessory");
+      AddReviewParamter addReviewParam = AddReviewParamter(review: reviewTextController.text, rating: addReviewRating.value, productId: product.id, user: "67cc35c7fe2ede9311971842", productType: product is FabricProductModel ? "Fabric" : "Accessory");
       ReviewModel review=await reviewsRepository.addReviewToProduct(addReviewParam);
       reviews.add(review);
       addReviewState.value = AppState.success;
       Get.back();
-      rating.value = 0;
+      addReviewRating.value = 0;
       reviewTextController.value = TextEditingValue.empty;
       showSuccessSnackBar(AppStrings.reviewAddedSuccessfully.tr);
-
     } catch (e) {
       showErrorSnackBar(e.toString());
       addReviewState.value = AppState.error;
@@ -55,14 +56,21 @@ class ReviewsController extends GetxController {
     try {
       getReviewsState.value = AppState.loading;
       reviews.assignAll((await reviewsRepository.getReviewsForProduct(product.id, product is FabricProductModel ? "fabric" : "accessory")));
+      getProductRating();
       getReviewsState.value = AppState.success;
     } catch (e) {
       getReviewsState.value = AppState.error;
     }
   }
+  void getProductRating()
+  {
+    for (var element in reviews) {
+      productRatings[(element.ratings.round())-1]++;
+    }
+  }
 
   void changeRating(int value) {
-    rating.value = value;
+    addReviewRating.value = value;
   }
 
   @override

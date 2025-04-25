@@ -3,23 +3,24 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_assets.dart';
+import 'package:team1_khayat/core/utils/app_colors.dart';
+
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
-import 'package:team1_khayat/core/utils/app_colors.dart';
-import 'package:team1_khayat/features/cart/controllers/checkout_controller.dart';
-import 'package:team1_khayat/features/cart/models/payment_model.dart';
+import 'package:team1_khayat/features/cart/controllers/payment_controller.dart';
+import 'package:team1_khayat/features/cart/models/payment_card_model.dart';
 import 'package:team1_khayat/features/cart/views/payment/widgets/custom_add_card_text_form_filed.dart';
 import 'package:team1_khayat/features/cart/views/payment/widgets/payment_checkbox.dart';
 import 'package:team1_khayat/shared/custom_app_button/custom_app_button.dart';
+import 'package:team1_khayat/state_managment/app_status.dart';
 
 class AddCardBottomSheetWidget extends StatelessWidget {
-  const AddCardBottomSheetWidget({super.key});
+  AddCardBottomSheetWidget({super.key});
 
+  final PaymentController paymentController = Get.find<PaymentController>();
 
   @override
   Widget build(BuildContext context) {
-    final CheckoutController checkoutController =
-    Get.find<CheckoutController>();
     final formKey = GlobalKey<FormState>();
     return Form(
       key: formKey,
@@ -35,8 +36,7 @@ class AddCardBottomSheetWidget extends StatelessWidget {
           CustomAddCardTextFormFiled(
             validator: (p0) => p0!.isEmpty ? AppStrings.required.tr : null,
             labelText: AppStrings.nameOnCard.tr,
-            controller: checkoutController.nameOnCardController,
-
+            controller: paymentController.nameOnCardController,
           ),
           SizedBox(
             height: 20.h,
@@ -44,32 +44,34 @@ class AddCardBottomSheetWidget extends StatelessWidget {
           Obx(
             () {
               return CustomAddCardTextFormFiled(
-                validator: (p0) => validateCardNumber(p0!)? null : AppStrings.pleaseEnterACorrectCardNumber.tr ,
-              labelText: AppStrings.cardNumber.tr,
-              controller: checkoutController.cardNumberController,
-              suffixIcon: _buildSuffix(checkoutController.cardNumber.value),
-            );
+                validator: (p0) => validateCardNumber(p0!)
+                    ? null
+                    : AppStrings.pleaseEnterACorrectCardNumber.tr,
+                labelText: AppStrings.cardNumber.tr,
+                controller: paymentController.cardNumberController,
+                suffixIcon: _buildSuffix(paymentController.cardNumber.value),
+              );
             },
           ),
           SizedBox(
             height: 20.h,
           ),
           CustomAddCardTextFormFiled(
-
             labelText: AppStrings.expireDate.tr,
             formats: [
               FilteringTextInputFormatter.digitsOnly,
               ExpiryDateFormatter(),
             ],
-            controller: checkoutController.expireDateController,
+            controller: paymentController.expireDateController,
           ),
           SizedBox(
             height: 20.h,
           ),
           CustomAddCardTextFormFiled(
             labelText: AppStrings.cvv.tr,
-            validator:(p0) => validateCVV(p0!)?null:AppStrings.pleaseEnterAValue.tr,
-            controller: checkoutController.cVVDateController,
+            validator: (p0) =>
+                validateCVV(p0!) ? null : AppStrings.pleaseEnterAValue.tr,
+            controller: paymentController.cVVDateController,
             formats: [
               FilteringTextInputFormatter.digitsOnly, // allow only digits
               LengthLimitingTextInputFormatter(4), // limit to 4 digits
@@ -80,7 +82,12 @@ class AddCardBottomSheetWidget extends StatelessWidget {
           ),
           Row(
             children: [
-               Obx(() =>  PaymentCheckbox(onTap: ()=> checkoutController.changeIsAddPaymentMethodSetDefaultEnabled(),isSelected: checkoutController.isAddPaymentMethodSetDefaultEnabled.value,)),
+              Obx(() => PaymentCheckbox(
+                    onTap: () => paymentController
+                        .changeIsAddPaymentMethodSetDefaultEnabled(),
+                    isSelected: paymentController
+                        .isAddPaymentMethodSetDefaultEnabled.value,
+                  )),
               SizedBox(
                 width: 13.w,
               ),
@@ -94,14 +101,17 @@ class AddCardBottomSheetWidget extends StatelessWidget {
           SizedBox(
             height: 10.h,
           ),
-          CustomAppButton(
-            onTap: (){
-              if(formKey.currentState!.validate()) {
-                checkoutController.addPaymentMethod();
-              }
-            },
-            text: AppStrings.addCard.tr,
-            height: 48.h,
+          Obx(
+            () => CustomAppButton(
+              isLoading: paymentController.createPaymentMethodState.value == AppState.loading,
+              onTap: () {
+                if (formKey.currentState!.validate()) {
+                  paymentController.addPaymentMethod();
+                }
+              },
+              text: AppStrings.addCard.tr,
+              height: 48.h,
+            ),
           )
         ],
       ),
@@ -110,27 +120,39 @@ class AddCardBottomSheetWidget extends StatelessWidget {
 
   Widget? _buildSuffix(String cardNumber) {
     if (cardNumber.isEmpty) return null;
-    PaymentCardType cardType = PaymentModel.getCardType(
-        cardNumber);
+    PaymentCardType cardType = PaymentCardModel.getCardType(cardNumber);
     if (cardType == PaymentCardType.Visa) {
       return Padding(
-        padding:  EdgeInsetsDirectional.only(end: 20.0.w),
-        child: Image.asset(AppAssets.visaLogo,height: 24.h,width: 24.w,fit: BoxFit.contain,),
+        padding: EdgeInsetsDirectional.only(end: 20.0.w),
+        child: Image.asset(
+          AppAssets.visaLogo,
+          height: 24.h,
+          width: 24.w,
+          fit: BoxFit.contain,
+        ),
       );
     } else {
       return Padding(
-        padding:  EdgeInsetsDirectional.only(end: 20.0.w),
-        child: Image.asset(AppAssets.masterCardLogo,height: 24.h,width: 24.w,fit: BoxFit.contain,),
+        padding: EdgeInsetsDirectional.only(end: 20.0.w),
+        child: Image.asset(
+          AppAssets.masterCardLogo,
+          height: 24.h,
+          width: 24.w,
+          fit: BoxFit.contain,
+        ),
       );
     }
   }
+
   bool validateCardNumber(String cardNumber) {
     cardNumber = cardNumber.replaceAll(RegExp(r'\s+'), ''); // إزالة الفراغات
     if (!RegExp(r'^\d{13,19}$').hasMatch(cardNumber)) return false;
     return luhnCheck(cardNumber);
   }
+
   bool validateCVV(String cvv) {
-    return RegExp(r'^\d{3,4}$').hasMatch(cvv) && ( cvv.length == 4 || cvv.length == 3);
+    return RegExp(r'^\d{3,4}$').hasMatch(cvv) &&
+        (cvv.length == 4 || cvv.length == 3);
   }
 
   bool luhnCheck(String number) {

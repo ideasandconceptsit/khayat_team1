@@ -21,12 +21,12 @@ class CartMoreOptionsWidget extends StatelessWidget {
       shadowColor: AppColors.promoCodeMenuShadowColor,
       shape:
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
-      padding: EdgeInsets.zero,
+      menuPadding: EdgeInsets.zero,
       color: AppColors.whiteColor,
       // 12 is the padding
       // 33 and 17 is the the space and the padding in Figma
       offset: Offset(-33.w + 12.w, -17 - 12.h),
-      // padding: EdgeInsets.zero,
+      padding: EdgeInsets.zero,
       constraints: BoxConstraints.tight(Size(170.w,96.h)),
       itemBuilder: (context) => [
         _buildPopupMenuItem(text: AppStrings.addToFavorites.tr,onTap: ()=>cartController.addToFavorites(cartItemModel.product.id, cartItemModel.productType)),

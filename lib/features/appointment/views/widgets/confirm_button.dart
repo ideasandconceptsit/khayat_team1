@@ -20,7 +20,9 @@ class ConfirmButton extends StatelessWidget {
         () =>  CustomAppButton(
           isLoading: controller.createAppointmentState.value == AppState.loading,
           onTap: () {
-            controller.createAppointment(clientName: "clientName", clientEmail: "clientEmail", clientPhone: 1236666);
+            if(controller.noteFormKey.currentState!.validate()) {
+              controller.bookAppointment("clientName",  "clientEmail", "1236666");
+            }
           },
           text: AppStrings.confirm.tr,
           height: 48.h,

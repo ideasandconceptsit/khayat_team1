@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/core/utils/app_colors.dart';
-import 'package:team1_khayat/features/cart/controllers/checkout_controller.dart';
+import 'package:team1_khayat/features/cart/controllers/payment_controller.dart';
 import 'package:team1_khayat/features/cart/views/payment/widgets/payment_card_and_checkbox.dart';
 import 'package:team1_khayat/features/cart/views/payment/widgets/payment_view_fab.dart';
 import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
@@ -38,11 +38,11 @@ class PaymentView extends StatelessWidget {
                   () =>  ListView.separated(
                     separatorBuilder: (context, index) => SizedBox(height: 13.h,),
                       itemBuilder: (context, index) => PaymentCardAndCheckbox(
-                            paymentModel:
-                                Get.find<CheckoutController>().paymentList[index],
+                            paymentCardModel:
+                                Get.find<PaymentController>().paymentCardsList[index],
                           ),
                       itemCount:
-                          Get.find<CheckoutController>().paymentList.length),
+                          Get.find<PaymentController>().paymentCardsList.length),
                 )),
 
           ],

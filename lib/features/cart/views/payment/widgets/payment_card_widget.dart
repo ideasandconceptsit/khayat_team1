@@ -1,52 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_assets.dart';
+import 'package:team1_khayat/core/utils/app_colors.dart';
+
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
-import 'package:team1_khayat/core/utils/app_colors.dart';
-import 'package:team1_khayat/features/cart/models/payment_model.dart';
+import 'package:team1_khayat/features/cart/controllers/payment_controller.dart';
+import 'package:team1_khayat/features/cart/models/payment_card_model.dart';
 
 class PaymentCardWidget extends StatelessWidget {
-  const PaymentCardWidget({super.key, required this.paymentModel});
+   PaymentCardWidget({super.key, required this.paymentCardModel});
 
-  final PaymentModel paymentModel;
+  final PaymentCardModel paymentCardModel;
+  final PaymentController paymentController = Get.find<PaymentController>();
 
   @override
   Widget build(BuildContext context) {
-    if (paymentModel.paymentCardType == PaymentCardType.Visa) {
-      return  VisaCardWidget(
-        paymentModel: paymentModel,
+    if (paymentCardModel.id == paymentController.paymentCardsList[paymentController.currentPaymentMethodIndex.value].id) {
+      return  ActivePaymentCardWidget(
+        paymentCardModel: paymentCardModel,
       );
-    } else if (paymentModel.paymentCardType == PaymentCardType.MasterCard) {
-      return MasterCardWidget(paymentModel: paymentModel,);
-    } else {
-      return  Container(color:AppColors.greyColor ,child:  Center(child: Text(AppStrings.unintendedCard)),);
+    } else  {
+      return DisabledPaymentCardWidget(paymentCardModel: paymentCardModel,);
     }
   }
 
 
 }
 
-class MasterCardWidget extends StatelessWidget {
-  const MasterCardWidget({
+class ActivePaymentCardWidget extends StatelessWidget {
+  const ActivePaymentCardWidget({
     super.key,
-    required this.paymentModel,
+    required this.paymentCardModel,
   });
 
-  final PaymentModel paymentModel;
+  final PaymentCardModel paymentCardModel;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(AppAssets.masterCard),
+        Image.asset(AppAssets.activePaymentCardImage),
         Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.only(start: 63.w,top: 100.h),
                 child: Text(
-                    "* * * *  * * * *  * * * *  ${paymentModel.cardNumber!.substring(12, paymentModel.cardNumber!.length)}",
+                    "* * * *  * * * *  * * * *  ${paymentCardModel.cardNumber!.substring(12, paymentCardModel.cardNumber!.length)}",
                     style: AppTextStyles.textStyleMedium14.copyWith(color: AppColors.whiteColor,fontSize: 24.sp)),),
               SizedBox(height: 43.h,),
               Row(
@@ -57,7 +59,7 @@ class MasterCardWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(AppStrings.cardHolderName,style: AppTextStyles.textStyleBlack16.copyWith(fontSize: 10.sp,color: AppColors.whiteColor.withOpacity(.8)),),
-                        Text(paymentModel.nameOnCard!,style: AppTextStyles.textStyleBlack16.copyWith(fontSize: 14.sp,color: AppColors.whiteColor),),
+                        Text(paymentCardModel.holderName!,style: AppTextStyles.textStyleBlack16.copyWith(fontSize: 14.sp,color: AppColors.whiteColor),),
                       ],
                     ),
                   ),
@@ -66,7 +68,7 @@ class MasterCardWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(AppStrings.expiryDate,style: AppTextStyles.textStyleBlack16.copyWith(fontSize: 10.sp,color: AppColors.whiteColor.withOpacity(.8)),),
-                      Text(paymentModel.expireDate!,style: AppTextStyles.textStyleBlack16.copyWith(fontSize: 14.sp,color: AppColors.whiteColor),),
+                      Text(paymentCardModel.expiryDate,style: AppTextStyles.textStyleBlack16.copyWith(fontSize: 14.sp,color: AppColors.whiteColor),),
                     ],
                   ),
                 ],
@@ -77,22 +79,22 @@ class MasterCardWidget extends StatelessWidget {
   }
 }
 
-class VisaCardWidget extends StatelessWidget {
-  const VisaCardWidget({super.key, required this.paymentModel});
+class DisabledPaymentCardWidget extends StatelessWidget {
+  const DisabledPaymentCardWidget({super.key, required this.paymentCardModel});
 
-  final PaymentModel paymentModel;
+  final PaymentCardModel paymentCardModel;
   @override
   Widget build(BuildContext context) {
     return  Stack(
       children: [
-        Image.asset(AppAssets.visaCard),
+        Image.asset(AppAssets.disabledPaymentCardImage),
          Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: EdgeInsetsDirectional.only(start: 63.w,top: 100.h),
               child: Text(
-                  "* * * *  * * * *  * * * *  ${paymentModel.cardNumber!.substring(12, paymentModel.cardNumber!.length)}",
+                  "* * * *  * * * *  * * * *  ${paymentCardModel.cardNumber!.substring(12, paymentCardModel.cardNumber!.length)}",
                   style: AppTextStyles.textStyleMedium14.copyWith(color: AppColors.whiteColor,fontSize: 24.sp)),),
             SizedBox(height: 43.h,),
             Padding(
@@ -103,7 +105,7 @@ class VisaCardWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(AppStrings.cardHolderName,style: AppTextStyles.textStyleBlack16.copyWith(fontSize: 10.sp,color: AppColors.whiteColor.withOpacity(.8)),),
-                      Text(paymentModel.nameOnCard!,style: AppTextStyles.textStyleBlack16.copyWith(fontSize: 14.sp,color: AppColors.whiteColor),),
+                      Text(paymentCardModel.holderName,style: AppTextStyles.textStyleBlack16.copyWith(fontSize: 14.sp,color: AppColors.whiteColor),),
                     ],
                   ),
                   const Spacer(),
@@ -111,7 +113,7 @@ class VisaCardWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(AppStrings.expiryDate,style: AppTextStyles.textStyleBlack16.copyWith(fontSize: 10.sp,color: AppColors.whiteColor.withOpacity(.8)),),
-                      Text(paymentModel.expireDate!,style: AppTextStyles.textStyleBlack16.copyWith(fontSize: 14.sp,color: AppColors.whiteColor),),
+                      Text(paymentCardModel.expiryDate,style: AppTextStyles.textStyleBlack16.copyWith(fontSize: 14.sp,color: AppColors.whiteColor),),
                     ],
                   ),
                 ],

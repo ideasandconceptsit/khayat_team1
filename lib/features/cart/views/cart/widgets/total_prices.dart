@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
 import 'package:team1_khayat/core/utils/app_colors.dart';
@@ -24,7 +25,10 @@ class TotalPrices extends StatelessWidget {
               ),
               const Spacer(),
               Obx(
-                () =>  cartController.state == AppState.loading ? CircularProgressIndicator(color: Colors.blue,):Text(
+                () =>cartController.updateCartItemQuantityState.value == AppState.loading ?  Skeletonizer(enabled:true,child: Text('1000',
+                  style: AppTextStyles.textStyleBlack18,
+                ),
+                ) :  Text(
                   cartController.cartProductModel.value?.totalCartPrice.value.toString() ?? '0',
                   style: AppTextStyles.textStyleBlack18,
                 ),
@@ -39,7 +43,13 @@ class TotalPrices extends StatelessWidget {
               ),
               const Spacer(),
               Obx(
-                    () =>  Text(
+                    () =>  cartController.updateCartItemQuantityState.value == AppState.loading? Skeletonizer(
+                      child:
+                        Text(
+                          "1000",
+                          style: AppTextStyles.textStyleBlack18,
+                        )
+                    ):Text(
                   cartController.cartProductModel.value?.totalAfterDiscount.value.toString() ?? '0',
                   style: AppTextStyles.textStyleBlack18,
                 ),
@@ -51,3 +61,7 @@ class TotalPrices extends StatelessWidget {
     );
   }
 }
+
+
+
+

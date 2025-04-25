@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:team1_khayat/core/app_colors.dart';
 import 'package:team1_khayat/core/app_styles.dart';
-import 'package:team1_khayat/core/utils/app_colors.dart';
 import 'package:team1_khayat/features/product/models/review_model.dart';
 import 'package:team1_khayat/features/product/views/widgets/helpfull_row.dart';
 import 'package:team1_khayat/features/product/views/widgets/rating_and_date_row.dart';
@@ -36,7 +36,7 @@ class ReviewCard extends StatelessWidget {
                     style: AppTextStyles.textStyleRegular14.copyWith(color: AppColors.blackColor),
                   ),
                   SizedBox(height: 10.h,),
-                  const HelpfullRow()
+                  // const HelpfullRow()
                 ],
 
               )),

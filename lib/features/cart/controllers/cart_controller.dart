@@ -1,6 +1,6 @@
+import 'dart:async';
 import 'dart:developer';
-
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/features/cart/models/cart_product_model.dart';
@@ -9,8 +9,8 @@ import 'package:team1_khayat/features/cart/models/updated_cart_model.dart';
 import 'package:team1_khayat/features/cart/repository/cart_repository.dart';
 import 'package:team1_khayat/shared/app_snakbar/app_snackbar.dart';
 import 'package:team1_khayat/state_managment/app_state_controller.dart';
+import 'package:team1_khayat/state_managment/app_status.dart';
 
-import '../../../state_managment/app_status.dart';
 
 class CartController extends AppStateController {
   var promoCodeState = AppState.idle.obs;
@@ -34,6 +34,8 @@ class CartController extends AppStateController {
   //just to display in UI
   RxList<PromoCodeModel> promCodeList = <PromoCodeModel>[].obs;
 
+  final Map<String, Timer> _timers = {};
+
   void getCartProducts() async {
     try {
       getCartProductsState.value = AppState.loading;
@@ -41,7 +43,7 @@ class CartController extends AppStateController {
       cartProductModel.value = cartProduct;
       getCartProductsState.value = AppState.success;
     } catch (e) {
-      getCartProductsErrorMessage.value=e.toString();
+      getCartProductsErrorMessage.value = e.toString();
       getCartProductsState.value = AppState.error;
     }
   }
@@ -57,23 +59,26 @@ class CartController extends AppStateController {
     }
   }
 
-  void applyCoupon(String couponCode,String couponId) async {
+  void applyCoupon(String couponCode, String couponId) async {
     String? oldCouponId = cartProductModel.value?.appliedCoupon.value?.id;
 
     try {
       applyCouponState.value = AppState.loading;
-      cartProductModel.value?.appliedCoupon.value=AppliedCouponModel(id: couponId);
-      UpdatedCartProductModel result = await cartRepository.applyCoupon(couponCode);
+      cartProductModel.value?.appliedCoupon.value =
+          AppliedCouponModel(id: couponId);
+      UpdatedCartProductModel result =
+          await cartRepository.applyCoupon(couponCode);
       _updateCartPrices(result);
       _updateCartCoupon(result);
 
       applyCouponState.value = AppState.success;
       Get.back();
       showSuccessSnackBar(AppStrings.couponAppliedSuccessfully.tr);
-
     } catch (e) {
       showErrorSnackBar(e.toString());
-      cartProductModel.value?.appliedCoupon.value=cartProductModel.value?.appliedCoupon.value?.copyWith(id:oldCouponId );
+      cartProductModel.value?.appliedCoupon.value = cartProductModel
+          .value?.appliedCoupon.value
+          ?.copyWith(id: oldCouponId);
       applyCouponState.value = AppState.error;
     }
   }
@@ -82,9 +87,9 @@ class CartController extends AppStateController {
     try {
       addToFavoritesState.value = AppState.loading;
       if (type == "Fabric") {
-         await cartRepository.addFabricToFavorites(cartItemId);
+        await cartRepository.addFabricToFavorites(cartItemId);
       } else {
-         await cartRepository.addAccessoryToFavorites(cartItemId);
+        await cartRepository.addAccessoryToFavorites(cartItemId);
       }
       addToFavoritesState.value = AppState.success;
       showSuccessSnackBar(AppStrings.productAddedToFavoritesSuccessfully.tr);
@@ -112,16 +117,19 @@ class CartController extends AppStateController {
   }
 
   void _updateCartPrices(UpdatedCartProductModel result) {
-    cartProductModel.value?.totalCartPrice.value=result.totalCartPrice;
-    cartProductModel.value?.totalAfterDiscount.value=result.totalAfterDiscount;
+    cartProductModel.value?.totalCartPrice.value = result.totalCartPrice;
+    cartProductModel.value?.totalAfterDiscount.value =
+        result.totalAfterDiscount;
     log(cartProductModel.value!.totalAfterDiscount.value.toString());
   }
-  void _updateCartCoupon(UpdatedCartProductModel result) {
-    cartProductModel.value?.appliedCoupon.value=AppliedCouponModel(id: result.appliedCoupon);
 
+  void _updateCartCoupon(UpdatedCartProductModel result) {
+    cartProductModel.value?.appliedCoupon.value =
+        AppliedCouponModel(id: result.appliedCoupon);
   }
 
   void updateCartItemQuantity(String cartItemId, int updatedQuantity) async {
+    if (updatedQuantity <= 0) return;
     updateCartItemQuantityState.value = AppState.loading;
     int? currentQuantity = cartProductModel.value?.items
         .where((element) => element.product.id == cartItemId)
@@ -135,13 +143,13 @@ class CartController extends AppStateController {
         .quantity
         .value = updatedQuantity;
 
-    if (updatedQuantity > 0) {
+    _timers[cartItemId]?.cancel();
+    _timers[cartItemId] = Timer(const Duration(seconds: 3), ()async {
       try {
         UpdatedCartProductModel result =
             await cartRepository.updateCartProduct(cartItemId, updatedQuantity);
         _updateCartPrices(result);
         updateCartItemQuantityState.value = AppState.success;
-
       } catch (e) {
         cartProductModel.value?.items
             .where((element) => element.product.id == cartItemId)
@@ -151,11 +159,10 @@ class CartController extends AppStateController {
         updateCartItemQuantityState.value = AppState.error;
         showErrorSnackBar(e.toString());
       }
-    }
+    });
   }
 
   void clearPromoCode() => promoCodeController.clear();
-
 
   // This getter calculates the total price of all items in the cart by folding through the cartProducts list.
   // It multiplies each product's price by its quantity and sums up the values to return the total price.

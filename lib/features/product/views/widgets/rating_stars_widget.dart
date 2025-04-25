@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:team1_khayat/core/utils/app_colors.dart';
+import 'package:team1_khayat/core/app_colors.dart';
 
 class RatingStarsWidget extends StatelessWidget {
   const RatingStarsWidget({super.key, required this.rating, this.starsSize,this.space, this.onTap});

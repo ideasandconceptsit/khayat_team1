@@ -15,8 +15,11 @@ class CalendarWidget extends StatelessWidget {
 
     return Obx(
       () =>  TableCalendar(
+        onPageChanged: (focusedDay) {
+          controller.changeSelectedDate(focusedDay);
+          controller.getAvailableAppointmentsForMonth(focusedDay);
+        },
         firstDay: DateTime.now(),
-        //enabledDayPredicate allowed days and disabled days
         lastDay: DateTime.utc(2030, 12, 31),
         focusedDay: controller.selectedDate.value,
         selectedDayPredicate: (day) => isSameDay(controller.selectedDate.value, day),
@@ -43,6 +46,14 @@ class CalendarWidget extends StatelessWidget {
       titleCentered: true,
     );
   }
+   // bool isTodayOrInFuture(DateTime date) {
+   //  return true;
+   //   DateTime now = DateTime.now();
+   //   DateTime today = DateTime(now.year, now.month, now.day);
+   //   DateTime inputDate = DateTime(date.year, date.month, date.day);
+   //   return (inputDate.isAtSameMomentAs(today) || inputDate.isAfter(today));
+   // }
+
 }
 
 class RightChevronIcon extends StatelessWidget {

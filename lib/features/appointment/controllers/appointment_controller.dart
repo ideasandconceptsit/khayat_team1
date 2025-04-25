@@ -1,63 +1,92 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:team1_khayat/core/app_strings.dart';
-import 'package:team1_khayat/features/appointment/models/appointment_model.dart';
+import 'package:team1_khayat/features/appointment/models/available_appointment_model.dart';
 import 'package:team1_khayat/features/appointment/repos/appointment_repo.dart';
 import 'package:team1_khayat/shared/app_snakbar/app_snackbar.dart';
 import 'package:team1_khayat/state_managment/app_status.dart';
 
 class AppointmentController extends GetxController {
   var createAppointmentState = AppState.idle.obs;
+  var getAvailableAppointmentState = AppState.idle.obs;
+  late TextEditingController noteController;
+  late GlobalKey<FormState> noteFormKey;
 
+  RxMap<DateTime,AvailableAppointmentModel?> availableAppointmentsMap = <DateTime,AvailableAppointmentModel?>{}.obs;
   AppointmentRepo appointmentRepo = AppointmentRepo();
-  RxList<AppointmentModel> appointments = <AppointmentModel>[].obs;
 
-  Rx<DateTime> selectedDate = DateTime.now().copyWith(hour: 12, minute: 0).obs;
-  Rx<TimeOfDay> fromTime =  const TimeOfDay(hour: 12, minute: 0).obs;
+  Rx<DateTime> selectedDate=DateTime.now().obs;
+  Rx<int> selectedTimeIndex=0.obs;
 
 
-  void createAppointment(
-      {required String clientName,
-      required String clientEmail,
-      required int clientPhone}) async {
-    createAppointmentState.value = AppState.loading;
+  void getAvailableAppointmentsForMonth(DateTime dateTime)async
+  {
+    if(availableAppointmentsMap.containsKey(DateTime.parse(DateFormat('yyyy-MM-dd')
+        .format(dateTime))))
+      return;
+    getAvailableAppointmentState.value=AppState.loading;
     try {
-      var appointmentsList = await appointmentRepo.getAppointments();
-      appointments.assignAll(appointmentsList);
-
-      if (hasAppointmentWithin30Minutes()) {
-        showErrorSnackBar(AppStrings.appointmentAlreadyExists.tr);
-        createAppointmentState.value = AppState.error;
-        return;
+      List<AvailableAppointmentModel> result= await appointmentRepo.getAvailableAppointmentsForMonth(dateTime);
+      selectedDate.value=dateTime;
+      for (var element in result) {
+        availableAppointmentsMap[element.date]=element;
+        log(availableAppointmentsMap.toString());
       }
-      await appointmentRepo.createAppointment(
-          clientName: clientName,
-          clientEmail: clientEmail,
-          date: selectedDate.value.copyWith(hour: fromTime.value.hour, minute: fromTime.value.minute).toUtc(),
-          clientPhone: clientPhone);
-      createAppointmentState.value = AppState.success;
-      showSuccessSnackBar(AppStrings.appointmentCreatedSuccessfully.tr);
+      selectedTimeIndex.value==0;
+      getAvailableAppointmentState.value = AppState.success;
     } catch (e) {
-      showErrorSnackBar(e.toString());
       createAppointmentState.value = AppState.error;
     }
   }
 
-  bool hasAppointmentWithin30Minutes() {
-    for (var appointment in appointments) {
-      final difference = appointment.date.difference(selectedDate.value.copyWith(hour: fromTime.value.hour, minute: fromTime.value.minute).toUtc()).inMinutes;
-      if (difference.abs() <= 30) {
-        return true;
-      }
+  void bookAppointment(String clientEmail,String clientName,String clientPhone)async{
+    createAppointmentState.value=AppState.loading;
+    try {
+      ///todo:
+      /// must change
+       DateTime selectedDateFormat=DateTime.parse(DateFormat('yyyy-MM-dd')
+               .format(selectedDate.value));
+       DateTime? selectedAppointmentTime=availableAppointmentsMap[selectedDateFormat]?.availableSlots[selectedTimeIndex.value];
+       if(selectedAppointmentTime==null)
+         return;
+
+
+      await appointmentRepo.createAppointment(
+        clientEmail: clientEmail,
+        clientName: clientName,
+        clientPhone: clientPhone,
+        date: selectedAppointmentTime,
+        note: noteController.text
+      );
+      createAppointmentState.value = AppState.success;
+      showSuccessSnackBar(AppStrings.appointmentCreatedSuccessfully.tr);
+    } catch (e) {
+      createAppointmentState.value = AppState.error;
+      showErrorSnackBar(e.toString());
     }
-    return false;
   }
+
 
   void changeSelectedDate(DateTime date) {
     selectedDate.value = date;
   }
-  void changeSelectedFromTime(TimeOfDay? time) {
-    if(time == null) return;
-    fromTime.value = time;
+  void changeSelectedTimeIndex(int index) {
+    selectedTimeIndex.value = index;
+  }
+
+  @override
+  void onInit() {
+    getAvailableAppointmentsForMonth(DateTime.now());
+    noteController=TextEditingController();
+    noteFormKey=GlobalKey<FormState>();
+    super.onInit();
+  }
+  @override
+  void onClose() {
+    noteController.dispose();
+    super.onClose();
   }
 }

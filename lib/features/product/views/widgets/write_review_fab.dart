@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_colors.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/app_styles.dart';
-import 'package:team1_khayat/core/utils/app_colors.dart';
 import 'package:team1_khayat/features/product/views/widgets/write_review_bottom_sheet_widget.dart';
 import 'package:team1_khayat/shared/app_bottom_sheet/app_bottom_sheet.dart';
 import 'package:team1_khayat/shared/custom_app_button/custom_app_button.dart';

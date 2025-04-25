@@ -44,21 +44,21 @@ class ReviewsListSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Skeletonizer(
-      enabled: true,
-      child: ListView.separated(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return ReviewCard(
+    return  ListView.separated(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          return Skeletonizer(
+            enabled: true,
+            child: ReviewCard(
               reviewModel: _getReviewModel(),
-            );
-          },
-          separatorBuilder: (context, index) => SizedBox(
-            height: 10.h,
-          ),
-          itemCount: 10),
-    );
+            ),
+          );
+        },
+        separatorBuilder: (context, index) => SizedBox(
+          height: 10.h,
+        ),
+        itemCount: 10);
   }
 
   ReviewModel _getReviewModel() {

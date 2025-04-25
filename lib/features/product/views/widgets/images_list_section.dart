@@ -7,43 +7,35 @@ import 'package:team1_khayat/shared/custom_cached_network_image/custom_cached_ne
 class ImagesListSection extends StatelessWidget {
   const ImagesListSection({super.key});
 
+
+
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<ProductCardController>();
-
-    return Obx(() {
-      final images = controller.selectedImages;
-
-      return images.isNotEmpty
-          ? SizedBox(
-        height: 413.h,
-        width: double.infinity,
-        child: PageView(
-          scrollDirection: Axis.horizontal,
-          children: images
-              .map(
-                (e) => CustomCachedNetworkImage(
-                imageUrl: e,
-                height: 413.h,
-                width: double.infinity),
+    final ProductCardController productCardController = Get.find();
+    return productCardController.product.images != null
+        ? SizedBox(
+            height: 413.h,
+            width: double.infinity,
+            child: PageView(
+              onPageChanged: (value) {
+                 productCardController.changeProductSizeOrColor(color: productCardController.product.colors![value]);
+              },
+              controller: productCardController.pageController,
+              scrollDirection: Axis.horizontal,
+              children: productCardController.product.images!
+                  .map(
+                    (e) => CustomCachedNetworkImage(
+                        imageUrl: e, height: 413.h, width: double.infinity),
+                  )
+                  .toList(),
+            ),
           )
-              .toList(),
-        ),
-      )
-          : Container(
-        height: 413.h,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.r),
-        ),
-        child: const Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.error_outline),
-            Text("No Images"),
-          ],
-        ),
-      );
-    });
+        : Container(
+            height: 413.h,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.r),
+            ),
+            child: const Column(mainAxisAlignment: MainAxisAlignment.center,children: [Icon(Icons.error_outline),Text("No Images")]),);
   }
 }

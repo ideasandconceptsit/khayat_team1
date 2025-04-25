@@ -1,11 +1,11 @@
-class AppointmentModel {
+class CreateAppointmentModel {
   final String id;
   final DateTime date;
   final String status;
   final String clientName;
   final int clientPhone;
 
-  AppointmentModel({
+  CreateAppointmentModel({
     required this.id,
     required this.date,
     required this.status,
@@ -13,8 +13,8 @@ class AppointmentModel {
     required this.clientPhone,
   });
 
-  factory AppointmentModel.fromJson(Map<String, dynamic> json) {
-    return AppointmentModel(
+  factory CreateAppointmentModel.fromJson(Map<String, dynamic> json) {
+    return CreateAppointmentModel(
       id: json['_id'],
       date: DateTime.parse(json['date']),
       status: json['status'],
