@@ -199,6 +199,18 @@ const Map<String, String> ar = {
   AppStrings.required: "مطلوب",
   AppStrings.pleaseEnterACorrectCardNumber: "أدخل رقم بطاقة صحيح",
   AppStrings.pleaseEnterAValue: "أدخل رقم صحيح",
+  AppStrings.pleaseAddSomeProductsFirst: "يرجى اضافة منتجات اولا",
+  AppStrings.pleaseAddAnAddress: "يرجى اضافة عنوان",
+  AppStrings.couponAppliedSuccessfully: "تم تطبيق الكوبون بنجاح",
+  AppStrings.productAddedToFavoritesSuccessfully: "تمت اضافة المنتج الى المفضلة",
+  AppStrings.productRemovedFromCartSuccessfully: "تمت ازالة المنتج من السلة",
+  AppStrings.noPromoCodesAvailable: "لا يوجد رموز خصم متاحة",
+  AppStrings.noShippingAddresses: "لا يوجد عناوين شحن متاحة",
+  AppStrings.tryAgain: "إعادة المحاولة",
+  AppStrings.add: "اضافة",
+  AppStrings.applied: "تم التطبيق",
+  AppStrings.noPaymentMethodAdded: "لا يوجد طرق دفع متاحة",
+  AppStrings.paymentCardAddedSuccessfully: "تمت اضافة بطاقة الدفع بنجاح",
 
 
 
@@ -234,6 +246,8 @@ const Map<String, String> ar = {
   AppStrings.note: "تذكير",
   AppStrings.someThingWentWrong: "حدث خطأ ما",
   AppStrings.appointmentAlreadyExists: " الموعد موجود بالفعل الرجاء اختيار وقت اخر",
+  AppStrings.noAppointmentAvailableForThisDay: "لا توجد مواعيد متاحة هذا اليوم",
+  AppStrings.pleaseEnterNote: "يرجى ادخال ملاحظة",
 
   //! Main2 View
 

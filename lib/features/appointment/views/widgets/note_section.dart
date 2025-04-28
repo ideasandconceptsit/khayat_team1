@@ -8,7 +8,7 @@ import 'package:team1_khayat/features/appointment/controllers/appointment_contro
 
 class NoteSection extends StatelessWidget {
    NoteSection({super.key});
-  AppointmentController controller = Get.find<AppointmentController>();
+  final AppointmentController controller = Get.find<AppointmentController>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +23,7 @@ class NoteSection extends StatelessWidget {
                 style: AppTextStyles.textStyleMedium16),
             Container(
               height: 88.h,
-              decoration: ShapeDecoration(
-                color: AppColors.lightGrey,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
-              ),
+              decoration: _buildShapeDecoration(),
               child: TextFormField(
                 controller: controller.noteController,
                   validator: (value) => value!.isEmpty ? AppStrings.pleaseEnterNote.tr : null,
@@ -44,5 +39,14 @@ class NoteSection extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  ShapeDecoration _buildShapeDecoration() {
+    return ShapeDecoration(
+              color: AppColors.lightGrey,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+            );
   }
 }

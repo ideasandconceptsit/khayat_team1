@@ -6,7 +6,7 @@ import 'package:team1_khayat/features/appointment/controllers/appointment_contro
 import 'package:team1_khayat/features/appointment/views/widgets/calendar_widget.dart';
 import 'package:team1_khayat/features/appointment/views/widgets/confirm_button.dart';
 import 'package:team1_khayat/features/appointment/views/widgets/note_section.dart';
-import 'package:team1_khayat/features/appointment/views/widgets/select_time_section.dart';
+import 'package:team1_khayat/features/appointment/views/widgets/select_time_builder_section.dart';
 
 
 class AppointmentView extends StatelessWidget {

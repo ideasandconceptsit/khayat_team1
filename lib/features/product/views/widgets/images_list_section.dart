@@ -5,20 +5,19 @@ import 'package:team1_khayat/features/product/controllers/product_controller.dar
 import 'package:team1_khayat/shared/custom_cached_network_image/custom_cached_network_image.dart';
 
 class ImagesListSection extends StatelessWidget {
-  const ImagesListSection({super.key});
-
-
+   ImagesListSection({super.key});
+  final ProductCardController productCardController = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    final ProductCardController productCardController = Get.find();
     return productCardController.product.images != null
         ? SizedBox(
             height: 413.h,
             width: double.infinity,
             child: PageView(
               onPageChanged: (value) {
-                 productCardController.changeProductSizeOrColor(color: productCardController.product.colors![value]);
+                productCardController.changeProductSizeOrColor(
+                    color: productCardController.product.colors?[value]);
               },
               controller: productCardController.pageController,
               scrollDirection: Axis.horizontal,
@@ -36,6 +35,9 @@ class ImagesListSection extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.r),
             ),
-            child: const Column(mainAxisAlignment: MainAxisAlignment.center,children: [Icon(Icons.error_outline),Text("No Images")]),);
+            child: const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [Icon(Icons.error_outline), Text("No Images")]),
+          );
   }
 }

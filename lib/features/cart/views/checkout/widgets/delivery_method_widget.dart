@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:team1_khayat/core/utils/app_colors.dart';
 import 'package:team1_khayat/core/app_styles.dart';
+import 'package:team1_khayat/core/utils/app_colors.dart';
 import 'package:team1_khayat/features/cart/models/delivry_method_model.dart';
 import 'package:team1_khayat/shared/custom_cached_network_image/custom_cached_network_image.dart';
 import 'package:team1_khayat/shared/custom_card_with_shadow/custom_card_with_shadow.dart';

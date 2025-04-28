@@ -50,7 +50,7 @@ class AppointmentRepo {
   Future<List<AvailableAppointmentModel>> getAvailableAppointmentsForMonth(DateTime dateTime) async {
     try {
       final response = await _dio.get(
-        '/api/appointment/monthly-available-timeslots/${DateFormat('yyyy/MM').format(dateTime)}',
+        'https://khayat-backend.onrender.com/api/appointment/monthly-available-timeslots/${DateFormat('yyyy/MM').format(dateTime)}',
         options: Options(headers: _getHeaders()),
       );
       log(response.data.toString());

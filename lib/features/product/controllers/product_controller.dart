@@ -70,6 +70,9 @@ class ProductCardController extends GetxController {
     if(product.colors?.isNotEmpty ?? false){
       pageController=PageController(initialPage: product.colors!.indexOf(selectedProductColor.value));
     }
+    else{
+      pageController=PageController();
+    }
     super.onInit();
   }
 

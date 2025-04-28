@@ -12,6 +12,9 @@ class AppStrings {
   static const String addToFavorites = "add_to_favorites";
   static const String deleteFromList = "delete_from_list";
   static const String addToCart = "add_to_cart";
+  static const String add="Add";
+  static const String noPaymentMethodAdded="noPaymentMethodAdded";
+  static const String paymentCardAddedSuccessfully="paymentCardAddedSuccessfully";
 //! my profile View
   static const String myProfile = "My profile";
   static const String myOrders = "My orders";
@@ -156,6 +159,8 @@ class AppStrings {
   static const String note="note";
   static const String someThingWentWrong="someThingWentWrong";
   static const String appointmentAlreadyExists="appointmentAlreadyExists";
+  static const String noAppointmentAvailableForThisDay="noAppointmentAvailableForThisDay";
+  static const String pleaseEnterNote="pleaseEnterNote";
 
   //! Main2 view
   static const String noFabricAvailable = "No Fabric available";

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_constants.dart';
 import 'package:team1_khayat/core/services/api_service.dart';
 import 'package:team1_khayat/features/authintication/repo/login_repo.dart';
 import 'package:team1_khayat/shared/app_snakbar/app_snackbar.dart';
@@ -31,6 +32,7 @@ class LoginController extends GetxController {
       if (fetchUser != null ) {
         userModel.value=fetchUser;
         await secureStorage.write(key: 'token', value:fetchUser.token);
+        AppConstants.token=fetchUser.token;
         //await secureStorage.write(key: 'password', value: passwordController.text);
         print("✅ [LoginController] - تم تحميل ${_userRepository} طلب.");
        // SnackbarHelper.showSuccessSnackbar("تم تحميل البيانات بنجاح.");

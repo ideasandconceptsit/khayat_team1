@@ -14,8 +14,7 @@ class SizeColorAndFavouriteRow extends StatelessWidget {
     ProductCardController productCardController = Get.find();
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 12.h),
-      child: Obx(
-        () => Row(
+      child:  Row(
           children: [
             Expanded(
                 child: Padding(
@@ -63,7 +62,6 @@ class SizeColorAndFavouriteRow extends StatelessWidget {
             )
           ],
         ),
-      ),
     );
   }
 }

@@ -8,7 +8,6 @@ import 'package:team1_khayat/core/utils/app_colors.dart';
 import 'package:team1_khayat/features/cart/controllers/checkout_controller.dart';
 import 'package:team1_khayat/features/cart/controllers/payment_controller.dart';
 import 'package:team1_khayat/features/cart/models/payment_card_model.dart';
-import 'package:team1_khayat/features/cart/models/payment_model.dart';
 import 'package:team1_khayat/features/cart/views/payment/widgets/add_card_bottom_sheet_widget.dart';
 import 'package:team1_khayat/shared/app_bottom_sheet/app_bottom_sheet.dart';
 import 'package:team1_khayat/shared/custom_card_with_shadow/custom_card_with_shadow.dart';
