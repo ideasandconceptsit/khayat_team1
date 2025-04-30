@@ -33,7 +33,11 @@ const Map<String, String> en = {
   AppStrings.yourPromoCodes: "Your Promo Codes",
   AppStrings.daysRemaining: "days remaining",
   AppStrings.apply: "Apply",
+  AppStrings.add: "Add",
+  AppStrings.noPaymentMethodAdded: "No Payment Method Added",
+  AppStrings.paymentCardAddedSuccessfully: "Payment Card Added Successfully",
   AppStrings.addToFavorites: "Add to favorites",
+  AppStrings.removeFromFavorites: "Remove from favorites",
   AppStrings.deleteFromList: "Delete from the list",
 
   // Catalog Page
@@ -176,6 +180,7 @@ const Map<String, String> en = {
   AppStrings.checkout: "Checkout",
   AppStrings.shippingAddress: "Shipping address",
   AppStrings.payment: "Payment",
+  AppStrings.loading: "Loading..",
   AppStrings.deliveryMethod: "Delivery method",
   AppStrings.delivery: "Delivery:",
   AppStrings.summary: "Summary:",
@@ -199,6 +204,15 @@ const Map<String, String> en = {
   AppStrings.continueShopping: "Continue shopping",
   AppStrings.required: "Required",
   AppStrings.pleaseEnterACorrectCardNumber: "Enter a correct card number",
+  AppStrings.pleaseAddSomeProductsFirst: "Please Add Some Products First",
+  AppStrings.pleaseAddAnAddress: "Please Add An Address",
+  AppStrings.couponAppliedSuccessfully: "Coupon Applied Successfully",
+  AppStrings.productAddedToFavoritesSuccessfully: "Product Added To Favorites Successfully",
+  AppStrings.productRemovedFromCartSuccessfully: "Product Removed From Cart Successfully",
+  AppStrings.noPromoCodesAvailable: "No Promo Codes Available",
+  AppStrings.noShippingAddresses: "No Shipping Addresses",
+  AppStrings.tryAgain: "Try Again",
+
   AppStrings.pleaseEnterAValue: "Please enter a correct value",
   //! my Rating View
   AppStrings.ratingAndReview: "Rating & Reviews ",
@@ -228,6 +242,7 @@ const Map<String, String> en = {
   AppStrings.note: "Note",
   AppStrings.someThingWentWrong: "Something went wrong",
   AppStrings.appointmentAlreadyExists: "Appointment already exists for this time",
+  AppStrings.pleaseEnterNote: "Please enter a note.",
 
   //! Main2 View
   AppStrings.bookanAppointment: " Book an Appointment",

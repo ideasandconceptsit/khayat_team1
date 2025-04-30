@@ -1,15 +1,17 @@
+import 'package:get/get.dart';
+
 class AvailableAppointmentModel {
   final DateTime date;
-  final List<DateTime> availableSlots;
+  final RxList<DateTime> availableSlots;
   final int totalSlots;
   final int bookedSlots;
 
   AvailableAppointmentModel({
     required this.date,
-    required this.availableSlots,
+    required List<DateTime> availableSlots,
     required this.totalSlots,
     required this.bookedSlots,
-  });
+  }) : availableSlots = availableSlots.obs;
 
   factory AvailableAppointmentModel.fromJson(Map<String, dynamic> json) {
     return AvailableAppointmentModel(

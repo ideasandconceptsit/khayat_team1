@@ -19,7 +19,7 @@ class BottomNavBar extends StatelessWidget {
     const CatalogPage(),
     CartView(),
     const FavoritesPage(),
-    const ProfileView(),
+    ProfileView(),
   ];
 
   final List<String> icons = [

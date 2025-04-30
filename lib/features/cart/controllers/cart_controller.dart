@@ -18,6 +18,7 @@ class CartController extends AppStateController {
   var getCartProductsState = AppState.idle.obs;
   var getCartProductsErrorMessage = "".obs;
   var addToFavoritesState = AppState.idle.obs;
+  var removeFromFavoritesState = AppState.idle.obs;
   var deleteProductFromCartState = AppState.idle.obs;
   var updateCartItemQuantityState = AppState.idle.obs;
   var clearPromoCodeState = AppState.idle.obs;
@@ -41,11 +42,19 @@ class CartController extends AppStateController {
       getCartProductsState.value = AppState.loading;
       var cartProduct = await cartRepository.getCartProducts();
       cartProductModel.value = cartProduct;
+      fillItemsAndQuantity();
       getCartProductsState.value = AppState.success;
     } catch (e) {
       getCartProductsErrorMessage.value = e.toString();
       getCartProductsState.value = AppState.error;
     }
+  }
+
+  void fillItemsAndQuantity()
+  {
+    cartProductModel.value?.items.forEach((element) {
+      itemsAndQuantity[element.product.id]=element.quantity.value;
+    },);
   }
 
   void getPromoCodes() async {
@@ -98,6 +107,21 @@ class CartController extends AppStateController {
       addToFavoritesState.value = AppState.error;
     }
   }
+  void removeFromFavorites(String cartItemId, String type) async {
+    try {
+      removeFromFavoritesState.value = AppState.loading;
+      if (type == "Fabric") {
+        await cartRepository.removeFabricFromFavorites(cartItemId);
+      } else {
+        await cartRepository.removeFabricFromFavorites(cartItemId);
+      }
+      removeFromFavoritesState.value = AppState.success;
+      showSuccessSnackBar(AppStrings.productRemovedFromCartSuccessfully.tr);
+    } catch (e) {
+      showErrorSnackBar(e.toString());
+      removeFromFavoritesState.value = AppState.error;
+    }
+  }
 
   void deleteProductFromCart(String cartItemId) async {
     deleteProductFromCartState.value = AppState.loading;
@@ -108,9 +132,11 @@ class CartController extends AppStateController {
       var result = await cartRepository.removeItemFromCart(cartItemId);
       _updateCartPrices(result);
       deleteProductFromCartState.value = AppState.success;
+      itemsAndQuantity.remove(cartItemId);
       showSuccessSnackBar(AppStrings.productRemovedFromCartSuccessfully.tr);
     } catch (e) {
       cartProductModel.value = oldProductModel;
+      fillItemsAndQuantity();
       deleteProductFromCartState.value = AppState.error;
       showErrorSnackBar(e.toString());
     }
@@ -128,15 +154,10 @@ class CartController extends AppStateController {
         AppliedCouponModel(id: result.appliedCoupon);
   }
 
+  Map<String,int> itemsAndQuantity={};
   void updateCartItemQuantity(String cartItemId, int updatedQuantity) async {
     if (updatedQuantity <= 0) return;
     updateCartItemQuantityState.value = AppState.loading;
-    int? currentQuantity = cartProductModel.value?.items
-        .where((element) => element.product.id == cartItemId)
-        .single
-        .quantity
-        .value;
-
     cartProductModel.value?.items
         .where((element) => element.product.id == cartItemId)
         .single
@@ -149,13 +170,15 @@ class CartController extends AppStateController {
         UpdatedCartProductModel result =
             await cartRepository.updateCartProduct(cartItemId, updatedQuantity);
         _updateCartPrices(result);
+        itemsAndQuantity[cartItemId]=result.items.where((element) => element.product==cartItemId,).first.quantity;
         updateCartItemQuantityState.value = AppState.success;
       } catch (e) {
         cartProductModel.value?.items
             .where((element) => element.product.id == cartItemId)
             .single
             .quantity
-            .value = currentQuantity!;
+            .value = itemsAndQuantity[cartItemId]!;
+
         updateCartItemQuantityState.value = AppState.error;
         showErrorSnackBar(e.toString());
       }
@@ -163,6 +186,7 @@ class CartController extends AppStateController {
   }
 
   void clearPromoCode() => promoCodeController.clear();
+
 
   // This getter calculates the total price of all items in the cart by folding through the cartProducts list.
   // It multiplies each product's price by its quantity and sums up the values to return the total price.

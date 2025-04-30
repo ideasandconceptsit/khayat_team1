@@ -8,6 +8,7 @@ import 'package:team1_khayat/core/utils/app_colors.dart';
 import 'package:team1_khayat/features/cart/controllers/checkout_controller.dart';
 import 'package:team1_khayat/features/cart/models/shipping_address_model.dart';
 import 'package:team1_khayat/shared/custom_card_with_shadow/custom_card_with_shadow.dart';
+import 'package:team1_khayat/state_managment/app_routers.dart';
 import 'package:team1_khayat/state_managment/app_status.dart';
 
 class ShippingAddressSection extends StatelessWidget {
@@ -43,7 +44,22 @@ class ShippingAddressSection extends StatelessWidget {
                   }
                   else if(cartController.shippingAddressList.isEmpty)
                     {
-                      return Center(child: Text(AppStrings.pleaseAddAnAddress.tr),);
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(AppStrings.pleaseAddAnAddress.tr),
+                          SizedBox(width: 20.w,),
+                          InkWell(
+                            onTap: (){
+                              Get.toNamed(Routes.shippingAddressPage);
+                            },
+                            child: Text(
+                              AppStrings.add.tr,
+                              style: AppTextStyles.textStyleMedium14.copyWith(color: AppColors.redColor),
+                            ),
+                          ),
+                        ],
+                      );
                     }
                   ShippingAddressModel? shippingAddressModel = cartController.shippingAddressList[cartController.currentShippingAddressIndex.value];
                   return Column(

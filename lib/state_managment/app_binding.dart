@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:team1_khayat/features/Catalog2/repositories/product_repoistory.dart';
+import 'package:team1_khayat/features/cart/controllers/cart_controller.dart';
 import 'package:team1_khayat/features/favorites/favorite_controller/favorite_controller.dart';
 import 'package:team1_khayat/features/favorites/favorite_controller/filter_controller.dart';
 import 'package:team1_khayat/features/favorites/repositories/category_repository.dart';

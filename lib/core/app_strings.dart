@@ -10,11 +10,13 @@ class AppStrings {
   static const String daysRemaining = "days_remaining";
   static const String apply = "apply";
   static const String addToFavorites = "add_to_favorites";
+  static const String removeFromFavorites = "removeFromFavorites";
   static const String deleteFromList = "delete_from_list";
   static const String addToCart = "add_to_cart";
   static const String add="Add";
   static const String noPaymentMethodAdded="noPaymentMethodAdded";
   static const String paymentCardAddedSuccessfully="paymentCardAddedSuccessfully";
+  static const String loading="Loading";
 //! my profile View
   static const String myProfile = "My profile";
   static const String myOrders = "My orders";

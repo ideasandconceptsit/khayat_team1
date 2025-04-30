@@ -18,7 +18,7 @@ class PaymentMethodSection extends StatelessWidget {
    PaymentMethodSection({
     super.key,
   });
-  final PaymentController paymentController = Get.put(PaymentController());
+  final PaymentController paymentController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,8 @@ class PaymentMethodSection extends StatelessWidget {
                           showCustomAppBottomSheet(context,
                               height: 572.h, child:  AddCardBottomSheetWidget());
                         }
-                        Get.toNamed(Routes.paymentPage);
+                        else
+                        {Get.toNamed(Routes.paymentPage);}
                       },
                       child: Text(
                         paymentController.paymentCardsList.isEmpty?AppStrings.add.tr:AppStrings.change.tr,
@@ -67,8 +68,7 @@ class PaymentMethodSection extends StatelessWidget {
                 ),
                 Text(
                   paymentController.paymentCardsList.isEmpty?AppStrings.noPaymentMethodAdded.tr:
-                  _getCardNumber(paymentController.paymentCardsList[
-                  paymentController.currentPaymentMethodIndex.value]),
+                  paymentController.hiddenCardNumber.value,
                   style: AppTextStyles.textStyleRegular14
                       .copyWith(color: AppColors.blackColor),
                 )
@@ -87,7 +87,5 @@ class PaymentMethodSection extends StatelessWidget {
                     .paymentCardType! ==PaymentCardType.Visa?AppAssets.visaLogo:AppAssets.masterCardLogo;
   }
 
-  String _getCardNumber(PaymentCardModel currentPaymentModel) {
-    return "**** **** **** ${currentPaymentModel.cardNumber.substring(12, currentPaymentModel.cardNumber.length)}";
-  }
+
 }

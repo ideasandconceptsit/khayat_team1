@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_constants.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/network/dio_utils.dart';
 import 'package:team1_khayat/features/cart/models/add_card_model.dart';
@@ -62,7 +63,7 @@ class PaymentRepository {
   Map<String, String> _getHeaders() {
     return {
       'Authorization':
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Q0YmViNzljZWZkZTI4YWY2MjlkZDYiLCJpYXQiOjE3NDE5OTU3MDYsImV4cCI6MTc0OTc3MTcwNn0.MfH0NI5oq5T-PS8eReIFmrKMo16LjNJhU4haiIFTrPE',
+          'Bearer ${AppConstants.token  }',
     };
   }
 

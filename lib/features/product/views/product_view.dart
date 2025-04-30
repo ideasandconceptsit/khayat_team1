@@ -14,7 +14,7 @@ class ProductCardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: CustomAppBar(
-        title: productModel.name,
+        title: productModel.name!,
         arrowBackVisibility: true,
         actionIcon:Icons.share,
       ),

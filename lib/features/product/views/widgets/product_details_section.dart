@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:team1_khayat/core/utils/app_colors.dart';
-
 import 'package:team1_khayat/core/app_styles.dart';
+import 'package:team1_khayat/core/utils/app_colors.dart';
 import 'package:team1_khayat/features/product/controllers/product_controller.dart';
-import 'package:team1_khayat/features/product/models/base_product_model.dart';
 import 'package:team1_khayat/features/product/views/widgets/rating_stars_widget.dart';
 
 class ProductDetailsSection extends StatelessWidget {
@@ -24,7 +22,7 @@ class ProductDetailsSection extends StatelessWidget {
           Row(
             children: [
               Text(
-                productCardController.product.name,
+                productCardController.product.name!,
                 style: AppTextStyles.textStyleBlack24.copyWith(color: AppColors.blackColor),
               ),
               const Spacer(),
@@ -35,10 +33,10 @@ class ProductDetailsSection extends StatelessWidget {
             ],
           ),
           Text(
-            productCardController.product.name,
+            productCardController.product.name!,
             style: AppTextStyles.textStyleRegular11.copyWith(color: AppColors.greyColor),
           ),
-           RatingStarsAndCountWidget(ratingAverage: productCardController.product.ratingsAverage,ratingCount: productCardController.product.ratingsQuantity,),
+           RatingStarsAndCountWidget(ratingAverage: productCardController.product.ratingsAverage??0,ratingCount: productCardController.product.ratingsQuantity??0,),
           SizedBox(height: 20.h,),
            Text(
              ("${productCardController.product.name} ")*20,

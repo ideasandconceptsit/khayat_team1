@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:team1_khayat/core/utils/app_colors.dart';
@@ -14,7 +16,7 @@ class StarRatingChart extends StatefulWidget {
 }
 
 class _StarRatingChartState extends State<StarRatingChart> {
-  late int maxRating;
+   late int maxRating;
   @override
   void initState() {
     maxRating = widget.ratingCount.reduce((a, b) => a > b ? a : b);
@@ -23,11 +25,12 @@ class _StarRatingChartState extends State<StarRatingChart> {
   @override
   Widget build(BuildContext context) {
 
-
     return Column(
         children: List.generate(5, (index) {
           int maxRating = widget.ratingCount.reduce((a, b) => a > b ? a : b);
-          double barWidth = (widget.ratingCount[index] / maxRating) * 125;
+          log(maxRating.toString());
+          double barWidth = (widget.ratingCount[index] / (maxRating==0?1:maxRating)) * 125;
+          log(barWidth.toString());
           return Row(
             children: [
               Expanded(

@@ -22,7 +22,7 @@ void main() async {
 
   String savedLanguage = box.read('language') ?? 'ar';
   AppConstants.token = await secureStorage.read(key: 'token');
-  log("token is $AppConstants.token");
+  log("token is ${AppConstants.token}");
   String initialRoute = AppConstants.token != null ? Routes.bottomNavBar : Routes.splashscreen;
 
   runApp(MyApp(local: Locale(savedLanguage), initialRoute:initialRoute,));

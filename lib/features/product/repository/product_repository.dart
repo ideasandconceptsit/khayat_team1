@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:team1_khayat/core/app_constants.dart';
 import 'package:team1_khayat/core/app_strings.dart';
 import 'package:team1_khayat/core/network/dio_utils.dart';
+import 'package:team1_khayat/features/cart/models/cart_product_model.dart';
+import 'package:team1_khayat/features/cart/models/updated_cart_model.dart';
 
 class ProductRepository {
   final Dio _dio = DioUtils.getInstance();
@@ -52,7 +55,7 @@ class ProductRepository {
     }
   }
 
-  Future<void> addItemToCart(String productId, String productType) async {
+  Future<UpdatedCartProductModel> addItemToCart(String productId, String productType) async {
     try {
       final response = await _dio.post(
         'https://khayat-backend.onrender.com/api/cart',
@@ -63,9 +66,9 @@ class ProductRepository {
           'quantity':1
         },
       );
-
       if (response.statusCode == 200) {
         print('Item added to cart successfully');
+        return UpdatedCartProductModel.fromJson(response.data['data']);
       } else {
         print('Error: ${response.statusCode} - ${response.statusMessage}');
         throw Exception();
@@ -90,7 +93,7 @@ class ProductRepository {
   Map<String, String> _getHeaders() {
     return {
       'Authorization':
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Q0YmViNzljZWZkZTI4YWY2MjlkZDYiLCJpYXQiOjE3NDE5OTU3MDYsImV4cCI6MTc0OTc3MTcwNn0.MfH0NI5oq5T-PS8eReIFmrKMo16LjNJhU4haiIFTrPE',
+          'Bearer ${AppConstants.token}',
     };
   }
 }

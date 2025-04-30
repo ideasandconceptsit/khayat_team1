@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:team1_khayat/features/cart/models/delivry_method_model.dart';
+import 'package:team1_khayat/features/cart/models/payment_card_model.dart';
 import 'package:team1_khayat/features/cart/models/payment_model.dart';
 import 'package:team1_khayat/features/cart/models/shipping_address_model.dart';
 import 'package:team1_khayat/features/cart/repository/checkout_repository.dart';
@@ -56,6 +57,7 @@ class CheckoutController extends AppStateController {
   void changeCurrentDeliveryMethod(int index) {
     currentDeliveryMethodIndex.value = index;
   }
+
 
 
 

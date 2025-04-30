@@ -34,6 +34,7 @@ const Map<String, String> ar = {
   AppStrings.daysRemaining: "أيام متبقية",
   AppStrings.apply: "تطبيق",
   AppStrings.addToFavorites: "أضف إلى المفضلة",
+  AppStrings.removeFromFavorites: "حذف من المفضلة",
   AppStrings.deleteFromList: "حذف من القائمة",
   AppStrings.totalAmountAfterDiscount:"إجمالي المبلغ بعد الخصم",
   // صفحة الكتالوج
@@ -211,6 +212,7 @@ const Map<String, String> ar = {
   AppStrings.applied: "تم التطبيق",
   AppStrings.noPaymentMethodAdded: "لا يوجد طرق دفع متاحة",
   AppStrings.paymentCardAddedSuccessfully: "تمت اضافة بطاقة الدفع بنجاح",
+  AppStrings.loading: "جاري التحميل.",
 
 
 

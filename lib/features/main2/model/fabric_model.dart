@@ -73,6 +73,33 @@ class FabricModel {
       updatedAt: json['updatedAt'] != null ? DateTime.parse(json['updatedAt']) : null,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'slug': slug,
+      'unit': unit,
+      'location': location,
+      'quantity': quantity,
+      'pricePerMeter': pricePerMeter,
+      'discount': discount,
+      'minStock': minStock,
+      'maxStock': maxStock,
+      'active': active,
+      'ratingsAverage': ratingsAverage,
+      'ratingsQuantity': ratingsQuantity,
+      'totalValue': totalValue,
+      'profitMargin': profitMargin,
+      'isLowStock': isLowStock,
+      'isOverStocked': isOverStocked,
+      'sku': sku,
+      'category': category?.toJson(),
+      'supplier': supplier?.toJson(),
+      'createdAt': createdAt?.toIso8601String(),
+      'updatedAt': updatedAt?.toIso8601String(),
+    };
+  }
 }
 
 class CategoryModel {
@@ -86,6 +113,13 @@ class CategoryModel {
       id: json['_id'],
       name: json['name'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      '_id': id,
+      'name': name,
+    };
   }
 }
 
@@ -102,5 +136,13 @@ class SupplierModel {
       name: json['name'],
       phone: json['phone'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      '_id': id,
+      'name': name,
+      'phone': phone,
+    };
   }
 }

@@ -45,8 +45,6 @@ class AppointmentController extends GetxController {
   void bookAppointment(String clientEmail,String clientName,String clientPhone)async{
     createAppointmentState.value=AppState.loading;
     try {
-      ///todo:
-      /// must change
        DateTime selectedDateFormat=DateTime.parse(DateFormat('yyyy-MM-dd')
                .format(selectedDate.value));
        DateTime? selectedAppointmentTime=availableAppointmentsMap[selectedDateFormat]?.availableSlots[selectedTimeIndex.value];
@@ -62,6 +60,7 @@ class AppointmentController extends GetxController {
         note: noteController.text
       );
       createAppointmentState.value = AppState.success;
+      availableAppointmentsMap[selectedDateFormat]?.availableSlots.removeAt(selectedTimeIndex.value);
       showSuccessSnackBar(AppStrings.appointmentCreatedSuccessfully.tr);
     } catch (e) {
       createAppointmentState.value = AppState.error;

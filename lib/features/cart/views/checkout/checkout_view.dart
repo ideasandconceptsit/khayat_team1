@@ -12,13 +12,14 @@ import 'package:team1_khayat/shared/custom_app_bar/custom_app_bar.dart';
 import 'package:team1_khayat/shared/custom_app_button/custom_app_button.dart';
 
 class CheckoutView extends StatelessWidget {
-   CheckoutView({super.key});
-  final totalPrice= Get.arguments;
+  CheckoutView({super.key});
+
+  final totalPrice = Get.arguments;
+  final CheckoutController cartController = Get.put(CheckoutController());
 
   @override
   Widget build(BuildContext context) {
-    ///Todo: move CartController and CartRepository to the right place.
-    final CheckoutController cartController = Get.put(CheckoutController());    return Scaffold(
+    return Scaffold(
       appBar: CustomAppBar(
         title: AppStrings.checkout.tr,
         arrowBackVisibility: true,
@@ -41,18 +42,20 @@ class CheckoutView extends StatelessWidget {
             SizedBox(
               height: 52.h,
             ),
-            PricesSection(orderPrice: totalPrice,),
+            PricesSection(
+              orderPrice: totalPrice,
+            ),
             SizedBox(
               height: 18.h,
             ),
-            CustomAppButton(text: AppStrings.submitOrder.tr, onTap: () {},height: 48.h,),
+            CustomAppButton(
+              text: AppStrings.submitOrder.tr,
+              onTap: () {},
+              height: 48.h,
+            ),
           ],
         ),
       ),
     );
   }
 }
-
-
-
-

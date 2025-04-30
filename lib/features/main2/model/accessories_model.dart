@@ -80,6 +80,28 @@ class ProductAccessories {
       sku: json['sku'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      '_id': id,
+      'name': name,
+      'slug': slug,
+      'category': category.toJson(),
+      'supplier': supplier?.toJson(),
+      'quantity': quantity,
+      'unit': unit,
+      'pricePerUnit': pricePerUnit,
+      'ratingsAverage': ratingsAverage,
+      'ratingsQuantity': ratingsQuantity,
+      'discount': discount,
+      'minStock': minStock,
+      'maxStock': maxStock,
+      'isLowStock': isLowStock,
+      'isOverStocked': isOverStocked,
+      'totalValue': totalValue,
+      'sku': sku,
+    };
+  }
 }
 
 class Category {
@@ -96,6 +118,13 @@ class Category {
       id: json['_id'] ?? '',
       name: json['name'] ?? '',
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      '_id': id,
+      'name': name,
+    };
   }
 }
 
@@ -116,5 +145,13 @@ class Supplier {
       name: json['name'] ?? '',
       phone: json['phone'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      '_id': id,
+      'name': name,
+      'phone': phone,
+    };
   }
 }

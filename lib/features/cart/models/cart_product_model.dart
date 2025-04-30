@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 class CartProductModel {
-  final RxList<CartItemModel> items;
+  RxList<CartItemModel> items;
   final RxDouble totalCartPrice;
   final RxDouble totalAfterDiscount;
   final Rx<AppliedCouponModel?> appliedCoupon;
